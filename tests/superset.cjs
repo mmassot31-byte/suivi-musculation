@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
  try{
  const page=await browser.newPage({viewport:{width:390,height:844},acceptDownloads:true});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
- const click=async a=>{await page.locator(`[data-action="${a}"]`).click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil')};
+ const click=async a=>{await page.locator(`button[data-action="${a}"]`).click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil');if(a==='finish'){await page.locator('.finish-summary').waitFor();await page.locator('nav [data-action="nav:history"]').click()}};
  const read=()=>page.evaluate(async()=>{const d=await new Promise(r=>{const q=indexedDB.open('elan-musculation');q.onsuccess=()=>r(q.result)});try{return await new Promise(r=>{const q=d.transaction('state').objectStore('state').get('main');q.onsuccess=()=>r(q.result)})}finally{d.close()}});
  await page.goto('http://127.0.0.1:4173');await click('start:0');
  await page.locator('#weight').fill('60');await click('validate');
