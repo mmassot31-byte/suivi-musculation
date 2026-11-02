@@ -45,3 +45,9 @@ Le test nécessite `playwright` disponible pour Node et Chromium à `/usr/bin/ch
 Parcours testés : charge avec virgule, répétitions, correction, changement d'exercice, rechargement/reprise, fin de séance, détail historique, graphiques, export/réimport sans doublon, choix Glute bridge, suppression annulée, largeur mobile 390 px et rechargement hors connexion. La validation sur un iPhone physique avec son clavier et son mode installé reste à effectuer ; l'émulation Chromium ne reproduit pas le clavier iOS.
 
 Pour une évolution du format de données, ajouter une migration explicite avant de modifier la version IndexedDB ou le schéma d'import ; ne jamais effacer la base pour mettre à jour l'application. Modifier le nom du cache dans sw.js lors d'une nouvelle livraison des ressources.
+
+## Supersets
+
+Pendant la séance, « Créer un superset » associe deux exercices existants, un exercice existant et un nouveau, ou deux nouveaux exercices. Le duo apparaît dans un bloc commun avec deux accès A/B. Chaque validation d’une nouvelle série de travail ouvre le partenaire ; une correction ou un échauffement ne change pas d’exercice. Si le repos automatique est activé sur l’un des exercices, il démarre après les deux séries d’un tour, avec le repos le plus long du duo. Les charges, les séries et les statistiques restent séparées.
+
+« Dissocier » conserve tous les exercices et leurs séries. Les duos sont propres à la séance, sont conservés après rechargement et dans l’export JSON, et apparaissent dans le détail historique. Les anciens exports sans superset restent compatibles ; le champ optionnel `superset` relie exactement deux exercices sans changer le format version 1.
