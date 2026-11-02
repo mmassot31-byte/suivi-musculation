@@ -23,13 +23,13 @@ Sur iPhone, ouvrir cette adresse dans Safari puis Partager → Sur l'écran d'ac
 
 ## Données et fonctionnement
 
-- Quatre programmes complets ; les références initiales non datées sont uniquement des propositions. Aucune séance fictive n'est créée.
+- Quatre programmes complets ; les charges initiales ne sont jamais proposées dans la saisie ni affichées comme repères. La dernière séance enregistrée fournit les repères de charge et répétitions ; sans historique, la charge reste à renseigner. Aucune séance fictive n'est créée.
 - Charge, répétitions, correction, suppression annulable, RIR, notes, échauffement, étapes dégressives et repos facultatif.
 - Séance en cours et modèles sont des copies indépendantes. L'alternative Hip thrust / Glute bridge garde deux identités distinctes.
-- L'identité d'exercice détermine le regroupement des statistiques. Modifier cette identité pour une autre machine ou variante. Les références restent propres à chaque modèle. Aucune multiplication automatique des charges.
+- L'identité d'exercice détermine le regroupement des statistiques. Modifier cette identité pour une autre machine ou variante. Le nombre de séries prévues reste propre à chaque modèle. Aucune multiplication automatique des charges.
 - IndexedDB conserve un document versionné (`version: 1`). Les écritures sont séquentielles et transactionnelles. Les mises à jour du cache de l'application ne suppriment pas la base.
 - Export JSON complet, import validé et fusion par identifiant. Un identifiant déjà présent est conservé localement : l'import ne remplace pas les corrections existantes. Un fichier avec une autre séance active est refusé tant que la séance locale n'est pas terminée. Le CSV inclut les étapes dégressives et les échauffements identifiés.
-- Les graphiques excluent échauffements et valeurs non validées. Les étapes dégressives de travail sont incluses ; le volume est présenté comme indicateur complémentaire. Les points ouvrent la séance correspondante.
+- Les graphiques excluent échauffements et valeurs non validées. Les étapes dégressives de travail sont incluses ; le volume est présenté comme indicateur complémentaire. Les points ouvrent la séance correspondante. Tous les exercices de la séance sont accessibles dans une liste défilante et peuvent être réalisés dans l’ordre souhaité. La croix près de « Terminer » permet d’abandonner la séance après confirmation, sans modifier l’historique.
 - JSON à exporter régulièrement : ni GitHub, ni le cache hors connexion ne sauvegardent vos séances à distance. L'effacement du stockage du navigateur, un changement de domaine ou d'appareil ne transfèrent pas les données. Importer le JSON sur la nouvelle installation.
 - Usage prévu sur un seul onglet/appareil à la fois ; pas de fusion concurrente ni de synchronisation distante. Le minuteur est visuel, sans notification garantie en arrière-plan.
 
