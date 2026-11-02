@@ -1,0 +1,34 @@
+name: Déployer Élan sur GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Préparer uniquement les fichiers publics
+        run: |
+          mkdir -p _site
+          cp index.html app.js data.js style.css sw.js manifest.webmanifest icon.svg .nojekyll _site/
+      - name: Configurer Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publier
+        id: deployment
+        uses: actions/deploy-pages@v4
