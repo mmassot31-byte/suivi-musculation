@@ -62,3 +62,7 @@ export function validGroups(t){
  if(t.entryDrafts!==undefined&&(!Array.isArray(t.entryDrafts)||t.entryDrafts.length>10000||t.entryDrafts.some(d=>!d||!str(d.key)||!d.fields||['weight','reps','type','rir','notes','drops'].some(key=>typeof d.fields[key]!=='string')||Object.keys(d.fields).some(k=>!['weight','reps','type','rir','notes','drops'].includes(k))||Object.values(d.fields).some(v=>typeof v!=='string'||v.length>100000))))return false;
  return true;
 }
+
+// The first member's position anchors a group in legacy models too.
+export function workoutBlocks(t){const seen=new Set(),blocks=[];for(const e of t.exercises){if(seen.has(e.instanceId))continue;const group=groupForExercise(t,e.instanceId),members=group?[...group.members]:[e.instanceId];members.forEach(key=>seen.add(key));blocks.push({name:group?.name||e.name,members,group:group||null})}return blocks}
+export function moveWorkoutBlock(t,from,to){const blocks=workoutBlocks(t);if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||to<0||from>=blocks.length||to>=blocks.length)return false;const [block]=blocks.splice(from,1);blocks.splice(to,0,block);t.exercises=blocks.flatMap(b=>b.members.map(key=>exerciseByKey(t,key)));return true}
