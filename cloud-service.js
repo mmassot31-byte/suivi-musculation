@@ -1,0 +1,18 @@
+import {createClient} from './vendor/supabase.js';
+import {cloudConfig} from './cloud-config.js';
+export const authStorageKey='elan-auth-v1';
+export function configured(config=cloudConfig){if(!config.url||!config.publishableKey)return false;const url=new URL(config.url);if(url.protocol!=='https:'&&!['localhost','127.0.0.1'].includes(url.hostname))throw Error('Le service doit utiliser HTTPS.');if(config.publishableKey.startsWith('sb_secret_'))throw Error('Clé secrète interdite dans le navigateur.');if(!config.publishableKey.startsWith('sb_publishable_')){let role;try{role=JSON.parse(atob(config.publishableKey.split('.')[1].replace(/-/g,'+').replace(/_/g,'/'))).role}catch{throw Error('Clé publique invalide.')}if(role!=='anon')throw Error('Clé d’administration interdite.');}return true}
+export function createService(config=cloudConfig){try{if(!configured(config))return null}catch{console.warn('Configuration du service de comptes invalide ; données locales conservées.');return null}const client=createClient(config.url,config.publishableKey,{global:{fetch:async(input,init={})=>{const controller=new AbortController(),abort=()=>controller.abort(),timer=setTimeout(abort,12000);init.signal?.addEventListener('abort',abort,{once:true});try{return await fetch(input,{...init,signal:controller.signal})}finally{clearTimeout(timer);init.signal?.removeEventListener('abort',abort)}}},auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'pkce',storageKey:authStorageKey}});const result=async promise=>{const {data,error}=await promise;if(error)throw error;return data};const privateQuery=async(query,uid)=>{const {data,error}=await client.auth.getSession();if(error||!uid||data.session?.user.id!==uid)throw Error('ACCOUNT_CHANGED');return result(query.setHeader('Authorization','Bearer '+data.session.access_token))};return {client,auth:client.auth,cachedIdentity(){try{const value=JSON.parse(localStorage.getItem(authStorageKey)||'null');return typeof value?.user?.id==='string'?value.user:null}catch{return null}},
+ document:uid=>privateQuery(client.from('private_documents').select('payload,version').maybeSingle(),uid),
+ sync:(args,uid)=>privateQuery(client.rpc('sync_snapshot',args).retry(false),uid),
+ variants:()=>result(client.from('exercise_variants').select('*').order('label').limit(100)),
+ registerMachine:args=>result(client.rpc('register_machine',args)),
+ ranking:args=>result(client.rpc('rankings',args)),
+ profile:(username,offset=0)=>result(client.rpc('sport_profile',{p_username:username,p_offset:offset,p_limit:20})),
+ usernameAvailable:username=>result(client.from('profiles').select('id').eq('username',username).maybeSingle()).then(value=>!value),
+ ownProfile:uid=>result(client.from('profiles').select('id,username,avatar_path').eq('id',uid).single()),
+ updateProfile:(uid,changes)=>result(client.from('profiles').update(changes).eq('id',uid).select('id,username,avatar_path').single()),
+ async avatar(uid,file){if(file.size>2097152||!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Choisis une image JPG, PNG ou WebP de 2 Mo maximum.');const ext={ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[file.type],path=uid+'/'+crypto.randomUUID()+'.'+ext;await result(client.storage.from('avatars').upload(path,file,{contentType:file.type,upsert:false}));return path},
+ avatarUrl:path=>path?client.storage.from('avatars').getPublicUrl(path).data.publicUrl:null,
+ async signOut(){const {error}=await client.auth.signOut({scope:'local'});if(error){client.auth.stopAutoRefresh();localStorage.removeItem(authStorageKey);localStorage.removeItem(authStorageKey+'-code-verifier')}return error}
+}}

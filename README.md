@@ -229,3 +229,11 @@ Après confirmation IndexedDB d’une nouvelle série, le chrono apparaît au ce
 `tests/rest.cjs` vérifie les repos d’un groupe 3/2 et les choix par contexte. `tests/rest-home.cjs` teste le nouvel accueil et le chrono à 390 px : écriture ralentie, double validation, échec/retry, réduction, arrêt, reprise et expiration. Les anciens parcours réduisent le nouveau chrono comme le ferait l’utilisateur avant de poursuivre leurs assertions. La simulation de visualViewport reste distincte d’une validation du clavier sur iPhone physique.
 
 L’accueil présente les cartes sur deux colonnes, avec les informations actuelles conservées. Ouvrir le détail musculaire élargit la carte sur la rangée pour garder Directes / Secondaires lisibles. Le petit bilan inférieur compte les séances terminées non vides, celles d’aujourd’hui et des six jours précédents, puis leurs séries de travail validées. Les échauffements, séries prévues, séances actives et dates futures sont exclus du compteur de séries ; une dégressive reste une seule série.
+
+## Comptes, profils et Classement
+
+L’avatar ouvre Mon profil et ses paramètres. La barre conserve Entraînement, Historique, Progression et Corps, avec Classement après Progression. Le SDK officiel gère inscription, connexion, session persistante, récupération du mot de passe et déconnexion. Les données locales/synchronisées sont séparées par compte ; les seules performances sportives validées deviennent publiques après confirmation serveur.
+
+Le code, les trois migrations, la séparation public/privé, les règles d’accès, les calculs des deux records, les tests réels locaux et la recette iPhone sont décrits dans [docs/ACCOUNTS.md](docs/ACCOUNTS.md).
+
+**Activation de production encore nécessaire :** aucun service hébergé n’était disponible. Créer un projet Supabase, appliquer les migrations et les URL de retour, configurer l’e-mail transactionnel, puis fournir uniquement l’URL et la clé publique. `cloud-config.js` reste vide ; l’application locale fonctionne et les pages de comptes/classement expliquent cette attente. Aucune clé d’administration ne doit être placée dans le dépôt ou le navigateur.
