@@ -1,0 +1,24 @@
+// Élan's lightweight, shared 24 px stroke vocabulary. No font or network request.
+const paths={
+ bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7z"/>',
+ home:'<path d="M4 9h16M5 5v14m14-14v14M2 8v8m20-8v8M5 12h14"/>',
+ history:'<path d="M3 10a9 9 0 1 1 2 8M3 4v6h6m3-3v5l3 2"/>',
+ progress:'<path d="M4 19V5m0 14h16M7 15l4-5 4 3 5-8m-5 0h5v5"/>',
+ ranking:'<path d="M3 21h18M4 21v-7h5v7m0 0V8h6v13m0 0V4h5v17"/>',
+ body:'<circle cx="12" cy="5" r="2.5"/><path d="M5 21v-3a7 7 0 0 1 14 0v3M8 12l-2-3m10 3 2-3"/>',
+ dumbbell:'<path d="m5 5 14 14M3 7l4-4m-6 2 4-4m12 22 6-6m-8 4 6-6"/>',
+ barbell:'<path d="M3 8v8m4-11v14m0-7h10m0-7v14m4-11v8"/>',
+ cable:'<path d="M5 21V3h14v18M8 21h8M12 6v7m-4 4 4-4 4 4"/><circle cx="12" cy="5" r="2"/>',
+ machine:'<path d="M4 21h16M6 21V4h6m0 0v6h6v8h-7v3M6 14h5"/><path d="M14 4h5"/>',
+ kettlebell:'<path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M7 8h10l3 9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/>',
+ movement:'<circle cx="13" cy="4" r="2"/><path d="m6 10 5-3 4 4 5 1m-9-5-2 8-4 6m4-6 7 1 1 5"/>',
+ legs:'<path d="m9 3-1 8-4 9h5l4-8m2-9-1 8 5 9h-5l-3-5"/>',
+ tonnage:'<rect x="6" y="3" width="12" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/>',
+ reps:'<path d="M4 8a8 8 0 0 1 14-2l2 3m0-5v5h-5M20 16a8 8 0 0 1-14 2l-2-3m0 5v-5h5"/>',
+ trophy:'<path d="M8 3h8v7a4 4 0 0 1-8 0zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v6m-4 1h8"/>',
+ check:'<path d="m5 12 4 4L19 6"/>',
+ settings:'<path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/>',
+ timer:'<circle cx="12" cy="14" r="8"/><path d="M9 2h6m-3 0v4m0 8 3-3M18 6l2-2"/>',
+ chevron:'<path d="m9 6 6 6-6 6"/>'
+};
+export function icon(name,classes=''){return `<svg class="ico ${classes}" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.movement}</svg>`}
