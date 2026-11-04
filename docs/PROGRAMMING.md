@@ -1,5 +1,7 @@
 # Conception du programmateur
 
+> Archive : le parcours de génération et Ma semaine ont été retirés de l’interface au profit de la création manuelle. Les données et liens existants restent conservés. Le calcul chronologique de durée est réutilisé dans l’éditeur. Les résultats de validation ci-dessous concernent la livraison initiale du programmateur.
+
 ## Périmètre et accès aux sources
 
 Conception rédigée avant l’implémentation. Le moteur est déterministe, local et indépendant d’une API d’IA. Il construit des propositions à partir des séances personnelles et de quelques variantes structurées ; son score est une règle de décision logicielle, jamais une mesure d’efficacité physiologique.

@@ -206,35 +206,16 @@ Les nouveaux tests sont `tests/reliability.cjs`, `tests/volume-references.cjs` e
 
 Restent non vérifiés automatiquement : clavier Safari natif, zoom de texte natif iOS, VoiceOver réel, zones de sécurité matérielles, gestes et cycle de vie du mode installé. Les tests Chromium isolés n’accèdent jamais aux données personnelles de l’application publiée.
 
-## Organisation facultative de la semaine
+## Création manuelle des séances
 
-Entraînement conserve les quatre onglets de l’application et propose **Ma semaine / Mes séances**. Mes séances garde les modèles habituels et leur lancement direct. Ma semaine affiche les occurrences préparées, leur jour facultatif, le temps disponible, la durée estimée et l’action Commencer/Reprendre/Voir. Une séance active reste prioritaire. Sans planning courant, l’accueil ouvre Mes séances ; un changement manuel de vue reste respecté.
+Entraînement ouvre directement les séances enregistrées, avec **Créer une séance**, Modifier, Dupliquer, Supprimer et Commencer. La suppression retire uniquement le modèle enregistré, après confirmation ; elle conserve l’historique, une éventuelle séance active et les anciens plannings. Une séance active conserve son action explicite Reprendre. Les quatre onglets restent Entraînement, Historique, Progression et Corps. Ma semaine et le parcours de génération ne sont plus proposés. L’accueil est limité aux séances enregistrées et à leur création ; le suivi hebdomadaire reste dans Progression → Volume.
 
-**Organiser** prépare quatre Upper/Jambes, cinq Jambes/Push/Pull/Jambes/Upper ou une liste personnalisée. Les préférences et la semaine précédente sont réutilisables. La proposition est un brouillon : on peut modifier, verrouiller, recalculer, accepter ou annuler. Les modèles ne sont jamais remplacés ; « Enregistrer comme nouvelle séance » crée explicitement une variante. Les occurrences actives et terminées restent conservées lors d’un recalcul. Une séance manquée reste visible ; déplacement et redistribution demandent une action et une confirmation.
+La création utilise un brouillon indépendant : rechercher un exercice du catalogue personnel ou des alternatives structurées, ajuster séries, plage de répétitions et repos, ordonner les blocs et créer des groupes avec l’éditeur existant. Donner un nom puis Enregistrer ajoute la séance à l’accueil. Une duplication ouvre une copie à modifier, sans changer la source. Un échec d’écriture garde le brouillon et permet de réessayer ; l’enregistrement est verrouillé contre les doubles appuis.
 
-« Adapter cette séance » ajuste une occurrence avant démarrage, ou uniquement son futur pendant l’entraînement selon le temps restant saisi. Les séries validées et les brouillons saisis restent intacts. Aucune préparation supplémentaire n’est obligatoire au lancement.
+Le bandeau supérieur de l’éditeur affiche le nombre de séries de travail, la durée estimée et trois muscles principaux. Un appui ouvre les colonnes Directes / Secondaires. Il s’actualise après ajout, retrait, réglage, réordonnancement ou modification de groupe. La durée réutilise la chronologie de `programming.js` : repos personnels, échauffement, préparations, installations, transitions et marge, sans repos fictif après la dernière série. Les tours incomplets, par exemple A–B–A–B–A, conservent les quantités indépendantes et le temps de récupération de chaque membre.
 
-Le moteur local est déterministe, sans service d’IA. Les contraintes strictes passent avant les préférences ; les repos ne sont pas raccourcis pour remplir les repères. Il compare plusieurs propositions stables, couvre des fonctions complémentaires et signale les compromis. Les estimations incluent échauffement, préparations, travail, repos, installations, transitions et marge. Une plage plausible distingue estimation et disponibilité ; elle ne garantit pas le temps réel. Les séries de préparation ne comptent pas dans le volume.
+Le retrait du planning est **uniquement un retrait d’interface** : `weekPlans`, les préférences et les anciens liens de séances restent stockés et inclus dans les exports/imports JSON. Les lancements directs n’ajoutent plus d’occurrence au planning archivé. Les modules de planification et les documents [conception](docs/PROGRAMMING.md) / [anciens exemples](docs/PROGRAMMING-EXAMPLES.md) sont conservés pour compatibilité ; aucun générateur n’est accessible dans le parcours courant. Le calcul de durée reste utilisé par l’éditeur manuel.
 
-Le résumé Réalisé / Prévu est limité à trois muscles : directes et secondaires restent visibles. Le réalisé comprend uniquement les séries validées ; la projection remplace le contenu terminé par son réel et combine le réel actif avec son reste, sans doublon. Les modèles seuls ne servent jamais à inventer un volume hebdomadaire. Progression → Volume conserve l’analyse détaillée.
+`npm test` comprend `tests/manual-session-ui.cjs` : parcours 390 px créer → rechercher/ajouter → régler les séries, répétitions et repos → réordonner/grouper → nommer → enregistrer → lancer. Le test couvre également les séances antérieures, la duplication indépendante, le planning conservé, l’export et le catalogue hors connexion. Les tests des groupes asymétriques, de la fiabilité d’écriture, des volumes et des autres onglets restent exécutés.
 
-### Règles, exemples et limites
-
-La [conception et le tableau des règles](docs/PROGRAMMING.md) distinguent connaissances générales prudentes, choix pratiques et préférences personnelles. Les six références scientifiques demandées y sont liées, avec leurs limites d’accès : **PubMed a refusé la connexion du proxy (HTTP 403), aucun résumé ni texte intégral de ces six publications n’a été consulté ici**. Les règles ne sont pas présentées comme une synthèse vérifiée de ces articles ni comme une garantie d’hypertrophie optimale.
-
-Les [neuf programmes réellement générés](docs/PROGRAMMING-EXAMPLES.md) donnent les entrées, exercices, séries, répétitions, repos, durées, D/S, compromis et contrôles indépendants. Ils sont reproductibles avec `npm run examples`. Ils incluent quatre/cinq séances, temps variables, matériel limité, priorité latérale, groupe verrouillé 3/2, séance manquée et contraintes incompatibles. Les charges nouvelles restent à déterminer ; une famille d’exercices ne fusionne pas les historiques d’équipements personnels.
-
-### Compatibilité et tests
-
-`weekPlans` et `programmingPreferences` enrichissent le document existant sans changer sa version ni effacer les modèles ou l’historique. La migration est additive et idempotente. Les exports/imports JSON conservent occurrences, liens, préférences et identités ; un ancien fichier sans planning reste accepté. Le cache hors connexion inclut les nouveaux modules.
-
-Les tests `programming.cjs`, `programme-quality.cjs`, `planning-ui.cjs` et `unequal-groups.cjs` complètent `npm test`. Ils vérifient les contraintes et la grille indépendante, les chronologies, la conservation modèle/occurrence/réalisé, les parcours de planification, les quotas 3/2, 2/3 et 4/2/2, les sauvegardes et le hors connexion. Les tests des autres fonctions restent exécutés.
-
-Sur **iPhone physique**, dans Safari puis depuis l’icône installée :
-
-1. Organiser une semaine, modifier une occurrence et vérifier que son modèle reste identique. Commencer, fermer et reprendre : même séance, même tour et même brouillon.
-2. Tester un groupe 3/2, passer une étape puis la reprendre, corriger la série précédente sans avancer et finir le groupe. Vérifier l’absence de repos final inutile.
-3. Ouvrir le clavier charge/répétitions et les dialogues de correction/adaptation : validation accessible, aucune commande sous la navigation ou la zone de sécurité. Essayer texte agrandi, VoiceOver et retour d’arrière-plan.
-4. Après un premier chargement, passer en mode avion, rouvrir, consulter le planning, reprendre et exporter une sauvegarde de test.
-
-Les fenêtres Chromium 390/320 px et la simulation de visualViewport ne constituent pas une validation du clavier iOS. Clavier natif, VoiceOver, zones de sécurité matérielles et cycle de vie du mode installé restent à vérifier sur l’appareil.
+Sur iPhone physique, vérifier dans Safari puis en mode installé : recherche avec clavier ouvert, accès aux champs et à Enregistrer, ouverture/fermeture du bandeau par muscle et reprise hors connexion. La simulation Chromium à 390 px ne valide pas le clavier natif iOS, VoiceOver ou les zones de sécurité matérielles.
