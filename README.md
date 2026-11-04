@@ -205,3 +205,36 @@ Les nouveaux tests sont `tests/reliability.cjs`, `tests/volume-references.cjs` e
 5. En mode avion après un premier chargement, fermer puis rouvrir l’application : même exercice, même étape et brouillon. Abandonner la séance de test, vérifier la disparition de sa contribution et la conservation des séances passées.
 
 Restent non vérifiés automatiquement : clavier Safari natif, zoom de texte natif iOS, VoiceOver réel, zones de sécurité matérielles, gestes et cycle de vie du mode installé. Les tests Chromium isolés n’accèdent jamais aux données personnelles de l’application publiée.
+
+## Organisation facultative de la semaine
+
+Entraînement conserve les quatre onglets de l’application et propose **Ma semaine / Mes séances**. Mes séances garde les modèles habituels et leur lancement direct. Ma semaine affiche les occurrences préparées, leur jour facultatif, le temps disponible, la durée estimée et l’action Commencer/Reprendre/Voir. Une séance active reste prioritaire. Sans planning courant, l’accueil ouvre Mes séances ; un changement manuel de vue reste respecté.
+
+**Organiser** prépare quatre Upper/Jambes, cinq Jambes/Push/Pull/Jambes/Upper ou une liste personnalisée. Les préférences et la semaine précédente sont réutilisables. La proposition est un brouillon : on peut modifier, verrouiller, recalculer, accepter ou annuler. Les modèles ne sont jamais remplacés ; « Enregistrer comme nouvelle séance » crée explicitement une variante. Les occurrences actives et terminées restent conservées lors d’un recalcul. Une séance manquée reste visible ; déplacement et redistribution demandent une action et une confirmation.
+
+« Adapter cette séance » ajuste une occurrence avant démarrage, ou uniquement son futur pendant l’entraînement selon le temps restant saisi. Les séries validées et les brouillons saisis restent intacts. Aucune préparation supplémentaire n’est obligatoire au lancement.
+
+Le moteur local est déterministe, sans service d’IA. Les contraintes strictes passent avant les préférences ; les repos ne sont pas raccourcis pour remplir les repères. Il compare plusieurs propositions stables, couvre des fonctions complémentaires et signale les compromis. Les estimations incluent échauffement, préparations, travail, repos, installations, transitions et marge. Une plage plausible distingue estimation et disponibilité ; elle ne garantit pas le temps réel. Les séries de préparation ne comptent pas dans le volume.
+
+Le résumé Réalisé / Prévu est limité à trois muscles : directes et secondaires restent visibles. Le réalisé comprend uniquement les séries validées ; la projection remplace le contenu terminé par son réel et combine le réel actif avec son reste, sans doublon. Les modèles seuls ne servent jamais à inventer un volume hebdomadaire. Progression → Volume conserve l’analyse détaillée.
+
+### Règles, exemples et limites
+
+La [conception et le tableau des règles](docs/PROGRAMMING.md) distinguent connaissances générales prudentes, choix pratiques et préférences personnelles. Les six références scientifiques demandées y sont liées, avec leurs limites d’accès : **PubMed a refusé la connexion du proxy (HTTP 403), aucun résumé ni texte intégral de ces six publications n’a été consulté ici**. Les règles ne sont pas présentées comme une synthèse vérifiée de ces articles ni comme une garantie d’hypertrophie optimale.
+
+Les [neuf programmes réellement générés](docs/PROGRAMMING-EXAMPLES.md) donnent les entrées, exercices, séries, répétitions, repos, durées, D/S, compromis et contrôles indépendants. Ils sont reproductibles avec `npm run examples`. Ils incluent quatre/cinq séances, temps variables, matériel limité, priorité latérale, groupe verrouillé 3/2, séance manquée et contraintes incompatibles. Les charges nouvelles restent à déterminer ; une famille d’exercices ne fusionne pas les historiques d’équipements personnels.
+
+### Compatibilité et tests
+
+`weekPlans` et `programmingPreferences` enrichissent le document existant sans changer sa version ni effacer les modèles ou l’historique. La migration est additive et idempotente. Les exports/imports JSON conservent occurrences, liens, préférences et identités ; un ancien fichier sans planning reste accepté. Le cache hors connexion inclut les nouveaux modules.
+
+Les tests `programming.cjs`, `programme-quality.cjs`, `planning-ui.cjs` et `unequal-groups.cjs` complètent `npm test`. Ils vérifient les contraintes et la grille indépendante, les chronologies, la conservation modèle/occurrence/réalisé, les parcours de planification, les quotas 3/2, 2/3 et 4/2/2, les sauvegardes et le hors connexion. Les tests des autres fonctions restent exécutés.
+
+Sur **iPhone physique**, dans Safari puis depuis l’icône installée :
+
+1. Organiser une semaine, modifier une occurrence et vérifier que son modèle reste identique. Commencer, fermer et reprendre : même séance, même tour et même brouillon.
+2. Tester un groupe 3/2, passer une étape puis la reprendre, corriger la série précédente sans avancer et finir le groupe. Vérifier l’absence de repos final inutile.
+3. Ouvrir le clavier charge/répétitions et les dialogues de correction/adaptation : validation accessible, aucune commande sous la navigation ou la zone de sécurité. Essayer texte agrandi, VoiceOver et retour d’arrière-plan.
+4. Après un premier chargement, passer en mode avion, rouvrir, consulter le planning, reprendre et exporter une sauvegarde de test.
+
+Les fenêtres Chromium 390/320 px et la simulation de visualViewport ne constituent pas une validation du clavier iOS. Clavier natif, VoiceOver, zones de sécurité matérielles et cycle de vie du mode installé restent à vérifier sur l’appareil.
