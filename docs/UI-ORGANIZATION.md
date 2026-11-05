@@ -18,3 +18,7 @@ Tests dédiés : `npm run test:organization` (recherche/synonymes et parcours ap
 Largeurs Chromium vérifiées : 320, 375, 390 px et bureau ; texte agrandi et reduced motion. Les captures dans organization-captures viennent des véritables composants avec des données de test isolées. Les tests de suppression utilisent uniquement le stockage de ces contextes navigateur. Aucune suppression ni invitation sur des comptes de production.
 
 Safari/iPhone physique reste une validation manuelle distincte. La publication passe par main et le workflow GitHub Pages ; le cache est incrémenté à elan-shell-v27-organized, sans imposer de rechargement pendant une séance.
+
+## Navigation des semaines simplifiée
+
+Le contrôle « Type de semaine » est retiré. Le lien discret « Revenir à cette semaine » apparaît sous les dates uniquement lorsqu’une semaine passée ou future est consultée, et disparaît dès le retour à la semaine actuelle. Les anciennes annotations restent conservées ; les calculs ne sont pas modifiés. Test dédié : `npm run test:week-navigation` (semaines passée/actuelle/future, clavier et 320/375/390 px). Cache : elan-shell-v28-week-navigation.
