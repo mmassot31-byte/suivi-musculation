@@ -13,4 +13,7 @@ for(const family of ['muscles','workouts']){
   out[family+'/'+file.slice(0,-4)]={viewBox,body};
  }
 }
-fs.writeFileSync('pictogram-source.js','// Generated from the supplied SVG files. Run node scripts/build-pictograms.cjs after asset changes.\nexport const pictogramSources='+JSON.stringify(out)+';\n');
+// The supplied PNG is retained byte-for-byte. Its viewport removes only the outer
+// presentation padding; the full drawing keeps its original aspect ratio.
+out['muscles/haut-du-dos']={viewBox:'180 210 840 800',body:'<image href="./assets/muscles/haut-du-dos.png" width="1199" height="1199" preserveAspectRatio="xMidYMid meet"/>'};
+fs.writeFileSync('pictogram-source.js','// Generated from the supplied pictograms. Run node scripts/build-pictograms.cjs after asset changes.\nexport const pictogramSources='+JSON.stringify(out)+';\n');
