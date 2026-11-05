@@ -1,9 +1,9 @@
 import {dayKey,dayOffset,validDay} from './tracking.js';
-import {muscles,muscleVolume,weekStart,weekSessions} from './muscles.js';
+import {muscles,muscleVolume,weeklyMuscleVolume,weekStart,weekSessions} from './muscles.js';
 const known=id=>muscles.some(([key])=>key===id);
 export const plannedSets=e=>e.plannedSets??e.refs.length;
 export function setPlannedSets(e,n){if(!Number.isInteger(n)||n<0||n>100)throw Error('Le nombre prévu doit être compris entre 0 et 100.');e.plannedSets=n}
-export function plannedVolume(template){return muscleVolume([{...template,exercises:template.exercises.map(e=>({...e,sets:Array.from({length:plannedSets(e)},()=>({type:'work'}))}))}])}
+export function plannedVolume(template){return weeklyMuscleVolume([{...template,exercises:template.exercises.map(e=>({...e,sets:Array.from({length:plannedSets(e)},()=>({type:'work'}))}))}])}
 export function activeSessions(state){return [...state.sessions,...(state.active&&!state.sessions.some(s=>s.id===state.active.id)?[state.active]:[])]}
 export function targetForWeek(targets,muscle,start,today=dayKey()){const end=dayOffset(start,6),asOf=end<today?end:today;return targets.filter(t=>t.muscle===muscle&&t.effectiveDate<=asOf).sort((a,b)=>b.effectiveDate.localeCompare(a.effectiveDate))[0]||null}
 export function targetStatus(value,target){return !target||target.min===null?'Sans cible':value<target.min?'Sous la cible':value>target.max?'Au-dessus de la cible':'Dans la cible'}
@@ -12,8 +12,8 @@ export function validWeeks(list){return Array.isArray(list)&&list.every(w=>w&&va
 export function validPins(list){return Array.isArray(list)&&list.every(p=>p&&known(p.muscle)&&typeof p.pinned==='boolean')&&new Set(list.map(p=>p.muscle)).size===list.length}
 export function firstTrackedWeek(state){const dates=activeSessions(state).filter(s=>s.exercises.some(e=>e.sets.some(x=>x.type!=='warmup'))).map(s=>dayKey(s.date)).sort();return dates.length?weekStart(dates[0]):null}
 export function weekReport(state,start,today=dayKey()){
- const all=weekSessions(activeSessions(state),start),inSession=state.active&&!state.sessions.some(s=>s.id===state.active.id)?weekSessions([state.active],start):[],volume=muscleVolume(all),active=muscleVolume(inSession),first=firstTrackedWeek(state),annotation=state.volumeWeeks.find(w=>w.week===start)||{week:start,kind:'normal',complete:false};
- return {start,end:dayOffset(start,6),volume,active,sessions:all,annotation,current:start===weekStart(today),past:start<weekStart(today),beforeTracking:!first||start<first,hasData:all.some(s=>s.exercises.some(e=>e.sets.some(x=>x.type!=='warmup')))}
+ const all=weekSessions(activeSessions(state),start),inSession=state.active&&!state.sessions.some(s=>s.id===state.active.id)?weekSessions([state.active],start):[],volume=weeklyMuscleVolume(all.filter(s=>s.id!==state.active?.id)),active=weeklyMuscleVolume(inSession),first=firstTrackedWeek(state),annotation=state.volumeWeeks.find(w=>w.week===start)||{week:start,kind:'normal',complete:false};
+ return {start,end:dayOffset(start,6),volume,active,sessions:all.filter(s=>s.id!==state.active?.id),annotation,current:start===weekStart(today),past:start<weekStart(today),beforeTracking:!first||start<first,hasData:all.filter(s=>s.id!==state.active?.id).some(s=>s.exercises.some(e=>e.sets.some(x=>x.type!=='warmup')))}
 }
 export function muscleHistory(state,muscle,start,count=8,today=dayKey()){return Array.from({length:count},(_,i)=>{const week=weekReport(state,dayOffset(start,-7*(count-1-i)),today),target=targetForWeek(state.volumeTargets,muscle,week.start,today),value=week.volume.totals[muscle],eligible=week.past&&!week.beforeTracking&&week.annotation.kind==='normal'&&week.annotation.complete&&!week.volume.unclassified&&target?.min!==null&&!!target;return {...week,target,value,status:targetStatus(targetValue(value,target),target),eligible}})}
 export function adherenceStats(rows){const eligible=rows.filter(r=>r.eligible),observed=rows.filter(r=>r.past&&!r.beforeTracking&&(r.hasData||r.annotation.complete));return {count:eligible.length,under:eligible.filter(r=>r.status==='Sous la cible').length,within:eligible.filter(r=>r.status==='Dans la cible').length,over:eligible.filter(r=>r.status==='Au-dessus de la cible').length,observed:observed.length,average:observed.length?observed.reduce((n,r)=>n+r.value.primary,0)/observed.length:null}}
@@ -39,6 +39,7 @@ export function mergeTargets(local,incoming){
  return result.filter(t=>!t.automatic||!result.some(x=>x!==t&&x.automatic&&x.muscle===t.muscle&&x.effectiveDate<t.effectiveDate));
 }
 export function reportStatus(report,v,target){
+ if(report.current&&(report.hasData||report.active?.sets))return 'Semaine en cours';
  if(!report.hasData&&!report.annotation.complete)return 'Données incomplètes';
  if(report.current)return 'Semaine en cours';
  if(report.annotation.kind==='deload')return 'Semaine allégée';if(report.annotation.kind==='pause')return 'Semaine de pause';if(!report.past||!report.annotation.complete||report.annotation.kind!=='normal'||report.volume.unclassified)return 'Données incomplètes';

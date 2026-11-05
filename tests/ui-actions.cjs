@@ -7,5 +7,8 @@ exports.journeyClick=(getPage,run)=>async action=>{
  if((action.startsWith('delete-model:')||action.startsWith('clone-model:')||action==='create-model')&&!await page.locator(`[data-action="${action}"]`).count()){if(!await page.locator('[data-action="models"]').count())await page.locator('[data-action="nav:home"]').click();await page.locator('[data-action="models"]').click()}
  // Sessions now open directly on home; older journeys need no view selector.
  if((action.startsWith('start:')||action==='models')&&!await page.locator(`button[data-action="${action}"]`).count())await page.locator('nav [data-action="nav:home"]').click();
+ if((action.startsWith('muscle-history:')||action.startsWith('edit:')||action.startsWith('delete-set:')||['delete-session','duplicate-session'].includes(action))&&!await page.locator(`[data-action="${action}"]`).count()&&await page.locator('.finish-summary [data-action="summary-detail"]').count())await page.locator('[data-action="summary-detail"]').click();
+ if(action.startsWith('detail:')&&!await page.locator(`.history-session [data-action="${action}"]`).count()&&await page.locator('[data-action="history-scope:year"]').count())await page.locator('[data-action="history-scope:year"]').click();
+ const target=page.locator(`[data-action="${action}"]`).first();if(await target.count())await target.evaluate(el=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true});
  await run(action);await minimise();
 };
