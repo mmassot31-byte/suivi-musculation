@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 4173 --bind 0.0.0.0",
-    "test": "node tests/social-presenter.cjs && node tests/exercise-labels.cjs && node tests/pictograms.cjs && node tests/identity.cjs && node tests/radar.cjs && node tests/achievements.cjs && node tests/account-data.cjs && node tests/rest.cjs && node tests/programming.cjs && node tests/programme-quality.cjs && node tests/volume-references.cjs && node tests/groups.cjs && TZ=Europe/Paris node tests/volume.cjs && TZ=Europe/Paris node tests/performance.cjs && TZ=Europe/Paris node tests/tracking.cjs && TZ=Europe/Paris node tests/muscles.cjs && node tests/smoke.cjs && node tests/superset.cjs && node tests/body-calendar.cjs && node tests/muscle-ui.cjs && node tests/ergonomics.cjs && node tests/volume-ui.cjs && node tests/chains-ui.cjs && node tests/flow-ui.cjs && node tests/reliability.cjs && node tests/volume-mobile.cjs && node tests/week-navigation.cjs && node tests/manual-session-ui.cjs && node tests/delete-model.cjs && node tests/rest-home.cjs && node tests/home-layout.cjs && node tests/unequal-groups.cjs && node tests/feedback-ui.cjs && node tests/organization-ui.cjs && node tests/social-preview-ui.cjs && node tests/friend-search.cjs && node tests/shell-update.cjs",
+    "test": "node tests/social-presenter.cjs && node tests/exercise-labels.cjs && node tests/pictograms.cjs && node tests/identity.cjs && node tests/radar.cjs && node tests/achievements.cjs && node tests/account-data.cjs && node tests/rest.cjs && node tests/programming.cjs && node tests/programme-quality.cjs && node tests/volume-references.cjs && node tests/groups.cjs && TZ=Europe/Paris node tests/volume.cjs && TZ=Europe/Paris node tests/performance.cjs && TZ=Europe/Paris node tests/tracking.cjs && TZ=Europe/Paris node tests/muscles.cjs && node tests/smoke.cjs && node tests/superset.cjs && node tests/body-calendar.cjs && node tests/muscle-ui.cjs && node tests/ergonomics.cjs && node tests/volume-ui.cjs && node tests/chains-ui.cjs && node tests/flow-ui.cjs && node tests/reliability.cjs && node tests/volume-mobile.cjs && node tests/week-navigation.cjs && node tests/manual-session-ui.cjs && node tests/delete-model.cjs && node tests/rest-home.cjs && node tests/home-layout.cjs && node tests/unequal-groups.cjs && node tests/feedback-ui.cjs && node tests/organization-ui.cjs && node tests/clear-labels.cjs && node tests/ranking-empty.cjs && node tests/social-preview-ui.cjs && node tests/friend-search.cjs && node tests/shell-update.cjs",
     "build:pictograms": "node scripts/build-pictograms.cjs",
     "test:social-preview": "node tests/social-presenter.cjs && node tests/social-preview-ui.cjs && node tests/shell-update.cjs",
     "test:feedback": "node tests/achievements.cjs && node tests/feedback-ui.cjs",
@@ -21,7 +21,8 @@
     "build:social": "node scripts/build-social-catalogue.cjs",
     "test:friend-search": "node tests/friend-search.cjs",
     "test:organization": "node tests/exercise-labels.cjs && node tests/organization-ui.cjs",
-    "test:week-navigation": "node tests/week-navigation.cjs"
+    "test:week-navigation": "node tests/week-navigation.cjs",
+    "test:clear-labels": "node tests/clear-labels.cjs && node tests/ranking-empty.cjs"
   },
   "type": "module",
   "dependencies": {

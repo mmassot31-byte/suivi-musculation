@@ -22,3 +22,11 @@ Safari/iPhone physique reste une validation manuelle distincte. La publication p
 ## Navigation des semaines simplifiée
 
 Le contrôle « Type de semaine » est retiré. Le lien discret « Revenir à cette semaine » apparaît sous les dates uniquement lorsqu’une semaine passée ou future est consultée, et disparaît dès le retour à la semaine actuelle. Les anciennes annotations restent conservées ; les calculs ne sont pas modifiés. Test dédié : `npm run test:week-navigation` (semaines passée/actuelle/future, clavier et 320/375/390 px). Cache : elan-shell-v28-week-navigation.
+
+## Libellés et aides allégés
+
+L’accueil ne contient plus Lire les prévisions. En séance, les compteurs utilisent réalisé/prévu séries et le sélecteur Repos ; le nom de l’exercice ouvre sa fiche et le retour conserve la saisie. Le matériel se choisit sans identifiant technique : garder la référence actuelle ou créer une variante distincte après confirmation, avec sauvegarde et retour arrière en cas d’erreur. Les anciennes performances ne sont pas réécrites.
+
+Les calculs/compatibilités de la fiche et les règles des défis sont repliés. Les classements sans résultat utilisent une ligne pleine largeur et ne montrent aucune carte de record vide. Corps garde un conseil bref sous le graphique ; les explications de moyenne sont rangées avec les mesures utilisées. Les réglages proposent Sauvegarder mes données et Restaurer une sauvegarde, sans détails de stockage ou de déploiement. Le tutoiement est harmonisé sans retirer les slogans, cartes ni pictogrammes.
+
+Tests : tests/clear-labels.cjs (application complète, saisie, navigation, choix matériel et annulation, réglages), tests/ranking-empty.cjs (vide et record unique à 320/375/390 px), tests Communauté/règles repliées, suite complète de régression et hors connexion. Cache : elan-shell-v30-clear-labels.

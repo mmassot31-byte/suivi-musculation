@@ -10,19 +10,19 @@ export function cursorStep(t,g){return g?.steps.find(s=>s.id===g.cursorStepId)||
 export function groupConfig(t,g){return {id:g.id,name:g.name,mode:g.mode,members:[...g.members],common:g.common,restBetween:g.restBetween,restAfter:g.restAfter,offsets:structuredClone(g.offsets||[]),counts:Object.fromEntries(g.members.map(key=>[key,plannedSets(exerciseByKey(t,key))]))}}
 export function ensureInstances(t){function ensure(e){e.instanceId??=uuid();if(e.alternative)ensure(e.alternative)}for(const e of t.exercises)ensure(e)}
 export function buildSteps(t,c){
- if(!['fixed','rotating'].includes(c.mode)||!Array.isArray(c.members)||c.members.length<2||c.members.length>8||new Set(c.members).size!==c.members.length||c.members.some(key=>!exerciseByKey(t,key)))throw Error('Choisissez entre deux et huit exercices distincts.');
- if(c.mode==='fixed'&&c.members.length>3)throw Error('Choisissez deux exercices pour un superset ou trois pour un triset.');
+ if(!['fixed','rotating'].includes(c.mode)||!Array.isArray(c.members)||c.members.length<2||c.members.length>8||new Set(c.members).size!==c.members.length||c.members.some(key=>!exerciseByKey(t,key)))throw Error('Choisis entre deux et huit exercices distincts.');
+ if(c.mode==='fixed'&&c.members.length>3)throw Error('Choisis deux exercices pour un superset ou trois pour un triset.');
  for(const key of c.members)if(!Number.isInteger(c.counts[key])||c.counts[key]<0||c.counts[key]>100)throw Error('Prévoyez de 0 à 100 séries par exercice.');
  const offset=key=>(c.offsets||[]).find(o=>o.exerciseKey===key)?.count||0,remaining=key=>Math.max(0,c.counts[key]-offset(key)),ordinals=Object.fromEntries(c.members.map(key=>[key,offset(key)])),steps=[];
  const add=(key,round)=>steps.push({id:uuid(),exerciseKey:key,round,ordinal:ordinals[key]++,status:'pending'});
  if(c.mode==='fixed'){const rounds=Math.max(0,...c.members.map(remaining));for(let r=0;r<rounds;r++)for(const key of c.members)if(remaining(key)>r)add(key,r+1)}else{
-  if(!c.members.includes(c.common))throw Error('Choisissez l’exercice commun.');const associates=c.members.filter(key=>key!==c.common),sum=associates.reduce((n,key)=>n+remaining(key),0);if(sum!==remaining(c.common))throw Error(`Les exercices associés prévoient ${sum} passages, contre ${remaining(c.common)} pour le commun. Ajustez les quantités ou alignez le commun.`);
+  if(!c.members.includes(c.common))throw Error('Choisis l’exercice commun.');const associates=c.members.filter(key=>key!==c.common),sum=associates.reduce((n,key)=>n+remaining(key),0);if(sum!==remaining(c.common))throw Error(`Les exercices associés prévoient ${sum} passages, contre ${remaining(c.common)} pour le commun. Ajustez les quantités ou alignez le commun.`);
   let round=0;for(const key of associates)for(let i=0;i<remaining(key);i++){round++;add(c.common,round);add(key,round)}
  }
  return steps;
 }
 export function configureGroup(t,c,bindExisting=true){
- ensureInstances(t);const old=(t.groups||[]).find(g=>g.id===c.id);for(const key of c.members){const conflict=(t.groups||[]).find(g=>g.id!==old?.id&&(g.members.includes(key)||(g.retainedSteps||[]).some(s=>s.exerciseKey===key)));if(conflict)throw Error('Un exercice appartient déjà à un autre groupe. Dissociez-le d’abord.');}
+ ensureInstances(t);const old=(t.groups||[]).find(g=>g.id===c.id);for(const key of c.members){const conflict=(t.groups||[]).find(g=>g.id!==old?.id&&(g.members.includes(key)||(g.retainedSteps||[]).some(s=>s.exerciseKey===key)));if(conflict)throw Error('Un exercice appartient déjà à un autre groupe. Dissocie-le d’abord.');}
  if(typeof c.name!=='string'||!c.name.trim()||c.name.length>120)throw Error('Donnez un nom court au groupe.');if(![c.restBetween,c.restAfter].every(n=>Number.isInteger(n)&&n>=0&&n<=3600))throw Error('Le repos doit être compris entre 0 et 3600 secondes.');
  const generated=buildSteps(t,c),oldSteps=old?allSteps(old):[],lookup=new Map(oldSteps.map(s=>[s.exerciseKey+':'+s.ordinal,s])),steps=generated.map(s=>{const previous=lookup.get(s.exerciseKey+':'+s.ordinal);return previous?{...s,id:previous.id,status:previous.status}:s}),ids=new Set(steps.map(s=>s.id));
  const retainedSteps=oldSteps.filter(s=>!ids.has(s.id)&&stepSet(t,s));

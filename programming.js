@@ -45,7 +45,7 @@ export function constraintViolations(plan,base,prefs,{remaining=false,minutes=nu
  const issues=[];if(!validGroups(plan))issues.push('Intégrité des groupes invalide.');if(remaining&&!actualInvariant(base,plan))issues.push('Les séries réalisées doivent rester intégralement conservées.');
  for(const e of plan.exercises){if(remaining&&remainingCount(plan,e)===0)continue;const profile=exerciseProfile(e,prefs);if(prefs.excludedIds.includes(e.id))issues.push('Exercice exclu : '+e.name);if(!prefs.availableEquipment.includes(profile.equipment))issues.push((profile.equipment==='unknown'?'Matériel à préciser : ':'Matériel indisponible : ')+e.name)}
  for(const b of workoutBlocks(base))if(isLocked(base,b,prefs)){const match=workoutBlocks(plan).find(x=>x.members.includes(b.members[0]));if(!match||lockSignature(base,b)!==lockSignature(plan,match))issues.push('Élément verrouillé modifié : '+b.name)}
- if(!prefs.allowSupersets&&plan.groups.some(g=>!remaining||g.steps.some(s=>!stepSet(plan,s))))issues.push('Les groupes ne sont pas autorisés par vos préférences.');
+ if(!prefs.allowSupersets&&plan.groups.some(g=>!remaining||g.steps.some(s=>!stepSet(plan,s))))issues.push('Les groupes ne sont pas autorisés par tes préférences.');
  if(!remaining&&!coreCovered(plan,type,prefs))issues.push('Noyau de séance '+type+' incomplet avec ces contraintes.');
  const estimate=estimateDuration(plan,prefs,{remaining,nowMs});if(minutes!==null&&estimate.high>minutes*60)issues.push(`Temps incompatible : borne haute ${estimate.range[1]} min pour ${minutes} min disponibles.`);return unique(issues);
 }
