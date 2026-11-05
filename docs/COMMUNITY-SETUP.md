@@ -1,6 +1,6 @@
 # Communauté : amis, objectifs et badges
 
-Implémentation à partir du kit `elan-amis-defis-badges-codex.zip` et de l’image `elan-iphone-profil.png`. L’archive distincte `elan-apercus-iphone-codex.zip` citée dans la demande n’était pas jointe. La planche du kit n’est pas utilisée comme disposition de téléphone et aucun aperçu statique n’est embarqué dans l’application.
+Implémentation à partir du kit `elan-amis-defis-badges-codex.zip` et de l’image `elan-iphone-profil.png`. L’archive `elan-apercus-iphone-codex.zip` a ensuite été reçue et comparée : ses vues Amis, Défis et Profil priment pour la composition mobile. La planche du kit n’est pas utilisée comme disposition de téléphone et aucun aperçu statique n’est embarqué dans l’application.
 
 ## Organisation
 
@@ -25,7 +25,7 @@ Sauvegardes de migration côté serveur : `activation_backup_005_20261105` (copi
 
 Contrôles HTTPS réels : community_capabilities et community_rankings accessibles ; friend_list et goal_list refusés sans authentification (401/42501). Accès brut à social_facts et badge_occurrences refusé aux rôles applicatifs. La preuve complète de tonnage est présente dans la fonction déployée.
 
-Le frontend est modifié dans le checkout et la configuration Pages inclut ses nouveaux modules. **Aucun push ni déploiement GitHub Pages n’a été effectué.** Le service worker et les assets nécessaires sont préparés pour le prochain déploiement.
+Le frontend est modifié dans le checkout et la configuration Pages inclut ses nouveaux modules. La publication de cette intégration utilise le workflow GitHub Pages à chaque push sur main. Le service worker et les assets nécessaires sont préparés pour le prochain déploiement.
 
 ## Validation exécutée
 
@@ -43,4 +43,8 @@ Les captures de `community-captures/` viennent des **modules réellement implém
 
 Restent non exécutés : parcours de bout en bout par authentification Supabase avec deux vrais comptes de test (session, demande, acceptation, défi, synchronisation d’une séance, consultation depuis l’autre compte), attente réelle d’une échéance et de ses 48 h, Safari/iPhone physique et PWA installée. Les tests SQL de rôles et les fixtures navigateur ne sont pas une validation de ces parcours réseau complets.
 
-Avant publication : revoir les changements, disposer de la seconde archive si elle doit apporter d’autres écrans prioritaires, puis publier le frontend. Vérifier ensuite les parcours ci-dessus avec des comptes de test uniquement. Ne pas réexécuter les migrations déjà appliquées sur ce projet ; pour un autre projet correctement initialisé jusqu’à 004, appliquer 005, puis 006, puis 007.
+Après publication : vérifier la version servie puis les parcours avec deux comptes de test. Vérifier ensuite les parcours ci-dessus avec des comptes de test uniquement. Ne pas réexécuter les migrations déjà appliquées sur ce projet ; pour un autre projet correctement initialisé jusqu’à 004, appliquer 005, puis 006, puis 007.
+
+## Fusion des maquettes iPhone
+
+Les vues reçues ont guidé les segments Amis / Défis / Classements, les cartes de demandes avec actions côte à côte, les jauges/quantités des défis et la hiérarchie favoris → prochain cap → repères. Les améliorations de présentation déjà présentes sur main ont été conservées : identité de profil compacte, options secondaires, pictogrammes SVG, cartes des anciens défis et actualisation du cache HTTP/service worker. Les données et résultats proviennent toujours des RPC, jamais des chiffres des maquettes.
