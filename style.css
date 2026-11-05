@@ -3035,6 +3035,7 @@ dialog {
 .social-page h1 {
   font-size: 30px;
 }
+.social-page>.row:first-child h1 { margin-bottom:12px; }
 
 .social-page .wide {
   margin: 8px 0;
@@ -3695,3 +3696,118 @@ nav br {
 
 .keyboard-open .work-feedback-slot { display:none; }
 @media(max-width:600px) and (max-height:600px) { body.entry-focused .work-feedback-slot { display:none; } }
+
+/* Community and profile: the supplied iPhone previews, backed by live account data. */
+.community-page h1 { margin-bottom:18px;letter-spacing:-1px; }
+.social-segmented { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:4px;margin:0 0 18px;border:1px solid var(--line);border-radius:15px;background:var(--surface-inset); }
+.social-segmented button { min-width:0;min-height:40px;padding:7px 4px;font-size:12px;border:0;border-radius:10px;background:transparent;color:var(--muted); }
+.social-segmented button.selected { color:var(--accent);background:var(--accent-soft);font-weight:650; }
+.social-page .social-section-title { margin:26px 0 14px;font-size:20px;letter-spacing:-.5px; }
+.social-kicker { display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:1px;line-height:1.5;margin:24px 0 12px; }
+.social-kicker .ico { width:18px;height:18px;flex-shrink:0;color:var(--accent); }
+.social-page .social-search { display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:3px;background:var(--surface-inset);border:1px solid var(--line);border-radius:13px;padding:2px 5px;margin:18px 0 26px; }
+.social-search input { border:0;margin:0;min-width:0;background:transparent;padding:11px 10px;font-size:14px; }
+.social-search button { display:grid;place-items:center;width:44px;min-height:44px;padding:9px;border:0;background:transparent;color:var(--accent); }
+.social-search button .ico { width:19px;height:19px; }
+.profile-identity { display:flex;align-items:center;gap:14px;margin:8px 0 18px; }
+.profile-identity .profile-avatar.large { width:52px;height:52px;min-width:52px;flex:0 0 52px;margin:0;font-size:16px;letter-spacing:0; }
+.profile-identity-copy { min-width:0;flex:1; }
+.profile-identity-copy h2 { margin:0 0 4px;font-size:21px;letter-spacing:-.5px;overflow-wrap:anywhere; }
+.profile-identity-copy .subtitle { margin:0;font-size:12px;line-height:1.45; }
+.profile-options { position:relative;flex-shrink:0; }
+.profile-options.social-disclosure>summary { display:grid;place-items:center;list-style:none;width:44px;min-height:44px;border-radius:13px;background:var(--surface-inset);font-size:23px;color:var(--muted);cursor:pointer; }
+.profile-options>summary::-webkit-details-marker { display:none; }
+.profile-options>div { position:absolute;right:0;top:48px;z-index:10;width:210px;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:0 12px 30px #0005; }
+.profile-options button { text-align:left;background:transparent;border:0;font-size:13px; }
+.profile-edit-button { min-height:44px;border:0;font-size:13px;background:var(--surface-raised);border-radius:12px;padding:10px 16px; }
+.profile-stats { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:18px 16px;background:var(--panel);border-radius:19px; }
+.profile-stats strong { display:block;font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-.7px;font-variant-numeric:tabular-nums; }
+.profile-stats span { display:block;margin-top:6px;color:var(--muted);font-size:10px;line-height:1.45; }
+.personal-next { margin-top:16px; }
+.personal-next .social-kicker { margin:0 0 14px;color:var(--accent);font-size:9px; }
+.personal-next h3 { font-size:20px;line-height:1.3;letter-spacing:-.5px;margin:0 0 10px; }
+.personal-next .subtitle { font-size:12px;margin:0 0 8px; }
+.personal-target { color:var(--accent);font-size:19px;font-weight:650;font-variant-numeric:tabular-nums;margin:8px 0 4px; }
+.profile-next-link { display:flex;align-items:center;gap:5px;border:0;background:transparent;color:var(--muted);font-size:12px;min-height:44px;padding:4px 0; }
+.profile-next-link .ico { width:14px;height:14px; }
+.profile-record-heading { display:flex;align-items:flex-start;gap:10px; }
+.profile-record-heading>.ico { width:23px;height:23px;flex-shrink:0;color:var(--accent);margin-top:2px; }
+.profile-record-heading h3 { margin:0;font-size:19px;line-height:1.3;letter-spacing:-.4px; }
+.profile-record .subtitle { font-size:11px;margin:9px 0 15px; }
+.profile-record .record-pair { gap:12px; }
+.profile-record .record-pair small { display:block;color:var(--muted);font-size:10px;margin-bottom:6px;line-height:1.4; }
+.profile-record .record-pair strong { font-size:20px; }
+.social-page .recent-performances p { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px 0;margin:0;border-bottom:1px solid var(--line); }
+.recent-performances p>strong { font-size:13px;line-height:1.45; }
+.recent-performances p>span { text-align:right;font-size:12px;font-variant-numeric:tabular-nums; }
+.recent-performances p>span b { color:var(--text);font-weight:600; }
+.recent-performances small { display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-top:4px; }
+.social-empty { padding:24px 18px;border-radius:19px;background:var(--panel);text-align:center;margin:14px 0; }
+.social-empty>.ico { width:28px;height:28px;color:var(--accent);margin:0 auto 12px; }
+.social-empty h2 { font-size:19px;line-height:1.3;margin:0 0 10px;letter-spacing:-.4px; }
+.social-empty p { color:var(--muted);font-size:13px;line-height:1.6;margin:0; }
+.social-empty.compact { padding:18px; }
+.social-disclosure>summary { min-height:44px;font-size:13px;color:var(--muted); }
+.social-disclosure>summary:focus-visible { outline:2px solid var(--accent);outline-offset:3px;border-radius:8px; }
+.challenge-compose { margin:18px 0 26px; }
+.challenge-compose>summary { display:flex;justify-content:center;align-items:center;gap:8px;list-style:none;min-height:44px;padding:11px 14px;background:var(--accent);color:#17220f;font-size:14px;font-weight:700;border-radius:13px;cursor:pointer; }
+.challenge-compose>summary::-webkit-details-marker { display:none; }
+.challenge-compose>summary .ico { width:18px;height:18px; }
+.challenge-compose-form { margin-top:12px; }
+.social-page .challenge-compose-form form { margin:0; }
+.challenge-compose-form label { font-size:12px;line-height:1.5;margin-bottom:15px; }
+.challenge-compose-form form>button { width:100%;font-size:14px;min-height:44px; }
+.challenge-compose-form .social-empty { margin:0;padding:12px 0;background:transparent; }
+.challenge-card { margin:0 0 14px;border-radius:21px;padding:17px 16px; }
+.challenge-card-top { display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin:0 0 8px; }
+.challenge-people { display:flex;align-items:center;gap:9px;flex:1;min-width:0; }
+.challenge-people>div:last-child { display:flex;align-items:center;flex-wrap:wrap;gap:0 5px;min-width:0; }
+.challenge-people .subtitle { font-size:10px;margin:0; }
+.avatar-stack { display:flex;flex-shrink:0;padding-right:6px; }
+.avatar-stack>span,.person-avatar { display:inline-grid;place-items:center;flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);border:2px solid var(--panel);font-size:10px;font-weight:700; }
+.avatar-stack>span+span { margin-left:-9px; }
+.challenge-person { min-width:0;max-width:100%;min-height:44px;padding:0;border:0;background:transparent;color:var(--text);font-size:11px;font-weight:600;overflow-wrap:anywhere;text-align:left; }
+.challenge-status { font-size:9px;line-height:1.4;color:var(--accent);background:var(--accent-soft);padding:5px 7px;border-radius:7px;max-width:90px;overflow-wrap:anywhere;flex-shrink:0; }
+.challenge-card h3 { font-size:21px;line-height:1.25;letter-spacing:-.6px;margin:0 0 9px; }
+.challenge-convention { color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 5px; }
+.challenge-deadline { color:var(--muted);font-size:11px;line-height:1.5;margin:0 0 18px; }
+.challenge-score { display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-variant-numeric:tabular-nums;margin:0 0 10px; }
+.challenge-score>strong { font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-1px; }
+.challenge-score small { font-size:15px;color:var(--muted);font-weight:400;letter-spacing:0; }
+.challenge-score>span { color:var(--accent);font-size:13px;font-weight:650; }
+.challenge-progress { display:block;height:6px;border-radius:5px;background:var(--line);overflow:hidden; }
+.challenge-progress>i { display:block;height:100%;border-radius:inherit;background:var(--accent); }
+.challenge-score-note { color:var(--muted);font-size:11px;margin:11px 0 0;line-height:1.5; }
+.challenge-result { display:flex;align-items:center;gap:6px;color:var(--accent);font-size:12px;margin:12px 0 0; }
+.challenge-result>.ico { width:15px;height:15px; }
+.challenge-reference { font-size:12px;line-height:1.6;color:var(--muted);margin:4px 0 14px; }
+.challenge-reference strong { color:var(--text);font-size:23px;letter-spacing:-.5px; }
+.challenge-reference span { display:block;color:var(--accent);font-weight:600; }
+.challenge-actions { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px; }
+.challenge-actions button { min-width:0;min-height:44px;font-size:13px;border:0; }
+.challenge-secondary { margin-top:16px;color:var(--muted);background:var(--surface-inset);border:0;font-size:11px; }
+.challenge-group { margin-top:18px; }
+.challenge-group>summary { display:flex;align-items:center;gap:8px;min-height:48px;margin-bottom:12px;color:var(--text);font-size:14px;list-style:none; }
+.challenge-group>summary::-webkit-details-marker { display:none; }
+.challenge-group>summary span { color:var(--muted);font-size:11px;margin-left:auto; }
+.challenge-group>summary::after { content:'›';font-size:22px;color:var(--muted); }
+.challenge-group[open]>summary::after { transform:rotate(90deg); }
+.challenge-help { margin-top:18px; }
+.person-row { display:flex;align-items:center;gap:12px;padding:12px 14px;margin:0 0 12px;border-radius:17px;background:var(--panel); }
+.person-profile { display:flex;align-items:center;gap:11px;min-width:0;flex:1;padding:0;border:0;background:transparent;text-align:left; }
+.person-profile strong { min-width:0;overflow-wrap:anywhere;font-size:14px; }
+.person-avatar { width:36px;height:36px;flex-basis:36px;font-size:11px; }
+.person-row>button:last-child { min-height:44px;background:var(--surface-raised);border:0;border-radius:12px;font-size:12px; }
+.community-page .record-cards { margin-top:18px; }
+.community-page .card { animation:none; }
+#challenge-message:empty,#account-message:empty { display:none; }
+@media(max-width:350px) {
+ .social-segmented button { font-size:11px; }
+ .profile-stats { padding:15px 12px;gap:10px; }
+ .profile-stats strong { font-size:22px; }
+ .profile-identity { gap:10px; }
+ .profile-identity-copy h2 { font-size:19px; }
+ .challenge-card { padding:15px 13px; }
+ .challenge-status { max-width:68px; }
+ .challenge-people { gap:5px; }
+}
