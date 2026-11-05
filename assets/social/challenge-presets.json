@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "socialMaxInviteesV1": 1,
+  "durationsDays": [
+    7,
+    14,
+    30
+  ],
+  "defaultDurationDays": 7,
+  "modes": [
+    "each",
+    "together"
+  ],
+  "defaultMode": "each",
+  "metrics": {
+    "sessions": {
+      "unit": "credited_training_days",
+      "suggestions": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "default": 3,
+      "min": 1,
+      "max": 30,
+      "step": 1
+    },
+    "work_sets": {
+      "unit": "sets",
+      "suggestions": [
+        30,
+        50,
+        75,
+        100
+      ],
+      "default": 50,
+      "min": 1,
+      "max": 1000,
+      "step": 5
+    },
+    "tonnage_kg": {
+      "displayUnit": "t",
+      "storageUnit": "kg",
+      "suggestions": [
+        10,
+        25,
+        50,
+        100
+      ],
+      "default": 50,
+      "min": 1,
+      "max": 1000,
+      "step": 1,
+      "storageMultiplier": 1000
+    }
+  },
+  "personalRecordModes": [
+    "repetitions_at_weight",
+    "weight_at_min_repetitions",
+    "exercise_tonnage_in_session"
+  ],
+  "synchronizationGraceHours": 48,
+  "invitationExpiresDays": 7,
+  "personalRecordDefault": "repetitions_at_weight",
+  "freeTextTitle": false,
+  "freeTextDescription": false
+}

@@ -237,3 +237,7 @@ L’avatar ouvre Mon profil et ses paramètres. La barre conserve Entraînement,
 Le code, les trois migrations, la séparation public/privé, les règles d’accès, les calculs des deux records, les tests réels locaux et la recette iPhone sont décrits dans [docs/ACCOUNTS.md](docs/ACCOUNTS.md).
 
 **Activation de production encore nécessaire :** aucun service hébergé n’était disponible. Créer un projet Supabase, appliquer les migrations et les URL de retour, configurer l’e-mail transactionnel, puis fournir uniquement l’URL et la clé publique. `cloud-config.js` reste vide ; l’application locale fonctionne et les pages de comptes/classement expliquent cette attente. Aucune clé d’administration ne doit être placée dans le dépôt ou le navigateur.
+
+## Communauté, objectifs et badges
+
+Voir [l’intégration et son statut réel](docs/COMMUNITY-SETUP.md) pour les migrations 005–007, les tests et les captures.

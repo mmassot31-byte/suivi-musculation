@@ -16,7 +16,9 @@
     "build:cloud": "node scripts/build-cloud.cjs",
     "test:competition:sql": "node tests/competition-db.cjs",
     "test:accounts:sql": "node tests/accounts-db.cjs",
-    "test:accounts:live": "node tests/social-live.cjs"
+    "test:accounts:live": "node tests/social-live.cjs",
+    "test:community": "node tests/community-db.cjs && node tests/community-ui.cjs",
+    "build:social": "node scripts/build-social-catalogue.cjs"
   },
   "type": "module",
   "dependencies": {
