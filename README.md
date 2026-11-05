@@ -241,3 +241,5 @@ Le code, les trois migrations, la séparation public/privé, les règles d’acc
 ## Communauté, objectifs et badges
 
 Voir [l’intégration et son statut réel](docs/COMMUNITY-SETUP.md) pour les migrations 005–007, les tests et les captures.
+
+L’[organisation mobile des écrans](docs/UI-ORGANIZATION.md) décrit les menus de titres, les écrans de badges et les nouveaux parcours de navigation.
