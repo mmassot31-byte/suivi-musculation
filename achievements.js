@@ -1,4 +1,4 @@
-import {sameLoadIdentity,normalizedTonnage} from './identity.js';
+import {sameLoadIdentity,normalizedTonnage,loadIdentity} from './identity.js';
 // Personal milestones are derived from recorded work only. No saved flags or estimates.
 const valid=s=>s&&s.validated!==false&&(s.status===undefined||['validated','completed'].includes(s.status))&&s.type!=='warmup'&&Number.isFinite(s.w)&&s.w>=0&&Number.isFinite(s.r)&&s.r>0;
 export const sameExercise=(a,b)=>sameLoadIdentity(a,b);
@@ -47,3 +47,19 @@ export function omittedExercises(session,sessions){
 }
 
 export function recordTarget(sessions,exercise,weight){if(!Number.isFinite(weight)||weight<0)return null;const sets=(sessions||[]).flatMap(s=>(s.exercises||[]).filter(e=>e.id===exercise.id).flatMap(e=>compatibleSegments(e,exercise))).filter(set=>set.w===weight);if(!sets.length)return null;const best=Math.max(...sets.map(s=>s.r));return {kind:'reps',weight,best,target:best+1,unit:'kg'};}
+
+// A factual improvement over the last comparable occurrence, never an absolute record.
+export function setProgression(session,exercise,set,sessions){
+ if(!valid(set)||set.drops?.length||ambiguousOrder(session,sessions,exercise)||(session.exercises||[]).filter(e=>e.id===exercise.id).length!==1)return null;
+ const query={...exercise,...(set.loadIdentity?{loadIdentity:set.loadIdentity}:{})};
+ const last=preceding(session,sessions).find(s=>{
+  const matches=(s.exercises||[]).filter(e=>e.id===exercise.id);
+  return matches.length===1&&recordedSets(matches[0]).some(old=>!old.drops?.length&&sameLoadIdentity(query,matches[0],null,old));
+ });
+ if(!last)return null;
+ const e=last.exercises.find(e=>e.id===exercise.id),previous=recordedSets(e).filter(old=>!old.drops?.length&&sameLoadIdentity(query,e,null,old)),atWeight=previous.filter(old=>old.w===set.w);
+ if(atWeight.length){const old=atWeight.reduce((a,b)=>b.r>a.r?b:a);return set.r>old.r?{kind:'reps',gain:set.r-old.r,old,set,date:last.date,unit:loadIdentity(exercise,set).unit}:null;}
+ const atReps=previous.filter(old=>old.r===set.r);
+ if(atReps.length){const old=atReps.reduce((a,b)=>b.w>a.w?b:a);if(set.w>old.w)return {kind:'weight',gain:set.w-old.w,old,set,date:last.date,unit:loadIdentity(exercise,set).unit};}
+ return null;
+}

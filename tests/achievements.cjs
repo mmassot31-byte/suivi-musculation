@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict');
-(async()=>{const {personalRecords,sessionRecap,exerciseTonnage,omittedExercises,recordTarget}=await import('../achievements.js');const set=(id,w,r,type='work',drops=[])=>({id,w,r,type,drops});const ex=(sets,id='press',convention='Par haltère')=>({id,convention,name:'Press',sets});const old={id:'old',date:'2026-01-01',endedAt:'2026-01-01',exercises:[ex([set('a',40,8),set('b',40,7)])]},now={id:'new',date:'2026-01-02',endedAt:'2026-01-02',exercises:[ex([set('c',40,9),set('d',42,8)])]};
+(async()=>{const {personalRecords,sessionRecap,exerciseTonnage,omittedExercises,recordTarget,setProgression}=await import('../achievements.js');const set=(id,w,r,type='work',drops=[])=>({id,w,r,type,drops});const ex=(sets,id='press',convention='Par haltère')=>({id,convention,name:'Press',sets});const old={id:'old',date:'2026-01-01',endedAt:'2026-01-01',exercises:[ex([set('a',40,8),set('b',40,7)])]},now={id:'new',date:'2026-01-02',endedAt:'2026-01-02',exercises:[ex([set('c',40,9),set('d',42,8)])]};
 assert.deepEqual(personalRecords(now,ex([]),set('c',40,9),[]),[]);assert.equal(personalRecords({...now,exercises:[]},ex([]),set('c',40,9),[old])[0].kind,'reps');assert.equal(personalRecords({...now,exercises:[]},ex([]),set('c',42,9),[old])[0].kind,'weight');assert.deepEqual(personalRecords(now,ex([], 'other'),set('c',40,9),[old]),[]);assert.deepEqual(personalRecords(now,ex([],'press','Total'),set('c',40,9),[old]),[]);assert.deepEqual(personalRecords(now,ex([]),set('c',100,9,'warmup'),[old]),[]);assert.deepEqual(personalRecords({...now,exercises:[]},ex([]),set('c',40,8),[old]),[]);
 const result=sessionRecap(now,[old,now])[0];assert.equal(result.records.filter(r=>r.kind==='tonnage').length,1);assert.equal(result.deltaSets,0);assert.equal(result.volume,696);assert.equal(result.previousVolume,600);assert.equal(result.best.w,42);assert.equal(exerciseTonnage(ex([set('c',40,8,'work',[{w:20,r:10}]),set('w',100,10,'warmup')])),520);
 assert.equal(sessionRecap({...now,endedAt:undefined},[old])[0].records.some(r=>r.kind==='tonnage'),false);const corrected={...now,exercises:[ex([set('c',40,6)])]};assert.equal(sessionRecap(corrected,[old])[0].records.length,0);assert.equal(sessionRecap(corrected,[old])[0].deltaSets,-1);assert.equal(sessionRecap({...now,exercises:[ex([set('c',40,8)])]},[old])[0].records.length,0);
@@ -10,4 +10,15 @@ const unidentified={...now,exercises:[]};assert.equal(personalRecords(unidentifi
 assert.equal(omittedExercises({...now,templateId:'upper',exercises:[]},[{...old,templateId:'upper'}])[0].sets,2);assert.deepEqual(omittedExercises({...now,exercises:[]},[old]),[]);
 assert.deepEqual(personalRecords(now,{id:'press'},set('c',40,12),[{...old,exercises:[{id:'press',sets:[set('a',40,8)]}]}]),[]);
 const uncertainDay={...now,date:'2026-01-02'};const sameDay={...old,id:'same-day',date:'2026-01-02T17:00:00Z'};assert.deepEqual(personalRecords(uncertainDay,ex([]),set('c',50,9),[old,sameDay]),[]);assert.equal(sessionRecap(uncertainDay,[old,sameDay])[0].records.length,0);assert.equal(recordTarget([old],ex([]),40).target,9);assert.equal(recordTarget([old],ex([]),41),null);
+const active={...simple,endedAt:undefined};
+assert.equal(setProgression(active,active.exercises[0],set('c',40,9),[oldest,old]).gain,1);
+assert.equal(setProgression(active,active.exercises[0],set('c',42.5,8),[oldest,old]).gain,2.5);
+assert.equal(setProgression(active,active.exercises[0],set('c',40,8),[oldest,old]),null);
+assert.equal(setProgression(active,active.exercises[0],set('c',42.5,7),[oldest,old]).gain,2.5);
+assert.equal(setProgression(active,active.exercises[0],set('c',42.5,9),[oldest,old]),null);
+assert.equal(setProgression(active,active.exercises[0],set('c',40,9,'warmup'),[old]),null);
+assert.equal(setProgression(active,active.exercises[0],set('c',40,9,'work',[{w:20,r:8}]),[old]),null);
+assert.equal(setProgression(active,active.exercises[0],set('c',40,9),[]),null);
+assert.equal(setProgression(active,{...active.exercises[0],convention:'Total'},set('c',40,9),[old]),null);
+assert.equal(setProgression(uncertainDay,ex([]),set('c',40,9),[old,sameDay]),null);
 console.log('PASS: history-based records, no baseline/equality/warmup/variant false positives, drops counted once, correction recomputation, prior-session differences.');})().catch(e=>{console.error(e);process.exitCode=1});
