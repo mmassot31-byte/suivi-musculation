@@ -3,7 +3,8 @@ const fs=require('node:fs'),path=require('node:path'),out={};
 for(const family of ['muscles','workouts']){
  for(const file of fs.readdirSync(path.join('assets',family)).filter(f=>f.endsWith('.svg')).sort()){
   const raw=fs.readFileSync(path.join('assets',family,file),'utf8'),viewBox=raw.match(/viewBox="([^"]+)"/)?.[1];
-  if(viewBox!=='0 0 256 256'||!raw.includes('currentColor')||/<(?:script|image|rect)\b/i.test(raw))throw Error('Unexpected pictogram: '+file);
+  const upperBack=family==='muscles'&&file==='haut-du-dos.svg';
+  if((upperBack?viewBox!=='150 195 960 800':viewBox!=='0 0 256 256'||!raw.includes('currentColor'))||/<(?:script|image|rect)\b/i.test(raw))throw Error('Unexpected pictogram: '+file);
   let body=raw.slice(raw.indexOf('>')+1,raw.lastIndexOf('</svg>'));
   // Separate paths cannot cut holes in one another, even with an evenodd parent group.
   if(family==='muscles'&&['biceps.svg','avant-bras.svg'].includes(file)){
@@ -13,7 +14,4 @@ for(const family of ['muscles','workouts']){
   out[family+'/'+file.slice(0,-4)]={viewBox,body};
  }
 }
-// The supplied PNG is retained byte-for-byte. Its viewport removes only the outer
-// presentation padding; the full drawing keeps its original aspect ratio.
-out['muscles/haut-du-dos']={viewBox:'180 210 840 800',body:'<image href="./assets/muscles/haut-du-dos.png" width="1199" height="1199" preserveAspectRatio="xMidYMid meet"/>'};
 fs.writeFileSync('pictogram-source.js','// Generated from the supplied pictograms. Run node scripts/build-pictograms.cjs after asset changes.\nexport const pictogramSources='+JSON.stringify(out)+';\n');
