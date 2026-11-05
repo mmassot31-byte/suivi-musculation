@@ -23,10 +23,7 @@ function decorate(){
  app.querySelector('nav')?.setAttribute('aria-label','Navigation principale');
  const brand=app.querySelector('.brand');
  if(brand&&!brand.querySelector('.ico'))brand.innerHTML=icon('bolt')+' élan<span>.</span>';
- for(const card of app.querySelectorAll('.session-card')){
-  const heading=card.querySelector('h2'),name=heading?.textContent||'';
-  glyph(heading,/jambe|lower/i.test(name)?'legs':/pull|tirage/i.test(name)?'cable':/push/i.test(name)?'barbell':'dumbbell','session-glyph');
- }
+
  for(const el of app.querySelectorAll('#exercise-entry h2,.exercise-open .grow>strong,.exercise-choice>strong,.model-plan-header h3,.profile-record h3'))exerciseGlyph(el);
  for(const span of app.querySelectorAll('.exercise-state')){
   if(span.textContent.trim()==='✓'){span.innerHTML=icon('check');span.closest('.exercise-summary')?.classList.add('exercise-complete')}

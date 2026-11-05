@@ -2984,7 +2984,10 @@ table.volume-dashboard-list .volume-status small {
 }
 
 .session-card h2 {
-  margin: 10px 0 9px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin: 3px 0 9px;
   overflow-wrap: anywhere;
   font-size: 23px;
   letter-spacing: -.7px;
@@ -3673,7 +3676,7 @@ nav br {
 .exercise-complete { border-color: #3c5032; }
 .exercise-complete .exercise-state { color: var(--accent); }
 .empty-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--surface-raised); color: var(--accent); margin: 0 auto 12px; }
-.session-card h2 .session-glyph { margin-bottom: 8px; }
+.session-card h2 .session-glyph { margin-bottom:0;flex:0 0 36px; }
 .card.exercise-summary { padding: 0; }
 
 /* Training journal and transverse sheets share the existing premium surfaces. */
@@ -3733,3 +3736,30 @@ nav br {
 .volume-target-shortcut small { font-size:10px;margin-top:3px; }
 .session-comparison { font-size:13px; }
 @media(max-width:600px) and (max-height:600px) { body.entry-focused .exercise-sheet-link,body.entry-focused #record-target-hint { display:none; } }
+
+/* Supplied pictograms: one inline symbol library, no image requests or opaque backgrounds. */
+.provided-icon { display:inline-block;width:24px;height:24px;flex:0 0 auto;color:var(--accent);vertical-align:middle;fill:currentColor; }
+.session-glyph .workout-type-icon { width:32px;height:32px; }
+.exercise-icon .provided-icon { width:24px;height:24px; }
+.typed-session-heading { display:flex;gap:9px;align-items:center; }
+.typed-session-heading .workout-type-icon { width:28px;height:28px; }
+.volume-open .muscle-icon { width:20px;height:20px;margin-right:5px; }
+.home-volume-legend { margin:-3px 0 14px;color:var(--text);font-size:11px; }
+.home-volume-legend>span { color:var(--secondary); }
+.session-card .home-plan-meta { font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 10px; }
+.home-plan-meta strong { font-weight:650;color:var(--text); }
+.home-muscle-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px 2px;align-content:start;margin:0 -2px 12px; }
+.home-muscle { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:0;min-height:52px;border:0;background:transparent;border-radius:8px;padding:2px 1px;color:var(--text); }
+.home-muscle[aria-pressed=true] { background:var(--accent-soft); }
+.home-muscle:focus-visible { outline-offset:-1px; }
+.home-muscle .muscle-icon { width:24px;height:24px; }
+.home-muscle-count { display:flex;justify-content:center;align-items:baseline;gap:3px;flex-wrap:wrap;max-width:100%;font-size:12px;font-variant-numeric:tabular-nums;line-height:1.25; }
+.home-muscle-count b { font-weight:650;overflow-wrap:anywhere; }
+.home-muscle-count small { font-size:10px;font-weight:550;color:var(--secondary);overflow-wrap:anywhere; }
+.muscle-qualifier { display:block;min-height:10px;font-size:9px;color:var(--muted);line-height:10px;overflow-wrap:anywhere; }
+.home-muscle-label { font-size:11px!important;line-height:1.5;margin:0 0 12px!important;color:var(--text)!important; }
+.home-reading-help { margin:12px 0 0;font-size:12px;color:var(--muted); }
+.home-reading-help>summary { font-size:11px;min-height:44px; }
+@media(max-width:360px) { .home-muscle-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+.session-name { min-width:0;overflow-wrap:anywhere; }
