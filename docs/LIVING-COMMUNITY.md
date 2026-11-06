@@ -1,5 +1,7 @@
 # Communauté : fil Amis, défis et classement personnel
 
+> Document historique de la migration 010. Le partage facultatif et la visibilité limitée aux amis décrits ici sont remplacés par la migration 011 activée. Voir [le fonctionnement public actuel](PUBLIC-COMMUNITY.md).
+
 ## Parcours
 
 Amis affiche d’abord le défi actif le plus proche de son échéance, en privilégiant les défis partagés, puis les séances récentes des amis. Le bouton « + » ouvre la recherche, les demandes et la gestion des amis ; Retour au fil revient aux cartes. Les notifications de demandes ouvrent directement ce gestionnaire.

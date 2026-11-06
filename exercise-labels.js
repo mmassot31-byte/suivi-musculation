@@ -41,3 +41,5 @@ export function exerciseLabel(name){return lookup.get(normalizeSearch(name))?.la
 export function exerciseSearchText(name){const normalized=normalizeSearch(name),g=lookup.get(normalized)||groups.map(([label,aliases])=>({label,aliases,score:Math.max(0,...[label,...aliases].map(a=>normalized.includes(normalizeSearch(a))?normalizeSearch(a).length:0))})).filter(g=>g.score>0).sort((a,b)=>b.score-a.score)[0];return normalizeSearch([name,g?.label,...(g?.aliases||[]),...searchTerms(g?.label)].join(' '))}
 export function matchesExercise(name,query){return exerciseSearchText(name).includes(normalizeSearch(query))}
 export function exerciseSearchQueries(query){const q=normalizeSearch(query);if(q.length<2)return [query];const found=groups.filter(([label,aliases])=>[label,...aliases,...searchTerms(label)].some(x=>normalizeSearch(x).includes(q)));return [...new Set([query,...found.flatMap(([label,aliases])=>[label,...aliases])])].slice(0,32)}
+
+export function exerciseNames(name){const item=lookup.get(normalizeSearch(name));return item?[item.label,...item.aliases]:[String(name||'Exercice')];}

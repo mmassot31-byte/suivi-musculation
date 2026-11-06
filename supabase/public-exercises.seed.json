@@ -1,0 +1,758 @@
+[
+  {
+    "id": "library:00e4da5f80255253c72c677112e10ff8",
+    "label": "Mollets debout au poids du corps",
+    "equipment": "bodyweight",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:standing-calf"
+    ],
+    "names": [
+      "Mollets debout au poids du corps"
+    ],
+    "alternativeKeys": [
+      "standing-calf"
+    ]
+  },
+  {
+    "id": "library:0351a3f799741a62f0a693202e6bbbf1",
+    "label": "Barre au front triceps",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "Barre au front triceps"
+    ],
+    "names": [
+      "Barre au front triceps"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:05ce1f475759ef83c9b5bae547159185",
+    "label": "Extension de hanche",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Hip thrust"
+    ],
+    "names": [
+      "Hip thrust",
+      "Extension de hanche"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:0929f30a3b75488f0cffe675c9336f8c",
+    "label": "Tirage vertical à la machine",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "lat-pull"
+    ],
+    "names": [
+      "Lat pulldown machine",
+      "Tirage vertical à la machine"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:10cb46c5199285a9e38ec3b9ef2910ca",
+    "label": "PAILs / RAILs · épaule",
+    "equipment": "bodyweight",
+    "tracking": "mobility",
+    "ids": [
+      "elan-catalogue:shoulder-pails"
+    ],
+    "names": [
+      "PAILs / RAILs · épaule",
+      "PAILs",
+      "RAILs",
+      "pals",
+      "raill",
+      "Shoulder mobility"
+    ],
+    "alternativeKeys": [
+      "shoulder-pails"
+    ]
+  },
+  {
+    "id": "library:1199ecdcddb37352ab087f954875252f",
+    "label": "Good morning",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:good-morning"
+    ],
+    "names": [
+      "Good morning"
+    ],
+    "alternativeKeys": [
+      "good-morning"
+    ]
+  },
+  {
+    "id": "library:1e102cf950212837fc817fa90e862f17",
+    "label": "Triceps à la corde unilatéral",
+    "equipment": "cable",
+    "tracking": "strength",
+    "ids": [
+      "Triceps à la corde unilatéral"
+    ],
+    "names": [
+      "Triceps à la corde unilatéral"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:27a05dde8b3ddbf6e5bbed7813fe2549",
+    "label": "Tirage au visage",
+    "equipment": "cable",
+    "tracking": "strength",
+    "ids": [
+      "Facepull"
+    ],
+    "names": [
+      "Facepull",
+      "Tirage au visage",
+      "Face pull"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:309447bb01c6233b1b50adcffca0a7af",
+    "label": "Rowing unilatéral avec haltère",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:db-row"
+    ],
+    "names": [
+      "Rowing unilatéral avec haltère"
+    ],
+    "alternativeKeys": [
+      "db-row"
+    ]
+  },
+  {
+    "id": "library:36d7b72ca54be83fd08d004f35d10284",
+    "label": "Adducteurs",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Adducteurs"
+    ],
+    "names": [
+      "Adducteurs"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:44366f0a60056e5c5d1e4ed9d5bec2db",
+    "label": "Curl biceps",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "Curl biceps"
+    ],
+    "names": [
+      "Curl biceps"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:4f6d973e9e51706846517bb27df9a646",
+    "label": "Rotation externe de l’épaule",
+    "equipment": "cable",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:shoulder-external"
+    ],
+    "names": [
+      "Rotation externe de l’épaule",
+      "Shoulder external rotation"
+    ],
+    "alternativeKeys": [
+      "shoulder-external"
+    ]
+  },
+  {
+    "id": "library:503aa77162b1564c9aa5e58b9d976bde",
+    "label": "Curl pupitre",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Curl pupitre"
+    ],
+    "names": [
+      "Curl pupitre",
+      "Preacher curl"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:52204b4e1e2718c6c88b4b9efa047133",
+    "label": "Rear delt barre",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "Rear delt barre"
+    ],
+    "names": [
+      "Rear delt barre"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:593751fb42fe80e888ec4a29b2039c74",
+    "label": "Soulevé de terre roumain à la barre",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:barbell-rdl"
+    ],
+    "names": [
+      "Soulevé de terre roumain à la barre"
+    ],
+    "alternativeKeys": [
+      "barbell-rdl"
+    ]
+  },
+  {
+    "id": "library:5c916330d03aa3b4fb737d5cdfc1ec43",
+    "label": "Extension du dos à la machine",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Back extension machine"
+    ],
+    "names": [
+      "Back extension machine",
+      "Extension du dos à la machine"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:5cd7752cff8a1fbe18801a45fb4c75c7",
+    "label": "Flexion des jambes",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:leg-curl"
+    ],
+    "names": [
+      "Leg curl · machine à identifier",
+      "Flexion des jambes"
+    ],
+    "alternativeKeys": [
+      "leg-curl"
+    ]
+  },
+  {
+    "id": "library:61098b21186d3248967746b283995851",
+    "label": "Triceps haltère",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "Triceps haltère"
+    ],
+    "names": [
+      "Triceps haltère"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:6204abc3dc94bcf7843e80e124f1b6ba",
+    "label": "Développé pectoraux",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Chest press"
+    ],
+    "names": [
+      "Chest press",
+      "Développé pectoraux"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:6389e1a52fa4f800afa7b12b8ea006c9",
+    "label": "Développé décliné",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Décliné chest press"
+    ],
+    "names": [
+      "Décliné chest press",
+      "Développé décliné",
+      "Decline chest press",
+      "Decline bench press"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:6844aaf62e5a9285941477f50684188b",
+    "label": "Abducteurs à la machine",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:abductor"
+    ],
+    "names": [
+      "Abducteurs à la machine"
+    ],
+    "alternativeKeys": [
+      "abductor"
+    ]
+  },
+  {
+    "id": "library:6c64d4728ec00462d9702df8c9542bce",
+    "label": "Pendulum squat",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Pendulum squat"
+    ],
+    "names": [
+      "Pendulum squat",
+      "Squat pendulaire"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:6f03c364d1884fcb9bd03d1762caee15",
+    "label": "Tirage menton à la barre",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "Tirage menton à la barre"
+    ],
+    "names": [
+      "Tirage menton à la barre"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:75019f5e8b9af2a0dc93788db3af52b3",
+    "label": "Écarté pectoraux",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Butterfly"
+    ],
+    "names": [
+      "Butterfly",
+      "Écarté pectoraux",
+      "Pec deck",
+      "Chest fly"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:750ff9d617aa473c5e74582ee000c286",
+    "label": "Curl marteau",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "Curl marteau"
+    ],
+    "names": [
+      "Curl marteau",
+      "Hammer curl"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:7964cf805d91173d5ae526eae3b20bfd",
+    "label": "Vélo",
+    "equipment": "machine",
+    "tracking": "cardio",
+    "ids": [
+      "elan-catalogue:bike"
+    ],
+    "names": [
+      "Vélo",
+      "Bike",
+      "Stationary bike"
+    ],
+    "alternativeKeys": [
+      "bike"
+    ]
+  },
+  {
+    "id": "library:7d293c2f9907d5120706625158131cf1",
+    "label": "Dips à la machine",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Seated dips"
+    ],
+    "names": [
+      "Seated dips",
+      "Dips à la machine"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:7e8026d83ed97879861118c8573640d4",
+    "label": "Rameur",
+    "equipment": "machine",
+    "tracking": "cardio",
+    "ids": [
+      "elan-catalogue:rowing"
+    ],
+    "names": [
+      "Rameur",
+      "Rowing machine",
+      "Ergometer"
+    ],
+    "alternativeKeys": [
+      "rowing"
+    ]
+  },
+  {
+    "id": "library:8b441a4ac8f23e655ab783e815df6a9c",
+    "label": "Fentes bulgares",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:bulgarian"
+    ],
+    "names": [
+      "Fentes bulgares",
+      "Bulgarian split squat",
+      "Bulgarian squat"
+    ],
+    "alternativeKeys": [
+      "bulgarian"
+    ]
+  },
+  {
+    "id": "library:8bcfe39672b78b1d90a73981f5dea97e",
+    "label": "Arrière d’épaule aux haltères",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "Arrière d’épaule aux haltères"
+    ],
+    "names": [
+      "Arrière d’épaule aux haltères",
+      "Rear delt raise",
+      "Reverse fly"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:954940111d801df9a11c4aac151270d8",
+    "label": "Développé incliné",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Incliné chest press"
+    ],
+    "names": [
+      "Incliné chest press",
+      "Développé incliné",
+      "Incline chest press",
+      "Incline bench press"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:9a95c8692abc79690ed6219326067ed7",
+    "label": "Rotation interne de l’épaule",
+    "equipment": "cable",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:shoulder-internal"
+    ],
+    "names": [
+      "Rotation interne de l’épaule",
+      "Shoulder internal rotation"
+    ],
+    "alternativeKeys": [
+      "shoulder-internal"
+    ]
+  },
+  {
+    "id": "library:9f9bd5a1703a89d0b7b58eba4f66c6f1",
+    "label": "Squat à la barre",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:barbell-squat"
+    ],
+    "names": [
+      "Squat à la barre"
+    ],
+    "alternativeKeys": [
+      "barbell-squat"
+    ]
+  },
+  {
+    "id": "library:a8257b66d7ca19dc3b3af5a655f4dabe",
+    "label": "Soulevé de terre roumain aux haltères",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:db-rdl"
+    ],
+    "names": [
+      "Soulevé de terre roumain aux haltères"
+    ],
+    "alternativeKeys": [
+      "db-rdl"
+    ]
+  },
+  {
+    "id": "library:a99d23678d51acf521adc22ef732c619",
+    "label": "Élévations latérales",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "Élévations latérales aux haltères",
+      "laterales-push"
+    ],
+    "names": [
+      "Élévations latérales aux haltères",
+      "Élévations latérales",
+      "Lateral raise",
+      "Lateral raises"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:aace1cfecbe5829f27651edf98d4418a",
+    "label": "Goblet squat avec haltère",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:goblet-squat"
+    ],
+    "names": [
+      "Goblet squat avec haltère"
+    ],
+    "alternativeKeys": [
+      "goblet-squat"
+    ]
+  },
+  {
+    "id": "library:afc5ded2442b0af7cd7d062163bb8809",
+    "label": "Extension des jambes",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:leg-extension"
+    ],
+    "names": [
+      "Leg extension · machine à identifier",
+      "Extension des jambes"
+    ],
+    "alternativeKeys": [
+      "leg-extension"
+    ]
+  },
+  {
+    "id": "library:b10e6a8f97c36902408a141e9bf39f0f",
+    "label": "Tirage horizontal",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Low row"
+    ],
+    "names": [
+      "Low row",
+      "Tirage horizontal",
+      "Seated row",
+      "Cable row"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:b6398eea0dce911b4455389ca76cab8f",
+    "label": "Tirage vertical",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Tirage vertical",
+      "lat-upper"
+    ],
+    "names": [
+      "Tirage vertical",
+      "Lat pulldown",
+      "Lat pull down",
+      "Pulldown"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:b6ff3baa128a60b402adbc1ed0393b4f",
+    "label": "Écarté inversé à la machine",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:reverse-fly"
+    ],
+    "names": [
+      "Écarté inversé à la machine",
+      "Machine reverse fly",
+      "Reverse pec deck"
+    ],
+    "alternativeKeys": [
+      "reverse-fly"
+    ]
+  },
+  {
+    "id": "library:bf930429873502d7ddfdfb7963d569c9",
+    "label": "Vélo elliptique",
+    "equipment": "machine",
+    "tracking": "cardio",
+    "ids": [
+      "elan-catalogue:elliptical"
+    ],
+    "names": [
+      "Vélo elliptique",
+      "Elliptical",
+      "Cross trainer"
+    ],
+    "alternativeKeys": [
+      "elliptical"
+    ]
+  },
+  {
+    "id": "library:c066a0c16d1f7d1dbf5f92f47298c6bb",
+    "label": "Pont fessier",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Glute bridge"
+    ],
+    "names": [
+      "Glute bridge",
+      "Pont fessier"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:c83e4e672551917a7a05997e8e94747d",
+    "label": "Développé épaules",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Shoulder press"
+    ],
+    "names": [
+      "Shoulder press",
+      "Développé épaules",
+      "Shoulder dumbbell press",
+      "Overhead press"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:c880bee09eb1e3b007fd1d4a65458ecf",
+    "label": "Machine à mollets",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "Machine à mollets"
+    ],
+    "names": [
+      "Machine à mollets"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:c8b2fd6ce891289579d8e36f0f149507",
+    "label": "Montées sur banc",
+    "equipment": "dumbbell",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:step-up"
+    ],
+    "names": [
+      "Montées sur banc"
+    ],
+    "alternativeKeys": [
+      "step-up"
+    ]
+  },
+  {
+    "id": "library:dac33c0a01333afd995da5634b4a46c4",
+    "label": "Développé couché",
+    "equipment": "barbell",
+    "tracking": "strength",
+    "ids": [
+      "Développé couché"
+    ],
+    "names": [
+      "Développé couché",
+      "Bench press",
+      "Barbell bench press"
+    ],
+    "alternativeKeys": []
+  },
+  {
+    "id": "library:ec6410ef408f3147417d5b3278e3f495",
+    "label": "Pompes",
+    "equipment": "bodyweight",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:pushup"
+    ],
+    "names": [
+      "Pompes"
+    ],
+    "alternativeKeys": [
+      "pushup"
+    ]
+  },
+  {
+    "id": "library:ee85ccf801ec792cc7e2898477417b99",
+    "label": "Tapis de course",
+    "equipment": "machine",
+    "tracking": "cardio",
+    "ids": [
+      "elan-catalogue:treadmill"
+    ],
+    "names": [
+      "Tapis de course",
+      "Treadmill",
+      "Tapis"
+    ],
+    "alternativeKeys": [
+      "treadmill"
+    ]
+  },
+  {
+    "id": "library:fc8609027e08b8f1e4669f07f6b525c8",
+    "label": "Belt squat",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:belt-squat"
+    ],
+    "names": [
+      "Belt squat"
+    ],
+    "alternativeKeys": [
+      "belt-squat"
+    ]
+  },
+  {
+    "id": "library:fe5ea00bf28326ffb3c52d906f40c23f",
+    "label": "Presse à cuisses",
+    "equipment": "machine",
+    "tracking": "strength",
+    "ids": [
+      "elan-catalogue:leg-press"
+    ],
+    "names": [
+      "Presse à cuisses",
+      "Leg press"
+    ],
+    "alternativeKeys": [
+      "leg-press"
+    ]
+  }
+]

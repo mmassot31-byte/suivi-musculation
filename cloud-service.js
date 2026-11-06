@@ -9,6 +9,7 @@ export function createService(config=cloudConfig){try{if(!configured(config))ret
  communityCapabilities:()=>result(client.rpc("community_capabilities")),
  communityPublicProfile:username=>result(client.rpc("social_profile",{p_username:username})),
  communityRpc:(name,args,uid)=>privateQuery(client.rpc(name,args).retry(false),uid),
+ communityPublicRpc:(name,args={})=>result(client.rpc(name,args).retry(false)),
  communityRanking:args=>result(client.rpc("community_rankings",args)),
  communityActivity:kind=>result(client.rpc("community_activity",{p_kind:kind})),
  competitionRanking:args=>result(client.rpc('competition_rankings',args)),
