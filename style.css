@@ -3827,3 +3827,5 @@ nav br {
 .exercise-title-link{display:inline-flex;align-items:center;gap:8px;text-align:left;font:inherit;font-weight:inherit;color:inherit;background:transparent;border:0;padding:0;min-height:44px;white-space:normal}.exercise-title-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.exercise-active h2{min-width:0}.ranking-list .ranking-empty{display:block;grid-column:1/-1;width:100%;min-width:0;padding:16px;white-space:normal;overflow-wrap:normal}.record-cards:empty{display:none}.record-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}.goal-rules{margin:16px 0}.goal-rules summary{min-height:44px;padding:10px 0;cursor:pointer}.exercise-sheet-help summary{min-height:44px;cursor:pointer}
 
 .activity-counter{display:grid;gap:12px}.activity-counter input,.activity-counter select,.laterality-control select{width:100%;min-width:0}.activity-entries .row{padding-block:10px;gap:8px}.laterality-control{display:block;margin-block:12px}
+
+.exercise-icon .cardio-icon { width:20px;height:20px; }

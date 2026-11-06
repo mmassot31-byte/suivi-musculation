@@ -1,4 +1,5 @@
 // Presentation only: never reads or writes training/account storage.
+import {cardioIconKey,exercisePrimaryIcon} from './pictograms.js';
 import {icon} from './icons.js';
 import {exerciseProfile} from './catalogue.js';
 const app=document.getElementById('app');
@@ -8,7 +9,7 @@ function glyph(host,name,cls='exercise-icon'){
 }
 function exerciseGlyph(host){
  if(!host||host.querySelector('.exercise-icon'))return;
- const name=host.textContent.trim(),profile=exerciseProfile({id:name,name});
+ const name=host.textContent.trim();if(cardioIconKey({name})){host.insertAdjacentHTML('afterbegin',exercisePrimaryIcon({name}));return}const profile=exerciseProfile({id:name,name});
  let type=profile.equipment;
  if(/kettlebell/i.test(name))type='kettlebell';
  glyph(host,({dumbbell:'dumbbell',barbell:'barbell',cable:'cable',machine:'machine',bodyweight:'movement',kettlebell:'kettlebell'})[type]||'movement');

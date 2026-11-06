@@ -23,7 +23,8 @@
     "test:organization": "node tests/exercise-labels.cjs && node tests/organization-ui.cjs",
     "test:week-navigation": "node tests/week-navigation.cjs",
     "test:clear-labels": "node tests/clear-labels.cjs && node tests/ranking-empty.cjs",
-    "test:counters": "node tests/activity.cjs && node tests/exercise-counters.cjs"
+    "test:counters": "node tests/activity.cjs && node tests/exercise-counters.cjs",
+    "test:cardio-icons": "node tests/cardio-pictograms.cjs"
   },
   "type": "module",
   "dependencies": {

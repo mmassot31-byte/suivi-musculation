@@ -6,6 +6,8 @@ Correspondances internes : `lats` = grand dorsal, `upper_back` = haut du dos, `t
 
 Les dimensions et l’alignement CSS sont conservés. Le générateur reprend les viewBox, les tracés et les couleurs natives des nouveaux SVG, sans fond ajouté. Seul le SVG complémentaire historique `avant-bras.svg` nécessite encore de réunir ses sous-tracés sous evenodd pour conserver les évidements ; son fichier source reste inchangé.
 
-`pictogram-manifest.json` contient les empreintes SHA-256 des 23 fichiers actifs. `npm run build:pictograms` génère les symboles de `pictogram-source.js`, mis en cache hors connexion. Aucun dessin n’est chargé depuis une image matricielle.
+`pictogram-manifest.json` contient les empreintes SHA-256 des 27 fichiers actifs. `npm run build:pictograms` génère les symboles de `pictogram-source.js`, mis en cache hors connexion. Aucun dessin n’est chargé depuis une image matricielle.
 
 Les abducteurs constituent un groupe anatomique distinct dans les fiches et les radars. Leur volume hebdomadaire rejoint la référence existante des fessiers (moyen/petit fessier), sans créer de cible arbitraire ni modifier les objectifs déjà enregistrés.
+
+Les quatre SVG de `elan_cardio_vectoriel.zip` sont conservés sans retouche dans `cardio/`. Les clés du catalogue `treadmill`, `bike`, `elliptical`, `rowing` correspondent respectivement à `tapis_de_course`, `velo`, `velo_elliptique`, `rameur`. Les noms français et leurs synonymes anglais exacts assurent le rendu des entrées plus anciennes. Le pictogramme reste dans la tuile de 32 px existante, avec le même dessin de 20 px que le pictogramme générique remplacé. Les SVG sont transparents et conservent leurs viewBox et couleurs natives ; les quatre fichiers et leurs symboles sont disponibles hors connexion. Les dessins des muscles et des types de séances ne changent pas.

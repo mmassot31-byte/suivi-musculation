@@ -21,5 +21,9 @@
   "assets/workouts/lower.svg": "0598bef99d47f17df0812f4e66edd05cfee7728733f3eb67df3d3e95bae07046",
   "assets/workouts/pull.svg": "16a19761a37267e470b21c77604b64ac53e1c7f9261a5aa6be237246236d67ff",
   "assets/workouts/push.svg": "236fa22a7bbfb9e47d35e4855d6dba5e0a003eab04a55cf5bc5b89758694edd2",
-  "assets/workouts/upper.svg": "961a37abb56f180caea032cc7578e1f3d7a79da781d3874b650b0dbfb3cef4f3"
+  "assets/workouts/upper.svg": "961a37abb56f180caea032cc7578e1f3d7a79da781d3874b650b0dbfb3cef4f3",
+  "assets/cardio/rameur.svg": "57fa953f474f07b366e1932df893ef593d15cf512ee8de64a7775fc32bb50f31",
+  "assets/cardio/tapis_de_course.svg": "304fea35554eb6c73e5e7eac90779eca1a6cbf225d6c7faa63f3b69afe00b351",
+  "assets/cardio/velo.svg": "5a1eb0ef15e66602464de81fcc0b0329f95ce4f7da3ea445838e4a6e03f90287",
+  "assets/cardio/velo_elliptique.svg": "cda73f1825cfdf30046bd5522eec5a84fc4c55e32497bd75e180d91ead764fa1"
 }

@@ -1,6 +1,6 @@
 // Keep the supplied SVG coordinates/transforms/viewBoxes; repair only evenodd subpath grouping.
 const fs=require('node:fs'),path=require('node:path'),out={};
-for(const family of ['muscles','workouts']){
+for(const family of ['muscles','workouts','cardio']){
  for(const file of fs.readdirSync(path.join('assets',family)).filter(f=>f.endsWith('.svg')).sort()){
   const raw=fs.readFileSync(path.join('assets',family,file),'utf8'),viewBox=raw.match(/viewBox="([^"]+)"/)?.[1];
   if(!viewBox||!viewBox.split(/\s+/).every(x=>Number.isFinite(Number(x)))||/<(?:script|image|rect)\b/i.test(raw))throw Error('Unexpected pictogram: '+file);
