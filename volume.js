@@ -1,9 +1,24 @@
 import {dayKey,dayOffset,validDay} from './tracking.js';
-import {muscles,muscleVolume,weeklyMuscleVolume,weekStart,weekSessions} from './muscles.js';
+import {muscles,anatomicalMuscles,anatomicalProfile,muscleVolume,weeklyMuscleVolume,weekStart,weekSessions} from './muscles.js';
 const known=id=>muscles.some(([key])=>key===id);
 export const plannedSets=e=>e.plannedSets??e.refs.length;
 export function setPlannedSets(e,n){if(!Number.isInteger(n)||n<0||n>100)throw Error('Le nombre prévu doit être compris entre 0 et 100.');e.plannedSets=n}
 export function plannedVolume(template){return weeklyMuscleVolume([{...template,exercises:template.exercises.map(e=>({...e,sets:Array.from({length:plannedSets(e)},()=>({type:'work'}))}))}])}
+// Card preview only: keep abductors visible instead of folding them into weekly glute targets.
+// Elbow flexors retain their existing shared pictogram, with each series counted once.
+export const previewMuscles=anatomicalMuscles.filter(([id])=>id!=='brachialis');
+export function plannedMusclePreview(template){
+ const totals=Object.fromEntries(previewMuscles.map(([id])=>[id,{primary:0,secondary:0}]));let sets=0,unclassified=0;
+ const group=id=>id==='brachialis'?'biceps':id;
+ for(const exercise of template.exercises){
+  const n=plannedSets(exercise);if(!n)continue;sets+=n;
+  const profile=anatomicalProfile(exercise),primary=new Set(profile.primary.map(group)),secondary=new Set(profile.secondary.map(group));
+  if(!primary.size)unclassified+=n;
+  for(const id of primary)if(totals[id])totals[id].primary+=n;
+  for(const id of secondary)if(totals[id]&&!primary.has(id))totals[id].secondary+=n;
+ }
+ return {totals,sets,unclassified};
+}
 export function activeSessions(state){return [...state.sessions,...(state.active&&!state.sessions.some(s=>s.id===state.active.id)?[state.active]:[])]}
 export function targetForWeek(targets,muscle,start,today=dayKey()){const end=dayOffset(start,6),asOf=end<today?end:today;return targets.filter(t=>t.muscle===muscle&&t.effectiveDate<=asOf).sort((a,b)=>b.effectiveDate.localeCompare(a.effectiveDate))[0]||null}
 export function targetStatus(value,target){return !target||target.min===null?'Sans cible':value<target.min?'Sous la cible':value>target.max?'Au-dessus de la cible':'Dans la cible'}

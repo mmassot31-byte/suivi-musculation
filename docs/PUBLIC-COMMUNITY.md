@@ -40,3 +40,7 @@ Pour un retour arrière, un administrateur peut révoquer les getters publics aj
 - API Supabase réelles : capacités de compétition inchangées, fil public et détails accessibles, chaque exercice du catalogue lisible en classement, tables brutes et documents privés refusés, encouragement anonyme refusé.
 
 Les parcours à deux comptes sont automatisés avec des identités de test et un PostgreSQL isolé. Aucun encouragement, invitation ou défi n’est envoyé à de vrais utilisateurs par les tests. Safari sur iPhone physique et le mode installé iOS ne sont pas disponibles ; les contrôles mobiles utilisent Chromium tactile. Le parcours de l’interface locale a aussi été vérifié dans un navigateur avec les vraies API Supabase, sans compte ni écriture : fil public, choix des exercices, sélection d’une machine et absence de débordement aux trois largeurs. La dernière vérification de publication doit confirmer le workflow Pages, les octets servis et le parcours du site publié.
+
+## Publication confirmée
+
+Le déploiement du catalogue complet a finalement réussi avec [le workflow 42287661475](https://github.com/mmassot31-byte/suivi-musculation/actions/runs/42287661475), sur le commit `f628386`. Les huit fichiers publics modifiés correspondaient exactement aux fichiers du dépôt. Le parcours publié a été vérifié avec les vraies API en lecture seule, puis avec les réponses de test pour un compte connecté : fil public, plus de 50 choix, sélection de machine et absence de débordement aux trois largeurs mobiles.
