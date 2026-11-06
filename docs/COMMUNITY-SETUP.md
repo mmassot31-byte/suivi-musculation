@@ -12,6 +12,7 @@ Implémentation à partir du kit `elan-amis-defis-badges-codex.zip` et de l’im
 - `202611050007_personal_record_search.sql` : recherche paginée dans tout l’historique privé, machines comprises.
 - `202611060008_goal_titles.sql` : nom facultatif des défis entre amis, compatible avec les anciens clients. Voir [audit, activation et tests](CHALLENGE-CREATION.md).
 - `202611060009_social_notifications.sql` : compteurs privés d’invitations et priorité aux invitations reçues dans les listes. Voir [notifications, activation et tests](NOTIFICATIONS.md).
+- `202611060010_friends_activity.sql` : fil privé sur partage volontaire, encouragements et classement autour de soi. Voir [parcours, confidentialité et tests](LIVING-COMMUNITY.md).
 
 Les migrations sont transactionnelles. Elles ne rejouent ni INSTALL.sql ni 001–004 et ne réécrivent aucun document privé. La fenêtre des nouveaux objectifs comporte 48 heures de synchronisation ; celle des anciens défis reste inchangée. Les seuils sont évalués avant arrondi. Les scores proviennent des projections serveur, sans écriture directe de score par le navigateur. Les états sociaux ne sont jamais confirmés localement hors connexion.
 
@@ -45,7 +46,7 @@ Les captures de `community-captures/` viennent des **modules réellement implém
 
 Restent non exécutés : parcours de bout en bout par authentification Supabase avec deux vrais comptes de test (session, demande, acceptation, défi, synchronisation d’une séance, consultation depuis l’autre compte), attente réelle d’une échéance et de ses 48 h, Safari/iPhone physique et PWA installée. Les tests SQL de rôles et les fixtures navigateur ne sont pas une validation de ces parcours réseau complets.
 
-Après publication : vérifier la version servie puis les parcours avec deux comptes de test. Vérifier ensuite les parcours ci-dessus avec des comptes de test uniquement. Ne pas réexécuter les migrations déjà appliquées sur ce projet ; pour un autre projet correctement initialisé jusqu’à 004, appliquer 005, puis 006, puis 007.
+Après publication : vérifier la version servie puis les parcours avec deux comptes de test. Vérifier ensuite les parcours ci-dessus avec des comptes de test uniquement. Ne pas réexécuter les migrations déjà appliquées sur ce projet ; pour un autre projet correctement initialisé jusqu’à 004, appliquer 005, puis 006, puis 007, puis 008, 009 et 010.
 
 ## Fusion des maquettes iPhone
 
