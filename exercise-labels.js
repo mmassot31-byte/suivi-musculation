@@ -33,9 +33,11 @@ const groups=[
  ['Flexion des jambes',['Leg curl']],
  ['Pendulum squat',['Squat pendulaire']]
 ];
+const chestLabels=new Set(['Développé incliné','Développé décliné','Développé pectoraux','Développé couché','Écarté pectoraux']);
+const searchTerms=label=>chestLabels.has(label)?['pectoraux','pecs','poitrine','chest']:[];
 export const normalizeSearch=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 const lookup=new Map(groups.flatMap(([label,aliases])=>[label,...aliases].map(x=>[normalizeSearch(x),{label,aliases}])));
 export function exerciseLabel(name){return lookup.get(normalizeSearch(name))?.label||name||'Exercice'}
-export function exerciseSearchText(name){const normalized=normalizeSearch(name),g=lookup.get(normalized)||groups.map(([label,aliases])=>({label,aliases,score:Math.max(0,...[label,...aliases].map(a=>normalized.includes(normalizeSearch(a))?normalizeSearch(a).length:0))})).filter(g=>g.score>0).sort((a,b)=>b.score-a.score)[0];return normalizeSearch([name,g?.label,...(g?.aliases||[])].join(' '))}
+export function exerciseSearchText(name){const normalized=normalizeSearch(name),g=lookup.get(normalized)||groups.map(([label,aliases])=>({label,aliases,score:Math.max(0,...[label,...aliases].map(a=>normalized.includes(normalizeSearch(a))?normalizeSearch(a).length:0))})).filter(g=>g.score>0).sort((a,b)=>b.score-a.score)[0];return normalizeSearch([name,g?.label,...(g?.aliases||[]),...searchTerms(g?.label)].join(' '))}
 export function matchesExercise(name,query){return exerciseSearchText(name).includes(normalizeSearch(query))}
-export function exerciseSearchQueries(query){const q=normalizeSearch(query);if(q.length<2)return [query];const found=groups.filter(([label,aliases])=>[label,...aliases].some(x=>normalizeSearch(x).includes(q)));return [...new Set([query,...found.flatMap(([label,aliases])=>[label,...aliases])])].slice(0,12)}
+export function exerciseSearchQueries(query){const q=normalizeSearch(query);if(q.length<2)return [query];const found=groups.filter(([label,aliases])=>[label,...aliases,...searchTerms(label)].some(x=>normalizeSearch(x).includes(q)));return [...new Set([query,...found.flatMap(([label,aliases])=>[label,...aliases])])].slice(0,32)}
