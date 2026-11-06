@@ -2,7 +2,7 @@ import {dayKey,dayOffset} from './tracking.js';
 export const muscles=[['chest','Pectoraux'],['lats','Grands dorsaux'],['upper_back','Haut du dos'],['traps','Trapèzes'],['front_delts','Épaules · avant'],['side_delts','Épaules · côté'],['rear_delts','Épaules · arrière'],['biceps','Biceps'],['triceps','Triceps'],['forearms','Avant-bras'],['abs','Abdominaux'],['erectors','Lombaires'],['quads','Quadriceps'],['hamstrings','Ischio-jambiers'],['glutes','Fessiers'],['calves','Mollets'],['adductors','Adducteurs']];
 // The weekly reference remains 17 groups. Anatomy can distinguish elbow flexors
 // without inventing a separate weekly target or rewriting stored profiles.
-export const anatomicalMuscles=[...muscles,['brachialis','Brachial']];
+export const anatomicalMuscles=[...muscles,['brachialis','Brachial'],['abductors','Abducteurs']];
 const profile=(primary,secondary=[])=>({primary,secondary});
 const defaults=new Map();
 function register(ids,primary,secondary=[]){for(const id of ids)defaults.set(id,profile(primary,secondary))}
@@ -29,7 +29,7 @@ export function weekSessions(sessions,start){const end=dayOffset(start,6);return
 
 /** Folding is per series/profile, never the sum of separate muscle counters. */
 export function weeklyProfile(p){
- const map=id=>id==='brachialis'?'biceps':id;
+ const map=id=>id==='brachialis'?'biceps':id==='abductors'?'glutes':id;
  const primary=[...new Set((p?.primary||[]).map(map))];
  return {primary,secondary:[...new Set((p?.secondary||[]).map(map))].filter(id=>!primary.includes(id))};
 }

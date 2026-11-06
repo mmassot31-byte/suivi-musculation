@@ -6,7 +6,7 @@ const assert=require('node:assert/strict');
  const work=(id,w=20,r=10)=>({id,w,r,type:'work',drops:[]});
  const lift=(id,n,extra={})=>({id,name:id,sets:Array.from({length:n},(_,i)=>work(id+i)),...extra});
  const session=(id,exercises)=>({id,date:'2026-11-02T12:00:00Z',exercises});
- assert.equal(muscles.length,17);assert.equal(anatomicalMuscles.length,18);
+ assert.equal(muscles.length,17);assert.equal(anatomicalMuscles.length,19);
  assert.ok(validProfile({primary:['brachialis'],secondary:['biceps']}));
  assert.equal(anatomicalMuscles.some(([id])=>/brachio/.test(id)),false);
  const hammer=lift('Curl marteau',3,{muscles:{primary:['biceps'],secondary:['forearms']}}),original=structuredClone(hammer);

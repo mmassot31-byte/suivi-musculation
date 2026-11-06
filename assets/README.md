@@ -1,19 +1,11 @@
-# Pictogrammes fournis pour Élan
+# Pictogrammes Élan
 
-- `muscles/` : les 15 SVG du ZIP `elan-muscle-icons.zip` et le SVG du ZIP `elan_haut_dos_vectoriel.zip`. Le précédent PNG est conservé comme archive et n’est plus utilisé.
-- `workouts/` : les 6 SVG du ZIP `elan-icones-seances-codex.zip`.
-- `pictogram-manifest.json` : empreintes SHA-256 des fichiers fournis, conservés sans modification.
+Les 12 SVG de `elan_icones_svg_nouveau_lien.zip` remplacent les pictogrammes correspondants, sans retouche des fichiers vectoriels. Les noms avec underscore sont traduits vers les chemins historiques : `grand_dorsal → grand-dorsal`, `haut_du_dos → haut-du-dos`, `ischio_jambiers → ischio-jambiers`, `epaules → deltoides`.
 
-Les tracés, transformations et viewBox 256 × 256 sont préservés. Les pictogrammes ont été vectorisés à partir des planches validées ; les petites irrégularités appartiennent aux fichiers sources. Les autres PNG et les planches originales restent dans les archives de référence ; aucune nouvelle illustration n’a été créée.
+Correspondances internes : `lats` = grand dorsal, `upper_back` = haut du dos, `traps` = trapèzes, `front_delts/side_delts/rear_delts` = épaules, `abductors` = abducteurs (distinct d’`adductors`). Les trois portions d’épaule gardent leurs qualificatifs. Les autres muscles conservent leur SVG complémentaire existant, aucun remplacement n’étant fourni. Aucun PNG musculaire n’est distribué. Les six SVG `workouts/` restent inchangés.
 
-`npm run build:pictograms` reprend les tracés SVG dans `pictogram-source.js`. `pictograms.js` installe une seule bibliothèque de symboles inline et expose `muscleIcon`, `workoutTypeIcon`, `exercisePrimaryIcon`. Les SVG suivent le token `--accent`, sans fond ajouté, sauf le nouveau Haut du dos qui conserve la couleur native #C5FA73 du fichier fourni. Ses tracés, sa règle evenodd et son viewBox `150 195 960 800` sont repris sans modification dans le symbole inline, au même emplacement de 24 px. Aucun bitmap n’est référencé par ce symbole. Le fichier est précaché pour le hors connexion.
+Les dimensions et l’alignement CSS sont conservés. Le générateur reprend les viewBox, les tracés et les couleurs natives des nouveaux SVG, sans fond ajouté. Seul le SVG complémentaire historique `avant-bras.svg` nécessite encore de réunir ses sous-tracés sous evenodd pour conserver les évidements ; son fichier source reste inchangé.
 
-Les muscles utilisent leurs identifiants internes. Les trois portions des deltoïdes partagent le dessin fourni et portent une indication avant/côté/arrière. Le haut du dos utilise le pictogramme fourni, associé à `upper_back`. Le brachial conserve un repli neutre : son anatomie n’est pas assimilée à un autre muscle. L’icône obliques est disponible sans créer de nouveau compteur métier. La cible hebdomadaire existante des fléchisseurs du coude conserve son calcul ; le pictogramme de biceps est son repère visuel.
+`pictogram-manifest.json` contient les empreintes SHA-256 des 23 fichiers actifs. `npm run build:pictograms` génère les symboles de `pictogram-source.js`, mis en cache hors connexion. Aucun dessin n’est chargé depuis une image matricielle.
 
-Un exercice utilise le premier muscle principal de son profil enregistré, dans l’ordre existant. Un profil vide ou sans dessin disponible conserve le repli générique : aucune association ne provient du titre affiché.
-
-Les types de séances privilégient `workoutType`, puis les métadonnées typées existantes, puis les identifiants stables des modèles d’origine. Le nom libre ne sert jamais à classifier une séance. Les séances personnalisées disposent d’un repli et peuvent choisir leur type visuel dans Mes modèles. Ce réglage ne change ni le nom, ni les exercices, ni les groupes. Aucun ancien document n’est migré.
-
-Les cartes consomment `plannedVolume` et `estimateDuration`, sans nouveau calcul d’attribution : directes et secondaires sont séparées. Le toucher d’un compteur identifie le muscle et affiche les deux valeurs. Une entrée « à classer » représente les séries sans association ; elle ne constitue pas une nouvelle attribution musculaire.
-
-Les SVG biceps et avant-bras séparent leurs contours intérieurs en plusieurs paths : leur rendu brut devient plein, contrairement aux PNG de référence. Le générateur réunit uniquement ces sous-tracés dans un path composé sous la règle evenodd existante pour restaurer les évidements. Aucun point, transformation ni viewBox n’est changé ; les fichiers sources restent byte-identiques. Les tests vérifient séparément les coordonnées de ces deux cas.
+Les abducteurs constituent un groupe anatomique distinct dans les fiches et les radars. Leur volume hebdomadaire rejoint la référence existante des fessiers (moyen/petit fessier), sans créer de cible arbitraire ni modifier les objectifs déjà enregistrés.
