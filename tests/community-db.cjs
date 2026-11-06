@@ -6,6 +6,26 @@ for(const f of ['202611040001_accounts.sql','202611040003_machine_variants.sql',
 const A='00000000-0000-0000-0000-000000000001',B='00000000-0000-0000-0000-000000000002',C='00000000-0000-0000-0000-000000000003';await db.query('insert into auth.users values($1,$2),($3,$4),($5,$6)',[A,{username:'Alice'},B,{username:'Bob'},C,{username:'Charlie'}]);
 async function rpc(u,fn,args=[]){await db.query('begin');try{await db.query('set local role '+(u?'authenticated':'anon'));await db.query("select set_config('request.jwt.claim.sub',$1,true)",[u||'']);const r=await db.query('select public.'+fn+'('+args.map((_,i)=>'$'+(i+1)).join(',')+')result',args);await db.query('commit');return r.rows[0].result}catch(e){await db.query('rollback');throw e}}
 assert.equal(await rpc(A,'friend_action',[B,'request']),'outgoing');assert.equal(await rpc(A,'friend_action',[B,'request']),'outgoing');assert.equal(await rpc(B,'friend_action',[A,'request']),'incoming');await assert.rejects(rpc(C,'friend_action',[A,'accept']),/REQUEST_CHANGED/);await rpc(B,'friend_action',[A,'accept']);assert.equal((await rpc(A,'friend_list')).find(x=>x.id===B).relation,'accepted');await rpc(A,'friend_action',[C,'request']);await rpc(C,'friend_action',[A,'decline']);await assert.rejects(rpc(A,'friend_action',[C,'request']),/REQUEST_COOLDOWN/);
+// Migrate a real legacy challenge in place: names are strictly additive.
+const legacy=await rpc(A,'goal_create',[B,'sessions',1,14,'each',null]);
+const before=(await db.query('select to_jsonb(g) row from goal_challenges g where id=$1',[legacy])).rows[0].row;
+await db.query(fs.readFileSync('supabase/migrations/202611060008_goal_titles.sql','utf8'));
+const after=(await db.query('select to_jsonb(g) row from goal_challenges g where id=$1',[legacy])).rows[0].row;
+assert.equal(after.title,null);delete after.title;assert.deepEqual(after,before);
+const named=await rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'  Notre\n  mois en forme 💪  ']);
+for(const viewer of [A,B])assert.equal((await rpc(viewer,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
+assert(!(await rpc(C,'goal_list')).some(g=>g.id===named));
+assert.equal(await rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'Autre nom']),named);
+assert.equal((await rpc(B,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
+await assert.rejects(rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'a'.repeat(61)]),/INVALID_GOAL_TITLE/);
+await assert.rejects(rpc(C,'goal_create',[B,'sessions',4,30,'each',null,'Intrus']),/FRIEND_REQUIRED/);
+await assert.rejects(rpc(null,'goal_create',[B,'sessions',4,30,'each',null,'Anonyme']),/permission denied/);
+await rpc(B,'goal_action',[named,'accept']);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
+await rpc(B,'goal_action',[named,'abandon']);
+const blank=await rpc(A,'goal_create',[B,'work_sets',30,14,'together',null,' \t ']);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===blank).title,null);await rpc(A,'goal_action',[blank,'cancel']);
+const exact=await rpc(A,'goal_create',[B,'work_sets',50,14,'together',null,'é'.repeat(60)]);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===exact).title,'é'.repeat(60));await rpc(A,'goal_action',[exact,'cancel']);
+const oldClient=await rpc(A,'goal_create',[B,'work_sets',75,14,'each']);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===oldClient).title,null);await rpc(A,'goal_action',[oldClient,'cancel']);await rpc(A,'goal_action',[legacy,'cancel']);
+console.log('PASS names SQL: legacy rows preserved, 5/6/7-argument clients, whitespace/Unicode/60-character limit, invitations/acceptance persist names, retry preserves original name, third-party/anon access refused.');
 const identity={version:1,unit:'kg',convention:'Total',lateralMode:'total',source:'entry'},make=(id,date,w=60,r=10)=>({id,date,endedAt:new Date(Date.parse(date)+60000).toISOString(),exercises:[{id:'machine-pendulum',instanceId:'pendulum',name:'Pendulum',sets:[{id:'work',w,r,loadIdentity:identity},{id:'warm',w:1,r:10,type:'warmup',loadIdentity:identity}]}]});
 let sessions=[make('one','2026-01-05T12:00:00Z'),make('same-day','2026-01-05T14:00:00Z'),make('two','2026-01-12T12:00:00Z',60,11)];await db.query('insert into public.private_documents(owner_id,payload)values($1,$2)',[A,{sessions}]);
 let p=await rpc(null,'social_profile',['Alice']);assert.equal(p.totals.sessions,2);assert.equal(p.totals.work_sets,3);assert.equal(p.totals.pr_events,1);assert(p.badges.some(b=>b.badge_id==='sessions_total_1'));assert(p.badges.some(b=>b.badge_id==='records_total_1'));assert.equal((await db.query('select count(*)n from public.badge_definitions')).rows[0].n,'68');await rpc(A,'badge_feature',['sessions_total_1',1]);await assert.rejects(rpc(A,'badge_feature',['sessions_total_250',2]),/BADGE_NOT_EARNED/);await assert.rejects(rpc(null,'goal_list'),/permission denied/);

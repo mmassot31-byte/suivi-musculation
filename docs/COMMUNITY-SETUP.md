@@ -4,14 +4,15 @@ Implémentation à partir du kit `elan-amis-defis-badges-codex.zip` et de l’im
 
 ## Organisation
 
-- `community-ui.js` : parcours amis, objectifs sans titre libre, collection et favoris ; raccordement minimal dans `social-ui.js`.
+- `community-ui.js` : parcours amis, objectifs avec nom facultatif, collection et favoris ; raccordement minimal dans `social-ui.js`.
 - `assets/social/` : 68 badges et 23 pictogrammes fournis, sans remplacement de la bibliothèque musculaire.
 - `assets/social/badges.json` : catalogue et seuils d’origine ; `npm run build:social` génère le module navigateur et les définitions SQL.
 - `202611050005_community.sql` : relations privées, objectifs séparés des anciens défis, faits sportifs privés, métriques, 68 définitions, occurrences et RPC.
 - `202611050006_goal_tonnage_proof.sql` : preuve complète figée du tonnage de référence et exclusion explicite des conventions assistées/poids du corps du tonnage connu.
 - `202611050007_personal_record_search.sql` : recherche paginée dans tout l’historique privé, machines comprises.
+- `202611060008_goal_titles.sql` : nom facultatif des défis entre amis, compatible avec les anciens clients. Voir [audit, activation et tests](CHALLENGE-CREATION.md).
 
-Les trois migrations sont transactionnelles. Elles ne rejouent ni INSTALL.sql ni 001–004 et ne réécrivent aucun document privé. La fenêtre des nouveaux objectifs comporte 48 heures de synchronisation ; celle des anciens défis reste inchangée. Les seuils sont évalués avant arrondi. Les scores proviennent des projections serveur, sans écriture directe de score par le navigateur. Les états sociaux ne sont jamais confirmés localement hors connexion.
+Les migrations sont transactionnelles. Elles ne rejouent ni INSTALL.sql ni 001–004 et ne réécrivent aucun document privé. La fenêtre des nouveaux objectifs comporte 48 heures de synchronisation ; celle des anciens défis reste inchangée. Les seuils sont évalués avant arrondi. Les scores proviennent des projections serveur, sans écriture directe de score par le navigateur. Les états sociaux ne sont jamais confirmés localement hors connexion.
 
 Les faits dédupliquent les identifiants de séance ; les objectifs/badges créditent un jour d’entraînement par date locale. Les séries principales comptent une fois, les dégressives contribuent seulement au tonnage. Une identité incertaine n’est pas assimilée à une machine ou variante publique. Les records chronologiquement ambigus restent sans crédit PR. Une première observation est une référence. Pour le tonnage d’un exercice, une seule séance doit dépasser la cible et une correction de la preuve de référence invalide son crédit.
 
