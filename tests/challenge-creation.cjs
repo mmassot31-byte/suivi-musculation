@@ -17,6 +17,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
    else if(path.endsWith('/community_capabilities'))body={version:1,friends:true,badges:true,goalChallenges:true};
    else if(path.endsWith('/friend_list'))body=[{id:uid===A?B:A,username:names[uid===A?B:A],relation:'accepted'}];
    else if(path.endsWith('/goal_list'))body=goals;
+   else if(path.endsWith('/social_notifications'))body={friends:0,goals:goals.filter(g=>g.target_id===uid&&g.status==='pending').length,records:0};
    else if(path.endsWith('/goal_create')){
     assert.equal(req.headers().authorization,'Bearer '+token);calls.push({uid,args});
     if(fail){status=503;body={code:'TEST_UNAVAILABLE',message:'Erreur technique simulée'};}

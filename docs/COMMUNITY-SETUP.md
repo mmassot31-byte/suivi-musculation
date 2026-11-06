@@ -11,6 +11,7 @@ Implémentation à partir du kit `elan-amis-defis-badges-codex.zip` et de l’im
 - `202611050006_goal_tonnage_proof.sql` : preuve complète figée du tonnage de référence et exclusion explicite des conventions assistées/poids du corps du tonnage connu.
 - `202611050007_personal_record_search.sql` : recherche paginée dans tout l’historique privé, machines comprises.
 - `202611060008_goal_titles.sql` : nom facultatif des défis entre amis, compatible avec les anciens clients. Voir [audit, activation et tests](CHALLENGE-CREATION.md).
+- `202611060009_social_notifications.sql` : compteurs privés d’invitations et priorité aux invitations reçues dans les listes. Voir [notifications, activation et tests](NOTIFICATIONS.md).
 
 Les migrations sont transactionnelles. Elles ne rejouent ni INSTALL.sql ni 001–004 et ne réécrivent aucun document privé. La fenêtre des nouveaux objectifs comporte 48 heures de synchronisation ; celle des anciens défis reste inchangée. Les seuils sont évalués avant arrondi. Les scores proviennent des projections serveur, sans écriture directe de score par le navigateur. Les états sociaux ne sont jamais confirmés localement hors connexion.
 

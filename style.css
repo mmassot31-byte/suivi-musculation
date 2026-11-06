@@ -3844,3 +3844,12 @@ nav br {
 .goal-preview strong{display:block;font-size:20px;line-height:1.3}.goal-preview small{display:block;color:var(--muted,#aab6ac);margin-top:8px}
 .goal-objective{margin:8px 0;color:var(--muted,#aab6ac);font-size:16px;line-height:1.4}.goal-card h3{overflow-wrap:anywhere}
 .community-sheet fieldset .community-quantity{margin:12px 0 0}.community-sheet label:has(#community-goal-title){margin-top:12px}
+
+/* The invitation popover floats over content; background updates never move the workout. */
+.header-account{position:relative;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.notification-bell{position:relative;display:grid;place-items:center;width:44px;height:44px;min-width:44px;padding:0;border:0;background:transparent;color:var(--muted,#aab6ac)}
+.notification-bell .ico{width:24px;height:24px}.notification-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:12px;background:var(--accent,#c5f279);color:#10160e;font-size:11px;line-height:1;font-weight:800;vertical-align:middle;margin-left:5px}.notification-count[hidden],.notification-panel[hidden],.notification-panel [hidden]{display:none!important}
+.notification-bell .notification-count{position:absolute;top:0;right:-2px;margin:0;border:2px solid #10160e;min-width:20px;height:20px;padding:0 3px}
+.notification-panel{position:absolute;z-index:90;right:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:calc(var(--visible-height,100dvh) - 100px);overflow:auto;padding:16px;border:1px solid #384535;border-radius:20px;background:#181f18;box-shadow:0 14px 40px #0008;text-align:left}
+.notification-panel h2{font-size:20px;margin:0}.notification-panel p{font-size:14px;color:var(--muted,#aab6ac);margin:12px 0}.notification-link{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;white-space:normal;margin-top:8px;min-height:48px}.notification-link span:first-child{min-width:0;overflow-wrap:anywhere}
+.notification-bell:focus-visible,.notification-panel button:focus-visible{outline:2px solid var(--accent,#c5f279);outline-offset:3px}

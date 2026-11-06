@@ -12,6 +12,13 @@ const before=(await db.query('select to_jsonb(g) row from goal_challenges g wher
 await db.query(fs.readFileSync('supabase/migrations/202611060008_goal_titles.sql','utf8'));
 const after=(await db.query('select to_jsonb(g) row from goal_challenges g where id=$1',[legacy])).rows[0].row;
 assert.equal(after.title,null);delete after.title;assert.deepEqual(after,before);
+await db.query(fs.readFileSync('supabase/migrations/202611060009_social_notifications.sql','utf8'));
+assert.deepEqual(await rpc(A,'social_notifications'),{friends:0,goals:0,records:0});
+assert.deepEqual(await rpc(B,'social_notifications'),{friends:0,goals:1,records:0});
+await assert.rejects(rpc(null,'social_notifications'),/permission denied/);
+await rpc(C,'friend_action',[B,'request']);assert.equal((await rpc(B,'social_notifications')).friends,1);assert.equal((await rpc(C,'social_notifications')).friends,0);
+await rpc(B,'friend_action',[C,'decline']);assert.equal((await rpc(B,'social_notifications')).friends,0);
+
 const named=await rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'  Notre\n  mois en forme 💪  ']);
 for(const viewer of [A,B])assert.equal((await rpc(viewer,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
 assert(!(await rpc(C,'goal_list')).some(g=>g.id===named));
@@ -20,7 +27,7 @@ assert.equal((await rpc(B,'goal_list')).find(g=>g.id===named).title,'Notre mois 
 await assert.rejects(rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'a'.repeat(61)]),/INVALID_GOAL_TITLE/);
 await assert.rejects(rpc(C,'goal_create',[B,'sessions',4,30,'each',null,'Intrus']),/FRIEND_REQUIRED/);
 await assert.rejects(rpc(null,'goal_create',[B,'sessions',4,30,'each',null,'Anonyme']),/permission denied/);
-await rpc(B,'goal_action',[named,'accept']);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
+assert.equal((await rpc(B,'social_notifications')).goals,2);await rpc(B,'goal_action',[named,'accept']);assert.equal((await rpc(B,'social_notifications')).goals,1);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===named).title,'Notre mois en forme 💪');
 await rpc(B,'goal_action',[named,'abandon']);
 const blank=await rpc(A,'goal_create',[B,'work_sets',30,14,'together',null,' \t ']);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===blank).title,null);await rpc(A,'goal_action',[blank,'cancel']);
 const exact=await rpc(A,'goal_create',[B,'work_sets',50,14,'together',null,'é'.repeat(60)]);assert.equal((await rpc(B,'goal_list')).find(g=>g.id===exact).title,'é'.repeat(60));await rpc(A,'goal_action',[exact,'cancel']);
@@ -61,5 +68,18 @@ const unconfirmed=make('legacy-unknown','2026-01-01T12:00:00Z');unconfirmed.exer
 const cardioDoc={version:1,templates:[],active:null,sessions:[{id:'cardio-only',date:'2026-04-01T12:00:00Z',endedAt:'2026-04-01T12:30:00Z',exercises:[{id:'treadmill',instanceId:'treadmill',name:'Tapis de course',tracking:'cardio',counter:'duration',plannedSets:0,sets:[],activityEntries:[{id:'minutes',counter:'duration',value:30,recordedAt:'2026-04-01T12:30:00Z'}]}]}]};
 cardioDoc.sessions[0].exercises[0].cardioDuration=1800;cardioDoc.sessions[0].exercises[0].cardioTimer={id:'minutes',status:'finished',durationMs:1800000,remainingMs:0,deadline:0,startedAt:Date.parse('2026-04-01T12:00:00Z'),elapsedMs:1800000};const cv=(await db.query('select version from private_documents where owner_id=$1',[C])).rows[0]?.version||0;await rpc(C,'sync_snapshot',[cardioDoc,cv]);assert.deepEqual((await db.query('select payload from private_documents where owner_id=$1',[C])).rows[0].payload,cardioDoc);const cp=await rpc(null,'social_profile',['Charlie']);assert.equal(Number(cp.totals.work_sets||0),0);assert.equal(Number(cp.totals.tonnage_kg||0),0);assert.equal(Number(cp.totals.pr_events||0),0);assert.equal((await db.query('select count(*)n from competition_performances where owner_id=$1',[C])).rows[0].n,'0');
 console.log('PASS cardio SQL: authenticated sync and exact private JSON round-trip, zero muscular sets, tonnage, PRs or public competition performances.');
+// Inbox counts include every actionable incoming item, regardless of display pagination.
+const more=Array.from({length:27},(_,i)=>'10000000-0000-0000-0000-'+String(i+1).padStart(12,'0'));
+for(const [i,id]of more.entries()){await db.query('insert into auth.users values($1,$2)',[id,{username:'Notif'+String(i).padStart(2,'0')}]);await db.query("insert into friend_pairs(a,b,sender,state)values(least($1::uuid,$2::uuid),greatest($1::uuid,$2::uuid),$2,'pending')",[B,id]);}
+assert.equal((await rpc(B,'friend_list')).filter(f=>f.relation==='incoming').length,25);assert.equal((await rpc(B,'social_notifications')).friends,27);
+await db.query('insert into social_blocks values($1,$2)',[B,more[0]]);assert.equal((await rpc(B,'social_notifications')).friends,26);
+await db.query("delete from social_blocks where(owner_id=$1 and target_id=$2)or(owner_id=$2 and target_id=$1)",[A,B]);
+await db.query("update friend_pairs set state='accepted' where a=least($1::uuid,$2::uuid)and b=greatest($1::uuid,$2::uuid)",[A,B]);
+const oldInbox=await rpc(A,'goal_create',[B,'sessions',4,30,'each',null,'Toujours en attente']);await db.query("update goal_challenges set created_at=now()-interval '6 days'where id=$1",[oldInbox]);
+await db.query("insert into goal_challenges(owner_id,target_id,metric,mode,quantity,days,state)select $1,$2,'sessions','each',1,7,'cancelled' from generate_series(1,110)",[A,B]);
+assert.equal((await rpc(B,'goal_list'))[0].id,oldInbox);assert.equal((await rpc(B,'social_notifications')).goals,1);
+await db.query("update goal_challenges set created_at=now()-interval '8 days'where id=$1",[oldInbox]);assert.equal((await rpc(B,'social_notifications')).goals,0);
+await db.query("update goal_challenges set created_at=now()where id=$1",[oldInbox]);await db.query('insert into social_blocks values($1,$2)',[B,A]);assert.equal((await rpc(B,'social_notifications')).goals,0);
+console.log('PASS notification SQL: per-account counts, incoming only, refusal/acceptance, anonymous denied, 27 requests exceed the 25-row page, blocks and expired goals excluded, actionable invitations precede 110 cancelled goals.');
 console.log('PASS community SQL: friendship lifecycle, cross request, cooldown, auth, 68 definitions, same-day dedup, warmup exclusion, machine PR/baseline, goals, corrections, favorites, pound/drop parity and blocking.');
 }finally{await db.end();await admin.query('drop database '+name+' with(force)');await admin.end()}})().catch(e=>{console.error(e);process.exit(1)});
