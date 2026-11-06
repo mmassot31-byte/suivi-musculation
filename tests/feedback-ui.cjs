@@ -1,5 +1,5 @@
 // Isolated browser fixtures: no production authentication, records or sync writes.
-const {chromium}=require('playwright'),assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/strict'),http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 (async()=>{
  const root=path.resolve(__dirname,'..'),server=http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');if(u.pathname==='/cloud-config.js'){res.setHeader('Content-Type','text/javascript');res.end("export const cloudConfig={url:'',publishableKey:''}");return}const file=path.resolve(root,'.'+(u.pathname==='/'?'/index.html':u.pathname));if(!file.startsWith(root+'/')){res.writeHead(403);res.end();return}try{res.setHeader('Content-Type',({'.js':'text/javascript','.css':'text/css','.html':'text/html','.svg':'image/svg+xml','.png':'image/png'})[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file))}catch{res.writeHead(404);res.end()}});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});

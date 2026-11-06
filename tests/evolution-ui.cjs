@@ -1,5 +1,5 @@
 // Isolated journeys. Native Safari keyboard/installed mode require a physical iPhone.
-const {chromium}=require('playwright'),assert=require('node:assert/strict');
+const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
  try{

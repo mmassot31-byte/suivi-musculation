@@ -1,5 +1,5 @@
 // Presentation fixtures only. Never connects to a real account or Supabase project.
-const {chromium}=require('playwright'),assert=require('node:assert/strict');
+const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});try{
  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block',reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'application/javascript',body:"export const cloudConfig={url:'https://elan-visual.invalid',publishableKey:'sb_publishable_visual_fixture'};"}));

@@ -1,4 +1,4 @@
-const {chromium}=require('playwright'),assert=require('node:assert/strict');
+const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});const page=await browser.newPage();await page.goto('http://127.0.0.1:4173');await page.evaluate(async()=>{
  const {createCommunity}=await import('./community-ui.js'),{badgeCatalogue}=await import('./social-catalogue.js');
  const friend={id:'friend',username:'Alex_avec_un_pseudo_long',relation:'incoming'},ids=['sessions_total_100','tonnage_week_50','streak_weeks_8'];
