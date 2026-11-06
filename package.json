@@ -36,7 +36,8 @@
     "build:public-exercises": "node scripts/build-public-exercises.cjs",
     "test:home-muscles": "node tests/home-muscle-completeness.cjs && node tests/home-pictograms.cjs",
     "test:friend-profiles": "node tests/public-activity-db.cjs && node tests/friend-profiles-ui.cjs",
-    "test:trophies": "node tests/trophies-completion.cjs && node tests/trophy-room-ui.cjs && node tests/finish-action-ui.cjs && node tests/community-ui.cjs"
+    "test:trophies": "node tests/trophies-completion.cjs && node tests/trophy-room-ui.cjs && node tests/finish-action-ui.cjs && node tests/community-ui.cjs",
+    "test:recorded-tonnage": "node tests/recorded-tonnage-db.cjs && node tests/trophy-room-ui.cjs"
   },
   "type": "module",
   "dependencies": {
