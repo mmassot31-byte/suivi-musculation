@@ -15,5 +15,5 @@ exports.journeyClick=(getPage,run)=>async action=>{
  if(action.startsWith('detail:')&&!await page.locator(`.history-session [data-action="${action}"]`).count()&&await page.locator('[data-action="history-scope:year"]').count())await page.locator('[data-action="history-scope:year"]').click();
  if(action.startsWith('plan-edit:')&&!await page.locator(`[data-action="${action}"]`).count()){const [,path,delta]=action.split(':');const input=page.locator(`[data-ex="${path}"][data-field="count"]`);if(await input.count()){await input.fill(String(Math.max(0,Number(await input.inputValue())+Number(delta))));await input.dispatchEvent('change');await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil');return}}
  const target=page.locator(`[data-action="${action}"]`).first();if(await target.count())await target.evaluate(el=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true});
- await run(action);await minimise();
+ await run(action);if(action==='nav:body'){await page.locator('[data-action="account-body"]').click();await page.locator('#body-metric').waitFor();}await minimise();
 };

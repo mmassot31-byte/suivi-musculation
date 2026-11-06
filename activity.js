@@ -9,3 +9,11 @@ export function setLaterality(e,value){if(!['bilateral','unilateral'].includes(v
 
 export const hasRecorded=e=>!!(e?.sets?.length||e?.activityEntries?.length);
 export const counterCount=e=>`${(e.activityEntries||[]).length} relevé${(e.activityEntries||[]).length===1?'':'s'}`;
+
+// Duration entries remain minutes in storage/API; mobility is presented in seconds.
+export const durationPresets=[15,30,45,60,90,120,180,300];
+export const usesSeconds=(exercise,counter='duration')=>exercise?.tracking==='mobility'&&counter==='duration';
+export function activityDisplayValue(exercise,entry){return usesSeconds(exercise,entry.counter)?Number((entry.value*60).toFixed(6)):entry.value;}
+export function activityDisplayUnit(exercise,counter){return usesSeconds(exercise,counter)?'s':counters[counter]?.unit||'';}
+export function activityInputValue(exercise,counter,value){const number=Number(String(value).replace(',','.'));return usesSeconds(exercise,counter)?number/60:number;}
+export function activityKind(exercise){return exercise?.alternativeKey==='plank'||exercise?.family==='core_isometric'||exercise?.familyId==='core_isometric'||/^(gainage|plank)(\b|\s)/i.test(exercise?.name||'')?'Gainage':exercise?.tracking==='cardio'?'Cardio':'Mobilité';}

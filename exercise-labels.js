@@ -1,5 +1,6 @@
 // Presentation and search only: never rewrite saved names or exercise identities.
 const groups=[
+ ['Gainage',['Plank','Planche abdominale','Gainage abdominal']],
  ['Presse à cuisses',['Leg press']],
  ['Fentes bulgares',['Bulgarian split squat','Bulgarian squat']],
  ['Écarté inversé à la machine',['Machine reverse fly','Reverse pec deck']],
@@ -43,3 +44,5 @@ export function matchesExercise(name,query){return exerciseSearchText(name).incl
 export function exerciseSearchQueries(query){const q=normalizeSearch(query);if(q.length<2)return [query];const found=groups.filter(([label,aliases])=>[label,...aliases,...searchTerms(label)].some(x=>normalizeSearch(x).includes(q)));return [...new Set([query,...found.flatMap(([label,aliases])=>[label,...aliases])])].slice(0,32)}
 
 export function exerciseNames(name){const item=lookup.get(normalizeSearch(name));return item?[item.label,...item.aliases]:[String(name||'Exercice')];}
+
+export function exerciseDisplayName(exercise){return exercise?.customName?exercise.name:exerciseLabel(exercise?.name);}

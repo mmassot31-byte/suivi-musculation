@@ -8,7 +8,7 @@ function glyph(host,name,cls='exercise-icon'){
  const tile=document.createElement('span');tile.className=cls;tile.setAttribute('aria-hidden','true');tile.innerHTML=icon(name);host.prepend(tile);
 }
 function exerciseGlyph(host){
- if(!host||host.querySelector('.exercise-icon'))return;
+ if(!host||host.querySelector('.exercise-icon,.group-exercise-icons'))return;
  const name=host.textContent.trim();if(cardioIconKey({name})){host.insertAdjacentHTML('afterbegin',exercisePrimaryIcon({name}));return}const profile=exerciseProfile({id:name,name});
  let type=profile.equipment;
  if(/kettlebell/i.test(name))type='kettlebell';
@@ -16,7 +16,7 @@ function exerciseGlyph(host){
 }
 function decorate(){
  for(const b of app.querySelectorAll('nav [data-action^="nav:"]')){
-  if(b.querySelector('.ico'))continue;
+  if(b.classList.contains('active'))b.setAttribute('aria-current','page');if(b.querySelector('.ico,.provided-nav-icon'))continue;
   const key=b.dataset.action.slice(4),label=b.textContent.trim().replace(/^[^\p{L}]+/u,'');
   b.innerHTML=icon(key)+`<span>${label}</span>`;
   if(b.classList.contains('active'))b.setAttribute('aria-current','page');

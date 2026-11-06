@@ -147,6 +147,24 @@
     "alternativeKeys": []
   },
   {
+    "id": "library:3e1ad47f3b27fab888d0fee25d23f3d7",
+    "label": "Gainage",
+    "equipment": "bodyweight",
+    "tracking": "mobility",
+    "ids": [
+      "elan-catalogue:plank"
+    ],
+    "names": [
+      "Gainage",
+      "Plank",
+      "Planche abdominale",
+      "Gainage abdominal"
+    ],
+    "alternativeKeys": [
+      "plank"
+    ]
+  },
+  {
     "id": "library:44366f0a60056e5c5d1e4ed9d5bec2db",
     "label": "Curl biceps",
     "equipment": "dumbbell",

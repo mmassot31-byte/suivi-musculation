@@ -24,7 +24,7 @@ const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/s
    await click(action);for(const width of [320,375,390,430]){await page.setViewportSize({width,height:844});await fit(action+' '+width);}
    await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/elan-premium-'+action.replaceAll(':','-')+'.png',fullPage:true});
   }
-  await click('nav:home');await page.waitForFunction(()=>document.querySelectorAll('nav .ico').length===5);assert.equal(await page.locator('nav .ico').count(),5);await page.evaluate(()=>document.documentElement.style.fontSize='125%');await fit('enlarged text');assert.deepEqual(errors,[]);
+  await click('nav:home');await page.waitForFunction(()=>document.querySelectorAll('nav .provided-nav-icon').length===5);assert.equal(await page.locator('nav .provided-nav-icon').count(),5);await page.evaluate(()=>document.documentElement.style.fontSize='125%');await fit('enlarged text');assert.deepEqual(errors,[]);
   console.log('PASS: premium interface 320/375/390/430px, five touch tabs, create/add/adjust/name/save/start, timer, correction, summary/history/progress/volume/body/account/settings/ranking states, reduced motion and larger text; cloud requests isolated. Native iPhone remains unverified.');
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

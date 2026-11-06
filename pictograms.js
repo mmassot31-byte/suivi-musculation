@@ -20,3 +20,6 @@ const cardioNames=new Map(Object.entries({tapis_de_course:['Tapis de course','Ta
 export function cardioIconKey(exercise){return cardioKeys[exercise?.alternativeKey]||cardioNames.get(String(exercise?.name||exercise?.id||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim())||null}
 // First principal in the saved profile is the deterministic visual representative of a compound exercise.
 export function exercisePrimaryIcon(exercise){const cardio=cardioIconKey(exercise);if(cardio)return `<span class="exercise-icon" aria-hidden="true">${renderIcon('cardio/'+cardio,exercise.name||'Cardio','cardio-icon',true)}</span>`;const p=exercise.muscles||defaultProfile(exercise.id),primary=p.primary?.[0];return primary&&muscleIconMap[primary]?`<span class="exercise-icon" aria-hidden="true">${muscleIcon(primary,{decorative:true})}</span>`:''}
+
+// Keep each member represented, including repeated muscles: the group is not a new exercise.
+export function exerciseGroupIcons(workout,group){return `<span class="group-exercise-icons" data-large="${group.members.length>3}" aria-hidden="true">${group.members.map(key=>workout.exercises.find(e=>e.instanceId===key)).filter(Boolean).map(e=>exercisePrimaryIcon(e)||`<span class="exercise-icon">${muscleIcon('unclassified',{decorative:true})}</span>`).join('')}</span>`;}
