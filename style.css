@@ -3584,7 +3584,7 @@ nav br {
 .volume-row-gauge i { display:block;height:100%;background:var(--accent); }
 .volume-target-shortcut { border:0;background:transparent;color:var(--accent);font-size:11px;padding:3px;min-height:44px; }
 .muscle-breakdown>summary { font-size:17px;color:var(--text);font-weight:650; }
-/* One dominant radar series. Secondary exposure is shown as quiet, unconnected rings. */
+/* Session volume: one weighted value per group, one green surface. */
 .muscle-radar-panel { position:relative;padding:12px!important; }
 .radar-top { display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-right:36px;min-height:30px; }
 .radar-top h2 { margin:0;font-size:18px;line-height:1.3;letter-spacing:-.5px; }
@@ -3596,20 +3596,10 @@ nav br {
 .radar-help>summary:focus-visible { outline:2px solid var(--accent);outline-offset:-5px; }
 .radar-help>p { margin:10px 0;line-height:1.55; }
 .muscle-radar { display:block;width:100%;max-width:440px;height:auto;margin:0 auto;overflow:visible; }
-.muscle-radar .radar-axis-label { font-size:13.5px;font-weight:500;fill:var(--muted);letter-spacing:-.1px; }
+.muscle-radar .radar-axis-label { font-size:16px;font-weight:500;fill:var(--muted);letter-spacing:-.1px; }
 .radar-grid { fill:none;stroke:#354039;stroke-width:.7; }
 .radar-spoke { stroke:#303b33;stroke-width:.6; }
 .radar-direct { fill:#c5f2791c;stroke:var(--accent);stroke-width:2;stroke-linejoin:round; }
-.radar-secondary-dot { fill:var(--panel);stroke:#82907f;stroke-width:1; }
-.radar-previous { fill:none;stroke:#a8b2aa;stroke-width:1.3;stroke-dasharray:4 4;stroke-linejoin:round;opacity:.85; }
-.radar-dot { fill:var(--accent);stroke:var(--panel);stroke-width:1; }
-.radar-legend { display:flex;gap:6px 14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin:2px 0 5px; }
-.radar-legend>span { display:inline-flex;gap:5px;align-items:center; }
-.radar-legend .legend-direct { width:14px;height:2px;background:var(--accent);position:relative; }
-.legend-direct::after { content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);position:absolute;top:-1.5px;left:4px; }
-.radar-legend .legend-secondary { width:6px;height:6px;border-radius:50%;border:1px solid #82907f; }
-.radar-legend .legend-comparison { flex-basis:100%; }
-.legend-comparison i { width:17px;height:0;border-top:1px dashed #a8b2aa; }
 .radar-scale { font-size:11px;color:var(--muted);margin:6px 0 1px;line-height:1.4; }
 .radar-detail { margin:6px 0 0; }
 .radar-detail>summary { min-height:44px;font-size:12px; }
@@ -3623,9 +3613,11 @@ nav br {
 .radar-bar-track { display:flex;flex-direction:column;gap:3px;background:var(--surface-inset);border-radius:4px;overflow:hidden; }
 .radar-bar-track i { display:block;height:4px;min-width:0; }
 .radar-direct-bar { background:var(--accent); }
-.radar-secondary-bar { background:#82907f;opacity:.6; }
-.radar-bar-previous { background:transparent; }
-.radar-bar-previous .radar-direct-bar { height:2px;border-top:1px dashed #a8b2aa;background:transparent; }
+.radar-label-guide{stroke:#354039;stroke-width:.7;opacity:.65}
+.muscle-radar .radar-axis-value,.radar-bar-heading .radar-axis-value{fill:var(--accent);color:var(--accent);font-weight:700}
+.radar-bar-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.radar-bar-heading>strong{min-width:0}
+.radar-bar-track i{height:6px}.radar-detail h3{font-size:13px;margin:16px 0 4px}
+.radar-group-detail{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:9px 0;font-size:12px;border-bottom:1px solid var(--line)}.radar-group-detail small{grid-column:1/-1;color:var(--muted);font-size:11px}.radar-group-detail>span{color:var(--accent);font-weight:700}
 .tonnage-details { font-size:13px; }
 @media(max-width:350px) { .radar-detail-head,.radar-detail-row { grid-template-columns:minmax(0,1fr) 52px 72px;gap:5px; } .history-period-stats button { padding:10px;gap:8px; } }
 .keyboard-open .exercise-sheet-link,.keyboard-open #record-target-hint { display:none; }
