@@ -26,10 +26,11 @@ export function createNotifications(accounts){
    if(!data||!['friends','goals','records'].every(k=>Number.isSafeInteger(data[k])&&data[k]>=0))throw Error('Invalid notifications');counts={friends:data.friends,goals:data.goals,records:data.records};error=false;
   }catch{if(uid()===account&&token===generation)error=true;}finally{if(flight===task)flight=null;update();}})();return task.promise;
  }
+ async function refreshAfterAction(){scope();const account=owner;if(flight)await flight.promise;if(uid()===account)return refresh(true);}
  function close(focus=false){opened=false;update();if(focus)document.querySelector('[data-action="notifications-toggle"]')?.focus();}
  async function action(key){if(key==='notifications-toggle'){scope();opened=!opened;update();if(opened)await refresh(true);return true;}if(key==='notifications-close'){close(true);return true;}if(key==='notifications-retry'){await refresh(true);return true;}return false;}
  function schedule(){clearInterval(timer);timer=null;if(document.visibilityState!=='hidden'&&navigator.onLine)timer=setInterval(()=>void refresh(true),30000);}
  function foreground(){scope();schedule();update();if(document.visibilityState!=='hidden')void refresh(true);}
  function start(){if(started)return;started=true;document.addEventListener('visibilitychange',foreground);window.addEventListener('focus',foreground);window.addEventListener('online',foreground);window.addEventListener('offline',foreground);window.addEventListener('pageshow',foreground);window.addEventListener('pagehide',()=>{clearInterval(timer);timer=null;});document.addEventListener('click',e=>{if(opened&&!e.target.closest('[data-action="notifications-toggle"],#notifications-panel'))close();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){e.preventDefault();close(true);}});accounts.onStatus?.(()=>{const changed=owner!==uid();scope();update();if(changed)void refresh(true);});schedule();void refresh(true);}
- return {html,badge,update,refresh,start,close,action};
+ return {html,badge,update,refresh,refreshAfterAction,start,close,action};
 }

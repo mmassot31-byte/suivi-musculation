@@ -7,7 +7,7 @@ Le panneau propose un accès direct aux demandes d’amis, aux défis entre amis
 ## Actualisation et confidentialité
 
 - Contrôle au chargement, au retour au premier plan, au retour de connexion et toutes les 30 secondes lorsque l’application est visible et connectée.
-- Contrôle immédiat après les actions sur les demandes et défis. Les compteurs proviennent de Supabase, sans estimation locale.
+- Contrôle immédiat après les actions sur les demandes et défis. Si une ancienne lecture est encore en cours, une nouvelle lecture suit son résultat pour ne pas réafficher un compteur antérieur à la réponse. Les compteurs proviennent de Supabase, sans estimation locale.
 - Mise à jour ciblée des compteurs et du panneau : aucun rendu complet de la séance, aucun déplacement de contenu, aucun remplacement des champs ni perte de focus.
 - Pas de contrôle périodique lorsque le document est masqué ou hors connexion. Le dernier nombre confirmé reste visible durant une erreur ; le panneau signale l’échec et permet de réessayer. « Aucune invitation » apparaît seulement après une réponse valide à zéro.
 - Mémoire limitée au compte courant, sans stockage persistant de notifications. Une réponse tardive du compte précédent est ignorée ; la déconnexion efface les compteurs.

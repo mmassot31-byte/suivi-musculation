@@ -14,5 +14,7 @@ const assert=require('node:assert/strict');
  accounts.user=null;assert.equal(n.html(),'');assert.match(n.badge('total'),/hidden></);await n.refresh(true);assert.equal(pending.length,before+1);
  accounts.user={id:'A'};assert.match(n.badge('total'),/hidden></,'switching back never reveals a previous account cache');
  r=n.refresh(true);pending.at(-1).resolve({friends:0,goals:0,records:0});await r;assert.match(n.badge('total'),/hidden></);
+ // A delayed poll from before acceptance must not become the final displayed result.
+ const polling=n.refresh(true),stale=pending.at(-1),responding=n.refreshAfterAction();stale.resolve({friends:1,goals:0,records:0});await polling;await Promise.resolve();assert.notEqual(pending.at(-1),stale);pending.at(-1).resolve({friends:0,goals:0,records:0});await responding;assert.match(n.badge('total'),/hidden></);
  console.log('PASS notification state: stale account response ignored, deduplicated requests, logout/relogin isolation, offline/error/invalid-response preservation, real zero and 99+ visual/full accessible count.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
