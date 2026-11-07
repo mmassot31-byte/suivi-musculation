@@ -14,3 +14,10 @@
 
 .profile-home #account-sync[data-synced="true"]::before{content:"✓";color:var(--accent);margin-right:5px}
 .profile-home .profile-options{padding:0;margin:0 0 0 auto;border:0}.profile-home .profile-options>summary{line-height:1}
+/* Competition tabs match the compact Progression bar; other screens are untouched. */
+.competition-shell>.community-page>.social-segmented{display:flex;gap:3px;padding:3px;margin:0 -6px 8px;border:1px solid var(--line);border-radius:15px;background:var(--surface-inset)}
+.competition-shell>.community-page>.social-segmented>button{display:flex;flex:1;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:36px;padding:5px 4px;border:0;border-radius:11px;background:transparent;color:var(--muted);font-size:11px;font-weight:550;line-height:1.2;white-space:normal}
+.competition-shell>.community-page>.social-segmented>button.selected{background:var(--accent-soft);color:var(--accent);border-color:currentColor}
+/* Progression's two-line phone label determines the shared row height. */
+@media(max-width:600px){.competition-shell>.community-page>.social-segmented>button{height:calc(2lh + 10px)}}
+@media(max-width:359px){.competition-shell>.community-page>.social-segmented>button{font-size:10px;gap:3px}}
