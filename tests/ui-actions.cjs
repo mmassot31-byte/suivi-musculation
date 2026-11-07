@@ -24,3 +24,5 @@ exports.journeyClick=(getPage,run)=>async action=>{
  const target=page.locator(`[data-action="${action}"]`).first();if(await target.count())await target.evaluate(el=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true});
  await run(action);if(action==='nav:body'){await page.locator('[data-action="account-body"]').click();await page.locator('#body-metric').waitFor();}await minimise();
 };
+// Initial proposals remain available in the exercise options; the main card shows comparable history only.
+exports.previousText=async page=>{const menu=page.locator('.live-exercise-options'),wasOpen=await menu.evaluate(e=>e.open);if(!wasOpen)await menu.locator('summary').click();const text=await page.locator('.previous-session').innerText();if(!wasOpen)await menu.locator('summary').click();return text};
