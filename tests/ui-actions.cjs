@@ -2,6 +2,13 @@
 exports.journeyClick=(getPage,run)=>async action=>{
  const page=getPage(),minimise=async()=>{const button=page.locator('#rest-dialog[open] [data-action="rest-dismiss"]');if(await button.count()){await button.click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil')}};
  await minimise();
+ if(action.startsWith('progress-tab:')&&!await page.locator(`[data-action="${action}"]`).count()&&await page.locator('[data-action="exercise-back"]').count())await page.locator('[data-action="exercise-back"]').click();
+ // The library now opens a complete sheet before muscle settings.
+ if(action.startsWith('muscle-library:')&&!await page.locator(`[data-action="${action}"]`).count()){
+   const open=page.locator(`[data-action="exercise-open:${action.slice(15)}"]`).first();
+   if(await open.count())await open.click();
+ }
+
  if(action==='close-editor'&&!await page.locator('[data-action="close-editor"]').count()&&await page.locator('[data-action="model-editor-close"]').count())action='model-editor-close';
  if(action==='settings'&&!await page.locator('[data-action="settings"]').count())await page.locator('[data-action="account-open"]').click();
  if(action==='models'&&!await page.locator('[data-action="models"]').count()){await page.locator('[data-action="nav:home"]').click();return}

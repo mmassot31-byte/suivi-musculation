@@ -31,7 +31,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
   });
   const page=await context.newPage();page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));await page.clock.install();await page.goto(process.env.ELAN_TEST_URL||'http://127.0.0.1:4173');return {page,context};
  }
- const click=async(p,action)=>{const el=p.locator(`[data-action="${action}"]`).first();await el.evaluate(e=>{for(let p=e.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;});await el.click();};
+ const click=async(p,action)=>{const el=p.locator(`[data-action="${action}"]`).first();if(action.startsWith('community-goal:')){const summary=el.locator('xpath=ancestor::details[1]/summary');if(!await el.evaluate(e=>e.closest('details').open))await summary.click();}await el.evaluate(e=>{for(let p=e.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;});await el.click();};
  const badge=p=>p.locator('[data-notification-count="total"]');
  const count=async(p,n)=>{await p.waitForFunction(n=>{const el=document.querySelector('[data-notification-count="total"]');return el&&Number(el.textContent)===n&&el.hidden===(n===0);},n);};
  try{
