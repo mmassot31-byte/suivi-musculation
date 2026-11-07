@@ -1,4 +1,4 @@
-import {plannedCardioSeconds} from './cardio-timer.js';
+import {isTimedExercise,plannedPassages,plannedCardioSeconds} from './cardio-timer.js';
 import {isActivity,hasRecorded} from './activity.js';
 import {reviewProgramme} from './programme-review.js';
 import {exerciseProfile,catalogue,prescription,familyName} from './catalogue.js';
@@ -15,17 +15,17 @@ function normalize(t,prefs,remaining=false,sessions=[]){t=clone(t);ensureInstanc
 function syncGroups(t){for(const g of [...t.groups]){const oldIds=new Set(allSteps(g).map(s=>s.id)),updated=configureGroup(t,groupConfig(t,g),true),mapping=new Map();for(const step of updated.steps)if(!oldIds.has(step.id)){const deterministic='program:'+updated.id+':'+step.exerciseKey+':'+step.ordinal;mapping.set(step.id,deterministic);step.id=deterministic}if(mapping.has(updated.cursorStepId))updated.cursorStepId=mapping.get(updated.cursorStepId)}return t}
 export function remainingCount(t,e){const group=groupForExercise(t,e.instanceId);return group?group.steps.filter(s=>s.exerciseKey===e.instanceId&&!stepSet(t,s)).length:Math.max(0,plannedSets(e)-work(e).length)}
 export function estimateDuration(t,prefs,{remaining=false,nowMs=0}={}){
- const tasks=[],lastEnd=new Map(),prepared=new Set(),p=profile=>profile.demand==='high'?prefs.compoundRest:prefs.isolationRest;let time=0,ready=remaining?Math.max(0,((t.restUntil||0)-nowMs)/1000):0,previous=null;
+ const tasks=[],lastEnd=new Map(),prepared=new Set(),timersCounted=new Set(),p=profile=>profile.demand==='high'?prefs.compoundRest:prefs.isolationRest;let time=0,ready=remaining?Math.max(0,((t.restUntil||0)-nowMs)/1000):0,previous=null;
  const add=(kind,seconds,label,key=null)=>{if(seconds>0){tasks.push({kind,seconds:round(seconds),start:round(time),end:round(time+seconds),label,exerciseKey:key});time+=seconds}};
  if(!remaining)add('general',prefs.warmupMinutes*60,'Échauffement général');
  if(remaining)for(const e of t.exercises)if(hasRecorded(e)){prepared.add(e.instanceId);if(work(e).length)lastEnd.set(e.instanceId,0)}
- const blocks=workoutBlocks(t).map(b=>({...b,sequence:exerciseByKey(t,b.members[0]).tracking==='cardio'?[{exerciseKey:b.members[0],round:1,ordinal:0}]:b.group?b.group.steps.filter(s=>!remaining||!stepSet(t,s)):Array.from({length:remaining?remainingCount(t,exerciseByKey(t,b.members[0])):plannedSets(exerciseByKey(t,b.members[0]))},(_,i)=>({exerciseKey:b.members[0],round:i+1,ordinal:i}))})).filter(b=>b.sequence.length);
+ const blocks=workoutBlocks(t).map(b=>({...b,sequence:b.group?b.group.steps.filter(s=>!remaining||!stepSet(t,s)&&s.status!=='skipped'):isTimedExercise(exerciseByKey(t,b.members[0]))?Array.from({length:remaining?Math.max(0,plannedPassages(exerciseByKey(t,b.members[0]))-(exerciseByKey(t,b.members[0]).activityEntries||[]).length):plannedPassages(exerciseByKey(t,b.members[0]))},(_,i)=>({exerciseKey:b.members[0],round:i+1,ordinal:i})):Array.from({length:remaining?remainingCount(t,exerciseByKey(t,b.members[0])):plannedSets(exerciseByKey(t,b.members[0]))},(_,i)=>({exerciseKey:b.members[0],round:i+1,ordinal:i}))})).filter(b=>b.sequence.length);
  for(const [bi,b] of blocks.entries()){
   let sequence=b.sequence;if(remaining&&b.group?.id===t.currentGroupId){const at=sequence.findIndex(s=>s.id===b.group.cursorStepId);if(at>0)sequence=[...sequence.slice(at),...sequence.slice(0,at)]}
   for(let si=0;si<sequence.length;si++){
    const step=sequence[si],e=exerciseByKey(t,step.exerciseKey),profile=exerciseProfile(e,prefs),rest=Number.isFinite(e.rest)?e.rest:p(profile);
    if(previous&&previous!==e.instanceId){const old=exerciseByKey(t,previous),same=exerciseProfile(old,prefs).equipment===profile.equipment&&['dumbbell','barbell','bodyweight'].includes(profile.equipment);add('transition',same?20:prefs.transitionSeconds,'Changement vers '+e.name,e.instanceId)}
-   if(e.tracking==='cardio'){const seconds=remaining?(e.cardioTimer?.status==='finished'?0:e.cardioTimer?Math.max(0,e.cardioTimer.status==='running'?(e.cardioTimer.deadline-(nowMs||Date.now()))/1000:e.cardioTimer.remainingMs/1000):plannedCardioSeconds(e)):plannedCardioSeconds(e);add('cardio',seconds,e.name,e.instanceId);previous=e.instanceId;continue}
+   if(isTimedExercise(e)){const timer=e.cardioTimer,running=remaining&&timer&&timer.status!=='finished'&&!timersCounted.has(e.instanceId);const seconds=running?Math.max(0,timer.status==='running'?(timer.deadline-(nowMs||Date.now()))/1000:timer.remainingMs/1000):plannedCardioSeconds(e);timersCounted.add(e.instanceId);add('rest',Math.max(0,ready-time),'Récupération avant '+e.name,e.instanceId);add('cardio',seconds,e.name,e.instanceId);previous=e.instanceId;const next=sequence[si+1];ready=b.group&&(next||bi<blocks.length-1)?time+(next&&next.round===step.round?b.group.restBetween:b.group.restAfter):time;continue}
    if(!prepared.has(e.instanceId)){
     add('setup',prefs.setupSeconds,'Installation · '+e.name,e.instanceId);
     const prep=Number.isInteger(e.preparationSets)?e.preparationSets:profile.demand==='high'?2:1;
