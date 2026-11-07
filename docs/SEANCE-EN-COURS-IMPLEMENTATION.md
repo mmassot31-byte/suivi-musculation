@@ -43,7 +43,7 @@ Aucun changement de format, aucune migration Supabase et aucune modification des
 - Séries supplémentaires, rechargement et reprise, fin de séance confirmée ou annulée et conservation du modèle original.
 - Noms de séance et d’exercice longs, débordement horizontal et hauteur limitée de l’en-tête compact.
 - Zones sûres simulées : 44 px en haut et 22 px sur les côtés ; le logo et le bandeau restent dégagés.
-- Viewport simulant un clavier iOS : hauteur visible 390 px, décalage supérieur 45 px et zone sûre supérieure 44 px simultanés, navigation masquée, champ dégagé et validation ne recouvrant ni les +/− ni le repos.
+- Viewport simulant un clavier iOS : hauteur visible 390 px, décalage supérieur 45 px et zones sûres de 44 px en haut / 34 px en bas simultanées, navigation masquée, champ dégagé et validation ne recouvrant ni les +/− ni le repos.
 - Non-régression : groupes A-B-A-B-A, tri-sets et modes tournants, corrections, stockage/retry/double validation, import/export, historique, statistiques, communauté et cache hors connexion.
 
 Les [captures de contrôle](verification-seance-en-cours/) utilisent des données de test locales. **Safari sur iPhone physique et le mode installé iOS n’étaient pas disponibles.** WebKit Linux et la simulation du viewport ne permettent pas de déclarer le clavier iOS réel testé.
