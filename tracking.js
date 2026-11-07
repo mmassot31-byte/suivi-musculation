@@ -1,8 +1,9 @@
+import {recordedSetTonnage} from './load-conventions.js';
 // Dates are calendar days on the device, never UTC slices.
 export function dayKey(value=new Date()){const d=new Date(value);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 export function validDay(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;return dayKey(new Date(value+'T12:00:00'))===value}
 export function dayOffset(value,amount){const d=new Date(value+'T12:00:00');d.setDate(d.getDate()+amount);return dayKey(d)}
-export function tonnage(session){return session.exercises.reduce((sum,e)=>sum+(e.sets||[]).filter(s=>s.type!=='warmup').reduce((n,s)=>n+s.w*s.r+(s.drops||[]).reduce((a,d)=>a+d.w*d.r,0),0),0)}
+export function tonnage(session){return session.exercises.reduce((sum,e)=>sum+(e.sets||[]).filter(s=>s.type!=='warmup').reduce((n,s)=>n+recordedSetTonnage(s),0),0)}
 export function completedSessions(sessions){return sessions.filter(s=>s.exercises.some(e=>(e.sets||[]).length))}
 export function homeCounts(sessions,today=dayKey()){const completed=completedSessions(sessions).filter(s=>dayKey(s.date)<=today),start=dayOffset(today,-6);return {completed:completed.length,recent:completed.filter(s=>dayKey(s.date)>=start).length,sets:completed.reduce((n,s)=>n+s.exercises.reduce((sum,e)=>sum+(e.sets||[]).filter(set=>set.type!=='warmup').length,0),0)}}
 export function attendance(sessions,today=dayKey()){const entries=completedSessions(sessions).filter(s=>dayKey(s.date)<=today),start=dayOffset(today,-27);return {total:entries.length,year:entries.filter(s=>dayKey(s.date).slice(0,4)===today.slice(0,4)).length,month:entries.filter(s=>dayKey(s.date).slice(0,7)===today.slice(0,7)).length,weekly:entries.filter(s=>dayKey(s.date)>=start).length/4}}

@@ -1,7 +1,8 @@
-import {loadIdentity} from './identity.js';
+import {sameExerciseReference} from './exercise-reference.js';
+import {loadIdentity,sameLoadIdentity} from './identity.js';
 import {dayOffset} from './tracking.js';
 export const workSets=e=>e.sets.filter(s=>s.type!=='warmup');
-export function previousExercise(sessions,e,before=null,index=0){return sessions.filter(s=>!before||s.date<before).flatMap(s=>s.exercises.filter(x=>x.id===e.id&&x.convention===e.convention&&workSets(x).length>index&&(!(x.laterality||e.laterality)||loadIdentity(x,workSets(x)[index]).lateralMode===loadIdentity(e).lateralMode)).map(x=>({e:x,date:s.date}))).sort((a,b)=>b.date.localeCompare(a.date))[0]}
+export function previousExercise(sessions,e,before=null,index=0){return sessions.filter(s=>!before||s.date<before).flatMap(s=>s.exercises.filter(x=>sameExerciseReference(x,e)&&workSets(x).length>index&&(sameLoadIdentity(e,x,null,workSets(x)[index])||!e.chargeProtocol&&!x.chargeProtocol&&x.convention===e.convention&&(!(x.laterality||e.laterality)||loadIdentity(x,workSets(x)[index]).lateralMode===loadIdentity(e).lateralMode))).map(x=>({e:x,date:s.date}))).sort((a,b)=>b.date.localeCompare(a.date))[0]}
 export function nextProposal(sessions,e,ordinal=null){const index=ordinal??workSets(e).length,last=previousExercise(sessions,e,null,index),record=last&&workSets(last.e)[index];if(record)return {w:record.w,r:record.r,source:'previous',date:last.date,index};const ref=!e.refsAreTargets&&e.refs[index];return ref&&!ref.placeholder?{...ref,source:'reference',index}:{w:'',r:'',source:'none',index}}
 export function dailyWeights(records){const byDay=new Map();for(const m of records)if(Number.isFinite(m.values.weight)&&m.values.weight>0&&!byDay.has(m.date))byDay.set(m.date,{id:m.id,date:m.date,value:m.values.weight});return [...byDay.values()].sort((a,b)=>a.date.localeCompare(b.date))}
 export function rollingWeight(records){const points=dailyWeights(records);return points.map(p=>{const start=dayOffset(p.date,-13),window=points.filter(x=>x.date>=start&&x.date<=p.date);return {...p,value:window.reduce((n,x)=>n+x.value,0)/window.length,days:window.length}})}

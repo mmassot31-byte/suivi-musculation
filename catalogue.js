@@ -1,6 +1,6 @@
 import {previousExercise,workSets} from './performance.js';
 import {defaultProfile} from './muscles.js';
-export const equipmentTypes=[['machine','Machines personnelles'],['cable','Poulies'],['dumbbell','Haltères'],['barbell','Barre'],['bodyweight','Poids du corps']];
+export const equipmentTypes=[['machine','Machines personnelles'],['cable','Poulies'],['dumbbell','Haltères'],['barbell','Barre'],['bodyweight','Poids du corps'],['smith','Smith'],['ezbar','Barre EZ'],['trapbar','Trap bar'],['kettlebell','Kettlebell'],['band','Élastique'],['bench','Banc'],['landmine','Landmine'],['plate','Disque'],['accessory','Accessoire'],['cardio','Cardio'],['ball','Ballon'],['medicineball','Médecine-ball'],['box','Box'],['sled','Traîneau'],['ropes','Cordes']];
 export const movementTypes=[['knee','Dominante genou'],['hinge','Charnière de hanche'],['hip','Extension de hanche'],['knee_flexion','Flexion du genou'],['push_horizontal','Poussée horizontale'],['push_vertical','Poussée verticale'],['pull_horizontal','Tirage horizontal'],['pull_vertical','Tirage vertical'],['lateral','Abduction d’épaule'],['rear','Arrière d’épaule'],['elbow_flexion','Flexion du coude'],['elbow_extension','Extension du coude'],['calves','Mollets'],['adduction','Adduction'],['unknown','À préciser']];
 const definitions=[
  [['Pendulum squat'],'squat','knee','machine','high','genou'],

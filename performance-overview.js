@@ -1,3 +1,5 @@
+import {sameExerciseReference} from './exercise-reference.js';
+import {isAssisted} from './load-conventions.js';
 // Read-only overview. Comparisons reuse recorded work, identity and anatomical helpers.
 import {progressOverviewModel,progressOverviewHtml,savedActivity,escapeHtml,durationLabel} from './design-ui.js';
 import {recordedSets,segments} from './achievements.js';
@@ -17,14 +19,13 @@ const broad=id=>id==='chest'?'chest':['lats','upper_back','traps','erectors'].in
 export function overviewMuscleVolume(sessions){
  const totals=Object.fromEntries(overviewMuscles.map(([id])=>[id,0])),seenSessions=new Set();
  for(const s of sessions){if(s.id&&seenSessions.has(s.id))continue;if(s.id)seenSessions.add(s.id);const seen=new Set();
-  for(const e of s.exercises||[]){const sets=(e.sets||[]).filter(x=>{if(!validRadarSet(x)||x.id&&seen.has(x.id))return false;if(x.id)seen.add(x.id);return true}),p=weeklyProfile(anatomicalProfile(e)),primary=new Set(p.primary.map(broad).filter(Boolean)),secondary=new Set(p.secondary.map(broad).filter(Boolean));
-   for(const id of primary)totals[id]+=sets.length;
-   for(const id of secondary)if(!primary.has(id))totals[id]+=.5*sets.length;
+  for(const e of s.exercises||[]){const sets=(e.sets||[]).filter(x=>{if(!validRadarSet(x)||x.id&&seen.has(x.id))return false;if(x.id)seen.add(x.id);return true}),unused=null;for(const st of sets){const p=weeklyProfile(anatomicalProfile(st.exerciseReference||e)),primary=new Set(p.primary.map(broad).filter(Boolean)),secondary=new Set(p.secondary.map(broad).filter(Boolean));for(const id of primary)totals[id]++;for(const id of secondary)if(!primary.has(id))totals[id]+=.5;}
   }
  }return totals;
 }
 export function comparableTrend(exercise,sessions){
- const occurrences=sessions.map(s=>({s,sets:(s.exercises||[]).filter(e=>e.id===exercise.id).flatMap(e=>recordedSets(e).filter(x=>!x.drops?.length&&x.w>0&&sameLoadIdentity(exercise,e,null,x)))})).filter(x=>x.sets.length).sort((a,b)=>Date.parse(a.s.date)-Date.parse(b.s.date));
+ if(isAssisted(exercise)||exercise.measurement==='bodyweight')return null;
+ const occurrences=sessions.map(s=>({s,sets:(s.exercises||[]).filter(e=>sameExerciseReference(e,exercise)).flatMap(e=>recordedSets(e).filter(x=>!x.drops?.length&&x.w>0&&sameLoadIdentity(exercise,e,null,x)))})).filter(x=>x.sets.length).sort((a,b)=>Date.parse(a.s.date)-Date.parse(b.s.date));
  if(occurrences.length<2)return null;
  const first=occurrences[0],last=occurrences.at(-1);
  if(Date.parse(first.s.date)>=Date.parse(last.s.date))return null;
@@ -38,8 +39,8 @@ export function performanceDashboardModel(state,{today=dayKey(),days=30}={}){
  const model=progressOverviewModel(state,today,days),start=dayOffset(today,1-days),previousStart=dayOffset(start,-days),all=savedActivity(state.sessions,state.active?.id,today),previous=all.filter(s=>dayKey(s.date)>=previousStart&&dayKey(s.date)<start);
  const trends=model.exercises.map(x=>({...x,trend:x.data?comparableTrend(x.data.exercise,model.recent):null}));
  const comparable=trends.filter(x=>x.trend),global=comparable.length?comparable.reduce((n,x)=>n+x.trend.percent,0)/comparable.length:null;
- const chartCandidates=trends.filter(x=>new Set(x.points.map(p=>p.time)).size>=2),featured=chartCandidates.find(x=>x.trend?.percent>0)||chartCandidates[0]||null;
- let chart=null;if(featured){const reference=featured.data.exercise,sets=model.recent.flatMap(s=>s.exercises.filter(e=>e.id===reference.id).flatMap(e=>segments({...e,sets:recordedSets(e).filter(x=>sameLoadIdentity(reference,e,null,x))}))),best=sets.reduce((a,b)=>!a||b.w>a.w||b.w===a.w&&b.r>a.r?b:a,null);chart={...featured,chartPoints:featured.trend?.points||featured.points,best,maxLoad:sets.length?Math.max(...sets.map(x=>x.w)):null};}
+ const chartCandidates=trends.filter(x=>!isAssisted(x.data?.exercise)&&x.exercise?.measurement!=='bodyweight'&&new Set(x.points.map(p=>p.time)).size>=2),featured=chartCandidates.find(x=>x.trend?.percent>0)||chartCandidates[0]||null;
+ let chart=null;if(featured&&!isAssisted(featured.data.exercise)){const reference=featured.data.exercise,sets=model.recent.flatMap(s=>s.exercises.filter(e=>sameExerciseReference(e,reference)).flatMap(e=>segments({...e,sets:recordedSets(e).filter(x=>sameLoadIdentity(reference,e,null,x))}))),best=sets.reduce((a,b)=>!a||b.w>a.w||b.w===a.w&&b.r>a.r?b:a,null);chart={...featured,chartPoints:featured.trend?.points||featured.points,best,maxLoad:sets.length?Math.max(...sets.map(x=>x.w)):null};}
  const currentVolume=overviewMuscleVolume(model.recent),previousVolume=overviewMuscleVolume(previous),muscles=overviewMuscles.map(([id,label,picto])=>({id,label,picto,current:currentVolume[id],previous:previousVolume[id],percent:previousVolume[id]>0?(currentVolume[id]/previousVolume[id]-1)*100:null}));
  return{...model,days,start,previousStart,global,comparable:comparable.length,chart,muscles};
 }

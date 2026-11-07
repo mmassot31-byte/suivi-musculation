@@ -3880,3 +3880,8 @@ nav br {
 
 /* Social record detail and encouragements stay within the existing feed/bell. */
 .feed-records{margin:12px 0}.feed-records>h3{display:flex;align-items:center;gap:7px}.feed-records .ico{color:var(--accent)}.feed-record{display:grid;gap:5px;padding:12px;margin:8px 0;border:1px solid var(--accent);border-radius:14px;background:#24331b}.feed-record>b,.feed-record em{color:var(--accent)}.feed-record>span,.feed-record small{font-size:12px;color:var(--muted)}.feed-record p{font-size:13px;margin:0}.feed-record em{font-style:normal;white-space:nowrap;margin-left:8px}.notification-encouragement-title{font-size:14px;margin:14px 0 6px}.notification-encouragement{display:flex;flex-direction:column;gap:5px;width:100%;min-height:48px;margin:5px 0;padding:10px;text-align:left;font-size:13px;line-height:1.4;overflow-wrap:anywhere;white-space:normal}.notification-encouragement.unread{border-color:var(--accent);background:#25361c}.notification-encouragement time{font-size:11px;color:var(--muted)}
+
+/* Fixed exercise variants use the existing picker/card styles. */
+.entry.entry-bodyweight{grid-template-columns:minmax(0,1fr)}.entry-bodyweight .number-box[hidden]{display:none!important}#picker-suggestions{margin:6px 0}#picker-suggestions button{white-space:normal;text-align:left;overflow-wrap:anywhere}.library-private-label{color:var(--muted);font-size:11px}
+
+.entry-bodyweight > [hidden] { display: none !important; }

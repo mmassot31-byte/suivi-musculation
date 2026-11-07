@@ -1,0 +1,1978 @@
+[
+  {
+    "id": "elan-catalogue:barbell-squat",
+    "instanceId": "catalogue:barbell-squat",
+    "name": "Squat à la barre",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": [
+        "glutes",
+        "adductors"
+      ]
+    },
+    "familyId": "squat",
+    "family": "squat",
+    "movement": "knee",
+    "equipment": "barbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "barbell-squat",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:9f9bd5a1703a89d0b7b58eba4f66c6f1",
+    "label": "Squat à la barre",
+    "aliases": [
+      "Squat à la barre"
+    ]
+  },
+  {
+    "id": "elan-catalogue:belt-squat",
+    "instanceId": "catalogue:belt-squat",
+    "name": "Belt squat",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": [
+        "glutes"
+      ]
+    },
+    "familyId": "squat",
+    "family": "squat",
+    "movement": "knee",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "belt-squat",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:fc8609027e08b8f1e4669f07f6b525c8",
+    "label": "Belt squat",
+    "aliases": [
+      "Belt squat"
+    ]
+  },
+  {
+    "id": "elan-catalogue:bulgarian",
+    "instanceId": "catalogue:bulgarian",
+    "name": "Fentes bulgares",
+    "note": "",
+    "convention": "Par haltère",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "laterality": "unilateral",
+    "loadIdentity": {
+      "version": 1,
+      "unit": "kg",
+      "convention": "Par haltère",
+      "lateralMode": "one-side",
+      "source": "preset"
+    },
+    "muscles": {
+      "primary": [
+        "quads",
+        "glutes"
+      ],
+      "secondary": [
+        "adductors"
+      ]
+    },
+    "familyId": "split_squat",
+    "family": "split_squat",
+    "movement": "knee",
+    "equipment": "dumbbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "bulgarian",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:8b441a4ac8f23e655ab783e815df6a9c",
+    "label": "Fentes bulgares",
+    "aliases": [
+      "Fentes bulgares",
+      "Bulgarian split squat",
+      "Bulgarian squat"
+    ]
+  },
+  {
+    "id": "elan-catalogue:leg-press",
+    "instanceId": "catalogue:leg-press",
+    "name": "Presse à cuisses",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": [
+        "glutes",
+        "adductors"
+      ]
+    },
+    "familyId": "leg_press",
+    "family": "leg_press",
+    "movement": "knee",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "leg-press",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:fe5ea00bf28326ffb3c52d906f40c23f",
+    "label": "Presse à cuisses",
+    "aliases": [
+      "Presse à cuisses",
+      "Leg press"
+    ]
+  },
+  {
+    "id": "elan-catalogue:good-morning",
+    "instanceId": "catalogue:good-morning",
+    "name": "Good morning",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "hamstrings"
+      ],
+      "secondary": [
+        "glutes",
+        "erectors"
+      ]
+    },
+    "familyId": "hinge",
+    "family": "hinge",
+    "movement": "hinge",
+    "equipment": "barbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "good-morning",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:1199ecdcddb37352ab087f954875252f",
+    "label": "Good morning",
+    "aliases": [
+      "Good morning"
+    ]
+  },
+  {
+    "id": "elan-catalogue:abductor",
+    "instanceId": "catalogue:abductor",
+    "name": "Abducteurs à la machine",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "abductors"
+      ],
+      "secondary": []
+    },
+    "familyId": "abductor",
+    "family": "abductor",
+    "movement": "hip",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "abductor",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:6844aaf62e5a9285941477f50684188b",
+    "label": "Abducteurs à la machine",
+    "aliases": [
+      "Abducteurs à la machine"
+    ]
+  },
+  {
+    "id": "elan-catalogue:reverse-fly",
+    "instanceId": "catalogue:reverse-fly",
+    "name": "Écarté inversé à la machine",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "rear_delts"
+      ],
+      "secondary": [
+        "upper_back"
+      ]
+    },
+    "familyId": "rear_raise",
+    "family": "rear_raise",
+    "movement": "rear",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "reverse-fly",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:b6ff3baa128a60b402adbc1ed0393b4f",
+    "label": "Écarté inversé à la machine",
+    "aliases": [
+      "Écarté inversé à la machine",
+      "Machine reverse fly",
+      "Reverse pec deck"
+    ]
+  },
+  {
+    "id": "elan-catalogue:shoulder-internal",
+    "instanceId": "catalogue:shoulder-internal",
+    "name": "Rotation interne de l’épaule",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "laterality": "unilateral",
+    "loadIdentity": {
+      "version": 1,
+      "unit": "kg",
+      "convention": "Total",
+      "lateralMode": "one-side",
+      "source": "preset"
+    },
+    "muscles": {
+      "primary": [
+        "front_delts"
+      ],
+      "secondary": []
+    },
+    "familyId": "shoulder_rotation",
+    "family": "shoulder_rotation",
+    "movement": "rear",
+    "equipment": "cable",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "shoulder-internal",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:9a95c8692abc79690ed6219326067ed7",
+    "label": "Rotation interne de l’épaule",
+    "aliases": [
+      "Rotation interne de l’épaule",
+      "Shoulder internal rotation"
+    ]
+  },
+  {
+    "id": "elan-catalogue:shoulder-external",
+    "instanceId": "catalogue:shoulder-external",
+    "name": "Rotation externe de l’épaule",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "laterality": "unilateral",
+    "loadIdentity": {
+      "version": 1,
+      "unit": "kg",
+      "convention": "Total",
+      "lateralMode": "one-side",
+      "source": "preset"
+    },
+    "muscles": {
+      "primary": [
+        "rear_delts"
+      ],
+      "secondary": []
+    },
+    "familyId": "shoulder_rotation",
+    "family": "shoulder_rotation",
+    "movement": "rear",
+    "equipment": "cable",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "shoulder-external",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:4f6d973e9e51706846517bb27df9a646",
+    "label": "Rotation externe de l’épaule",
+    "aliases": [
+      "Rotation externe de l’épaule",
+      "Shoulder external rotation"
+    ]
+  },
+  {
+    "id": "elan-catalogue:step-up",
+    "instanceId": "catalogue:step-up",
+    "name": "Montées sur banc",
+    "note": "",
+    "convention": "Par haltère",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "laterality": "unilateral",
+    "loadIdentity": {
+      "version": 1,
+      "unit": "kg",
+      "convention": "Par haltère",
+      "lateralMode": "one-side",
+      "source": "preset"
+    },
+    "muscles": {
+      "primary": [
+        "quads",
+        "glutes"
+      ],
+      "secondary": []
+    },
+    "familyId": "step_up",
+    "family": "step_up",
+    "movement": "knee",
+    "equipment": "dumbbell",
+    "demand": "moderate",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "step-up",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:c8b2fd6ce891289579d8e36f0f149507",
+    "label": "Montées sur banc",
+    "aliases": [
+      "Montées sur banc"
+    ]
+  },
+  {
+    "id": "elan-catalogue:barbell-rdl",
+    "instanceId": "catalogue:barbell-rdl",
+    "name": "Soulevé de terre roumain à la barre",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "hamstrings"
+      ],
+      "secondary": [
+        "glutes",
+        "erectors"
+      ]
+    },
+    "familyId": "rdl",
+    "family": "rdl",
+    "movement": "hinge",
+    "equipment": "barbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "barbell-rdl",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:593751fb42fe80e888ec4a29b2039c74",
+    "label": "Soulevé de terre roumain à la barre",
+    "aliases": [
+      "Soulevé de terre roumain à la barre"
+    ]
+  },
+  {
+    "id": "elan-catalogue:plank",
+    "instanceId": "catalogue:plank",
+    "name": "Gainage",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "mobility",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [
+        "abs"
+      ],
+      "secondary": []
+    },
+    "familyId": "core_isometric",
+    "family": "core_isometric",
+    "movement": "unknown",
+    "equipment": "bodyweight",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "plank",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:3e1ad47f3b27fab888d0fee25d23f3d7",
+    "label": "Gainage",
+    "aliases": [
+      "Gainage",
+      "Plank",
+      "Planche abdominale",
+      "Gainage abdominal"
+    ]
+  },
+  {
+    "id": "elan-catalogue:shoulder-pails",
+    "instanceId": "catalogue:shoulder-pails",
+    "name": "PAILs / RAILs · épaule",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "mobility",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "familyId": "mobility",
+    "family": "mobility",
+    "movement": "unknown",
+    "equipment": "bodyweight",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "shoulder-pails",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:10cb46c5199285a9e38ec3b9ef2910ca",
+    "label": "PAILs / RAILs · épaule",
+    "aliases": [
+      "PAILs / RAILs · épaule",
+      "PAILs",
+      "RAILs",
+      "pals",
+      "raill",
+      "Shoulder mobility"
+    ]
+  },
+  {
+    "id": "elan-catalogue:treadmill",
+    "instanceId": "catalogue:treadmill",
+    "name": "Tapis de course",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "cardio",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "familyId": "cardio",
+    "family": "cardio",
+    "movement": "unknown",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "treadmill",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:ee85ccf801ec792cc7e2898477417b99",
+    "label": "Tapis de course",
+    "aliases": [
+      "Tapis de course",
+      "Treadmill",
+      "Tapis"
+    ]
+  },
+  {
+    "id": "elan-catalogue:bike",
+    "instanceId": "catalogue:bike",
+    "name": "Vélo",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "cardio",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "familyId": "cardio",
+    "family": "cardio",
+    "movement": "unknown",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "bike",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:7964cf805d91173d5ae526eae3b20bfd",
+    "label": "Vélo",
+    "aliases": [
+      "Vélo",
+      "Bike",
+      "Stationary bike"
+    ]
+  },
+  {
+    "id": "elan-catalogue:elliptical",
+    "instanceId": "catalogue:elliptical",
+    "name": "Vélo elliptique",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "cardio",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "familyId": "cardio",
+    "family": "cardio",
+    "movement": "unknown",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "elliptical",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:bf930429873502d7ddfdfb7963d569c9",
+    "label": "Vélo elliptique",
+    "aliases": [
+      "Vélo elliptique",
+      "Elliptical",
+      "Cross trainer"
+    ]
+  },
+  {
+    "id": "elan-catalogue:rowing",
+    "instanceId": "catalogue:rowing",
+    "name": "Rameur",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 0,
+    "sets": [],
+    "tracking": "cardio",
+    "counter": "duration",
+    "activityEntries": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "familyId": "cardio",
+    "family": "cardio",
+    "movement": "unknown",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "rowing",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:7e8026d83ed97879861118c8573640d4",
+    "label": "Rameur",
+    "aliases": [
+      "Rameur",
+      "Rowing machine",
+      "Ergometer"
+    ]
+  },
+  {
+    "id": "elan-catalogue:goblet-squat",
+    "instanceId": "catalogue:goblet-squat",
+    "name": "Goblet squat avec haltère",
+    "note": "",
+    "convention": "Par haltère",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": [
+        "glutes",
+        "adductors"
+      ]
+    },
+    "familyId": "goblet_squat",
+    "family": "goblet_squat",
+    "movement": "knee",
+    "equipment": "dumbbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "goblet-squat",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:aace1cfecbe5829f27651edf98d4418a",
+    "label": "Goblet squat avec haltère",
+    "aliases": [
+      "Goblet squat avec haltère"
+    ]
+  },
+  {
+    "id": "elan-catalogue:standing-calf",
+    "instanceId": "catalogue:standing-calf",
+    "name": "Mollets debout au poids du corps",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "calves"
+      ],
+      "secondary": []
+    },
+    "familyId": "calf_raise",
+    "family": "calf_raise",
+    "movement": "calves",
+    "equipment": "bodyweight",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "standing-calf",
+    "prescription": {
+      "repMin": 10,
+      "repMax": 20,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:00e4da5f80255253c72c677112e10ff8",
+    "label": "Mollets debout au poids du corps",
+    "aliases": [
+      "Mollets debout au poids du corps"
+    ]
+  },
+  {
+    "id": "elan-catalogue:db-rdl",
+    "instanceId": "catalogue:db-rdl",
+    "name": "Soulevé de terre roumain aux haltères",
+    "note": "",
+    "convention": "Par haltère",
+    "step": 2.5,
+    "rest": 180,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "hamstrings"
+      ],
+      "secondary": [
+        "glutes",
+        "erectors"
+      ]
+    },
+    "familyId": "rdl",
+    "family": "rdl",
+    "movement": "hinge",
+    "equipment": "dumbbell",
+    "demand": "high",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "db-rdl",
+    "prescription": {
+      "repMin": 6,
+      "repMax": 10,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:a8257b66d7ca19dc3b3af5a655f4dabe",
+    "label": "Soulevé de terre roumain aux haltères",
+    "aliases": [
+      "Soulevé de terre roumain aux haltères"
+    ]
+  },
+  {
+    "id": "elan-catalogue:leg-curl",
+    "instanceId": "catalogue:leg-curl",
+    "name": "Leg curl · machine à identifier",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "hamstrings"
+      ],
+      "secondary": []
+    },
+    "familyId": "leg_curl",
+    "family": "leg_curl",
+    "movement": "knee_flexion",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "leg-curl",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:5cd7752cff8a1fbe18801a45fb4c75c7",
+    "label": "Flexion des jambes",
+    "aliases": [
+      "Leg curl · machine à identifier"
+    ]
+  },
+  {
+    "id": "elan-catalogue:leg-extension",
+    "instanceId": "catalogue:leg-extension",
+    "name": "Leg extension · machine à identifier",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": []
+    },
+    "familyId": "leg_extension",
+    "family": "leg_extension",
+    "movement": "knee",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "leg-extension",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:afc5ded2442b0af7cd7d062163bb8809",
+    "label": "Extension des jambes",
+    "aliases": [
+      "Leg extension · machine à identifier"
+    ]
+  },
+  {
+    "id": "elan-catalogue:db-row",
+    "instanceId": "catalogue:db-row",
+    "name": "Rowing unilatéral avec haltère",
+    "note": "",
+    "convention": "Par haltère",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "upper_back"
+      ],
+      "secondary": [
+        "lats",
+        "biceps",
+        "rear_delts"
+      ]
+    },
+    "familyId": "row",
+    "family": "row",
+    "movement": "pull_horizontal",
+    "equipment": "dumbbell",
+    "demand": "moderate",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "db-row",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:309447bb01c6233b1b50adcffca0a7af",
+    "label": "Rowing unilatéral avec haltère",
+    "aliases": [
+      "Rowing unilatéral avec haltère"
+    ]
+  },
+  {
+    "id": "elan-catalogue:pushup",
+    "instanceId": "catalogue:pushup",
+    "name": "Pompes",
+    "note": "",
+    "convention": "Total",
+    "step": 2.5,
+    "rest": 120,
+    "auto": false,
+    "refs": [],
+    "refsAreTargets": true,
+    "plannedSets": 2,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": [
+        "front_delts",
+        "triceps"
+      ]
+    },
+    "familyId": "pushup",
+    "family": "pushup",
+    "movement": "push_horizontal",
+    "equipment": "bodyweight",
+    "demand": "moderate",
+    "variant": "nouveau matériel personnel",
+    "catalogueSource": "alternative",
+    "alternativeKey": "pushup",
+    "prescription": {
+      "repMin": 8,
+      "repMax": 15,
+      "effort": "Garder des répétitions possibles ; l’échec n’est pas obligatoire.",
+      "source": "practical"
+    },
+    "publicId": "library:ec6410ef408f3147417d5b3278e3f495",
+    "label": "Pompes",
+    "aliases": [
+      "Pompes"
+    ]
+  },
+  {
+    "id": "Pendulum squat",
+    "name": "Pendulum squat",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "quads"
+      ],
+      "secondary": [
+        "glutes",
+        "adductors"
+      ]
+    },
+    "family": "squat",
+    "movement": "knee",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "genou",
+    "publicId": "library:6c64d4728ec00462d9702df8c9542bce",
+    "label": "Pendulum squat",
+    "aliases": [
+      "Pendulum squat",
+      "Squat pendulaire"
+    ]
+  },
+  {
+    "id": "Machine à mollets",
+    "name": "Machine à mollets",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "calves"
+      ],
+      "secondary": []
+    },
+    "family": "calf_raise",
+    "movement": "calves",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "mollets",
+    "publicId": "library:c880bee09eb1e3b007fd1d4a65458ecf",
+    "label": "Machine à mollets",
+    "aliases": [
+      "Machine à mollets"
+    ]
+  },
+  {
+    "id": "Hip thrust",
+    "name": "Hip thrust",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "alternative": {
+      "id": "Glute bridge",
+      "name": "Glute bridge",
+      "note": "",
+      "convention": "Valeur indiquée (à préciser)",
+      "step": 2.5,
+      "rest": 90,
+      "auto": false,
+      "refs": [],
+      "plannedSets": 2,
+      "refsAreTargets": true,
+      "sets": []
+    },
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "glutes"
+      ],
+      "secondary": [
+        "hamstrings"
+      ]
+    },
+    "family": "hip_thrust",
+    "movement": "hip",
+    "equipment": "machine",
+    "demand": "moderate",
+    "variant": "hanche",
+    "publicId": "library:05ce1f475759ef83c9b5bae547159185",
+    "label": "Extension de hanche",
+    "aliases": [
+      "Extension de hanche",
+      "Hip thrust"
+    ]
+  },
+  {
+    "id": "Glute bridge",
+    "name": "Glute bridge",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "glutes"
+      ],
+      "secondary": [
+        "hamstrings"
+      ]
+    },
+    "family": "hip_thrust",
+    "movement": "hip",
+    "equipment": "machine",
+    "demand": "moderate",
+    "variant": "hanche",
+    "publicId": "library:c066a0c16d1f7d1dbf5f92f47298c6bb",
+    "label": "Pont fessier",
+    "aliases": [
+      "Pont fessier",
+      "Glute bridge"
+    ]
+  },
+  {
+    "id": "Back extension machine",
+    "name": "Back extension machine",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [],
+      "secondary": []
+    },
+    "family": "back_extension",
+    "movement": "unknown",
+    "equipment": "machine",
+    "demand": "unknown",
+    "variant": "à préciser",
+    "publicId": "library:5c916330d03aa3b4fb737d5cdfc1ec43",
+    "label": "Extension du dos à la machine",
+    "aliases": [
+      "Extension du dos à la machine",
+      "Back extension machine"
+    ]
+  },
+  {
+    "id": "Adducteurs",
+    "name": "Adducteurs",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "adductors"
+      ],
+      "secondary": []
+    },
+    "family": "adductor",
+    "movement": "adduction",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "adduction",
+    "publicId": "library:36d7b72ca54be83fd08d004f35d10284",
+    "label": "Adducteurs",
+    "aliases": [
+      "Adducteurs"
+    ]
+  },
+  {
+    "id": "Shoulder press",
+    "name": "Shoulder press",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "front_delts"
+      ],
+      "secondary": [
+        "side_delts",
+        "triceps"
+      ]
+    },
+    "family": "overhead_press",
+    "movement": "push_vertical",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "vertical",
+    "publicId": "library:c83e4e672551917a7a05997e8e94747d",
+    "label": "Développé épaules",
+    "aliases": [
+      "Développé épaules",
+      "Shoulder press",
+      "Shoulder dumbbell press",
+      "Overhead press"
+    ]
+  },
+  {
+    "id": "Incliné chest press",
+    "name": "Incliné chest press",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": [
+        "front_delts",
+        "triceps"
+      ]
+    },
+    "family": "chest_press",
+    "movement": "push_horizontal",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "incliné",
+    "publicId": "library:954940111d801df9a11c4aac151270d8",
+    "label": "Développé incliné",
+    "aliases": [
+      "Développé incliné",
+      "Incliné chest press",
+      "Incline chest press",
+      "Incline bench press"
+    ]
+  },
+  {
+    "id": "Low row",
+    "name": "Low row",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "upper_back"
+      ],
+      "secondary": [
+        "lats",
+        "biceps",
+        "rear_delts"
+      ]
+    },
+    "family": "row",
+    "movement": "pull_horizontal",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "horizontal",
+    "publicId": "library:b10e6a8f97c36902408a141e9bf39f0f",
+    "label": "Tirage horizontal",
+    "aliases": [
+      "Tirage horizontal",
+      "Low row",
+      "Seated row",
+      "Cable row"
+    ]
+  },
+  {
+    "id": "Décliné chest press",
+    "name": "Décliné chest press",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": [
+        "front_delts",
+        "triceps"
+      ]
+    },
+    "family": "chest_press",
+    "movement": "push_horizontal",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "décliné",
+    "publicId": "library:6389e1a52fa4f800afa7b12b8ea006c9",
+    "label": "Développé décliné",
+    "aliases": [
+      "Développé décliné",
+      "Décliné chest press",
+      "Decline chest press",
+      "Decline bench press"
+    ]
+  },
+  {
+    "id": "Tirage vertical",
+    "name": "Tirage vertical",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "lats"
+      ],
+      "secondary": [
+        "biceps",
+        "upper_back"
+      ]
+    },
+    "family": "pulldown",
+    "movement": "pull_vertical",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "vertical",
+    "publicId": "library:b6398eea0dce911b4455389ca76cab8f",
+    "label": "Tirage vertical",
+    "aliases": [
+      "Tirage vertical",
+      "Lat pulldown",
+      "Lat pull down",
+      "Pulldown"
+    ]
+  },
+  {
+    "id": "Développé couché",
+    "name": "Développé couché",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": [
+        "front_delts",
+        "triceps"
+      ]
+    },
+    "family": "chest_press",
+    "movement": "push_horizontal",
+    "equipment": "barbell",
+    "demand": "high",
+    "variant": "horizontal",
+    "publicId": "library:dac33c0a01333afd995da5634b4a46c4",
+    "label": "Développé couché",
+    "aliases": [
+      "Développé couché",
+      "Bench press",
+      "Barbell bench press"
+    ]
+  },
+  {
+    "id": "Élévations latérales aux haltères",
+    "name": "Élévations latérales aux haltères",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "side_delts"
+      ],
+      "secondary": []
+    },
+    "family": "lateral_raise",
+    "movement": "lateral",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "latéral",
+    "publicId": "library:a99d23678d51acf521adc22ef732c619",
+    "label": "Élévations latérales",
+    "aliases": [
+      "Élévations latérales",
+      "Lateral raise",
+      "Lateral raises",
+      "Élévations latérales aux haltères"
+    ]
+  },
+  {
+    "id": "Curl biceps",
+    "name": "Curl biceps",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "biceps"
+      ],
+      "secondary": []
+    },
+    "family": "curl",
+    "movement": "elbow_flexion",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "coude",
+    "publicId": "library:44366f0a60056e5c5d1e4ed9d5bec2db",
+    "label": "Curl biceps",
+    "aliases": [
+      "Curl biceps"
+    ]
+  },
+  {
+    "id": "Triceps haltère",
+    "name": "Triceps haltère",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "triceps"
+      ],
+      "secondary": []
+    },
+    "family": "triceps_extension",
+    "movement": "elbow_extension",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "variante à préciser",
+    "publicId": "library:61098b21186d3248967746b283995851",
+    "label": "Triceps haltère",
+    "aliases": [
+      "Triceps haltère"
+    ]
+  },
+  {
+    "id": "Tirage menton à la barre",
+    "name": "Tirage menton à la barre",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "side_delts",
+        "traps"
+      ],
+      "secondary": [
+        "biceps"
+      ]
+    },
+    "family": "upright_row",
+    "movement": "lateral",
+    "equipment": "barbell",
+    "demand": "moderate",
+    "variant": "multiarticulaire",
+    "publicId": "library:6f03c364d1884fcb9bd03d1762caee15",
+    "label": "Tirage menton à la barre",
+    "aliases": [
+      "Tirage menton à la barre"
+    ]
+  },
+  {
+    "id": "Rear delt barre",
+    "name": "Rear delt barre",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "rear_delts"
+      ],
+      "secondary": [
+        "upper_back"
+      ]
+    },
+    "family": "rear_raise",
+    "movement": "rear",
+    "equipment": "barbell",
+    "demand": "unknown",
+    "variant": "à préciser",
+    "publicId": "library:52204b4e1e2718c6c88b4b9efa047133",
+    "label": "Rear delt barre",
+    "aliases": [
+      "Rear delt barre"
+    ]
+  },
+  {
+    "id": "Butterfly",
+    "name": "Butterfly",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": []
+    },
+    "family": "fly",
+    "movement": "push_horizontal",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "adduction horizontale",
+    "publicId": "library:75019f5e8b9af2a0dc93788db3af52b3",
+    "label": "Écarté pectoraux",
+    "aliases": [
+      "Écarté pectoraux",
+      "Butterfly",
+      "Pec deck",
+      "Chest fly"
+    ]
+  },
+  {
+    "id": "lat-upper",
+    "name": "Lat pulldown",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "lats"
+      ],
+      "secondary": [
+        "biceps",
+        "upper_back"
+      ]
+    },
+    "family": "pulldown",
+    "movement": "pull_vertical",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "vertical",
+    "publicId": "library:b6398eea0dce911b4455389ca76cab8f",
+    "label": "Tirage vertical",
+    "aliases": [
+      "Tirage vertical",
+      "Lat pulldown",
+      "Lat pull down",
+      "Pulldown"
+    ]
+  },
+  {
+    "id": "Facepull",
+    "name": "Facepull",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 1,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "rear_delts",
+        "upper_back"
+      ],
+      "secondary": [
+        "traps"
+      ]
+    },
+    "family": "face_pull",
+    "movement": "rear",
+    "equipment": "cable",
+    "demand": "low",
+    "variant": "rotation/tirage",
+    "publicId": "library:27a05dde8b3ddbf6e5bbed7813fe2549",
+    "label": "Tirage au visage",
+    "aliases": [
+      "Tirage au visage",
+      "Facepull",
+      "Face pull"
+    ]
+  },
+  {
+    "id": "Curl marteau",
+    "name": "Curl marteau",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "biceps"
+      ],
+      "secondary": [
+        "forearms"
+      ]
+    },
+    "family": "curl",
+    "movement": "elbow_flexion",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "coude",
+    "publicId": "library:750ff9d617aa473c5e74582ee000c286",
+    "label": "Curl marteau",
+    "aliases": [
+      "Curl marteau",
+      "Hammer curl"
+    ]
+  },
+  {
+    "id": "Arrière d’épaule aux haltères",
+    "name": "Arrière d’épaule aux haltères",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "rear_delts"
+      ],
+      "secondary": [
+        "upper_back"
+      ]
+    },
+    "family": "rear_raise",
+    "movement": "rear",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "arrière",
+    "publicId": "library:8bcfe39672b78b1d90a73981f5dea97e",
+    "label": "Arrière d’épaule aux haltères",
+    "aliases": [
+      "Arrière d’épaule aux haltères",
+      "Rear delt raise",
+      "Reverse fly"
+    ]
+  },
+  {
+    "id": "Curl pupitre",
+    "name": "Curl pupitre",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "biceps"
+      ],
+      "secondary": []
+    },
+    "family": "curl",
+    "movement": "elbow_flexion",
+    "equipment": "machine",
+    "demand": "low",
+    "variant": "pupitre",
+    "publicId": "library:503aa77162b1564c9aa5e58b9d976bde",
+    "label": "Curl pupitre",
+    "aliases": [
+      "Curl pupitre",
+      "Preacher curl"
+    ]
+  },
+  {
+    "id": "lat-pull",
+    "name": "Lat pulldown machine",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "lats"
+      ],
+      "secondary": [
+        "biceps",
+        "upper_back"
+      ]
+    },
+    "family": "pulldown",
+    "movement": "pull_vertical",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "vertical",
+    "publicId": "library:0929f30a3b75488f0cffe675c9336f8c",
+    "label": "Tirage vertical à la machine",
+    "aliases": [
+      "Tirage vertical à la machine",
+      "Lat pulldown machine"
+    ]
+  },
+  {
+    "id": "Chest press",
+    "name": "Chest press",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "chest"
+      ],
+      "secondary": [
+        "front_delts",
+        "triceps"
+      ]
+    },
+    "family": "chest_press",
+    "movement": "push_horizontal",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "horizontal",
+    "publicId": "library:6204abc3dc94bcf7843e80e124f1b6ba",
+    "label": "Développé pectoraux",
+    "aliases": [
+      "Développé pectoraux",
+      "Chest press"
+    ]
+  },
+  {
+    "id": "Barre au front triceps",
+    "name": "Barre au front triceps",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "triceps"
+      ],
+      "secondary": []
+    },
+    "family": "triceps_extension",
+    "movement": "elbow_extension",
+    "equipment": "barbell",
+    "demand": "low",
+    "variant": "allongé",
+    "publicId": "library:0351a3f799741a62f0a693202e6bbbf1",
+    "label": "Barre au front triceps",
+    "aliases": [
+      "Barre au front triceps"
+    ]
+  },
+  {
+    "id": "laterales-push",
+    "name": "Élévations latérales",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "side_delts"
+      ],
+      "secondary": []
+    },
+    "family": "lateral_raise",
+    "movement": "lateral",
+    "equipment": "dumbbell",
+    "demand": "low",
+    "variant": "latéral",
+    "publicId": "library:a99d23678d51acf521adc22ef732c619",
+    "label": "Élévations latérales",
+    "aliases": [
+      "Élévations latérales",
+      "Lateral raise",
+      "Lateral raises",
+      "Élévations latérales aux haltères"
+    ]
+  },
+  {
+    "id": "Triceps à la corde unilatéral",
+    "name": "Triceps à la corde unilatéral",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 3,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "triceps"
+      ],
+      "secondary": []
+    },
+    "family": "triceps_extension",
+    "movement": "elbow_extension",
+    "equipment": "cable",
+    "demand": "low",
+    "variant": "poulie",
+    "publicId": "library:1e102cf950212837fc817fa90e862f17",
+    "label": "Triceps à la corde unilatéral",
+    "aliases": [
+      "Triceps à la corde unilatéral"
+    ]
+  },
+  {
+    "id": "Seated dips",
+    "name": "Seated dips",
+    "note": "",
+    "convention": "Valeur indiquée (à préciser)",
+    "step": 2.5,
+    "rest": 90,
+    "auto": false,
+    "refs": [],
+    "plannedSets": 2,
+    "refsAreTargets": true,
+    "sets": [],
+    "muscles": {
+      "primary": [
+        "triceps"
+      ],
+      "secondary": [
+        "chest",
+        "front_delts"
+      ]
+    },
+    "family": "dip",
+    "movement": "push_vertical",
+    "equipment": "machine",
+    "demand": "high",
+    "variant": "dips",
+    "publicId": "library:7d293c2f9907d5120706625158131cf1",
+    "label": "Dips à la machine",
+    "aliases": [
+      "Dips à la machine",
+      "Seated dips"
+    ]
+  }
+]

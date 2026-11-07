@@ -1,6 +1,7 @@
+import {exerciseReferenceSnapshot} from './load-conventions.js';
 // Absolute deadlines survive throttled tabs/reloads; paused time never counts as work.
 export const isPlank=e=>e?.alternativeKey==='plank'||e?.family==='core_isometric'||e?.familyId==='core_isometric'||/^(gainage|plank)(\b|\s)/i.test(e?.name||'');
-export const isTimedExercise=e=>e?.tracking==='cardio'||e?.tracking==='mobility'&&isPlank(e);
+export const isTimedExercise=e=>e?.tracking==='cardio'||e?.tracking==='mobility'&&(isPlank(e)||e?.isometric===true);
 export const plannedPassages=e=>e.tracking?(e.activityRounds??1):(e.plannedSets??e.refs.length);
 export const plannedCardioSeconds=e=>e.cardioDuration??(e.tracking==='mobility'?(e.activityDurationSeconds??30):600);
 export function remainingCardio(timer,now=Date.now()){return timer.status==='running'?Math.max(0,timer.deadline-now):timer.remainingMs}
@@ -8,5 +9,5 @@ export function validCardioSettings(e){if(e.activityRounds!==undefined&&(!e.trac
 export function startCardio(e,now=Date.now(),id=crypto.randomUUID()){return {id:'cardio:'+id,status:'running',durationMs:plannedCardioSeconds(e)*1000,remainingMs:plannedCardioSeconds(e)*1000,deadline:now+plannedCardioSeconds(e)*1000,startedAt:now}}
 export function pauseCardio(t,now=Date.now()){return {...t,status:'paused',remainingMs:remainingCardio(t,now),deadline:0}}
 export function resumeCardio(t,now=Date.now()){return {...t,status:'running',deadline:now+t.remainingMs}}
-export function finishCardio(e,now=Date.now()){const t=e.cardioTimer;if(!t||t.status==='finished')return false;const elapsed=t.durationMs-remainingCardio(t,now);if(elapsed<1000)throw Error('Entraîne-toi au moins une seconde avant d’enregistrer.');e.activityEntries??=[];if(!e.activityEntries.some(x=>x.id===t.id))e.activityEntries.push({id:t.id,counter:'duration',value:elapsed/60000,recordedAt:new Date(now).toISOString(),source:'timer',plannedSeconds:t.durationMs/1000,...(t.groupStepId?{groupId:t.groupId,groupStepId:t.groupStepId}:{})});e.cardioTimer={...t,status:'finished',remainingMs:0,deadline:0,elapsedMs:elapsed};return true}
+export function finishCardio(e,now=Date.now()){const t=e.cardioTimer;if(!t||t.status==='finished')return false;const elapsed=t.durationMs-remainingCardio(t,now);if(elapsed<1000)throw Error('Entraîne-toi au moins une seconde avant d’enregistrer.');e.activityEntries??=[];if(!e.activityEntries.some(x=>x.id===t.id))e.activityEntries.push({id:t.id,counter:'duration',value:elapsed/60000,recordedAt:new Date(now).toISOString(),source:'timer',...(e.chargeProtocol==='elan-2'?{exerciseReference:exerciseReferenceSnapshot(e)}:{}),plannedSeconds:t.durationMs/1000,...(t.groupStepId?{groupId:t.groupId,groupStepId:t.groupStepId}:{})});e.cardioTimer={...t,status:'finished',remainingMs:0,deadline:0,elapsedMs:elapsed};return true}
 export function cardioTime(ms){const seconds=Math.max(0,Math.ceil(ms/1000));return Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0')}

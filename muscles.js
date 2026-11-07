@@ -24,7 +24,8 @@ export function validProfile(p){const valid=a=>Array.isArray(a)&&a.length<=anato
 export function validProfiles(profiles){return Array.isArray(profiles)&&profiles.every(p=>p&&typeof p.exerciseId==='string'&&p.exerciseId.length>0&&p.exerciseId.length<100000&&validProfile(p))&&new Set(profiles.map(p=>p.exerciseId)).size===profiles.length}
 export function classifyExercise(e,profiles=[]){if(!e.muscles)e.muscles=structuredClone(profiles.find(p=>p.exerciseId===e.id)||defaultProfile(e.id));if(e.alternative)classifyExercise(e.alternative,profiles);return e}
 export function weekStart(day=dayKey()){const d=new Date(day+'T12:00:00');return dayOffset(day,-((d.getDay()+6)%7))}
-export function muscleVolume(sessions){const totals=Object.fromEntries(muscles.map(([id])=>[id,{primary:0,secondary:0,entries:[]}]));let unclassified=0,sets=0;for(const s of sessions)for(const e of s.exercises){const n=e.sets.filter(x=>x.type!=='warmup'&&x.validated!==false&&(x.status===undefined||['validated','completed'].includes(x.status))).length;if(!n)continue;sets+=n;const p=e.muscles||defaultProfile(e.id);if(!p.primary.length)unclassified+=n;for(const role of ['primary','secondary'])for(const id of new Set(p[role])){if(!totals[id]||(role==='secondary'&&p.primary.includes(id)))continue;totals[id][role]+=n;totals[id].entries.push({session:s,exercise:e,count:n,role})}}return {totals,unclassified,sets}}
+export function muscleVolume(sessions){const totals=Object.fromEntries(muscles.map(([id])=>[id,{primary:0,secondary:0,entries:[]}]));let unclassified=0,sets=0;for(const s of sessions)for(const e of s.exercises){const profiles=new Map();for(const st of e.sets||[]){if(st.type==='warmup'||st.validated===false||st.status!==undefined&&!['validated','completed'].includes(st.status))continue;const source=st.exerciseReference||e,p=source.muscles||defaultProfile(source.id),key=JSON.stringify(p);if(!profiles.has(key))profiles.set(key,{p,n:0,source,recorded:[]});profiles.get(key).n++;profiles.get(key).recorded.push(st);}for(const {p,n,source,recorded}of profiles.values()){sets+=n;if(!p.primary.length)unclassified+=n;for(const role of ['primary','secondary'])for(const id of new Set(p[role])){if(!totals[id]||(role==='secondary'&&p.primary.includes(id)))continue;totals[id][role]+=n;totals[id].entries.push({session:s,exercise:{...e,...source,sets:recorded},count:n,role})}}}return {totals,unclassified,sets}}
+
 export function weekSessions(sessions,start){const end=dayOffset(start,6);return sessions.filter(s=>dayKey(s.date)>=start&&dayKey(s.date)<=end)}
 
 /** Folding is per series/profile, never the sum of separate muscle counters. */
@@ -64,5 +65,5 @@ export function cleanAnatomicalProfile(p){
 
 /** Weekly elbow-flexor union; no extra target and no duplicated direct/secondary set. */
 export function weeklyMuscleVolume(sessions){
- return muscleVolume(sessions.map(s=>({...s,exercises:(s.exercises||[]).map(e=>({...e,muscles:weeklyProfile(anatomicalProfile(e))}))})));
+ return muscleVolume(sessions.map(s=>({...s,exercises:(s.exercises||[]).map(e=>({...e,muscles:weeklyProfile(anatomicalProfile(e)),sets:(e.sets||[]).map(st=>st.exerciseReference?{...st,exerciseReference:{...st.exerciseReference,muscles:weeklyProfile(anatomicalProfile(st.exerciseReference))}}:st)}))})));
 }

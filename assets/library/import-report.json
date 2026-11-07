@@ -1,0 +1,254 @@
+{
+  "supplied": 247,
+  "common": 266,
+  "reusedCanonicalCandidates": 32,
+  "newCandidates": 215,
+  "presetCorrections": [
+    {
+      "candidate": "elan-ex-squat-sumo",
+      "field": "loadMode",
+      "from": "unilateral",
+      "to": "bilateral"
+    },
+    {
+      "candidate": "elan-ex-squat-bulgare-smith",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-squat-bulgare-poids-du-corps",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-fentes-smith",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-fentes-poids-du-corps",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-step-up-barre",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-kickback-poulie",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-kickback-machine",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-abduction-hanche-poulie",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-abduction-hanche-elastique",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-adduction-hanche-poulie",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-curl-concentration",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-curl-bayesian-poulie",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    },
+    {
+      "candidate": "elan-ex-kickback-triceps-poulie",
+      "field": "loadMode",
+      "from": "bilateral",
+      "to": "unilateral"
+    }
+  ],
+  "safeBuiltInJoins": [
+    {
+      "candidate": "elan-ex-squat-barre-libre",
+      "canonical": "library:9f9bd5a1703a89d0b7b58eba4f66c6f1",
+      "existingName": "Squat à la barre"
+    },
+    {
+      "candidate": "elan-ex-pendulum-squat",
+      "canonical": "library:6c64d4728ec00462d9702df8c9542bce",
+      "existingName": "Pendulum squat"
+    },
+    {
+      "candidate": "elan-ex-belt-squat",
+      "canonical": "library:fc8609027e08b8f1e4669f07f6b525c8",
+      "existingName": "Belt squat"
+    },
+    {
+      "candidate": "elan-ex-goblet-squat",
+      "canonical": "library:aace1cfecbe5829f27651edf98d4418a",
+      "existingName": "Goblet squat avec haltère"
+    },
+    {
+      "candidate": "elan-ex-squat-bulgare-halteres",
+      "canonical": "library:8b441a4ac8f23e655ab783e815df6a9c",
+      "existingName": "Fentes bulgares"
+    },
+    {
+      "candidate": "elan-ex-souleve-de-terre-roumain-barre",
+      "canonical": "library:593751fb42fe80e888ec4a29b2039c74",
+      "existingName": "Soulevé de terre roumain à la barre"
+    },
+    {
+      "candidate": "elan-ex-souleve-de-terre-roumain-halteres",
+      "canonical": "library:a8257b66d7ca19dc3b3af5a655f4dabe",
+      "existingName": "Soulevé de terre roumain aux haltères"
+    },
+    {
+      "candidate": "elan-ex-good-morning-barre",
+      "canonical": "library:1199ecdcddb37352ab087f954875252f",
+      "existingName": "Good morning"
+    },
+    {
+      "candidate": "elan-ex-hip-thrust-machine",
+      "canonical": "library:05ce1f475759ef83c9b5bae547159185",
+      "existingName": "Hip thrust"
+    },
+    {
+      "candidate": "elan-ex-glute-bridge-machine",
+      "canonical": "library:c066a0c16d1f7d1dbf5f92f47298c6bb",
+      "existingName": "Glute bridge"
+    },
+    {
+      "candidate": "elan-ex-extension-lombaire-machine",
+      "canonical": "library:5c916330d03aa3b4fb737d5cdfc1ec43",
+      "existingName": "Back extension machine"
+    },
+    {
+      "candidate": "elan-ex-abducteurs-machine",
+      "canonical": "library:6844aaf62e5a9285941477f50684188b",
+      "existingName": "Abducteurs à la machine"
+    },
+    {
+      "candidate": "elan-ex-adducteurs-machine",
+      "canonical": "library:36d7b72ca54be83fd08d004f35d10284",
+      "existingName": "Adducteurs"
+    },
+    {
+      "candidate": "elan-ex-developpe-couche-barre-libre",
+      "canonical": "library:dac33c0a01333afd995da5634b4a46c4",
+      "existingName": "Développé couché"
+    },
+    {
+      "candidate": "elan-ex-developpe-couche-machine",
+      "canonical": "library:6204abc3dc94bcf7843e80e124f1b6ba",
+      "existingName": "Chest press"
+    },
+    {
+      "candidate": "elan-ex-developpe-incline-machine",
+      "canonical": "library:954940111d801df9a11c4aac151270d8",
+      "existingName": "Incliné chest press"
+    },
+    {
+      "candidate": "elan-ex-developpe-decline-machine",
+      "canonical": "library:6389e1a52fa4f800afa7b12b8ea006c9",
+      "existingName": "Décliné chest press"
+    },
+    {
+      "candidate": "elan-ex-pec-deck",
+      "canonical": "library:75019f5e8b9af2a0dc93788db3af52b3",
+      "existingName": "Butterfly"
+    },
+    {
+      "candidate": "elan-ex-pompes-classiques",
+      "canonical": "library:ec6410ef408f3147417d5b3278e3f495",
+      "existingName": "Pompes"
+    },
+    {
+      "candidate": "elan-ex-dips-machine",
+      "canonical": "library:7d293c2f9907d5120706625158131cf1",
+      "existingName": "Seated dips"
+    },
+    {
+      "candidate": "elan-ex-shoulder-press-machine",
+      "canonical": "library:c83e4e672551917a7a05997e8e94747d",
+      "existingName": "Shoulder press"
+    },
+    {
+      "candidate": "elan-ex-elevations-laterales-halteres",
+      "canonical": "library:a99d23678d51acf521adc22ef732c619",
+      "existingName": "Élévations latérales aux haltères"
+    },
+    {
+      "candidate": "elan-ex-reverse-pec-deck",
+      "canonical": "library:b6ff3baa128a60b402adbc1ed0393b4f",
+      "existingName": "Écarté inversé à la machine"
+    },
+    {
+      "candidate": "elan-ex-face-pull-poulie",
+      "canonical": "library:27a05dde8b3ddbf6e5bbed7813fe2549",
+      "existingName": "Facepull"
+    },
+    {
+      "candidate": "elan-ex-rowing-unilateral-haltere",
+      "canonical": "library:309447bb01c6233b1b50adcffca0a7af",
+      "existingName": "Rowing unilatéral avec haltère"
+    },
+    {
+      "candidate": "elan-ex-low-row-machine",
+      "canonical": "library:b10e6a8f97c36902408a141e9bf39f0f",
+      "existingName": "Low row"
+    },
+    {
+      "candidate": "elan-ex-curl-pupitre-machine",
+      "canonical": "library:503aa77162b1564c9aa5e58b9d976bde",
+      "existingName": "Curl pupitre"
+    },
+    {
+      "candidate": "elan-ex-curl-marteau-halteres",
+      "canonical": "library:750ff9d617aa473c5e74582ee000c286",
+      "existingName": "Curl marteau"
+    },
+    {
+      "candidate": "elan-ex-planche",
+      "canonical": "library:3e1ad47f3b27fab888d0fee25d23f3d7",
+      "existingName": "Gainage"
+    },
+    {
+      "candidate": "elan-ex-velo-stationnaire",
+      "canonical": "library:7964cf805d91173d5ae526eae3b20bfd",
+      "existingName": "Vélo"
+    },
+    {
+      "candidate": "elan-ex-velo-elliptique",
+      "canonical": "library:bf930429873502d7ddfdfb7963d569c9",
+      "existingName": "Vélo elliptique"
+    },
+    {
+      "candidate": "elan-ex-rameur",
+      "canonical": "library:7e8026d83ed97879861118c8573640d4",
+      "existingName": "Rameur"
+    }
+  ]
+}

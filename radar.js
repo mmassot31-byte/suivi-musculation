@@ -32,15 +32,17 @@ export function sessionMusclesDetailed(input){
     return true;
    });
    if(!valid.length)continue;
-   const n=valid.length,p=anatomicalProfile(exercise);sets+=n;
+   for(const set of valid){
+   const n=1,source=set.exerciseReference||exercise,p=anatomicalProfile(source);sets+=n;
    if(!p.primary.length)unclassified+=n;
-   const grouped=displayProfile(p,exercise);
+   const grouped=displayProfile(p,source);
    for(const [role,field]of [['primary','direct'],['secondary','secondary']])for(const id of grouped[role])if(groupTotals[id])groupTotals[id][field]+=n;
 
    for(const [role,field] of [['primary','direct'],['secondary','secondary']])for(const id of p[role]){
     if(!totals[id])continue;
     totals[id][field]+=n;
-    totals[id].entries.push({sessionId:session.id,exerciseId:exercise.id,exerciseName:exercise.name||exercise.id,count:n,role:field});
+    totals[id].entries.push({sessionId:session.id,exerciseId:source.id,exerciseName:source.name||source.id,count:n,role:field});
+   }
    }
   }
  }
