@@ -14,6 +14,7 @@ export function createNotifications(accounts){
   document.querySelectorAll('[data-notification-count]').forEach(el=>{const n=values[el.dataset.notificationCount]||0;el.textContent=n?amount(n):'';el.hidden=!n;});
   const bell=document.querySelector('[data-action="notifications-toggle"]');if(bell){bell.setAttribute('aria-label',label());bell.setAttribute('aria-expanded',String(opened));}
   for(const [tab,kind]of [['friends','friends'],['challenges','challenges']]){const el=document.querySelector(`[data-action="rank-tab:${tab}"]`);if(el)el.setAttribute('aria-label',(tab==='friends'?'Amis':'Défis')+(values[kind]?` · ${values[kind]} invitation${values[kind]>1?'s':''} en attente`:''));}
+  const friendsLink=document.querySelector('[data-action="account-friends"]');if(friendsLink)friendsLink.setAttribute('aria-label','Mes amis'+(values.friends?` · ${values.friends} demande${values.friends>1?'s':''} en attente`:''));
   const panel=document.getElementById('notifications-panel');if(!panel)return;panel.hidden=!opened;
   const text=panel.querySelector('[data-notification-status]');text.textContent=!navigator.onLine?'Hors connexion · actualisation à la reconnexion.':error?'Actualisation indisponible. Réessaie.':counts?total()?'Invitations en attente de ta réponse.':'Aucune invitation en attente.':'Recherche des invitations…';
   const labels={friends:n=>`${n} ${n>1?'demandes d’amis':'demande d’ami'}`,goals:n=>`${n} défi${n>1?'s':''} entre amis`,records:n=>`${n} défi${n>1?'s':''} de record`};
