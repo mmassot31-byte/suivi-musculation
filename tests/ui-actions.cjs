@@ -2,6 +2,8 @@
 exports.journeyClick=(getPage,run)=>async action=>{
  const page=getPage(),minimise=async()=>{const button=page.locator('#rest-dialog[open] [data-action="rest-dismiss"]');if(await button.count()){await button.click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil')}};
  await minimise();
+ // Exercise/muscle details now open from the overview's section links.
+ if(action==='overview-tab:muscle'&&!await page.locator('[data-action="overview-tab:muscle"]').count()&&await page.locator('[data-action="overview-tab:overview"]').count())await page.locator('[data-action="overview-tab:overview"]').first().click();
  if(action.startsWith('progress-tab:')&&!await page.locator(`[data-action="${action}"]`).count()&&await page.locator('[data-action="exercise-back"]').count())await page.locator('[data-action="exercise-back"]').click();
  // The library now opens a complete sheet before muscle settings.
  if(action.startsWith('muscle-library:')&&!await page.locator(`[data-action="${action}"]`).count()){
