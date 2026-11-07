@@ -49,6 +49,7 @@ let comparisonId='';let exerciseSheet=null,exerciseMetric='load',exerciseWeight=
 let homeMuscleDetail=null;
 const trainingFeedback=createTrainingFeedback();
 const liveWorkoutHeader=createLiveWorkoutHeader();let recapArrivalPending=false;
+let viewportFrame=0,viewportRevealTimer=0;
 let sessionWriteBusy=false;
 let validationBusy=false,validationBlockedUntil=0,validationError='',lastRecorded=null;
 function classifyState(){for(const t of [...state.templates,...state.sessions,...(state.active?[state.active]:[]),...state.weekPlans.flatMap(w=>w.entries.map(e=>e.plan))]){if(!Array.isArray(t.groups)||t.exercises.some(e=>!e.instanceId||e.superset))migrationPending=true;migrateGroups(t,t===state.active);for(const e of t.exercises)classifyExercise(e,state.exerciseMuscles)}}
@@ -331,7 +332,30 @@ window.addEventListener('resize',layoutHomeVolumes);
 if(state.active){resumeSelection()}if(migrationPending)save().catch(()=>{});render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>toast('Mode hors connexion indisponible'));
 
 // visualViewport tracks the iOS keyboard even when the layout viewport stays tall.
-function updateViewport(){const vp=window.visualViewport,height=vp?.height||innerHeight,top=vp?.offsetTop||0;document.documentElement.style.setProperty('--visible-height',height+'px');document.documentElement.style.setProperty('--visible-top',top+'px');const input=document.activeElement?.matches('input,textarea'),keyboard=innerHeight-height>100&&(!!input||document.body.classList.contains('keyboard-open'));document.body.classList.toggle('keyboard-open',keyboard);if(document.activeElement?.matches('.work-shell .number-box input'))document.body.classList.add('entry-focused');if(keyboard)requestAnimationFrame(()=>document.activeElement?.scrollIntoView({block:'nearest'}));liveWorkoutHeader.viewportChanged()}
+function updateViewport(event){
+ if(document.activeElement?.matches('.work-shell .number-box input'))document.body.classList.add('entry-focused');
+ // A viewport pan can be the consequence of scrolling a field into view. It must
+ // never request another reveal. Coalesce geometry writes during keyboard animation.
+ if(event?.type!=='scroll'){clearTimeout(viewportRevealTimer);viewportRevealTimer=setTimeout(()=>{
+  const el=document.activeElement;
+  if(el?.matches('.work-shell input,.work-shell textarea,.work-shell select')&&!el.closest('dialog'))liveWorkoutHeader.viewportChanged({reveal:true});
+  else if(document.body.classList.contains('keyboard-open')&&el?.matches('input,textarea')){
+   const vp=window.visualViewport,top=vp?.offsetTop||0,bottom=top+(vp?.height||innerHeight),r=el.getBoundingClientRect();
+   if(r.top<top+8||r.bottom>bottom-12)el.scrollIntoView({block:'nearest',behavior:'instant'});
+  }
+ },100)}
+ if(viewportFrame)return;
+ viewportFrame=requestAnimationFrame(()=>{viewportFrame=0;
+  const vp=window.visualViewport,height=vp?.height||innerHeight,top=vp?.offsetTop||0,root=document.documentElement;
+  for(const [name,value]of[['--visible-height',height+'px'],['--visible-top',top+'px']])if(root.style.getPropertyValue(name)!==value)root.style.setProperty(name,value);
+  const input=document.activeElement?.matches('input,textarea'),wasOpen=document.body.classList.contains('keyboard-open'),gap=innerHeight-height;
+  // Distinct open/close thresholds prevent toolbar/viewport jitter from repeatedly
+  // changing the compact form while the same keyboard is still open.
+  const keyboard=gap>(wasOpen?60:100)&&(!!input||wasOpen);
+  document.body.classList.toggle('keyboard-open',keyboard);
+  liveWorkoutHeader.viewportChanged();
+ });
+}
 window.visualViewport?.addEventListener('resize',updateViewport);window.visualViewport?.addEventListener('scroll',updateViewport);window.addEventListener('resize',updateViewport);
 function settleInputFocus(){setTimeout(()=>{if(!document.activeElement?.matches('.work-shell .number-box input'))document.body.classList.remove('entry-focused');updateViewport()},300)}
 $('#app').addEventListener('focusin',e=>{if(e.target.matches('input,textarea'))updateViewport();else settleInputFocus()});$('#app').addEventListener('focusout',settleInputFocus);
