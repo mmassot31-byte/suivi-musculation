@@ -3,9 +3,16 @@ import {savedActivity,activitySummary,escapeHtml} from './design-ui.js';
 import {volumeRange} from './volume-dashboard.js';
 import {recordedSets} from './achievements.js';
 import {trophyModel} from './trophy-room.js';
-import {dayKey} from './tracking.js';
+import {dayKey,tonnage} from './tracking.js';
+import {weekStart} from './muscles.js';
 import {icon} from './icons.js';
 const esc=escapeHtml,fmt=n=>Number(n).toLocaleString('fr-FR',{maximumFractionDigits:2});
+export function personalProfileStats(profile,state,today=dayKey()){
+ if(!state)return profile;
+ const saved=savedActivity(state.sessions,state.active?.id,today),start=weekStart(today);
+ const metrics=sessions=>{const m=activitySummary(sessions);return {sessions:m.sessions,work_sets:m.sets,tonnage_kg:sessions.reduce((n,s)=>n+tonnage(s),0)}};
+ return {...profile,totals:{...profile?.totals,...metrics(saved)},week:{...profile?.week,...metrics(saved.filter(s=>dayKey(s.date)>=start))}};
+}
 export function profileStats(profile,period='totals'){
  const data=profile?.[period]||{},week=period==='week',badges=week?(Number.isFinite(data.badges)?data.badges:null):trophyModel(profile).awards.length;
  return[['Séances','history',data.sessions],['Séries','tonnage',data.work_sets],['Tonnage','barbell',Number.isFinite(data.tonnage_kg)?fmt(data.tonnage_kg/1000)+' t':null],['Records','trophy',data.pr_events],['Badges','target',badges]].map(([label,picto,value])=>({label,picto,value:typeof value==='string'?value:Number.isFinite(value)?fmt(value):'—',unavailable:value===null||value===undefined}));
