@@ -29,6 +29,7 @@ export function createService(config=cloudConfig){try{if(!configured(config))ret
  ownProfile:uid=>result(client.from('profiles').select('id,username,avatar_path').eq('id',uid).single()),
  updateProfile:(uid,changes)=>result(client.from('profiles').update(changes).eq('id',uid).select('id,username,avatar_path').single()),
  async avatar(uid,file){if(file.size>2097152||!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Choisis une image JPG, PNG ou WebP de 2 Mo maximum.');const ext={ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[file.type],path=uid+'/'+crypto.randomUUID()+'.'+ext;await result(client.storage.from('avatars').upload(path,file,{contentType:file.type,upsert:false}));return path},
+ publicAvatars:ids=>result(client.from('profiles').select('id,avatar_path').in('id',ids.slice(0,25))),
  avatarUrl:path=>path?client.storage.from('avatars').getPublicUrl(path).data.publicUrl:null,
  async signOut(){const {error}=await client.auth.signOut({scope:'local'});if(error){client.auth.stopAutoRefresh();localStorage.removeItem(authStorageKey);localStorage.removeItem(authStorageKey+'-code-verifier')}return error}
 }}

@@ -21,3 +21,61 @@
 /* Progression's two-line phone label determines the shared row height. */
 @media(max-width:600px){.competition-shell>.community-page>.social-segmented>button{height:calc(2lh + 10px)}}
 @media(max-width:359px){.competition-shell>.community-page>.social-segmented>button{font-size:10px;gap:3px}}
+
+/* Exercise rankings: compact rows, without changing the Competition navigation geometry. */
+.competition-shell>.community-page>.social-segmented>button>.ico{width:16px;height:16px;flex:0 0 16px}
+.exercise-ranking-panel{margin-top:12px;min-width:0}
+.exercise-ranking-panel .personal-ranking-heading{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:0;border:0}
+.exercise-ranking-panel .personal-ranking-heading>div{flex:1;min-width:0}
+.exercise-ranking-panel .ranking-visible-selector{display:flex;align-items:center;gap:7px;margin:0;padding:0 8px;border:1px solid var(--line);border-radius:14px;background:var(--surface-inset);height:42px;min-width:0}
+.exercise-ranking-panel .ranking-visible-selector>.exercise-icon{width:27px;height:30px;flex:0 0 27px;background:transparent;padding:0}
+.exercise-ranking-panel .ranking-visible-selector>.ico{width:24px;height:24px;color:var(--accent);flex:0 0 24px}
+.exercise-ranking-panel #ranking-variant{min-width:0;width:100%;height:40px;padding:6px 21px 6px 0;font-size:13px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background-color:transparent}
+.exercise-ranking-panel .ranking-filter-button{display:flex;align-items:center;justify-content:center;gap:6px;height:42px;padding:8px 11px;flex:none;font-size:12px;border-radius:14px}
+.exercise-ranking-panel .ranking-filter-button .ico{width:17px;height:17px}
+.exercise-ranking-panel .ranking-criteria{display:flex;align-items:flex-start;gap:10px;position:relative;margin-bottom:14px}
+.exercise-ranking-panel .ranking-tabs{display:flex;flex:1;gap:3px;padding:3px;margin:0;border:1px solid var(--line);border-radius:16px;min-width:0;background:var(--surface-inset)}
+.exercise-ranking-panel .ranking-tabs>button{flex:1;min-width:0;min-height:32px;padding:5px 3px;font-size:12px;border:0;border-radius:12px;white-space:normal;line-height:1.15;background:transparent;color:var(--text)}
+.exercise-ranking-panel .ranking-tabs>button.selected{background:var(--accent);color:#101608}
+.exercise-ranking-panel .ranking-help{margin:0;padding:0;border:0;flex:0 0 36px;background:transparent}
+.exercise-ranking-panel .ranking-help>summary{display:flex;align-items:center;justify-content:center;width:36px;height:40px;padding:0;list-style:none;color:var(--accent);cursor:pointer}
+.exercise-ranking-panel .ranking-help>summary::-webkit-details-marker{display:none}
+.exercise-ranking-panel .ranking-help>summary .ico{width:23px;height:23px}
+.exercise-ranking-panel .ranking-help-content{position:absolute;z-index:5;left:0;right:0;top:46px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 25px #0009;border-radius:14px;padding:12px;font-size:12px;line-height:1.5}
+.exercise-ranking-panel .ranking-help-content h3{font-size:15px;margin:0 0 8px}
+.exercise-ranking-panel .ranking-help-content p{margin:6px 0;color:var(--muted)}
+.exercise-ranking-panel .exercise-ranking-heading{display:block;margin:0 0 14px;padding-top:10px;border-top:1px solid var(--line)}
+.exercise-ranking-panel .exercise-ranking-heading>span{font-size:12px;color:var(--muted)}
+.exercise-ranking-panel .exercise-ranking-heading h2{font-size:22px;line-height:1.15;margin:4px 0 8px;overflow-wrap:anywhere}
+.exercise-ranking-panel .exercise-ranking-heading h2 i{color:var(--accent);font-style:normal}
+.exercise-ranking-panel .ranking-identity{display:flex;align-items:center;gap:6px;font-size:11px;line-height:1.4;margin:0;color:var(--muted)}
+.exercise-ranking-panel .ranking-identity>.ico{width:15px;height:15px;flex:none}
+.exercise-ranking-panel #ranking-message:empty{display:none}
+.exercise-ranking-panel .personal-ranking-list{display:grid;gap:8px;margin:0 0 10px;padding:0;list-style:none}
+.exercise-ranking-panel .personal-ranking-list>li{display:grid;grid-template-columns:25px 34px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:52px;margin:0;padding:8px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface-inset)}
+.exercise-ranking-panel .personal-ranking-list>li.ranking-self{border-color:var(--accent);background:var(--accent-soft)}
+.exercise-ranking-panel .ranking-place{font-size:15px;text-align:center}
+.exercise-ranking-panel .ranking-medal{display:grid;place-items:center;width:25px;height:29px;border-radius:50%;color:#18170c;border:1px solid #fff6}
+.exercise-ranking-panel .medal-1{background:#eac04c}.exercise-ranking-panel .medal-2{background:#bac6cd}.exercise-ranking-panel .medal-3{background:#bc8962}
+.exercise-ranking-panel .ranking-row-avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--surface);font-size:11px;overflow:hidden}
+.exercise-ranking-panel .ranking-row-avatar img{width:100%;height:100%;object-fit:cover}
+.exercise-ranking-panel .profile-link{display:block;min-width:0;min-height:36px;text-align:left;padding:4px 0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exercise-ranking-panel .ranking-self .profile-link{color:var(--accent)}
+.exercise-ranking-panel .personal-ranking-list>li>span:last-child{font-size:13px;font-weight:650;text-align:right;white-space:nowrap}
+.exercise-ranking-panel .ranking-reference-note{min-height:42px;display:flex;align-items:center;gap:8px;width:100%;margin:0 0 10px;padding:10px;border:1px solid var(--line);border-radius:14px;font-size:12px;line-height:1.35;text-align:left;background:var(--surface-inset);color:var(--text)}
+.exercise-ranking-panel .ranking-reference-note>.ico{width:18px;height:18px;flex:none;color:var(--accent)}
+.exercise-ranking-panel .ranking-reference-note>span{flex:1}
+.exercise-ranking-panel .ranking-advanced{margin-top:10px;padding:10px 12px;border-radius:14px}
+.exercise-ranking-panel .ranking-advanced>summary{font-size:13px;padding:4px 0;min-height:24px}
+.exercise-ranking-panel .ranking-empty-action{padding:10px 0;font-size:13px}
+@media(max-width:359px){
+ .competition-shell>.community-page>.social-segmented>button>.ico{width:14px;height:14px;flex-basis:14px}
+ .exercise-ranking-panel .personal-ranking-heading{gap:6px}
+ .exercise-ranking-panel .ranking-filter-button{padding:8px;font-size:11px}
+ .exercise-ranking-panel .ranking-filter-button .ico{width:14px;height:14px}
+ .exercise-ranking-panel #ranking-variant{font-size:12px}
+ .exercise-ranking-panel .personal-ranking-list>li{gap:5px;padding-inline:7px;grid-template-columns:22px 28px minmax(0,1fr) auto}
+ .exercise-ranking-panel .ranking-row-avatar{width:28px;height:28px}
+ .exercise-ranking-panel .personal-ranking-list>li>span:last-child{font-size:12px}
+ .exercise-ranking-panel .profile-link{font-size:12px}
+}

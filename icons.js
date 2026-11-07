@@ -1,5 +1,7 @@
 // Élan's lightweight, shared 24 px stroke vocabulary. No font or network request.
 const paths={
+ chat:'<path d="M21 11.5a8.5 8.5 0 1 1-4-7.2 8.5 8.5 0 0 1 4 7.2Z"/><path d="m18 18 3 3-1-6"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/>',
  bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>',
  plus:'<path d="M12 5v14M5 12h14"/>',
  people:'<circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m0-17a3 3 0 0 1 0 6m3 3a6 6 0 0 1 3 5v3"/>',
