@@ -1,0 +1,261 @@
+{
+  "generatedAt": "2026-11-07T19:03:14.604894+01:00",
+  "baseCommit": "bb5e49f51060b3e70235605c19218faf6740ed93",
+  "general": {
+    "command": "npm test",
+    "exitCode": 0,
+    "scripts": [
+      "tests/live-workout.cjs",
+      "tests/design-ui.cjs",
+      "tests/notifications.cjs",
+      "tests/social-presenter.cjs",
+      "tests/quiet-loading.cjs",
+      "tests/season-ranks.cjs",
+      "tests/exercise-labels.cjs",
+      "tests/personal-records.cjs",
+      "tests/pictograms.cjs",
+      "tests/navigation-mobility.cjs",
+      "tests/activity.cjs",
+      "tests/cardio-timer.cjs",
+      "tests/trophies-completion.cjs",
+      "tests/identity.cjs",
+      "tests/radar.cjs",
+      "tests/achievements.cjs",
+      "tests/account-data.cjs",
+      "tests/onboarding-data.cjs",
+      "tests/rest.cjs",
+      "tests/programming.cjs",
+      "tests/programme-quality.cjs",
+      "tests/volume-references.cjs",
+      "tests/groups.cjs",
+      "tests/volume.cjs",
+      "tests/performance.cjs",
+      "tests/tracking.cjs",
+      "tests/muscles.cjs",
+      "tests/smoke.cjs",
+      "tests/superset.cjs",
+      "tests/body-calendar.cjs",
+      "tests/muscle-ui.cjs",
+      "tests/session-radar-ui.cjs",
+      "tests/ergonomics.cjs",
+      "tests/volume-ui.cjs",
+      "tests/chains-ui.cjs",
+      "tests/flow-ui.cjs",
+      "tests/reliability.cjs",
+      "tests/volume-mobile.cjs",
+      "tests/week-navigation.cjs",
+      "tests/manual-session-ui.cjs",
+      "tests/delete-model.cjs",
+      "tests/rest-home.cjs",
+      "tests/home-layout.cjs",
+      "tests/home-muscle-completeness.cjs",
+      "tests/unequal-groups.cjs",
+      "tests/feedback-ui.cjs",
+      "tests/organization-ui.cjs",
+      "tests/clear-labels.cjs",
+      "tests/ranking-empty.cjs",
+      "tests/social-preview-ui.cjs",
+      "tests/trophy-room-ui.cjs",
+      "tests/finish-action-ui.cjs",
+      "tests/public-community-ui.cjs",
+      "tests/season-ranks-ui.cjs",
+      "tests/friend-profiles-ui.cjs",
+      "tests/quiet-loading-ui.cjs",
+      "tests/navigation-scroll-ui.cjs",
+      "tests/seven-updates-ui.cjs",
+      "tests/friends-community-ui.cjs",
+      "tests/friend-search.cjs",
+      "tests/shell-update.cjs",
+      "tests/exercise-counters.cjs",
+      "tests/cardio-timer-ui.cjs",
+      "tests/record-search-connected.cjs",
+      "tests/notifications-ui.cjs",
+      "tests/challenge-creation.cjs",
+      "tests/editor-onboarding.cjs",
+      "tests/account-isolation-ui.cjs",
+      "tests/editor-offline.cjs",
+      "tests/mockups-ui.cjs",
+      "tests/live-workout-ui.cjs",
+      "tests/home-compact-ui.cjs",
+      "tests/history-view.cjs",
+      "tests/history-compact-ui.cjs",
+      "tests/performance-overview.cjs",
+      "tests/performance-overview-ui.cjs",
+      "tests/volume-dashboard.cjs",
+      "tests/volume-dashboard-ui.cjs",
+      "tests/profile-presentation.cjs",
+      "tests/profile-compact-ui.cjs",
+      "tests/saved-session.cjs",
+      "tests/saved-session-ui.cjs",
+      "tests/exercise-rankings-ui.cjs",
+      "tests/transaction-actions-ui.cjs",
+      "tests/profile-actions-ui.cjs"
+    ]
+  },
+  "additionalUI": {
+    "passed": [
+      "home-pictograms",
+      "cardio-pictograms",
+      "muscle-svg-mobile",
+      "volume-radar-visual",
+      "evolution-ui",
+      "premium-ui",
+      "premium-social",
+      "premium-offline",
+      "community-ui",
+      "competition-ui"
+    ],
+    "count": 10
+  },
+  "isolatedPostgreSQL": {
+    "passed": [
+      "accounts-db",
+      "competition-db",
+      "community-db",
+      "friends-feed-db",
+      "public-activity-db",
+      "recorded-tonnage-db",
+      "season-ranks-db"
+    ],
+    "count": 7,
+    "productionWrites": 0
+  },
+  "webkit": [
+    {
+      "name": "home-compact-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "history-compact-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "performance-overview-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "volume-dashboard-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "profile-compact-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "exercise-rankings-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "live-workout-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "saved-session-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "transaction-actions-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "finish-action-ui",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "name": "profile-actions-ui",
+      "status": 0
+    }
+  ],
+  "productionReadOnly": {
+    "competition_capabilities": {
+      "status": 200,
+      "data": {
+        "tonnage": "explicit-load-identity",
+        "version": 1,
+        "challenges": true,
+        "provenance": "first-server-receipt",
+        "completedOnly": true
+      }
+    },
+    "community_capabilities": {
+      "status": 200,
+      "data": {
+        "badges": true,
+        "friends": true,
+        "version": 1,
+        "friendFeed": true,
+        "rankSeasons": true,
+        "allExercises": true,
+        "goalChallenges": true,
+        "publicActivity": true,
+        "profileActivity": true,
+        "personalRankings": true
+      }
+    },
+    "friend_list": {
+      "status": 401,
+      "data": {
+        "rejected": true,
+        "code": "42501"
+      }
+    },
+    "social_notifications": {
+      "status": 401,
+      "data": {
+        "rejected": true,
+        "code": "42501"
+      }
+    },
+    "anonymous_private_documents": {
+      "status": 401,
+      "emptyOrDenied": true
+    },
+    "admin_read_only_metadata": {
+      "status": 201,
+      "policies": [
+        {
+          "tablename": "goal_challenges",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "performances",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "private_documents",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "profiles",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "public_exercise_groups",
+          "rowsecurity": true
+        }
+      ]
+    }
+  },
+  "sourceSHA256": {
+    "app.js": "653588f865b84c366d638c51e38a03920bcbcb883887d224eb67f38cfbe6b8d3",
+    "social-ui.js": "2525aee357e7beb746d6b310d3dc48ffba240a3a5f0efef4c07bd396ed123635",
+    "sw.js": "e2595b78a9761f7a1599fd0e79dbb3006f53294ceacae3bfccaca75aa1cd70fb"
+  },
+  "manualNotExecuted": [
+    "physical iPhone Safari and installed PWA",
+    "native photo picker/share/haptics",
+    "OS background timer suspension",
+    "real email confirmation/recovery and two physical devices"
+  ],
+  "noGuaranteeOfExhaustiveCombinations": true
+}
