@@ -36,14 +36,14 @@ const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/s
     if(['one','two'].includes(id)){assert.equal(await panel.locator('.muscle-radar').count(),0);assert.equal(await panel.locator('.radar-bar-row').count(),id==='one'?1:2);assert.equal(await panel.locator('.radar-secondary-bar').count(),0);}
     else{
      const svg=panel.locator('svg.muscle-radar');assert.equal(await svg.locator('.radar-direct').count(),1);assert.equal(await svg.locator('circle,.radar-previous,.radar-secondary-dot').count(),0);
-     const geometry=await svg.evaluate(e=>({width:e.viewBox.baseVal.width,height:e.viewBox.baseVal.height,boxes:[...e.querySelectorAll('.radar-axis-label')].map(el=>{const b=el.getBBox();return{x:b.x,y:b.y,w:b.width,h:b.height};})}));
-     for(const b of geometry.boxes)assert(b.x>=0&&b.y>=0&&b.x+b.w<=geometry.width&&b.y+b.h<=geometry.height,`${id}/${width} clipped label ${JSON.stringify(b)}`);
+     const geometry=await svg.evaluate(e=>({width:e.viewBox.baseVal.width,height:e.viewBox.baseVal.height,top:e.viewBox.baseVal.y,boxes:[...e.querySelectorAll('.radar-axis-label')].map(el=>{const b=el.getBBox();return{x:b.x,y:b.y,w:b.width,h:b.height};})}));
+     for(const b of geometry.boxes)assert(b.x>=0&&b.y>=geometry.top&&b.x+b.w<=geometry.width&&b.y+b.h<=geometry.top+geometry.height,`${id}/${width} clipped label ${JSON.stringify(b)}`);
      for(let i=0;i<geometry.boxes.length;i++)for(let j=i+1;j<geometry.boxes.length;j++){const a=geometry.boxes[i],b=geometry.boxes[j];assert(!(Math.min(a.x+a.w,b.x+b.w)>Math.max(a.x,b.x)+1&&Math.min(a.y+a.h,b.y+b.h)>Math.max(a.y,b.y)+1),`${id}/${width}: labels overlap`);}
      assert.equal(await svg.locator('.radar-axis-value').count(),geometry.boxes.length);if(id==='all')assert.equal(geometry.boxes.length,14);
     }
     if(width===390)await panel.screenshot({path:`/tmp/elan-session-radar-${id}-390.png`});
    }
-   if(id==='custom'){await panel.locator('.radar-detail summary').click();assert.match(await panel.locator('.radar-detail').innerText(),/Trapèzes/);assert.match(await panel.locator('.radar-detail').innerText(),/Brachial/);assert.match(await panel.locator('.radar-detail').innerText(),/Directes.*Secondaires/s);}
+   if(id==='custom'){await panel.locator('.radar-detail>summary').click();assert.match(await panel.locator('.radar-detail').innerText(),/Trapèzes/);assert.match(await panel.locator('.radar-detail').innerText(),/Brachial/);assert.match(await panel.locator('.radar-detail').innerText(),/Directes.*Secondaires/s);}
   }
   assert.deepEqual(await read(),before,'viewing the new charts does not rewrite existing user data');assert.deepEqual(errors,[]);
   console.log('PASS session radar UI: actual saved-session views for Pull/Push/legs/full body/custom, 1/2-group bars and all 14 groups; single weighted surface, readable contained nonoverlapping labels at 320/390/430 px, raw muscle details, unchanged stored documents.');
