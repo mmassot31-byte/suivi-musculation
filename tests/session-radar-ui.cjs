@@ -39,7 +39,8 @@ const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/s
      const geometry=await svg.evaluate(e=>({width:e.viewBox.baseVal.width,height:e.viewBox.baseVal.height,top:e.viewBox.baseVal.y,boxes:[...e.querySelectorAll('.radar-axis-label')].map(el=>{const b=el.getBBox();return{x:b.x,y:b.y,w:b.width,h:b.height};})}));
      for(const b of geometry.boxes)assert(b.x>=0&&b.y>=geometry.top&&b.x+b.w<=geometry.width&&b.y+b.h<=geometry.top+geometry.height,`${id}/${width} clipped label ${JSON.stringify(b)}`);
      for(let i=0;i<geometry.boxes.length;i++)for(let j=i+1;j<geometry.boxes.length;j++){const a=geometry.boxes[i],b=geometry.boxes[j];assert(!(Math.min(a.x+a.w,b.x+b.w)>Math.max(a.x,b.x)+1&&Math.min(a.y+a.h,b.y+b.h)>Math.max(a.y,b.y)+1),`${id}/${width}: labels overlap`);}
-     assert.equal(await svg.locator('.radar-axis-value').count(),geometry.boxes.length);if(id==='all')assert.equal(geometry.boxes.length,14);
+     assert.equal(await svg.locator('.radar-axis-value').count(),geometry.boxes.length);
+     const legend=panel.locator('.saved-muscle-volumes-list>div');if(await legend.count()){const axes=await svg.getAttribute('data-axes');assert.equal(await legend.count(),axes.split(',').length);if(id==='all')assert.equal(await legend.count(),14);assert(await legend.evaluateAll(rows=>rows.every(row=>{const box=row.getBoundingClientRect();return [...row.children].every(child=>{const r=child.getBoundingClientRect();return r.x>=box.x-1&&r.right<=box.right+1})})),`${id}/${width}: external labels and values remain inside their row`);}else if(id==='all')assert.equal(geometry.boxes.length,14);
     }
     if(width===390)await panel.screenshot({path:`/tmp/elan-session-radar-${id}-390.png`});
    }

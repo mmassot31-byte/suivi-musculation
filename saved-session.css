@@ -11,3 +11,85 @@
 .saved-exercise>summary strong{color:var(--text,#f0f3ee)}
 
 .saved-shell .saved-muscles{padding:8px!important}
+
+/* Saved recap: external radar legend and inline exercise facts, scoped to this page. */
+.saved-shell .saved-heading{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:8px;align-items:center;margin-bottom:10px}
+.saved-heading .saved-validation{grid-column:1;grid-row:1/4;display:grid;place-items:center;width:23px;height:23px;border:1.5px solid var(--accent);border-radius:50%;color:var(--accent)}
+.saved-validation .ico{width:17px;height:17px}
+.saved-heading>.eyebrow,.saved-heading>h1,.saved-heading>p{grid-column:2}
+.saved-shell .saved-heading h1{font-size:28px;line-height:1.1;margin-bottom:3px}
+.saved-shell .saved-heading>.eyebrow{font-size:9px;margin-bottom:3px}
+.saved-shell .saved-stats{gap:6px;margin-bottom:10px}
+.saved-shell .saved-stats>div{position:relative;align-content:start;min-height:59px;padding:9px 7px 12px;grid-template-columns:18px minmax(0,1fr);gap:4px}
+.saved-stats .ico{width:18px;height:21px;grid-row:1/3}
+.saved-shell .saved-stats strong{font-size:17px;line-height:1.1;letter-spacing:-.5px}
+.saved-stats small{font-size:9px}
+.saved-series-progress{position:absolute;left:8px;right:8px;bottom:5px;display:block;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.saved-series-progress>i{display:block;height:100%;border-radius:inherit;background:var(--accent)}
+.saved-shell .saved-records{margin:0 0 7px;padding:9px 10px;border:1px solid var(--accent);border-radius:15px;background:linear-gradient(125deg,#27381a,#121c14);min-width:0}
+.saved-record-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+.saved-shell .saved-record-heading h2{display:flex;align-items:center;gap:6px;font-size:13px;line-height:1.25;color:var(--accent);margin:0;letter-spacing:0}
+.saved-record-heading h2>.ico{width:17px;height:17px;flex:none}
+.saved-record-heading>span{font-size:9px;color:var(--muted);white-space:nowrap}
+.saved-record-fact{display:grid;grid-template-columns:25px minmax(0,1fr);align-items:center;gap:7px}
+.saved-record-fact>.exercise-icon{width:25px;height:28px;margin:0;padding:0;background:transparent}
+.saved-record-fact>div{min-width:0}
+.saved-shell .saved-record-link{display:flex;align-items:center;justify-content:space-between;gap:5px;width:100%;min-height:28px;padding:0;border:0;background:transparent;text-align:left;font-size:14px;font-weight:700;color:var(--text)}
+.saved-record-link>.ico{width:15px;height:15px;flex:none}
+.saved-record-values{display:flex;flex-wrap:wrap;align-items:center;gap:4px 7px;font-size:10px;line-height:1.3}
+.saved-record-values .achievement-badge{padding:2px 6px;font-size:9px;border-radius:9px;margin:0}
+.saved-record-values>strong{color:var(--accent);font-size:10px}
+.saved-other-records{margin:4px 0 0;border:0;padding:0}
+.saved-other-records>summary{min-height:28px;padding:5px 0 0;font-size:10px;color:var(--accent);cursor:pointer}
+.saved-other-records[open] .saved-record-fact{margin-top:7px;padding-top:6px;border-top:1px solid var(--line)}
+.saved-shell .saved-plan{margin-bottom:6px}
+.saved-plan>summary{min-height:30px;font-size:10px}
+.saved-shell .saved-muscle-volumes{padding:9px!important}
+.saved-muscle-volumes>.radar-top{padding-right:48px;justify-content:space-between;min-height:27px;gap:4px}
+.saved-muscle-volumes>.radar-top>span{font-size:10px;color:var(--muted);white-space:nowrap}
+.saved-muscle-volumes h2{font-size:17px!important}
+.saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,.9fr) minmax(0,1.7fr);gap:10px}
+.saved-muscle-volumes .saved-volume-bars,.saved-muscle-volumes .saved-volume-empty{display:block}
+.saved-muscle-volumes .saved-volume-bars .muscle-radar-bars{min-height:0;padding:0 4px}
+.saved-muscle-volumes .saved-volume-bars .radar-bar-heading{display:flex;justify-content:space-between}
+.saved-muscle-volumes .saved-volume-bars .radar-axis-value{font-size:13px}
+.saved-muscle-volumes-list{display:grid;gap:7px;padding:7px 0}
+.saved-muscle-volumes-list>div{display:grid;grid-template-columns:minmax(0,1fr) 23px minmax(34px,.6fr);gap:5px;align-items:center;font-size:10px;line-height:1.2}
+.saved-muscle-volumes-list>div>span{min-width:0;overflow-wrap:anywhere}
+.saved-muscle-volumes-list strong{font-size:11px;color:var(--accent);text-align:right}
+.saved-muscle-volumes-list i{display:block;height:5px;border-radius:5px;overflow:hidden;background:var(--line)}
+.saved-muscle-volumes-list b{display:block;height:100%;border-radius:inherit;background:var(--accent)}
+.saved-shell .saved-exercise>summary{grid-template-columns:25px minmax(0,1fr) 42px 70px 8px;min-height:43px;gap:6px;padding:6px 8px}
+.saved-exercise>summary .exercise-icon{width:25px;height:27px;min-width:25px;padding:0;background:transparent}
+.saved-exercise>summary .muscle-icon,.saved-exercise>summary .cardio-icon{width:25px;height:25px}
+.saved-exercise>summary .saved-exercise-label strong{font-size:12px;line-height:1.2}
+.saved-exercise>summary>.saved-exercise-count{font-size:10px;color:var(--muted);margin:0;text-align:right}
+.saved-exercise>summary>.saved-exercise-best{font-size:11px;text-align:right;line-height:1.2;padding-left:5px;border-left:1px solid var(--line)}
+.saved-section-heading h2 small{font-size:12px;font-weight:500;color:var(--muted)}
+.saved-shell .saved-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 0;padding:0}
+.saved-actions>button{min-height:42px;border-radius:13px;padding:8px 7px;font-size:11px;line-height:1.2;font-weight:650}
+.saved-shell .saved-home-action{background:var(--accent);color:#11180c}
+@media(max-width:359px){
+ .saved-shell .saved-stats strong{font-size:14px}
+ .saved-shell .saved-stats>div{grid-template-columns:16px minmax(0,1fr);padding-inline:5px;gap:3px}
+ .saved-stats .ico{width:16px;height:19px}
+ .saved-record-heading>span{font-size:8px}
+ .saved-shell .saved-record-heading h2{font-size:12px}
+ .saved-shell .saved-exercise>summary{grid-template-columns:22px minmax(0,1fr) 32px 59px 7px;gap:4px;padding:6px}
+ .saved-exercise>summary .saved-exercise-label strong{font-size:11px}
+ .saved-exercise>summary>.saved-exercise-count{font-size:9px}
+ .saved-exercise>summary>.saved-exercise-best{font-size:10px;padding-left:3px}
+ .saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,.8fr) minmax(0,1.8fr);gap:6px}
+ .saved-muscle-volumes-list>div{font-size:9px;grid-template-columns:minmax(0,1fr) 21px 34px;gap:4px}
+ .saved-muscle-volumes-list strong{font-size:10px}
+ .saved-muscle-volumes>.radar-top>span{display:none}
+}
+.saved-muscle-volumes .saved-radar-graphic{width:100%;max-width:120px;justify-self:center}
+.saved-record-values>strong{display:inline-flex;align-items:center;gap:3px}
+.saved-record-values>strong>.ico{width:11px;height:11px}
+.saved-shell .saved-records{position:relative}
+.saved-record-heading h2{padding-right:75px}
+.saved-records .saved-other-records{margin:0;padding:0}
+.saved-other-records>summary{position:absolute;right:10px;top:8px;min-height:28px;padding:3px 0;font-size:10px}
+.saved-other-records[open]{padding-top:4px}
+.saved-muscle-volumes .saved-volume-bars>.saved-radar-graphic,.saved-muscle-volumes .saved-volume-empty>.saved-radar-graphic{max-width:none}

@@ -1,59 +1,45 @@
-# Séance enregistrée — récapitulatif compact
+# Récapitulatif de séance enregistrée
 
-Refonte de la page de consultation d’une séance depuis l’Historique, selon la maquette jointe. Les valeurs illustratives ne sont pas copiées : les données et calculs du document existant restent la source.
+Présentation commune du bilan après « Terminer » et de la consultation d’une séance depuis l’Historique, Progression ou une fiche. L’entraînement en cours reste inchangé.
 
-## Organisation
+## Présentation
 
-- En-tête partagé de 44 px, zones sûres et marges de 10 px des pages modernisées. Retour compact vers l’Historique, ou vers la page d’origine lorsque le bilan est ouvert depuis Progression ou une fiche.
-- Statut et date au-dessus du grand titre ; point vert d’Élan et nombre d’exercices réalisés.
-- Menu « … » : modifier, préparer la même séance, supprimer avec la confirmation existante. Les trois actions utilisent les moteurs actuels.
-- Trois cartes sur une ligne : séries de travail, durée enregistrée et tonnage. Les tonnes affichées sont arrondies pour la lisibilité ; la quantité précise reste dans le titre accessible et le détail.
-- Une seule ligne de plan : réalisé/prévu, ajouts et non-réalisés. Elle se déplie pour les objectifs individuels et les groupes/enchaînements conservés.
-- Muscles travaillés : radar à gauche, muscle le plus sollicité et total de séries à droite. Détails ouvre l’anatomie complète, les séries directes/secondaires, les données de comparaison et l’aide. Les exercices non classés restent modifiables depuis ce détail.
-- Lignes d’exercices compactes et ouvrables : pictogramme, nom, séries et meilleure série. À l’ouverture : toutes les séries, échauffements, dégressives, notes, RIR, convention, comparaisons et lien portant le nom de l’exercice vers sa fiche. Aucun bouton « Fiche exercice ».
-- Exercices non réalisés dans un repli séparé. Une activité cardio ou de mobilité garde ses relevés réels et son unité ; aucune charge ou répétition n’est fabriquée.
-- Une seule entrée Comparer la séance rassemble les comparaisons disponibles, progrès et records existants, les séries précédentes et l’outil de comparaison de répartition. État simple en absence de série comparable.
-- Explications de plan, de tonnage et d’identité dans Comprendre le bilan. L’éditeur existant de date/séries/muscles et les commandes de suppression/duplication restent accessibles.
+- En-tête partagé, retour vers la page d’origine, nom, date et indication discrète d’enregistrement. Menu existant : modifier, préparer la même séance, supprimer avec confirmation.
+- Trois cartes : séries réalisées / prévues, tonnage, durée. Jauge plafonnée au nombre prévu ; les séries ajoutées restent dans le total réel et dans les écarts dépliables. Le tonnage compact conserve sa valeur précise dans le titre accessible et les détails.
+- Carte verte « Une étape de plus. » : exercice ouvrable, performance et gain calculé par le moteur existant. Les autres records se déplient depuis leur nombre. Tous les événements sont conservés, même plusieurs records du même type dans un exercice. Une première référence sans historique n’est jamais présentée comme un record.
+- Radar et liste des volumes pondérés côte à côte. Les libellés et valeurs sont placés dans cette liste plutôt que superposés au petit graphique. Le détail conserve l’anatomie, les séries directes / secondaires, les comparaisons et l’aide. Un ou deux groupes utilisent des barres en pleine largeur. Aucun axe ni volume n’est retranché ; les muscles non attribués restent signalés dans le détail.
+- Exercices réalisés dans leur ordre : pictogramme, nom, séries et meilleure série. Les noms longs peuvent passer sur plusieurs lignes. Les exercices sans attribution disposent d’un pictogramme générique pour conserver l’alignement sans inventer de groupe musculaire.
+- Chaque ligne ouvre les séries, échauffements, dégressives, notes, RIR, conventions, écarts, comparaisons fiables et accès à la fiche. Activités cardio / mobilité : relevés et unités réelles. Exercices non réalisés dans un repli séparé.
+- Comparaisons et explications complémentaires repliées. Actions explicites en bas : « Modifier ou supprimer » et « Retour à l’accueil », cette dernière en vert. Les retours tiennent compte de la page d’origine ; deux alias d’action locaux réutilisent les parcours existants de l’application.
 
-## Calculs réutilisés
+## Sources des valeurs
 
-`savedSessionModel` réunit les résultats de `sessionRecap`, `plannedSets`, `activitySummary`, `normalizedTonnage` et `radarModel`. Le résumé musculaire et le graphique reçoivent le même objet `radarModel` ; aucun moteur anatomique parallèle ni somme des axes pour fabriquer un total.
+`savedSessionModel` réutilise `sessionRecap`, `plannedSets`, `activitySummary`, `normalizedTonnage` et `radarModel`. Le radar et sa liste partagent le même modèle, la même échelle et les mêmes regroupements, sans sommer les axes pour fabriquer le total des séries. La pondération des séries secondaires et la protection contre les doublons restent dans le moteur existant.
 
-Le muscle le plus sollicité utilise la valeur pondérée existante du radar. Le total de travail reste celui du moteur, sans doublement des séries lors du regroupement. Les axes, noms, fusions musculaires, échelle automatique commune et cas 1/2 groupes en barres sont préservés. Le rendu compact réduit les marges vides du viewBox en tenant compte des libellés ; aucune étiquette ni axe n’est supprimé. Le rendu normal utilisé ailleurs reste inchangé.
+Le rendu normal de `radarHtml` reste inchangé. L’option `volumeList` concerne seulement ce récapitulatif compact : mêmes polygones et points, cadrage sans libellés internes, légende externe avec les valeurs du modèle.
 
-Les comparaisons emploient les références compatibles de `sessionRecap` et `setProgression`. Un exercice sans série de travail ne produit pas de baisse fictive. Une absence de référence, une identité ambiguë ou des conventions incompatibles ne deviennent pas une progression. Les données de séries antérieures restent consultables lorsque le moteur les considère comparables.
+Comparaisons : mêmes exercices, matériel et identité de charge admissibles. Les unités ne sont pas additionnées sans conversion explicite ; couverture partielle marquée ≥ et détails par unité conservés. Une durée inconnue reste « — ».
 
-Le tonnage reprend la règle existante : kg normalisés lorsque les conventions et côtés sont complets, sinon charge renseignée dans son unité. Des unités différentes ne sont jamais additionnées sans conversion explicite ; la partie connue peut être marquée ≥, sinon le total reste inconnu. Les quantités brutes par unité et la couverture sont accessibles dans l’aide. Une durée absente ou invalide reste un tiret.
-
-Aucune modification de `radar.js`, `achievements.js`, `identity.js`, `volume.js`, des formats de sauvegarde ou de la synchronisation.
-
-## Compacité mesurée
-
-Même document de test à **390 × 844 px** : huit exercices, sept réalisés, dix-neuf séries, deux ajouts et deux non-réalisées. Comparaison réelle avec le code publié avant cette mission, puis avec le nouvel affichage :
-
-| Mesure | Avant | Après |
-| --- | ---: | ---: |
-| Hauteur initiale du récapitulatif, informations repliées | 6 110 px | environ 960 px |
-| Bas de la troisième ligne/carte d’exercice depuis le haut de la page | 3 822 px | environ 683 px |
-| Statistiques principales | grandes cartes | environ 54 px |
-| Carte musculaire | pleine largeur | environ 220 px, radar + résumé côte à côte |
-
-Les chiffres concernent ce document et ces réglages. Toutes les lignes restent dans la page : aucun exercice n’est supprimé ou limité aux trois premiers. Le détail ouvert reprend naturellement davantage de hauteur.
-
-[Captures réelles](verification-seance-enregistree/) : avant, 320/390/430 px, WebKit et simulation de zones sûres. Elles utilisent des données de test locales, pas les données d’un compte de production. La capture à 390 px a été examinée et comparée à la maquette ; padding hérité des statistiques, marges du radar et hauteur des cartes ont été corrigés.
+Aucun changement des moteurs `radar.js`, `achievements.js`, `identity.js`, `volume.js`, du format des sauvegardes, de la synchronisation ou de Supabase. Aucune migration ni écriture de données en production.
 
 ## Vérifications
 
-- Suite générale : **82 scripts réussis**, couvrant entraînement/fin de séance, groupes, édition, historiques, calculs, sauvegardes, hors connexion, comptes et synchronisation simulée.
-- Chromium et WebKit mobile tactile à 320/390/430 px : en-tête, statistiques, schéma, lignes compactes, absence de débordement et trois premières lignes avant la navigation. À 390 px, même contrôle avec 44 px en haut et 34 px supplémentaires en bas simulant les zones sûres iPhone.
-- Consultation des séries/échauffements/notes, fiche et retour, plan initial, exercices non réalisés, comparaisons, ouverture de l’éditeur, annulation de suppression et comparaison intégrale du document avant/après : aucune mutation de consultation.
-- Radar réellement affiché pour Pull, Push, Jambes, Full Body, personnalisé, 1/2 groupes et quatorze axes : une surface, noms conservés, libellés contenus et sans chevauchement aux trois largeurs ; détail anatomique disponible.
-- Tests unitaires : séries prévues/réalisées/ajoutées/manquantes, durée connue/invalide/absente, kg/lb et unités mélangées, cardio/mobilité, absence de comparaison fictive, échappement des noms et source intacte.
+- `node tests/saved-session.cjs` : prévu / réalisé / ajouts / manquants, durée absente ou invalide, kg / lb / couverture partielle, cardio / secondes, absence de comparaison et de record inventés, plusieurs records du même type, valeurs du radar identiques au moteur et document immuable.
+- `node tests/saved-session-ui.cjs` : application réelle avec document de test local. Vues à 320, 390 et 430 px ; ouverture des 14 records de la fixture, détails des séries, notes, fiche et retour, plan et groupes, non-réalisés, comparaisons, deux accès à l’éditeur, suppression annulée, retour à l’accueil et source inchangée.
+- `node tests/finish-action-ui.cjs`, également exécuté sous WebKit : validation finale, nouveau bilan depuis Terminer à 320/390/430 px, ouverture de l’éditeur, retour au bilan puis accueil ; entraînement et sauvegarde conservés.
+- Même parcours de consultation sous WebKit : `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 ELAN_BROWSER=webkit node tests/saved-session-ui.cjs`.
+- `node tests/session-radar-ui.cjs` : Pull, Push, Jambes, Full Body, personnalisé, 1 / 2 groupes et tous les 14 groupes. Vérification des libellés et valeurs dans la légende externe, sans débordement aux trois largeurs. Séries anatomiques originales accessibles.
+- Cas supplémentaires de rendu : un, deux ou tous les groupes, muscles inconnus, séance vide et nom très long, sans mutation du document.
+- Bas de page : boutons d’au moins 42 px et accessibles au-dessus de la navigation. Zones sûres simulées à 390 px : deux premières lignes d’exercice visibles avec la carte de records.
 
-Safari sur iPhone physique et le mode installé iOS ne sont pas disponibles ici. WebKit Linux et les zones sûres simulées ne constituent pas ces tests matériels.
+À 390 × 844 px, pour la fixture de sept exercices réalisés sur huit : statistiques de 59 px, carte musculaire d’environ 177 px ; trois premières lignes terminées vers 626 / 676 / 726 px, avant la navigation à 768 px. Les sept exercices, l’encart de records et les actions restent dans la page, d’environ 1 041 px une fois les détails repliés.
+
+[Captures réelles de vérification](verification-seance-enregistree/) : données synthétiques locales, aucune performance d’un compte de production. Les captures à 390 px et du bas de page ont été examinées et comparées à la maquette.
+
+Limite : WebKit Linux et simulation de viewport / zones sûres ; Safari iPhone physique et mode installé iOS n’ont pas été testés.
 
 ## Fichiers
 
-`saved-session.js` et `saved-session.css` définissent la nouvelle présentation. `app.js` compose cette page et route les actions existantes. `radar-ui.js` partage le modèle et ajoute le cadrage compact. `index.html`, `sw.js` et le workflow Pages incluent les nouveaux fichiers. Tests dédiés : `tests/saved-session.cjs`, `tests/saved-session-ui.cjs` ; parcours de consultation adaptés aux nouveaux accès repliables.
+`saved-session.js`, `saved-session.css`, option de présentation dans `radar-ui.js`, composition commune des deux accès au bilan et deux alias dans `app.js`, cache dans `sw.js`. Tests dédiés et captures mis à jour. Aucun changement des autres pages ni de la navigation globale.
 
-Le bilan immédiat affiché après l’entraînement et l’écran d’entraînement en cours conservent leurs interfaces et leur fonctionnement. Aucune migration, réinitialisation ni modification des données de production n’est effectuée.
+Validation finale : les 83 scripts de la suite générale ont été vérifiés sur cette version, ainsi que les deux parcours du bilan sous WebKit. Configuration publique validée ; aucun secret ajouté aux fichiers servis.
