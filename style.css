@@ -4230,3 +4230,65 @@ body.group-dragging { overscroll-behavior: none; user-select: none; -webkit-user
  .performed-exercises .journal-card-metrics strong { font-size: 13px; }
  .performed-exercises .journal-card-title > strong { font-size: 14px; }
 }
+
+/* Public profiles reuse authorised social data and the existing interactions. */
+.social-page .public-profile-layout { display:flex; flex-direction:column; gap:12px; }
+.social-page .public-profile-layout .public-profile-identity { order:0; margin:0; gap:12px; }
+.social-page .public-profile-layout .public-profile-identity .profile-avatar { width:80px; height:80px; flex-basis:80px; }
+.social-page .public-profile-layout .profile-identity-copy h2 { font-size:25px; margin:0; }
+.social-page .public-profile-layout .profile-identity-copy p { margin:3px 0; font-size:12px; }
+.social-page .public-profile-layout .profile-relation { order:1; margin:0; }
+.social-page .public-profile-layout .community-profile { display:contents; }
+.social-page .public-profile-layout .profile-metric-heading { order:2; margin:0; }
+.social-page .public-profile-layout .profile-metric-heading h2 { font-size:15px; margin:0; }
+.social-page .public-profile-layout .community-choices button { min-height:34px; padding:5px 10px; font-size:12px; }
+.social-page .public-profile-layout .community-stats { order:3; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; padding:0; border:0; background:none; margin:0; }
+.social-page .public-profile-layout .community-stats>div { padding:12px 3px; border:1px solid #394838; border-radius:15px; background:#162019; text-align:center; min-width:0; }
+.social-page .public-profile-layout .community-stats strong { font-size:21px; display:block; color:var(--text); }
+.social-page .public-profile-layout .community-stats small { display:block; font-size:11px; color:var(--muted); }
+.social-page .public-profile-layout .profile-activity { order:4; margin:0; }
+.social-page .public-profile-layout h2.social-section-title,.social-page .public-profile-layout .profile-activity>h2 { font-size:19px; margin:0 0 8px; }
+.social-page .public-profile-layout .friend-activity { padding:10px; margin:0 0 7px; border-radius:16px; }
+.social-page .public-profile-layout .friend-activity p { margin:5px 0; font-size:13px; }
+.social-page .public-profile-layout .profile-sport-results { order:5; padding:10px; margin:0; border:1px solid #394838; border-radius:17px; }
+.social-page .public-profile-layout .profile-sport-results>summary { padding:0 0 8px; font-size:19px; }
+.social-page .public-profile-layout .profile-record { padding:8px 0; margin:0; border:0; border-bottom:1px solid #344034; border-radius:0; background:none; }
+.social-page .public-profile-layout .profile-record-heading { display:flex; align-items:center; gap:8px; }
+.social-page .public-profile-layout .profile-record-heading h3 { margin:0; font-size:14px; }
+.social-page .public-profile-layout .profile-record>.subtitle { font-size:11px; margin:3px 0; }
+.social-page .public-profile-layout .record-pair { gap:6px; margin:4px 0; }
+.social-page .public-profile-layout .record-pair strong { font-size:16px; }
+.social-page .public-profile-layout .record-pair small { font-size:10px; }
+.social-page .public-profile-layout .trophy-profile { order:6; margin:0; }
+.social-page .public-profile-layout .trophy-profile h2 { font-size:19px; }
+.social-page .public-profile-layout .trophy-showpiece { padding:9px 5px; min-height:0; border-radius:16px; }
+.social-page .public-profile-layout .trophy-showpiece img { width:55px; height:55px; }
+.social-page .public-profile-layout .profile-regularity,.social-page .public-profile-layout .profile-other-stats { order:7; margin:0; font-size:12px; }
+@media(max-width:350px){.social-page .public-profile-layout .community-stats{gap:4px}.social-page .public-profile-layout .community-stats strong{font-size:18px}.social-page .public-profile-layout .public-profile-identity .profile-avatar{width:65px;height:65px;flex-basis:65px}}
+.social-page .public-profile-layout .community-stats .ico { width:22px; height:22px; color:var(--accent); margin-bottom:5px; }
+.social-page .public-profile-layout .profile-record-heading .exercise-icon { width:30px; height:32px; margin:0; flex:none; }
+.social-page .public-profile-layout .trophy-showpiece progress { width:100%; height:7px; accent-color:var(--accent); }
+.social-page .public-profile-layout .public-all-sessions,.social-page .public-profile-layout .public-more-records { margin:6px 0; }
+.social-page .public-profile-layout .public-all-sessions>summary,.social-page .public-profile-layout .public-more-records>summary { color:var(--accent); min-height:40px; padding:8px; font-size:13px; }
+
+.social-page .public-profile-layout .public-profile-identity { min-height:0; height:auto; padding:0; margin:0; }
+.social-page .public-profile-layout .profile-avatar.large { width:80px; height:80px; min-width:80px; border-radius:50%; aspect-ratio:1; }
+.social-page .public-profile-layout .profile-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.social-page .public-profile-layout .profile-relation,.social-page .public-profile-layout .public-profile-actions { padding:0; margin:0; min-height:0; }
+.social-page .public-profile-layout .community-stats { width:100%; grid-template-columns:repeat(4,minmax(0,1fr)); min-height:0; }
+.social-page .public-profile-layout .friend-activity .feed-open { padding:0; gap:6px; min-height:0; }
+.social-page .public-profile-layout .friend-activity .feed-avatar,.social-page .public-profile-layout .friend-activity .feed-person { display:none; }
+.social-page .public-profile-layout .friend-activity .feed-copy { min-width:0; flex:1; }
+.social-page .public-profile-layout .friend-activity .profile-performance-preview { margin:6px 0; font-size:12px; }
+.social-page .public-profile-layout .profile-friend-actions { order:1; margin:0; padding:0; min-height:0; display:flex; align-items:center; gap:8px; }
+.social-page .public-profile-layout .profile-friend-actions details { margin:0 0 0 auto; }
+.social-page .public-profile-layout .friend-activity .feed-open { display:grid; grid-template-columns:minmax(0,1fr) auto; width:100%; text-align:left; }
+.social-page .public-profile-layout .friend-activity .feed-copy { display:block; grid-column:1; width:100%; }
+.social-page .public-profile-layout .friend-activity .feed-set-count { grid-column:2; }
+.social-page .public-profile-layout .friend-activity .feed-summary { display:block; width:auto; font-size:14px; font-weight:600; }
+.social-page .public-profile-layout .friend-activity .profile-performance-preview li { display:flex; justify-content:space-between; gap:8px; }
+.social-page .public-profile-layout .public-performance-line { display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:7px; }
+.social-page .public-profile-layout .public-performance-line>strong { font-size:14px; white-space:nowrap; }
+.social-page .public-profile-layout .public-performance-line>details { margin:0; font-size:12px; }
+.social-page .public-profile-layout .public-performance-line>details[open] { grid-column:1/-1; }
+.social-page .public-profile-layout .public-cheer-count { font-size:11px; color:var(--muted); }
