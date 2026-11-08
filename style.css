@@ -4337,3 +4337,18 @@ body.group-dragging { overscroll-behavior: none; user-select: none; -webkit-user
 .correction-history-row small { color: var(--muted); }
 .convention-correction p { line-height: 1.5; }
 @media(max-width:359px) { .personal-library-page h1 { font-size: 27px; }.personal-exercise-copy strong { font-size: 14px; }.personal-exercise-open { gap: 8px; }.personal-exercise-icon { flex-basis: 36px; width: 36px; }.personal-exercise-tags > small { font-size: 8px; padding: 3px 4px; } }
+
+/* Compact challenge chooser above the competition page. */
+.challenge-choice-dialog{box-sizing:border-box;width:calc(100% - 32px);max-width:390px;max-height:calc(100dvh - 48px);margin:auto;padding:20px;border:1px solid #354137;border-radius:24px;background:#181f19;color:#f3f6f2;box-shadow:0 20px 70px #0006;overflow:auto}
+.challenge-choice-dialog::backdrop{background:rgb(0 0 0 / 48%)}
+.challenge-choice-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.challenge-choice-heading h2{margin:0;font-size:22px;line-height:1.25}
+.challenge-choice-close{display:grid;place-items:center;flex-shrink:0;width:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:transparent;color:#aebaae;font-size:28px;line-height:1}
+.challenge-choice-list{display:grid;gap:0}
+.challenge-choice-row{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:14px 4px;border:0;border-radius:0;background:transparent;text-align:left;color:inherit;font-size:16px;line-height:1.4}
+.challenge-choice-row+.challenge-choice-row{border-top:1px solid #303b32}
+.challenge-choice-row .community-icon{width:22px;height:22px;margin:0;flex-shrink:0;filter:brightness(0) invert(1);opacity:.75}
+.challenge-choice-arrow{margin-left:auto;color:#a8b59e;font-size:24px}
+.challenge-choice-row:hover,.challenge-choice-close:hover{background:#263325}
+.challenge-choice-dialog button:focus-visible{outline:2px solid #c5f279;outline-offset:2px;border-radius:8px}
+html:has(.challenge-choice-dialog[open]){overflow:hidden}

@@ -34,6 +34,21 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
  const create=async(p,target)=>{await click(p,'community-create');await click(p,'community-with');await p.selectOption('#community-target',target);};
  try{
   const {page:a,context}=await account(A);await open(a);
+  await click(a,'community-create');
+  const chooser=a.getByRole('dialog',{name:'Nouveau défi',exact:true});
+  assert.equal(await chooser.evaluate(e=>e.matches(':modal')),true);
+  assert.equal(await chooser.locator('.challenge-choice-row').count(),3);
+  for(const width of [320,390,430]){
+   await a.setViewportSize({width,height:844});
+   const rect=await chooser.boundingBox();assert(rect.x>=0&&rect.x+rect.width<=width);
+   assert(rect.height<340);assert(await a.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  }
+  await a.setViewportSize({width:390,height:844});
+  await a.screenshot({path:'/tmp/elan-challenge-modal-390.png'});
+  await a.keyboard.press('Escape');assert.equal(await chooser.count(),0);
+  assert.equal(await a.locator('[data-action="community-create"]').evaluate(e=>e===document.activeElement),true);
+  await click(a,'community-create');await a.mouse.click(5,5);assert.equal(await chooser.count(),0);
+  await click(a,'community-create');await chooser.getByRole('button',{name:'Fermer',exact:true}).click();assert.equal(await chooser.count(),0);
   // Series are accessed through New challenge; no redundant disclosure in the list.
   assert.equal(await a.getByText('Défis de séries · invitations et suivi',{exact:true}).count(),0);
   assert.equal(await a.locator('.legacy-challenges').count(),0);
