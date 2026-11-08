@@ -4102,3 +4102,24 @@ html:has(#session-compose) { scroll-padding-bottom: calc(var(--editor-footer-hei
 #session-compose .editor-metrics { margin-top: 4px; }
 #session-compose .editor-metrics > label { min-height: 32px; }
 #session-compose .editor-metrics input { height: 26px; min-height: 26px; }
+
+/* Exercise actions float above the compact card; advanced settings use a modal. */
+#session-compose .editor-exercise-options { padding: 0; }
+#session-compose .editor-exercise-options[open] { padding: 0; z-index: 20; }
+#session-compose .editor-context-menu { position: absolute; top: 40px; right: 6px; width: 156px; padding: 5px; border: 1px solid #46533f; border-radius: 13px; background: #1c271e; box-shadow: 0 10px 28px #0008; z-index: 20; display: grid; gap: 2px; }
+#session-compose .editor-context-menu button { min-height: 40px; width: 100%; padding: 7px 12px; margin: 0; border: 0; border-radius: 8px; background: transparent; text-align: left; font-size: 14px; }
+#session-compose .editor-context-menu button:hover, #session-compose .editor-context-menu button:focus-visible { background: #304329; }
+#session-compose .editor-exercise-dialog { position: fixed; inset: 0; margin: auto; width: min(430px,calc(100% - 24px)); max-width: none; max-height: min(620px,calc(var(--visible-height,100dvh) - 32px)); padding: 16px; overflow-y: auto; border: 1px solid #46533f; border-radius: 20px; background: #151e17; color: var(--text); }
+#session-compose .editor-exercise-dialog::backdrop { background: #0009; }
+#session-compose .editor-exercise-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 12px; padding: 0; }
+#session-compose .editor-exercise-dialog h2 { margin: 0; font-size: 19px; }
+#session-compose .editor-exercise-dialog button { min-height: 40px; }
+#session-compose .editor-dialog-fields > label { display: block; margin: 10px 0; }
+#session-compose .editor-dialog-fields input, #session-compose .editor-exercise-dialog select { width: 100%; font-size: 16px; }
+#session-compose .editor-exercise-dialog .editor-move { display: flex; align-items: end; gap: 8px; }
+#session-compose .editor-exercise-dialog .editor-move label { flex: 1; margin: 0; }
+#session-compose .editor-exercise-dialog .editor-move button { min-width: 44px; }
+#session-compose .editor-exercise-dialog > .primary { margin-top: 14px; }
+
+#session-compose .editor-exercise-options.opens-up .editor-context-menu { top: auto; bottom: calc(100% - 6px); }
+.keyboard-open #session-compose .editor-exercise-dialog { top: calc(var(--visible-top,0px) + 12px); bottom: auto; margin: 0 auto; max-height: calc(var(--visible-height,100dvh) - 24px); }

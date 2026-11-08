@@ -31,3 +31,13 @@ Ces tests utilisent des documents locaux et des réponses cloud simulées ; ils 
 ## Limites
 
 WebKit automatisé ne remplace pas Safari sur iPhone physique. Le clavier iOS réel, les gestes de déplacement du viewport et le mode installé restent à valider sur appareil. Les tests ne constituent pas un test connecté sur le compte personnel d’un utilisateur.
+
+## Menu contextuel des exercices
+
+Les trois points ouvrent désormais un menu flottant : Modifier, Remplacer, Déplacer, Supprimer. Le menu ne change pas la hauteur de la carte ; il se ferme au toucher extérieur ou avec Échap et peut s’ouvrir vers le haut si nécessaire.
+
+Modifier ouvre une fenêtre native dédiée qui conserve le nom, les réglages individuels disponibles, les associations musculaires et le plan alternatif existants. Les champs de séries, répétitions et repos restent dans la carte. Déplacer et la poignée ouvrent les commandes de position ; les membres d’un groupe continuent à déplacer leur bloc entier. Les réglages se sauvegardent par le mécanisme existant, et le focus revient au bouton des actions à la fermeture.
+
+`tests/editor-context-ui.cjs` exécute les quatre actions, le renommage avec sauvegarde/réouverture, Échap, la fermeture extérieure, les réglages musculaires imbriqués, la saisie directe, le contrôle de hauteur inchangée, les fenêtres à 320/390/430 px et une réduction simulée du viewport par le clavier. Parcours réussi dans Chromium et WebKit. Les parcours historiques de tests ont été adaptés pour ouvrir les réglages via le nouveau menu. Aucun changement de données ou du moteur d’entraînement.
+
+Validation de cette évolution : les 97 commandes existantes ont été exécutées ; six parcours de tests ont été adaptés pour ouvrir les nouvelles fenêtres au lieu de chercher les champs dans les cartes dépliées, puis repassés avec succès. Le nouveau test contextuel passe également, soit 98 commandes distinctes réussies après reprises ciblées, plus son exécution WebKit. Contrôles de syntaxe, configuration publique et `git diff --check` réussis. Le clavier reste une simulation de viewport : validation sur iPhone physique toujours nécessaire.

@@ -2,6 +2,7 @@
 exports.journeyClick=(getPage,run)=>async action=>{
  const page=getPage(),minimise=async()=>{const button=page.locator('#rest-dialog[open] [data-action="rest-dismiss"]');if(await button.count()){await button.click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil')}};
  await minimise();
+ if(action==='editor-dialog-close'){await page.locator('[data-action="editor-dialog-close"]:visible').first().click();await page.waitForFunction(()=>!document.querySelector('.editor-exercise-dialog[open]'));return}
  // Exercise/muscle details now open from the overview's section links.
  if(action==='overview-tab:muscle'&&!await page.locator('[data-action="overview-tab:muscle"]').count()&&await page.locator('[data-action="overview-tab:overview"]').count())await page.locator('[data-action="overview-tab:overview"]').first().click();
  if(action.startsWith('progress-tab:')&&!await page.locator(`[data-action="${action}"]`).count()&&await page.locator('[data-action="exercise-back"]').count())await page.locator('[data-action="exercise-back"]').click();
@@ -23,6 +24,14 @@ exports.journeyClick=(getPage,run)=>async action=>{
  if(action.startsWith('calendar-')&&await page.locator('details.history-calendar:not([open])').count())await page.locator('.history-calendar>summary').click();
  if(action.startsWith('detail:')&&!await page.locator(`.history-session [data-action="${action}"]`).count()&&await page.locator('[data-action="history-scope:year"]').count())await page.locator('[data-action="history-scope:year"]').click();
  if(action.startsWith('plan-edit:')&&!await page.locator(`[data-action="${action}"]`).count()){const [,path,delta]=action.split(':');const input=page.locator(`[data-ex="${path}"][data-field="count"]`);if(await input.count()){await input.fill(String(Math.max(0,Number(await input.inputValue())+Number(delta))));await input.dispatchEvent('change');await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil');return}}
+ // Saved-template advanced controls now live in a dedicated modal.
+ const advanced=page.locator(`[data-action="${action}"]`).first();
+ if(await advanced.count()){
+   const panel=await advanced.evaluate(el=>{const d=el.closest('.editor-exercise-dialog');return d&&!d.open?{index:[...document.querySelectorAll('.model-exercise')].indexOf(d.closest('.model-exercise')),mode:d.dataset.editorDialog}:null});
+   if(panel){const menu=page.locator('.model-exercise').nth(panel.index).locator('.editor-exercise-options');if(!await menu.evaluate(el=>el.open))await menu.locator('summary').click();await page.locator(`[data-action="${panel.mode==='move'?'editor-order':'editor-options'}:${panel.index}"]`).first().click();}
+ }
+ const openPanel=page.locator('.editor-exercise-dialog[open]');
+ if(await openPanel.count()&&!(await advanced.count()&&await advanced.evaluate(el=>!!el.closest('.editor-exercise-dialog, #muscle-dialog'))))await page.locator('[data-action="editor-dialog-close"]:visible').first().click();
  const target=page.locator(`[data-action="${action}"]`).first();if(await target.count())await target.evaluate(el=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true});
  await run(action);if(action==='progress-tab:muscles'){const panel=page.locator('.volume-analysis');if(await panel.count()&&!await panel.evaluate(e=>e.open))await panel.locator('summary').first().click();}if(action==='nav:body'){await page.locator('[data-action="account-body"]').click();await page.locator('#body-metric').waitFor();}await minimise();
 };
