@@ -33,7 +33,17 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
  const open=async p=>{await p.goto(process.env.ELAN_TEST_URL||'http://127.0.0.1:4173');await click(p,'nav:ranking');await click(p,'rank-tab:challenges');await p.locator('[data-action="community-create"]').waitFor();};
  const create=async(p,target)=>{await click(p,'community-create');await click(p,'community-with');await p.selectOption('#community-target',target);};
  try{
-  const {page:a,context}=await account(A);await open(a);await create(a,B);
+  const {page:a,context}=await account(A);await open(a);
+  // The series shortcut must override the closed disclosure and reveal its content.
+  for(let attempt=0;attempt<2;attempt++){
+   await click(a,'community-create');await click(a,'community-series');
+   assert.equal(await a.locator('.community-sheet').count(),0);
+   assert.equal(await a.locator('.legacy-challenges').evaluate(e=>e.open),true);
+   assert.equal(await a.locator('.challenge-compose').evaluate(e=>e.open),true);
+   assert.equal(await a.getByRole('heading',{name:'Ta prochaine référence.',exact:true}).isVisible(),true);
+   await a.locator('.legacy-challenges > summary').click();
+  }
+  await create(a,B);
   const title=a.locator('#community-goal-title');assert.equal(await title.getAttribute('maxlength'),'60');assert.equal(await title.inputValue(),'');
   await title.fill('Notre mois en forme 💪');assert.equal(await title.evaluate(e=>e===document.activeElement),true);assert.equal(await a.locator('.goal-preview strong').innerText(),'Notre mois en forme 💪');
   await click(a,'community-set:quantity:4');await click(a,'community-set:days:30');await click(a,'community-set:mode:together');assert.match(await a.locator('.goal-preview').innerText(),/4 séances ensemble en 30 jours/);assert.match(await a.locator('.goal-preview').innerText(),/chacun apporte sa part/);await click(a,'community-set:mode:each');assert.equal(await title.inputValue(),'Notre mois en forme 💪');assert.equal(await a.locator('[data-action="community-set:days:30"]').getAttribute('aria-pressed'),'true');assert.equal(await a.locator('.goal-rules').evaluate(e=>e.open),false);
