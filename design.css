@@ -104,7 +104,8 @@
 .progressing-exercises>.section-heading h2 .ico{width:19px;height:19px;flex-shrink:0;color:var(--accent)}
 .performance-dashboard .progressing-exercises .text-link{flex-shrink:0;padding-inline:0}
 .progress-shell .performance-dashboard .progress-feature-card{padding:9px;margin:0 0 7px;background:#101812}
-.progressing-exercises .overview-trend-chart{height:120px}
+.progressing-exercises .overview-trend-chart{height:100px}
+.progressing-exercises .progress-feature-facts{justify-content:center;gap:7px}
 .progress-secondary-list{display:grid;gap:6px}
 .progress-shell .progress-secondary-row{display:grid;grid-template-columns:28px minmax(0,1fr) auto 8px;align-items:center;gap:7px;width:100%;min-height:44px;padding:6px 8px;margin:0;border:1px solid var(--line);border-radius:12px;background:#101812;text-align:left}
 .progress-secondary-row .exercise-icon{width:28px;height:28px;min-width:28px;margin:0;padding:2px}
@@ -113,4 +114,4 @@
 .progress-secondary-row>span:last-child{font-size:20px;color:var(--muted)}
 .performance-dashboard .recent-records .text-link{font-size:10px;padding-inline:0;flex-shrink:0}
 .performance-dashboard .overview-four-stats small{min-height:22px}
-@media(max-width:359px){.progressing-exercises>.section-heading h2{font-size:14px}.progressing-exercises>.section-heading h2 .ico{width:15px;height:15px}.progress-secondary-row>strong{font-size:11px}.progress-secondary-gain{font-size:9px;max-width:100px}.progressing-exercises .overview-trend-chart{height:110px}}
+@media(max-width:359px){.progressing-exercises>.section-heading h2{font-size:14px}.progressing-exercises>.section-heading h2 .ico{width:15px;height:15px}.progress-secondary-row>strong{font-size:11px}.progress-secondary-gain{font-size:9px;max-width:100px}.progressing-exercises .overview-trend-chart{height:92px}}
