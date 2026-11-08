@@ -193,3 +193,18 @@
 .goals .objective-personal-copy progress::-webkit-progress-bar{background:#354236}
 .goals .objective-personal-copy progress::-webkit-progress-value{background:var(--accent);border-radius:8px}
 .goals .objective-personal-copy progress::-moz-progress-bar{background:var(--accent);border-radius:8px}
+
+/* Only the three-step form: keep controls reachable above the app navigation. */
+.goals.goal-wizard{min-height:0;padding-bottom:calc(24px + env(safe-area-inset-bottom));scroll-padding-bottom:120px}
+.goal-wizard .goal-wizard-heading{margin-bottom:10px}
+.goals.goal-wizard h2{font-size:18px;margin:12px 0}
+.goal-wizard .goal-form-row{min-height:48px;padding:7px 0}
+.goal-wizard .goal-form-row>span:first-child,.goal-wizard .goal-form-row>label{min-width:0;overflow-wrap:anywhere}
+.goal-wizard .goal-form-row>input[name="title"]{width:62%;padding:8px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.goal-wizard .goal-exercise-row{flex-wrap:wrap}
+.goal-wizard .goal-exercise-row select{width:100%;max-width:100%;white-space:normal}
+.goal-wizard .goal-form select{max-width:67%;font-size:16px}
+.goal-wizard .goal-wizard-footer{padding:12px 0 8px;margin-top:0}
+.goal-wizard .goal-manual{padding:8px 0;font-size:12px}
+.goal-wizard input{scroll-margin-bottom:150px}
+.goal-wizard .goal-confirm{overflow-wrap:anywhere}
