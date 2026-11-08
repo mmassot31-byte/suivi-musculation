@@ -7,7 +7,7 @@ import {exerciseDisplayName,normalizeSearch} from './exercise-labels.js';
 import {exerciseSearchAliases} from './exercise-library.js';
 import {anatomicalProfile,anatomicalMuscles} from './muscles.js';
 import {overviewMuscleGroup,overviewMuscles} from './performance-overview.js';
-import {exercisePrimaryIcon} from './pictograms.js';
+import {exercisePrimaryIcon,muscleLabels} from './pictograms.js';
 import {isActivity,activityDisplayValue,activityDisplayUnit} from './activity.js';
 import {dayKey,dayOffset} from './tracking.js';
 import {icon} from './icons.js';
@@ -33,7 +33,7 @@ export function performedExerciseIndex(sessions,state={}){
    }
   }
  }
- return [...buckets.values()].flatMap(bucket=>bucket.map(g=>{const sessions=[...g.sessions.values()];return {...g,sessions,duplicate:bucket.length>1,name:exerciseDisplayName(g.exercise),search:normalizeSearch(exerciseSearchAliases(g.exercise,state)+' '+g.muscleIds.map(id=>anatomicalMuscles.find(([key])=>key===id)?.[1]||id).join(' ')+' '+journalMuscles.filter(([id])=>g.groups.includes(id)).map(([,label])=>label).join(' ')),data:g.activity||!g.known?null:exerciseSheetData(g.exercise,sessions,{metric:g.exercise.measurement==='bodyweight'?'reps':'load',weight:g.exercise.measurement==='bodyweight'?0:null})}}));
+ return [...buckets.values()].flatMap(bucket=>bucket.map(g=>{const sessions=[...g.sessions.values()];return {...g,sessions,duplicate:bucket.length>1,name:exerciseDisplayName(g.exercise),search:normalizeSearch(exerciseSearchAliases(g.exercise,state)+' '+g.muscleIds.map(id=>[anatomicalMuscles.find(([key])=>key===id)?.[1],muscleLabels[id]].filter(Boolean).join(' ')||id).join(' ')+' '+journalMuscles.filter(([id])=>g.groups.includes(id)).map(([,label])=>label).join(' ')),data:g.activity||!g.known?null:exerciseSheetData(g.exercise,sessions,{metric:g.exercise.measurement==='bodyweight'?'reps':'load',weight:g.exercise.measurement==='bodyweight'?0:null})}}));
 }
 export function recentExerciseChange(exercise,occurrences){
  const neutral={text:'—',sign:0,score:null};if(occurrences.length<2||loadIdentity(exercise).certainty!=='known')return neutral;
