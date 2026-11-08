@@ -79,3 +79,6 @@
  .exercise-ranking-panel .personal-ranking-list>li>span:last-child{font-size:12px}
  .exercise-ranking-panel .profile-link{font-size:12px}
 }
+
+.profile-shell .profile-home .profile-shortcuts .profile-exercises-link{grid-column:1/-1;min-height:48px;font-size:14px;border-color:#506045;background:linear-gradient(135deg,#202e1b,#111a13)}.profile-exercises-link>span:last-child{margin-left:auto;font-size:22px;color:var(--accent)}
+.profile-shell .profile-home .profile-shortcuts .profile-section-link{min-height:44px}
