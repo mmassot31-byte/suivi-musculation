@@ -15,7 +15,8 @@ const esc=escapeHtml,fmt=n=>Number(n).toLocaleString('fr-FR',{maximumFractionDig
 const button=(text,action,cls='')=>`<button type="button" class="${cls}" data-action="${esc(action)}">${text}</button>`;
 const percent=n=>n===null?'—':Math.abs(n)<.05?'0 %':`${n>0?'+':''}${fmt(n)} %`;
 export const overviewMuscles=[['chest','Pectoraux','chest'],['back','Dos','lats'],['shoulders','Épaules','side_delts'],['arms','Bras','biceps'],['legs','Jambes','quads']];
-const broad=id=>id==='chest'?'chest':['lats','upper_back','traps','erectors'].includes(id)?'back':['front_delts','side_delts','rear_delts'].includes(id)?'shoulders':['biceps','brachialis','triceps','forearms'].includes(id)?'arms':['quads','hamstrings','glutes','calves','adductors','abductors'].includes(id)?'legs':null;
+export const overviewMuscleGroup=id=>id==='chest'?'chest':['lats','upper_back','traps','erectors'].includes(id)?'back':['front_delts','side_delts','rear_delts'].includes(id)?'shoulders':['biceps','brachialis','triceps','forearms'].includes(id)?'arms':['quads','hamstrings','glutes','calves','adductors','abductors'].includes(id)?'legs':null;
+const broad=overviewMuscleGroup;
 export function overviewMuscleVolume(sessions){
  const totals=Object.fromEntries(overviewMuscles.map(([id])=>[id,0])),seenSessions=new Set();
  for(const s of sessions){if(s.id&&seenSessions.has(s.id))continue;if(s.id)seenSessions.add(s.id);const seen=new Set();
