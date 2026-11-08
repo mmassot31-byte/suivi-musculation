@@ -34,14 +34,17 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
  const create=async(p,target)=>{await click(p,'community-create');await click(p,'community-with');await p.selectOption('#community-target',target);};
  try{
   const {page:a,context}=await account(A);await open(a);
-  // The series shortcut must override the closed disclosure and reveal its content.
+  // Series are accessed through New challenge; no redundant disclosure in the list.
+  assert.equal(await a.getByText('Défis de séries · invitations et suivi',{exact:true}).count(),0);
+  assert.equal(await a.locator('.legacy-challenges').count(),0);
   for(let attempt=0;attempt<2;attempt++){
    await click(a,'community-create');await click(a,'community-series');
    assert.equal(await a.locator('.community-sheet').count(),0);
-   assert.equal(await a.locator('.legacy-challenges').evaluate(e=>e.open),true);
+   assert.equal(await a.locator('.legacy-challenges').isVisible(),true);
    assert.equal(await a.locator('.challenge-compose').evaluate(e=>e.open),true);
    assert.equal(await a.getByRole('heading',{name:'Ta prochaine référence.',exact:true}).isVisible(),true);
-   await a.locator('.legacy-challenges > summary').click();
+   await click(a,'rank-series-close');
+   assert.equal(await a.locator('.legacy-challenges').count(),0);
   }
   await create(a,B);
   const title=a.locator('#community-goal-title');assert.equal(await title.getAttribute('maxlength'),'60');assert.equal(await title.inputValue(),'');
