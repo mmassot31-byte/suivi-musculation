@@ -9,7 +9,7 @@ assert(Math.abs(gain.global-(40/38-1)*100)<1e-9);
 assert.equal(gain.muscles.find(x=>x.id==='back').current,2);
 assert.equal(gain.muscles.find(x=>x.id==='back').percent,null);
 const freshHtml=performanceDashboardHtml({sessions:equalLoad},{today:'2026-11-07'});
-assert.match(freshHtml,/Force estimée/);assert.match(freshHtml,/<span>2<\/span><small>séries pond\.<\/small><small>sur 30 jours/);assert.doesNotMatch(freshHtml,/Nouv\./);
+assert.match(freshHtml,/Force estimée/);assert.match(freshHtml,/<strong>2<\/strong><small>Nouveaux records/);assert.match(freshHtml,/<strong>1<\/strong><small>Exercices en progression/);assert.doesNotMatch(freshHtml,/overview-muscle-grid|Progression par muscle|Temps total|<small>Séries/);assert.doesNotMatch(freshHtml,/Nouv\./);
 for(const change of [x=>({...x,measurement:'assistance'}),x=>({...x,measurement:'bodyweight'}),x=>({...x,measurement:'added_load'}),x=>({...x,sets:x.sets.map(st=>({...st,r:13}))}),x=>({...x,sets:x.sets.map(st=>({...st,drops:[{w:10,r:8}]}))}),x=>({...x,sets:x.sets.map(st=>({...st,validated:false}))})]) {
  const ex=change(e('row',60));assert.equal(comparableTrend(ex,equalLoad.map(t=>({...t,exercises:[ex]}))),null);
 }
