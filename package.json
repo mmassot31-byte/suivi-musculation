@@ -59,7 +59,8 @@
     "test:group-editor": "node tests/group-sequence.cjs && node tests/group-editor-ui.cjs",
     "test:performed-exercises": "node tests/performed-exercises.cjs && node tests/hammer-curl-ui.cjs && node tests/performed-exercises-ui.cjs",
     "test:load-conventions": "node tests/load-normalization.cjs && node tests/library-convention-correction.cjs && node tests/profile-library-ui.cjs && node tests/exercise-replacement.cjs && node tests/exercise-replacement-ui.cjs",
-    "test:goals": "node tests/goals.cjs && node tests/goals-ui.cjs"
+    "test:goals": "node tests/goals.cjs && node tests/goals-ui.cjs",
+    "test:series-targets": "node tests/series-targets-db.cjs && node tests/challenge-creation.cjs && node tests/social-presenter.cjs"
   },
   "type": "module",
   "dependencies": {

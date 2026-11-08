@@ -75,3 +75,12 @@
 .elan-challenge-editor fieldset .community-quantity{margin:6px 0 0 69px}
 .elan-challenge-editor .goal-preview p.goal-objective{margin:4px 0 0;line-height:1.35}
 @media(max-width:359px){.elan-challenge-editor fieldset .community-quantity{margin-left:56px}}
+.elan-challenge-editor .challenge-form-row>label{font-size:12px;color:var(--muted);margin:0}
+.elan-challenge-editor .series-stepper{display:flex;align-items:center;gap:3px;max-width:68%;background:#1d2920;border-radius:11px;padding:3px}
+.elan-challenge-editor .series-stepper button{width:32px;height:32px;min-height:32px;flex-shrink:0;border:0;border-radius:9px;background:#2a372c;padding:0;font-size:21px}
+.elan-challenge-editor .series-stepper input{width:75px;max-width:100%;min-height:32px;height:32px;padding:2px;border:0;background:none;text-align:center;font-size:16px;font-weight:700;appearance:textfield}
+.elan-challenge-editor .series-stepper input::-webkit-inner-spin-button,.elan-challenge-editor .series-stepper input::-webkit-outer-spin-button{appearance:none;margin:0}
+.elan-challenge-editor .challenge-target-preview{font-size:12px;font-weight:650;line-height:1.4;color:var(--accent);margin:10px 2px 0;overflow-wrap:anywhere}
+.elan-challenge-editor #challenge-exercise-search{width:100%;max-width:100%;margin-bottom:0}
+.challenge-card .challenge-participant-scores{font-size:11px;color:var(--muted);line-height:1.6;margin:8px 0}
+@media(max-width:359px){.elan-challenge-editor .series-stepper input{width:55px}.elan-challenge-editor .challenge-form-row>label{font-size:11px}}
