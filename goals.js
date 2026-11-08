@@ -3,7 +3,7 @@ import {muscles} from './muscles.js';
 import {loadIdentity} from './identity.js';
 import {sameExerciseReference} from './exercise-reference.js';
 import {libraryDefinitions,libraryExercise} from './exercise-library.js';
-import {objectiveModels,performanceReference,editObjective,localZone,zonedDay,calendarEnd,goalTypes,objectiveSuggestion} from './goals-model.js';
+import {objectiveModels,performanceReference,editObjective,localZone,zonedDay,calendarEnd,goalTypes,objectiveSuggestion,objectiveCalendarKey} from './goals-model.js';
 export {goalTypes,goalResults,goalBaseline,mergeGoals,periodEnd} from './goals-model.js';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>n===null||n===undefined?'—':new Intl.NumberFormat('fr-FR',{maximumFractionDigits:1}).format(n);
@@ -48,6 +48,6 @@ export function createGoalsUI({getState,save,render,icon,challengePreview=()=>''
  await save();if(k==='save'){step=0;selectedId=editing;editing=null}if(k==='delete')selectedId=null;
  }catch(e){state.sportGoals=before;throw e}finally{busy=false}}
  render();if(typeof window!=='undefined'&&['new','next','review','back','detail','history','history-close','close-detail'].includes(k))window.scrollTo(0,0);return true;}
- let lastDay=today();if(typeof document!=='undefined'){const tick=()=>{const day=today();if(day!==lastDay){lastDay=day;if(document.querySelector('.goals')&&!step)render()}};setInterval(tick,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()})}
+ let lastDay=objectiveCalendarKey(getState());if(typeof document!=='undefined'){const tick=()=>{const day=objectiveCalendarKey(getState());if(day!==lastDay){lastDay=day;if(document.querySelector('.goals')&&!step)render()}};setInterval(tick,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()})}
  return {html,action,capture,changed,open(){selectedId=null;history=false;step=0;draft=null;editing=null;choiceCache=null}};
 }

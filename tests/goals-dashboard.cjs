@@ -1,7 +1,8 @@
 const assert=require('node:assert/strict');
-(async()=>{const {objectiveModels,editObjective,calendarStart,calendarEnd,zonedDay}=await import('../goals-model.js');
+(async()=>{const {objectiveModels,editObjective,calendarStart,calendarEnd,zonedDay,objectiveCalendarKey}=await import('../goals-model.js');
 const identity={version:1,unit:'kg',convention:'Total',lateralMode:'total',source:'confirmed'},exercise={id:'bench',name:'Développé couché',convention:'Total',loadIdentity:identity,muscles:{primary:['chest'],secondary:['triceps']}};
 const session=(id,day,w=50,r=10)=>({id,date:day+'T10:00:00Z',endedAt:day+'T11:00:00Z',exercises:[{...structuredClone(exercise),sets:[{id:id+'-set',w,r,type:'work',loadIdentity:identity}]}]});
+assert.notEqual(objectiveCalendarKey({sportGoals:[{timezone:'Europe/Paris'}]},Date.parse('2026-11-08T22:59:00Z')),objectiveCalendarKey({sportGoals:[{timezone:'Europe/Paris'}]},Date.parse('2026-11-08T23:01:00Z')));
 const base={id:'g',version:4,type:'regularity',start:'2026-10-05',target:2,period:'week',recurring:true,mode:'recurring',timezone:'Europe/Paris',end:null};
 let state={sessions:[session('a','2026-10-06'),session('b','2026-10-07')],sportGoals:[structuredClone(base)]};
 const model=day=>objectiveModels(state,{today:day,now:Date.parse('2027-12-31T23:00:00Z')})[0];
