@@ -1,15 +1,32 @@
-# Mes objectifs : progression
+# Mes objectifs : tableau de bord personnel
 
-Les nouveaux objectifs sont versionnés (`version: 2`) dans `sportGoals`, dans le document privé déjà synchronisé et fusionné par identifiant/date de modification. Aucun changement des tables, RPC, preuves, récompenses ou formulaires des défis. Les objectifs historiques conservent leur période et leurs résultats ; une modification les adapte au nouveau suivi, avec le même identifiant.
+Les objectifs (`sportGoals`) restent dans le document privé du compte, via `saveLocal` / `sync_snapshot`. Aucun changement de table ni migration Supabase : le RPC enregistre le JSON complet. Le serveur déployé a été vérifié en lecture seule. Aucune séance, preuve, performance ni récompense n'est réécrite.
 
-- Performance : meilleur poids réalisé à répétitions exactement égales, exercice et identité de charge comparables. Assistance : diminution de charge. Référence : meilleure série comparable de la dernière séance antérieure au début qui en contient une. Pas de pourcentage sans référence ou sans écart exploitable.
-- Régularité et volume : semaines de sept jours ancrées sur le début (et non semaines calendaires). La carte montre la valeur de la semaine courante et le nombre de semaines complètes à la cible. Les semaines réussies peuvent être non consécutives. Les objectifs poursuivis restent actifs après le nombre de semaines visé.
-- Records : événements de nouveaux records calculés par le moteur existant, depuis le début.
-- Tonnage : cumul de toutes les séances terminées sur la période, selon `normalizedTonnage`. Des charges inconnues empêchent la validation et le pourcentage.
-- Référence des mesures hebdomadaires : quatre semaines précédentes divisées par quatre, uniquement si un historique existe. Records et tonnage : période précédente de même durée ; sans échéance, référence indisponible (pas de période comparable définie).
-- Référence manuelle utilisée seulement si aucune référence historique n'est disponible. Aucune performance n'est inventée.
-- Échéance facultative. L'abandon prime sur les résultats ultérieurs. Les corrections des séances recalculent la progression. La référence enregistrée ne change qu'à l'enregistrement des paramètres.
+## Modèle et compatibilité
 
-L'aperçu des défis lit le cache de Communauté, sans nouvelle requête ni duplication. L'ouverture recharge les données via le parcours existant de Compétition et déplie le défi choisi.
+Les nouveaux objectifs utilisent `version: 4`, un identifiant permanent, un fuseau IANA, `recurring`, une périodicité et une fin facultative. Les objectifs des versions 1, 2 et 3 restent lisibles sans mutation : `goals-legacy.js` conserve leur interprétation et les exports historiques ; `goals-model.js` construit les cartes et périodes. Les anciens cycles conservent leur ancrage historique jusqu'à une modification, les nouveaux cycles sont calendaires.
 
-Validation : tests de calcul `tests/goals-long-term.cjs`, compatibilité `tests/goals.cjs`, parcours mobile `tests/goals-ui.cjs` (création des cinq catégories, édition en place, rechargement, défis, historique préservé, largeurs 320 à 800 px). Les formulaires longs défilent verticalement en conservant les composants existants.
+Une modification ponctuelle garde l'identifiant, les pauses, la date de début et les paramètres/mesures précédents dans `edits`. Une modification récurrente ajoute une phase applicable à la prochaine période (ou au démarrage si l'objectif est futur). Les cibles et calendriers des anciennes périodes restent disponibles. Les changements en attente sont affichés dans le détail. Le suivi continue de se recalculer depuis les séances corrigées, sans verrouiller de faux succès.
+
+## Calculs
+
+- Seules les séances réellement terminées, non actives, avec une date valide sont admissibles. Les identifiants de séance sont dédupliqués ; les échauffements et séries invalidées sont exclus par `recordedSets`.
+- Performance : même exercice, identité de charge comparable et au moins les répétitions demandées sur la même série. Charge au moins égale à la cible (assistance : au plus égale). La meilleure série comparable avant le début fournit la référence, et la meilleure série comparable réelle est affichée. La référence historique suit les corrections ; une référence manuelle est facultative et distincte. Le pourcentage mesure l'écart départ–cible seulement quand les références sont comparables ; autrement il est absent. Aucun 1RM ni couple charge/répétitions inventé.
+- Régularité : séances terminées distinctes avec au moins une série de travail ou une activité validée.
+- Records : événements de `sessionRecap`, dédupliqués par séance/exercice/série/type ; une première observation ne crée pas de record.
+- Volume : `weeklyMuscleVolume` et `volumeEstimate`, sans nouvelle pondération.
+- Tonnage : `normalizedTonnage`, conventions enregistrées conservées. Une charge inconnue empêche de déclarer la cible atteinte.
+
+## Récurrence
+
+Semaines du lundi au dimanche et mois calendaires, dans le fuseau enregistré avec l'objectif (stable entre appareils). Les journées sont avancées par calendrier, pas en millisecondes de 24 heures, pour les changements d'heure. La première période commence au plus tôt à la création effective ; une période initiale/finale partielle n'est pas un échec. Les anciennes données sans date de création gardent leur début enregistré.
+
+Chaque période possède ses valeurs calculées indépendamment. Une période réussie ne termine jamais l'objectif récurrent. Le taux de respect et la série de réussites concernent seulement les périodes closes, complètes et non suspendues. Une suspension, même partielle, exclut la période du bilan ; les séances pendant la suspension ne sont pas créditées. Les périodes en cours, partielles ou aux charges incomplètes ne réduisent pas le taux. Les pauses modernes ont des instants précis ; les anciennes pauses par jour restent lisibles. Une fin ou un arrêt archive l'objectif et conserve les périodes précédentes. La page réévalue le calendrier à la reprise de l'application et au passage de jour.
+
+## Défis personnels
+
+La section utilise le lecteur et le cache existants de Communauté (`goal_list`, lecture seule) et `personalGoalDisplay`. Les lectures rapprochées sont regroupées ; le cache reste disponible hors ligne. Les cartes ouvrent et déplient le défi dans Compétition. Aucune création de défi ici, aucune fusion des modèles, aucune modification de règle ou récompense. Les défis ne participent pas aux deux compteurs d'objectifs.
+
+## Vérifications
+
+`npm run test:goals` couvre les modèles historiques, les cinq catégories ponctuelles et récurrentes, les limites calendaires/DST, les suspensions et corrections, les modifications en place et les phases, les parcours navigateur, la navigation des défis et la synchronisation avec un deuxième contexte navigateur via un serveur simulé. Les captures du tableau de bord sont générées à 320/375/390/430/800 px. Les tests navigateur utilisent des comptes HTTP simulés : ils n'envoient aucune invitation réelle et ne modifient aucun compte de production. Un moteur WebKit de bureau ne constitue pas un test physique sur iPhone/PWA.

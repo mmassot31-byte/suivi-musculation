@@ -108,3 +108,88 @@
 @media(max-height:740px){.goals .goal-wizard-heading{margin-bottom:12px}.goals.goal-wizard h2{margin:12px 0}.goals .goal-form-row{min-height:48px;padding:6px 0}.goals .goal-check{min-height:38px}.goals .goal-help{margin:8px 2px;font-size:10px}.goals .goal-wizard-footer{padding-top:10px}.goals .goal-types button{min-height:57px;padding:8px 10px}.goals .goal-types{gap:6px}}
 .goals .goal-exercise-row{flex-wrap:nowrap}.goals .goal-exercise-row select{width:72%;max-width:72%;text-overflow:ellipsis}
 @media(max-height:740px){.goals.goal-wizard h2{margin:8px 0 10px}.goals .goal-wizard-footer{padding-top:6px}}
+/* Personal dashboard: shared cards, typography and form controls; no challenge rules. */
+.goals .goal-dashboard-subtitle{font-size:12px;line-height:1.5;color:var(--muted);margin:-7px 0 15px;max-width:360px}
+.goals .goal-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:18px}
+.goals .goal-stats>div{display:flex;align-items:center;gap:12px;min-height:70px;padding:12px 15px}
+.goals .goal-stats>div:first-child{background:linear-gradient(110deg,var(--accent-soft),#19251b);border-color:#657d3e}
+.goals .goal-stats .ico{width:28px;height:28px;margin:0;flex-shrink:0}
+.goals .goal-stats strong{font-size:25px;margin:0 0 3px}
+.goals .goal-stats small{font-size:11px}
+.goals .goal-heading{margin:18px 0 10px}
+.goals .goal-heading h2{font-size:17px;letter-spacing:-.4px}
+.goals .goal-heading .primary{font-size:11px;padding:7px 10px;min-height:34px}
+.goals .sport-objective-card{display:block;width:100%;text-align:left;color:var(--text);padding:12px 13px;margin:0 0 9px;border-radius:15px;background:linear-gradient(120deg,#1b261d,#131a15);font-weight:400;white-space:normal}
+.goals .objective-card-top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.goals .objective-card-top .goal-symbol{width:25px;height:29px}
+.goals .objective-card-top .goal-symbol .ico{width:24px;height:24px}
+.goals .objective-card-name{flex:1;min-width:0}
+.goals .objective-card-name>strong{display:block;font-size:15px;letter-spacing:-.2px;line-height:1.25}
+.goals .objective-card-name>small{display:block;margin-top:3px;font-size:11px}
+.goals .objective-status{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #5c713e;border-radius:15px;background:#24331f;color:var(--accent);font-size:10px;font-weight:600;line-height:1.3;padding:4px 8px;max-width:110px;text-align:center}
+.goals .objective-card-values{display:flex;align-items:baseline;gap:7px;line-height:1.3;margin:0 0 8px;min-width:0;flex-wrap:wrap}
+.goals .objective-card-values>strong{font-size:17px;letter-spacing:-.3px}
+.goals .objective-card-values>span{font-size:12px;color:var(--muted)}
+.goals .objective-card-values .objective-chevron{margin-left:auto;font-size:25px;line-height:.7;color:var(--text)}
+.goals .goal-meter{gap:10px;margin:0 0 8px}
+.goals .goal-meter progress{height:7px}
+.goals .goal-meter small{font-size:11px;color:var(--text);font-weight:600;min-width:32px}
+.goals .objective-card-meta{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:10px;line-height:1.45}
+.goals .objective-card-meta .ico{width:14px;height:14px;flex-shrink:0}
+.goals .objective-card-note{display:block;margin:5px 0 0;color:var(--accent);font-size:10px}
+.goals .goal-no-progress{font-size:10px;color:var(--muted);line-height:1.4;margin:4px 0 8px}
+.goals .objective-personal-challenges{margin-top:23px}
+.goals .objective-personal-challenges .goal-heading{gap:6px;align-items:center}
+.goals .objective-personal-challenges h2{font-size:17px}
+.goals .objective-competition-link{border:0;padding:5px 0;background:none;font-size:10px;color:var(--accent);font-weight:600;min-height:32px;white-space:nowrap}
+.goals .objective-personal-card{display:flex;align-items:center;gap:8px;width:100%;min-height:70px;padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,#1b261d,#141b16);text-align:left;margin-bottom:8px;color:var(--text);font-weight:400}
+.goals .objective-personal-card .goal-symbol{width:24px}
+.goals .objective-personal-copy{flex:1;min-width:0}
+.goals .objective-personal-copy strong{font-size:12px;line-height:1.3;display:block}
+.goals .objective-personal-copy small{font-size:10px;display:block;margin-top:4px}
+.goals .objective-personal-copy progress{display:block;width:100%;height:4px;margin-top:6px;accent-color:var(--accent)}
+.goals .objective-personal-card .objective-status{font-size:9px;padding:4px 6px}
+.goals .objective-challenge-empty{padding:12px;border:1px solid var(--line);border-radius:13px;font-size:11px;color:var(--muted);line-height:1.5}
+.goals .objective-challenge-empty button{padding:5px 0;background:none;border:0;font-size:11px;min-height:30px;color:var(--accent)}
+.goals .goal-history-link{display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--line);border-radius:13px;background:#171e19;padding:11px 12px;margin-top:15px;min-height:47px;color:var(--text);font-size:13px;font-weight:500}
+.goals .goal-history-link .ico{width:21px;height:21px;color:var(--muted)}
+.goals .goal-history-link>span:first-of-type{flex:1;text-align:left}
+.goals .goal-history-link>span:last-child{font-size:23px;color:var(--muted)}
+.goals .goal-empty-categories{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 15px}
+.goals .goal-empty-categories button{display:flex;align-items:center;gap:5px;padding:6px 9px;min-height:32px;font-size:11px;border-radius:11px}
+.goals .goal-empty-categories .ico{width:16px;height:16px;color:var(--accent)}
+.goals .objective-detail-panel{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:13px;margin:12px 0}
+.goals .objective-detail-panel h2{font-size:16px;margin:0 0 12px}
+.goals .objective-detail-panel .goal-help{margin:8px 0 0;line-height:1.6}
+.goals .objective-reference{display:grid;grid-template-columns:1fr;gap:8px;padding-top:10px;margin:10px 0 0;border-top:1px solid var(--line)}
+.goals .objective-reference>div{display:flex;justify-content:space-between;gap:9px;align-items:center}
+.goals .objective-reference dt{font-size:11px;color:var(--muted)}
+.goals .objective-reference dd{font-size:13px;font-weight:600;margin:0}
+.goals .objective-period-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.goals .objective-period-stats strong{display:block;font-size:22px;color:var(--accent)}
+.goals .objective-period-stats small{font-size:10px;display:block;margin-top:4px}
+.goals .objective-period-log{list-style:none;margin:0;padding:0}
+.goals .objective-period-log li{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.goals .objective-period-log li:last-child{border-bottom:0}
+.goals .objective-period-log strong{font-size:11px;line-height:1.5;display:block;font-weight:500}
+.goals .objective-period-log small{display:block;font-size:10px;margin-top:3px}
+.goals .goal-reference-preview{border-top:1px solid var(--line);padding:10px 0}
+.goals .goal-reference-preview small{display:block;font-size:10px}
+.goals .goal-reference-preview strong{display:block;font-size:12px;font-weight:500;margin-top:4px;line-height:1.4}
+.goals .goal-form .goal-info{margin:0;padding-bottom:8px}
+.goals .goal-form .goal-info summary{padding:7px 0;font-size:10px}
+.goals .goal-manual-reference input{width:90px;padding:6px;font-size:16px}
+.goals .goal-form-row>strong{font-size:12px;font-weight:500}
+.goals .goal-detail .goal-actions{margin-top:12px}
+@media(max-width:359px){.goals .goal-heading h2,.goals .objective-personal-challenges h2{font-size:15px}.goals .goal-heading .primary{font-size:10px;padding:6px 8px}.goals .objective-card-name>strong{font-size:13px}.goals .objective-card-values>strong{font-size:15px}.goals .objective-status{font-size:9px;padding:4px 6px}.goals .objective-competition-link{font-size:9px}.goals .objective-personal-card{gap:6px;padding:10px}.goals .objective-personal-copy strong{font-size:11px}}
+.goals .sport-objective-card{padding:10px 12px}
+.goals .objective-card-top{margin-bottom:6px}
+.goals .objective-card-values{margin-bottom:6px}
+.goals .goal-meter{margin-bottom:6px}
+.goals .objective-card-meta{flex-wrap:wrap;gap:4px 5px}
+.goals .objective-card-meta>span{flex:1}
+.goals .objective-card-meta .objective-card-note{margin:0 0 0 auto;font-size:9px;line-height:1.4}
+.goals .objective-personal-copy progress{appearance:none;border:0;border-radius:8px;background:#354236;overflow:hidden}
+.goals .objective-personal-copy progress::-webkit-progress-bar{background:#354236}
+.goals .objective-personal-copy progress::-webkit-progress-value{background:var(--accent);border-radius:8px}
+.goals .objective-personal-copy progress::-moz-progress-bar{background:var(--accent);border-radius:8px}
