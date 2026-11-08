@@ -2,7 +2,7 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict');
 (async()=>{
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
- const A='00000000-0000-0000-0000-000000000041',B='00000000-0000-0000-0000-000000000042',names={[A]:'Alice',[B]:'Alex'},goals=[],calls=[],errors=[];let fail=false;
+ const A='00000000-0000-0000-0000-000000000041',B='00000000-0000-0000-0000-000000000042',names={[A]:'Alice',[B]:'Alex'},goals=[],calls=[],errors=[];let fail=false,seeded=false;const seriesCalls=[];
  async function account(uid){
   const user={id:uid,email:names[uid]+'@example.invalid',user_metadata:{username:names[uid]}},expiry=Math.floor(Date.now()/1000)+3600,token=[{alg:'HS256',typ:'JWT'},{sub:uid,role:'authenticated',exp:expiry},'fixture'].map(x=>Buffer.from(typeof x==='string'?x:JSON.stringify(x)).toString('base64url')).join('.');
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
@@ -13,6 +13,9 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
    if(path.endsWith('/user'))body=user;
    else if(path.endsWith('/profiles'))body={id:uid,username:names[uid]};
    else if(path.endsWith('/private_documents'))body={payload:{version:1,templates:[],sessions:[],active:null},version:1};
+   else if(path.endsWith('/competition_candidates'))body=seeded?[{id:'shared-seed',exercise_label:'Développé couché',weight:60,reps:10,convention:'Total'}]:[];
+   else if(path.endsWith('/competition_user'))body={id:B,username:'Alex'};
+   else if(path.endsWith('/challenge_create')){seriesCalls.push(args);body={id:'shared-challenge',token:'a'.repeat(64)}}
    else if(path.endsWith('/competition_capabilities'))body={version:1,challenges:true,completedOnly:true};
    else if(path.endsWith('/community_capabilities'))body={version:1,friends:true,badges:true,goalChallenges:true};
    else if(path.endsWith('/friend_list'))body=[{id:uid===A?B:A,username:names[uid===A?B:A],relation:'accepted'}];
@@ -61,12 +64,16 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
    await click(a,'rank-series-close');
    assert.equal(await a.locator('.legacy-challenges').count(),0);
   }
+  seeded=true;await click(a,'community-create');await click(a,'community-series');await a.locator('#challenge-create-form').waitFor();
+  await a.locator('#challenge-target').fill('Alex');await a.locator('#challenge-days').selectOption('14');await a.locator('#challenge-target').blur();assert.equal(await a.locator('#challenge-target').inputValue(),'Alex');
+  for(const width of [320,375,390,430,800]){await a.setViewportSize({width,height:844});assert(await a.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));const panel=a.locator('.challenge-compose-form');assert((await panel.boundingBox()).height<350);await panel.screenshot({path:'/tmp/elan-shared-challenge-'+width+'.png'});}
+  await a.locator('#challenge-create-form button').click();await a.locator('#challenge-link').waitFor();assert.deepEqual(seriesCalls,[{p_performance:'shared-seed',p_target:B,p_days:14}]);await click(a,'rank-series-close');await a.setViewportSize({width:390,height:844});
   await create(a,B);
   const title=a.locator('#community-goal-title');assert.equal(await title.getAttribute('maxlength'),'60');assert.equal(await title.inputValue(),'');
   await title.fill('Notre mois en forme 💪');assert.equal(await title.evaluate(e=>e===document.activeElement),true);assert.equal(await a.locator('.goal-preview strong').innerText(),'Notre mois en forme 💪');
   await click(a,'community-set:quantity:4');await click(a,'community-set:days:30');await click(a,'community-set:mode:together');assert.match(await a.locator('.goal-preview').innerText(),/4 séances ensemble en 30 jours/);assert.match(await a.locator('.goal-preview').innerText(),/chacun apporte sa part/);await click(a,'community-set:mode:each');assert.equal(await title.inputValue(),'Notre mois en forme 💪');assert.equal(await a.locator('[data-action="community-set:days:30"]').getAttribute('aria-pressed'),'true');assert.equal(await a.locator('.goal-rules').evaluate(e=>e.open),false);
   await title.fill('<img src=x onerror=alert(1)>');assert.equal(await a.locator('.goal-preview img').count(),0);assert.match(await a.locator('.goal-preview strong').innerText(),/<img/);
-  await title.fill('UnNomTrèsLong'.repeat(4));for(const width of [320,390,430]){await a.setViewportSize({width,height:844});assert(await a.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+  await title.fill('UnNomTrèsLong'.repeat(4));for(const width of [320,390,430]){await a.setViewportSize({width,height:844});assert(await a.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert((await a.locator('.community-sheet').boundingBox()).height<650);}
   await a.setViewportSize({width:390,height:844});await title.fill('Notre mois en forme 💪');await a.locator('.community-sheet').screenshot({path:'/tmp/elan-challenge-named-390.png'});
   // Send while the field still owns focus: a change event must not consume the click.
   await title.fill('  Notre mois en forme 💪  ');await click(a,'community-send');await a.locator('.goal-card h3').first().waitFor();assert.equal(calls.length,1);assert.deepEqual(calls[0].args,{p_target:B,p_metric:'sessions',p_quantity:4,p_days:30,p_mode:'each',p_baseline:null,p_title:'Notre mois en forme 💪'});assert.equal(await a.locator('.goal-card h3').first().innerText(),'Notre mois en forme 💪');assert.equal(await a.locator('.goal-card .goal-objective').first().innerText(),'4 séances chacun en 30 jours');
@@ -74,6 +81,6 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
   await create(a,B);assert.equal(await title.inputValue(),'');await title.fill('On remet ça');fail=true;await click(a,'community-send');await a.getByText('Erreur technique simulée',{exact:true}).waitFor();assert.equal(await title.inputValue(),'On remet ça');fail=false;await click(a,'community-send');await a.getByRole('heading',{name:'On remet ça',exact:true}).waitFor();
   await create(a,B);await click(a,'community-set:metric:work_sets');await click(a,'community-set:days:14');await click(a,'community-set:mode:together');await context.setOffline(true);await click(a,'community-set:quantity:75');assert.equal(await a.locator('[data-action="community-send"]').isEnabled(),false);await context.setOffline(false);await click(a,'community-set:quantity:50');await click(a,'community-send');await a.getByRole('heading',{name:'50 séries ensemble en 14 jours',exact:true}).waitFor();assert.equal(calls.at(-1).args.p_title,null);
   goals.find(g=>g.title==='Notre mois en forme 💪').status='completed';await open(b);await b.locator('summary').filter({hasText:/^Défis terminés/}).click();await click(b,'community-remake:'+goals.find(g=>g.title==='Notre mois en forme 💪').id);assert.equal(await b.locator('#community-goal-title').inputValue(),'Notre mois en forme 💪');assert.equal(await b.locator('#community-target').inputValue(),A);
-  assert.deepEqual(errors,[]);console.log('PASS challenge creation: actual app/SDK, two authenticated fixtures, optional name/live escaped preview/focused-input single click, 4 sessions/30 days, each/together, acceptance/reload/remake from recipient, unnamed goals, server error/retry, 320/390/430 px. No real invitations.');
+  assert.deepEqual(errors,[]);console.log('PASS challenge creation: actual app/SDK, two authenticated fixtures, optional name/live escaped preview/focused-input single click, 4 sessions/30 days, each/together, acceptance/reload/remake from recipient, unnamed goals, server error/retry, 320/390/430 px. Compact friends + shared-series forms, preserved recipient/duration and exact server payload. No real invitations.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
