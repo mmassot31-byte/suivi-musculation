@@ -57,7 +57,8 @@
     "test:session-compose": "node tests/session-compose.cjs && node tests/session-compose-ui.cjs",
     "test:editor-context": "node tests/editor-context-ui.cjs",
     "test:group-editor": "node tests/group-sequence.cjs && node tests/group-editor-ui.cjs",
-    "test:performed-exercises": "node tests/performed-exercises.cjs && node tests/performed-exercises-ui.cjs"
+    "test:performed-exercises": "node tests/performed-exercises.cjs && node tests/performed-exercises-ui.cjs",
+    "test:load-conventions": "node tests/load-normalization.cjs && node tests/exercise-replacement.cjs && node tests/exercise-replacement-ui.cjs"
   },
   "type": "module",
   "dependencies": {
