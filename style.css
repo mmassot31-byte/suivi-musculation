@@ -3885,3 +3885,104 @@ nav br {
 .entry.entry-bodyweight{grid-template-columns:minmax(0,1fr)}.entry-bodyweight .number-box[hidden]{display:none!important}#picker-suggestions{margin:6px 0}#picker-suggestions button{white-space:normal;text-align:left;overflow-wrap:anywhere}.library-private-label{color:var(--muted);font-size:11px}
 
 .entry-bodyweight > [hidden] { display: none !important; }
+
+/* Compact exercise selector: only the list scrolls, controls and confirmation stay visible. */
+#exercise-picker.multi-exercise-picker {
+  --picker-top: max(8px, env(safe-area-inset-top, 0px));
+  --picker-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+  position: fixed; inset: calc(var(--visible-top, 0px) + var(--picker-top)) 8px auto;
+  margin: 0 auto; transform: none;
+  width: min(540px, calc(100% - 16px)); max-width: none;
+  height: min(900px, calc(var(--visible-height, 100dvh) - var(--picker-top) - var(--picker-bottom)));
+  max-height: calc(var(--visible-height, 100dvh) - var(--picker-top) - var(--picker-bottom));
+  padding: 12px 12px 0; border: 1px solid #425044; border-radius: 24px;
+  background: linear-gradient(140deg, #151d17, #0c130e 65%); overflow: hidden;
+  overscroll-behavior: contain;
+}
+#exercise-picker.multi-exercise-picker[open] { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: 10px; }
+#exercise-picker .picker-heading { display: flex; align-items: center; gap: 9px; padding: 0; margin: 0; border: 0; position: static; min-height: 44px; }
+#exercise-picker .picker-heading-icon { display: grid; place-items: center; flex: 0 0 34px; height: 36px; color: var(--accent); background: var(--accent-soft); border: 1px solid #435d2b; border-radius: 11px; }
+#exercise-picker .picker-heading-icon .ico { width: 23px; height: 23px; }
+#exercise-picker #exercise-picker-title { min-width: 0; flex: 1; margin: 0; font-size: 19px; letter-spacing: -.6px; line-height: 1.12; }
+#exercise-picker .picker-heading button { padding: 8px 12px; min-height: 42px; font-size: 13px; border-radius: 13px; }
+#exercise-picker .picker-controls { display: grid; gap: 9px; min-width: 0; }
+#exercise-picker .picker-search { display: flex; align-items: center; gap: 8px; margin: 0; padding: 0 11px; min-height: 44px; border: 1px solid #425044; border-radius: 14px; background: #0e1510; }
+#exercise-picker .picker-search > .ico { width: 19px; height: 19px; flex: 0 0 19px; color: var(--muted); }
+#exercise-picker #exercise-search { border: 0; border-radius: 0; padding: 8px 0; min-height: 42px; width: 100%; background: transparent; box-shadow: none; margin: 0; font-size: 16px; }
+#exercise-picker .picker-search:focus-within { outline: 2px solid var(--accent); outline-offset: 1px; }
+#exercise-picker .picker-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; margin: 0; }
+#exercise-picker .picker-tabs button { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 38px; padding: 7px 3px; min-width: 0; border-radius: 22px; background: transparent; border: 1px solid #3d493f; font-size: 13px; }
+#exercise-picker .picker-tabs button.selected { background: var(--accent); color: #122008; border-color: var(--accent); font-weight: 700; }
+#exercise-picker .picker-tabs .ico { width: 17px; height: 17px; }
+#exercise-picker .picker-filters { gap: 9px; }
+#exercise-picker .picker-filters label { display: grid; gap: 4px; min-width: 0; margin: 0; font-size: 12px; color: var(--muted); }
+#exercise-picker .picker-filters select { min-height: 42px; width: 100%; margin: 0; padding: 7px 25px 7px 10px; border-radius: 12px; background-color: #101812; font-size: 16px; color: var(--text); text-overflow: ellipsis; }
+#exercise-picker .picker-scroll { overflow-y: auto; overflow-x: hidden; min-height: 0; overscroll-behavior: contain; scroll-padding: 8px; -webkit-overflow-scrolling: touch; }
+#exercise-picker .exercise-results { display: grid; gap: 8px; margin: 0; }
+#exercise-picker .picker-group { border: 1px solid #3a483c; border-radius: 17px; padding: 0 6px; margin: 0; background: #111a13; }
+#exercise-picker .picker-group > summary { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 8px 4px; list-style: none; cursor: pointer; }
+#exercise-picker .picker-group > summary::-webkit-details-marker { display: none; }
+#exercise-picker .picker-group > summary::before { content: ''; width: 8px; height: 8px; flex: 0 0 8px; border-right: 2px solid #cad5cc; border-bottom: 2px solid #cad5cc; transform: rotate(-45deg); margin: 0 4px; }
+#exercise-picker .picker-group[open] > summary::before { transform: rotate(45deg); margin-top: -4px; }
+#exercise-picker .picker-group > summary strong { flex: 1; min-width: 0; font-size: 15px; line-height: 1.2; }
+#exercise-picker [data-variant-count] { flex: 0 0 auto; color: var(--muted); font-size: 11px; white-space: nowrap; }
+#exercise-picker .picker-variants { padding-bottom: 6px; }
+#exercise-picker .picker-exercise-row { position: relative; min-width: 0; }
+#exercise-picker .exercise-choice { position: relative; display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0; min-height: 48px; padding: 6px 78px 6px 7px; text-align: left; border: 1px solid transparent; border-top-color: #2d3b30; border-radius: 12px; background: transparent; white-space: normal; margin: 0; }
+#exercise-picker .exercise-choice strong { display: block; font-size: 14px; line-height: 1.22; font-weight: 600; overflow-wrap: anywhere; }
+#exercise-picker .exercise-choice .exercise-icon { flex: 0 0 29px; width: 29px; height: 30px; }
+#exercise-picker .exercise-choice.selected { background: #233d15; border-color: #617e32; color: var(--text); }
+#exercise-picker .picker-check { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 20px; height: 20px; border: 1.5px solid #aab6ac; border-radius: 5px; }
+#exercise-picker .selected .picker-check { border-color: var(--accent); background: var(--accent); color: #102000; }
+#exercise-picker .selected .picker-check::after { content: '✓'; font-size: 18px; font-weight: 800; line-height: 1; }
+#exercise-picker .picker-favorite { position: absolute; right: 33px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 40px; height: 44px; min-height: 44px; padding: 9px; border: 0; border-radius: 10px; color: #a7b3a9; background: transparent; }
+#exercise-picker .picker-favorite .ico { width: 18px; height: 18px; }
+#exercise-picker .picker-favorite[aria-pressed="true"] { color: var(--accent); }
+#exercise-picker .picker-favorite[aria-pressed="true"] .ico { fill: var(--accent); }
+#exercise-picker .picker-footer { position: static; display: grid; grid-template-columns: minmax(0,1fr) minmax(125px, .95fr); align-items: center; gap: 10px; margin: 0 -12px; padding: 10px 12px 12px; border-top: 1px solid #3a483c; background: #111a13; z-index: 2; }
+#exercise-picker .picker-selected-count { font-size: 13px; font-weight: 650; }
+#exercise-picker .picker-footer button { min-height: 46px; padding: 10px; margin: 0; border-radius: 16px; font-size: 16px; }
+#exercise-picker .picker-footer button:disabled { background: #273126; color: #96a38f; border-color: #42503d; opacity: 1; }
+#exercise-picker .picker-custom { margin: 12px 0 8px; }
+#exercise-picker .picker-custom > summary { min-height: 44px; padding: 12px 4px; font-size: 13px; color: var(--muted); }
+#exercise-picker .picker-custom label { margin: 8px 0; }
+#exercise-picker .picker-scroll > [data-action="explore-models"] { margin-bottom: 10px; }
+#exercise-picker [hidden] { display: none !important; }
+#exercise-picker button:focus-visible, #exercise-picker summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+@media(max-width:350px) {
+  #exercise-picker .picker-heading-icon { display: none; }
+  #exercise-picker #exercise-picker-title { font-size: 18px; }
+  #exercise-picker .picker-group > summary strong { font-size: 14px; }
+}
+.keyboard-open #exercise-picker.multi-exercise-picker { --picker-top: 6px; --picker-bottom: 6px; }
+.keyboard-open #exercise-picker.multi-exercise-picker[open] { gap: 6px; padding-top: 8px; }
+.keyboard-open #exercise-picker .picker-heading-icon { display: none; }
+.keyboard-open #exercise-picker .picker-controls { gap: 6px; }
+.keyboard-open #exercise-picker .picker-heading { min-height: 36px; }
+.keyboard-open #exercise-picker .picker-heading button { min-height: 36px; padding: 6px 10px; }
+.keyboard-open #exercise-picker .picker-footer { padding-top: 6px; padding-bottom: 7px; }
+.keyboard-open #exercise-picker .picker-footer button { min-height: 42px; }
+
+/* Reuse the existing pictogram decoration contract and replace the old checkbox. */
+#exercise-picker .exercise-choice::after { content: none; }
+#exercise-picker .exercise-choice strong { display: flex; align-items: center; gap: 8px; font-size: 15px; min-width: 0; }
+#exercise-picker .exercise-choice strong > span:not(.exercise-icon) { min-width: 0; }
+#exercise-picker .picker-group > summary strong { color: var(--text); font-size: 17px; font-weight: 700; }
+@media(max-width:350px) { #exercise-picker .picker-group > summary strong { font-size: 15px; } }
+.keyboard-open #exercise-picker.multi-exercise-picker[open] { gap: 4px; }
+.keyboard-open #exercise-picker .picker-controls { gap: 4px; }
+.keyboard-open #exercise-picker .picker-search { min-height: 40px; }
+.keyboard-open #exercise-picker #exercise-search { min-height: 38px; padding-top: 6px; padding-bottom: 6px; }
+.keyboard-open #exercise-picker .picker-tabs button { min-height: 34px; padding-top: 5px; padding-bottom: 5px; }
+.keyboard-open #exercise-picker .picker-filters label { gap: 2px; }
+.keyboard-open #exercise-picker .picker-filters select { min-height: 36px; padding-top: 5px; padding-bottom: 5px; }
+/* While typing, keep Close beside the search instead of spending a whole row on the title. */
+.keyboard-open #exercise-picker.multi-exercise-picker[open] { grid-template-rows: auto minmax(0,1fr) auto; padding-top: 6px; }
+.keyboard-open #exercise-picker .picker-heading { display: contents; }
+.keyboard-open #exercise-picker #exercise-picker-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+.keyboard-open #exercise-picker .picker-heading button { position: absolute; top: 8px; right: 15px; z-index: 3; width: 58px; min-height: 34px; padding: 6px 5px; font-size: 12px; }
+.keyboard-open #exercise-picker .picker-search { padding-right: 67px; }
+.keyboard-open #exercise-picker .picker-filters label { font-size: 11px; line-height: 1.1; }
+.keyboard-open #exercise-picker .picker-group > summary { min-height: 36px; padding-top: 5px; padding-bottom: 5px; }
+.keyboard-open #exercise-picker .picker-footer { padding-bottom: 6px; }
+.keyboard-open #exercise-picker .picker-footer button { padding: 6px 10px; min-height: 42px; line-height: 1.2; }
