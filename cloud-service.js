@@ -17,6 +17,7 @@ export function createService(config=cloudConfig){try{if(!configured(config))ret
  competitionUser:username=>result(client.rpc('competition_user',{p_username:username})),
  challengeList:uid=>privateQuery(client.rpc('challenge_list'),uid),
  challengeCreate:(args,uid)=>privateQuery(client.rpc('challenge_create',args),uid),
+ challengeCreateTarget:(args,uid)=>privateQuery(client.rpc('challenge_create_target',args).retry(false),uid),
  challengeRespond:(args,uid)=>privateQuery(client.rpc('challenge_respond',args),uid),
  challengeRevoke:(id,uid)=>privateQuery(client.rpc('challenge_revoke',{p_id:id}),uid),
  challengeRedeem:(token,uid)=>privateQuery(client.rpc('challenge_redeem',{p_token:token}),uid),

@@ -75,3 +75,23 @@
 .elan-challenge-editor fieldset .community-quantity{margin:6px 0 0 69px}
 .elan-challenge-editor .goal-preview p.goal-objective{margin:4px 0 0;line-height:1.35}
 @media(max-width:359px){.elan-challenge-editor fieldset .community-quantity{margin-left:56px}}
+.elan-challenge-editor .challenge-form-row>label{font-size:12px;color:var(--muted);margin:0}
+.elan-challenge-editor .series-stepper{display:flex;align-items:center;gap:3px;max-width:68%;background:#1d2920;border-radius:11px;padding:3px}
+.elan-challenge-editor .series-stepper button{width:32px;height:32px;min-height:32px;flex-shrink:0;border:0;border-radius:9px;background:#2a372c;padding:0;font-size:21px}
+.elan-challenge-editor .series-stepper input{width:75px;max-width:100%;min-height:32px;height:32px;padding:2px;border:0;background:none;text-align:center;font-size:16px;font-weight:700;appearance:textfield}
+.elan-challenge-editor .series-stepper input::-webkit-inner-spin-button,.elan-challenge-editor .series-stepper input::-webkit-outer-spin-button{appearance:none;margin:0}
+.elan-challenge-editor .challenge-target-preview{font-size:12px;font-weight:650;line-height:1.4;color:var(--accent);margin:10px 2px 0;overflow-wrap:anywhere}
+.elan-challenge-editor #challenge-exercise-search{width:100%;max-width:100%;margin-bottom:0}
+.challenge-card .challenge-participant-scores{font-size:11px;color:var(--muted);line-height:1.6;margin:8px 0}
+@media(max-width:359px){.elan-challenge-editor .series-stepper input{width:55px}.elan-challenge-editor .challenge-form-row>label{font-size:11px}}
+.elan-series-editor .series-send-feedback{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:13px;padding:11px 12px;margin:10px 0;background:#1c291d;scroll-margin-top:72px}
+.elan-series-editor .series-send-feedback>.ico{width:21px;height:21px;flex-shrink:0;color:var(--accent);margin-top:1px}
+.elan-series-editor .series-send-feedback strong{font-size:14px;line-height:1.3;display:block}
+.elan-series-editor .series-send-feedback p{font-size:11px;line-height:1.5;color:var(--muted);margin:4px 0 0}
+.elan-series-editor .series-send-feedback.success{border-color:#617e43}
+.elan-series-editor .series-send-feedback.error{border-color:#996d4a;background:#2b2119}
+.elan-series-editor .series-send-feedback.error>.ico{color:#e6ad77}
+.elan-series-editor .series-send-feedback:focus{outline:2px solid var(--accent);outline-offset:2px}
+.elan-challenge-editor .series-no-friends{padding:8px 0;border-bottom:1px solid var(--line)}
+.elan-challenge-editor .series-no-friends p{font-size:11px;color:var(--muted);line-height:1.4;margin:0 0 7px}
+.elan-challenge-editor .series-no-friends button{min-height:32px;padding:5px 9px;border-radius:10px;font-size:11px}
