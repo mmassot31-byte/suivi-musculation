@@ -1,5 +1,6 @@
 // Élan's lightweight, shared 24 px stroke vocabulary. No font or network request.
 const paths={
+ calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-12 4h.01m4 0h.01m4 0h.01"/>',
  weight:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 5a4 4 0 0 0 8 0M12 5v3"/>',
  tape:'<ellipse cx="12" cy="7" rx="9" ry="4"/><path d="M3 7v10c0 5 18 5 18 0V7M7 12v3m5-2v3m5-4v3"/>',
 
