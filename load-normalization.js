@@ -57,3 +57,15 @@ export function correctExerciseConvention(state,exerciseId,mode){
  for(const item of preview.items){const set=locate(next,item),after={loadProtocol:'elan-2',loadMode:mode,measurement:item.metric,loadIdentity:{...chargeIdentity(mode,item.metric),source:'confirmed'}};journal.entries.push({...item,before:snapshot(set),after:copy(after)});Object.assign(set,copy(after));}
  next.loadConventionMigrations??=[];next.loadConventionMigrations.push(journal);return {state:next,changed:journal.entries.length};
 }
+
+// Verification is derived from live saved sets, never from an exercise's legacy origin.
+export function historicalConventionStatus(state){
+ configureExerciseReferences(state);const status=new Map();
+ for(const row of exerciseOccurrences(state).filter(row=>row.path[0]==='sessions'))for(const set of row.exercise.sets||[]){
+  if(!Number.isFinite(set.w)||!Number.isFinite(set.r)||set.validated===false||set.status&&!['validated','completed'].includes(set.status))continue;
+  const ref=set.exerciseReference||row.exercise;if(ref.tracking)continue;const id=canonicalExerciseId(ref);if(!id)continue;
+  if(!status.has(id))status.set(id,{confirmed:0,pending:0,modes:new Set()});const item=status.get(id),convention=inferRecordedConvention(row.exercise,set);
+  if(convention){item.confirmed++;item.modes.add(convention.mode)}else item.pending++;
+ }
+ return status;
+}

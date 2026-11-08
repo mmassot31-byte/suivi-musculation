@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 (async()=>{
- const {conventionCorrectionPreview,correctExerciseConvention,restoreLoadConventions}=await import('../load-normalization.js');
+ const {conventionCorrectionPreview,correctExerciseConvention,restoreLoadConventions,historicalConventionStatus}=await import('../load-normalization.js');
  const definition={id:'personal:curl',name:'Curl personnel',libraryScope:'personal',equipment:'dumbbell',measurement:'external_load',muscles:{primary:['brachialis'],secondary:['biceps','forearms']},loadMode:'unilateral'};
  const ref={...definition,libraryId:definition.id},set=(id,extra={})=>({id,w:16,r:10,type:'work',notes:'conservée',...extra}),exercise={...ref,instanceId:'curl',sets:[set('target'),set('snapshot',{exerciseReference:{...ref,name:'Ancien nom'}}),set('pounds',{loadIdentity:{version:1,unit:'lb',convention:'Total',lateralMode:'total',source:'entry'}}),set('machine',{exerciseReference:{...ref,equipment:'machine'}}),set('other',{exerciseReference:{...ref,id:'personal:other',libraryId:'personal:other'}})]};
  const state={sessions:[{id:'past',date:'2026-11-01',exercises:[exercise]}],active:{id:'active',exercises:[{...ref,sets:[set('active')]}]},templates:[],exerciseLibrary:{common:[],personal:[definition],pending:[],aliases:[]}};
@@ -13,5 +13,14 @@ const assert=require('node:assert/strict');
  const newer=correctExerciseConvention(result.state,definition.id,'bilateral');assert.throws(()=>restoreLoadConventions(newer.state,journal.id),/plus récente/);
  assert.throws(()=>correctExerciseConvention(state,definition.id,'invalid'),/invalide/);
  assert.deepEqual(state,original);
+ const {personalLibraryRows}=await import('../personal-library-ui.js');
+ const legacy=structuredClone(state);legacy.exerciseLibrary.personal[0].legacySource={id:'legacy',name:definition.name,equipment:'dumbbell',muscles:definition.muscles};legacy.sessions[0].exercises[0].sets=legacy.sessions[0].exercises[0].sets.slice(0,2);
+ const label=doc=>personalLibraryRows(doc.exerciseLibrary.personal,doc).html;
+ assert.match(label(legacy),/À vérifier/);const confirmed=correctExerciseConvention(legacy,definition.id,'bilateral').state;
+ assert.equal(historicalConventionStatus(confirmed).get(definition.id).pending,0);assert.match(label(confirmed),/Charge totale · bilatéral/);assert.doesNotMatch(label(confirmed),/vérifier/);
+ assert.doesNotMatch(label(JSON.parse(JSON.stringify(confirmed))),/vérifier/,'previously saved confirmations fix themselves on reload');
+ assert.match(label(restoreLoadConventions(confirmed,confirmed.loadConventionMigrations[0].id)),/À vérifier/);
+ assert.equal(historicalConventionStatus(result.state).get(definition.id).pending,2);assert.match(personalLibraryRows(result.state.exerciseLibrary.personal,result.state).html,/2 séries à vérifier/);
+ const mixed=structuredClone(confirmed);mixed.sessions[0].exercises[0].sets[0].loadMode='unilateral';mixed.sessions[0].exercises[0].sets[0].loadIdentity={version:1,unit:'kg',convention:'Par côté',lateralMode:'both-sides',source:'confirmed'};assert.match(label(mixed),/Conventions multiples/);assert.doesNotMatch(label(mixed),/vérifier/);
  console.log('PASS direct convention correction: exact reference/snapshot, equipment and metric boundaries, saved sessions only, immutable values/notes, exclusion of pounds, journal/undo and conflict protection.');
 })().catch(e=>{console.error(e);process.exitCode=1});
