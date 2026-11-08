@@ -4302,3 +4302,38 @@ body.group-dragging { overscroll-behavior: none; user-select: none; -webkit-user
 .performed-exercises .journal-card-title { grid-column: 2; grid-row: 1; }
 .performed-exercises .journal-spark { grid-column: 3; grid-row: 1; }
 .performed-exercises .journal-chevron { grid-column: 4; grid-row: 1; }
+
+/* Profile exercise management: one compact list and secondary correction screens. */
+.personal-library-page { max-width: 640px; margin: 0 auto; }
+.personal-library-page h1 { font-size: 30px; letter-spacing: -.8px; margin: 16px 0 18px; }
+.personal-library-toolbar, .personal-library-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.personal-library-toolbar .text-link { font-size: 11px; color: var(--muted); padding: 8px 0; }
+.personal-library-page .personal-library-search { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); padding: 0 13px; margin: 0 0 14px; }
+.personal-library-search .ico { color: var(--accent); flex: 0 0 20px; }
+.personal-library-search #personal-library-search { border: 0; background: transparent; margin: 0; padding: 13px 0; min-width: 0; box-shadow: none; }
+.personal-library-filters { display: flex; gap: 7px; margin: 0 0 16px; padding-bottom: 3px; }
+.personal-library-filters button { flex: 0 0 auto; border-radius: 24px; min-height: 38px; padding: 7px 13px; font-size: 12px; }
+.personal-library-filters .selected { border-color: var(--accent); color: var(--accent); background: #bdf46f18; }
+.personal-library-heading { margin: 0 0 10px; font-size: 12px; color: var(--muted); }
+.personal-library-heading .text-link { color: var(--accent); font-size: 12px; padding: 6px 0; }
+.personal-library-list { display: grid; gap: 8px; }
+.personal-exercise-row { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(120deg,#19231b,#111a14); padding: 9px; min-width: 0; }
+.personal-exercise-open { flex: 1; display: flex; align-items: center; gap: 11px; min-width: 0; text-align: left; background: none; border: 0; padding: 0; margin: 0; border-radius: 10px; }
+.personal-exercise-icon { display: grid; place-items: center; flex: 0 0 45px; width: 45px; height: 51px; background: #bdf46f10; border-radius: 12px; }
+.personal-exercise-icon .exercise-icon { width: 40px; height: 44px; padding: 4px; margin: 0; }
+.personal-exercise-copy { min-width: 0; flex: 1; }
+.personal-exercise-copy strong { display: block; font-size: 15px; line-height: 1.2; overflow-wrap: anywhere; }
+.personal-exercise-copy > small { font-size: 11px; margin-top: 3px; }
+.personal-exercise-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+.personal-exercise-tags > small { font-size: 9px; line-height: 1.2; background: #ffffff09; border-radius: 10px; padding: 3px 6px; margin: 0; }
+.personal-exercise-tags > .is-personal { color: var(--accent); background: #bdf46f12; }
+.personal-exercise-menu { position: relative; flex: 0 0 34px; margin: 0; border: 0; padding: 0; }
+.personal-exercise-menu > summary { display: grid; place-items: center; width: 34px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 12px; font-size: 22px; list-style: none; cursor: pointer; }
+.personal-exercise-menu > summary::-webkit-details-marker { display: none; }
+.personal-exercise-menu > div { position: absolute; right: 0; top: 45px; z-index: 25; min-width: 185px; padding: 5px; border: 1px solid var(--line); border-radius: 12px; background: #19251c; box-shadow: 0 8px 28px #0008; }
+.personal-exercise-menu button { display: block; width: 100%; border: 0; border-radius: 7px; text-align: left; background: transparent; min-height: 42px; margin: 0; font-size: 12px; }
+.personal-exercise-menu button:hover { background: #ffffff08; }
+.correction-history-row { display: grid; gap: 6px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.correction-history-row small { color: var(--muted); }
+.convention-correction p { line-height: 1.5; }
+@media(max-width:359px) { .personal-library-page h1 { font-size: 27px; }.personal-exercise-copy strong { font-size: 14px; }.personal-exercise-open { gap: 8px; }.personal-exercise-icon { flex-basis: 36px; width: 36px; }.personal-exercise-tags > small { font-size: 8px; padding: 3px 4px; } }
