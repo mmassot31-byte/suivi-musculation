@@ -3986,3 +3986,119 @@ nav br {
 .keyboard-open #exercise-picker .picker-group > summary { min-height: 36px; padding-top: 5px; padding-bottom: 5px; }
 .keyboard-open #exercise-picker .picker-footer { padding-bottom: 6px; }
 .keyboard-open #exercise-picker .picker-footer button { padding: 6px 10px; min-height: 42px; line-height: 1.2; }
+
+/* Session creation and saved-template editing share one compact layout. */
+.shell:has(#session-compose) { max-width: 900px; padding: max(12px, env(safe-area-inset-top)) 12px calc(var(--editor-footer-height,64px) + var(--editor-nav-height,80px) + 24px); }
+.shell:has(#session-compose) > header { padding: 0; margin: 0 0 12px; min-height: 44px; }
+.shell:has(#session-compose) > .compose-title { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; flex-wrap: nowrap; }
+.shell:has(#session-compose) > .compose-title h1 { font-size: 23px; letter-spacing: -.7px; margin: 0; flex: 1; min-width: 0; }
+.compose-title .editor-back { width: 40px; min-width: 40px; height: 40px; min-height: 40px; padding: 4px; border-radius: 14px; font-size: 24px; }
+.compose-session-menu { position: relative; flex: 0 0 36px; margin: 0; }
+.compose-session-menu > summary { display: grid; place-items: center; min-height: 40px; width: 36px; list-style: none; border-radius: 12px; cursor: pointer; font-size: 23px; }
+.compose-session-menu > summary::-webkit-details-marker { display: none; }
+.compose-session-menu[open] { z-index: 15; }
+.compose-session-menu[open] > button { position: relative; width: 210px; display: block; margin-left: -174px; background: var(--surface-raised); padding: 10px; min-height: 44px; }
+#session-compose .editor-summary { display: grid; grid-template-columns: .8fr .8fr 1.4fr; margin: 0 0 14px; padding: 10px 0; border: 1px solid #39463c; border-radius: 18px; background: #131c15; }
+#session-compose .editor-summary > div { display: grid; grid-template-columns: auto auto; justify-content: center; align-items: center; column-gap: 6px; row-gap: 0; padding: 0 7px; border-right: 1px solid #3b463e; }
+#session-compose .editor-summary > div:last-child { border-right: 0; }
+#session-compose .editor-summary .ico { width: 21px; height: 21px; color: var(--accent); }
+#session-compose .editor-summary strong { font-size: 19px; color: var(--text); white-space: nowrap; }
+#session-compose .editor-summary strong span { font-size: 13px; }
+#session-compose .editor-summary small { grid-column: 1 / -1; font-size: 11px; color: var(--muted); text-align: center; }
+#session-compose .editor-identity { display: block; margin: 0 0 13px; }
+#session-compose .editor-identity-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+#session-compose .editor-name-type { display: grid; grid-template-columns: minmax(108px,.9fr) minmax(0,1.4fr); align-items: center; border: 1px solid #3b483e; border-radius: 17px; padding: 4px; gap: 8px; background: #111912; }
+#session-compose .editor-type { position: relative; display: flex; align-items: center; gap: 5px; min-width: 0; margin: 0; border: 1px solid #82a94c; border-radius: 14px; }
+#session-compose #editor-workout-icon { position: absolute; left: 6px; width: 27px; height: 30px; pointer-events: none; }
+#session-compose #editor-workout-icon svg { width: 100%; height: 100%; }
+#session-compose .editor-type select { width: 100%; padding: 8px 21px 8px 36px; min-height: 40px; border: 0; background-color: transparent; margin: 0; font-size: 14px; font-weight: 600; border-radius: inherit; }
+#session-compose .editor-name { min-width: 0; border-left: 1px solid #3b483e; padding-left: 7px; }
+#session-compose .editor-name input { width: 100%; border: 0; background: none; padding: 7px 0; margin: 0; min-height: 40px; font-size: 16px; border-radius: 0; }
+#session-compose .editor-exercises-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 7px; }
+#session-compose .editor-exercises-heading h2 { font-size: 18px; margin: 0; }
+#session-compose .editor-exercises-heading h2 span { color: var(--muted); font-weight: 400; }
+#session-compose .editor-exercises-heading button { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 5px 10px; font-size: 13px; border-radius: 13px; }
+#session-compose .editor-exercises-heading .ico { width: 18px; height: 18px; }
+#session-compose .editor-block { margin: 0 0 7px; }
+#session-compose .model-exercise { position: relative; padding: 8px; margin: 0 0 7px; border: 1px solid #39463c; border-radius: 17px; background: linear-gradient(120deg,#162018,#101712); }
+#session-compose .model-plan-header { display: grid; grid-template-columns: 20px minmax(0,1fr); align-items: center; gap: 6px; padding: 0 35px 0 0; min-height: 37px; }
+#session-compose .editor-grip { padding: 0; width: 20px; min-width: 20px; min-height: 36px; border: 0; background: transparent; color: #d3dcd5; font-size: 22px; }
+#session-compose .model-plan-header > div { min-width: 0; }
+#session-compose .model-plan-header h3 { display: flex; align-items: center; gap: 7px; min-width: 0; margin: 0; padding: 0; font-size: 16px; line-height: 1.15; letter-spacing: -.3px; }
+#session-compose .model-plan-header h3 > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+#session-compose .model-plan-header .exercise-icon { flex: 0 0 30px; width: 30px; height: 32px; padding: 2px; margin: 0; }
+#session-compose .editor-primary-muscle { font-size: 11px; line-height: 1.15; margin: -2px 0 0 37px; color: var(--muted); }
+#session-compose .editor-metrics { display: grid; grid-template-columns: 1fr 1.18fr .95fr; gap: 6px; margin: 6px 0 0; }
+#session-compose .editor-metrics > label { display: flex; align-items: center; justify-content: center; gap: 3px; min-width: 0; min-height: 34px; padding: 2px 4px; margin: 0; border: 1px solid #354331; border-radius: 10px; background: #1d291b; color: var(--text); }
+#session-compose .editor-metrics .ico { width: 16px; height: 16px; flex: 0 0 16px; color: var(--accent); }
+#session-compose .editor-metrics input { min-width: 0; max-width: 38px; width: 3ch; min-height: 28px; height: 28px; border: 0; border-radius: 5px; padding: 1px 0; margin: 0; background: transparent; font-size: 16px; text-align: center; font-weight: 650; }
+#session-compose .editor-metrics .editor-reps input { width: 2ch; max-width: 30px; }
+#session-compose .editor-metrics small { font-size: 10px; color: var(--text); }
+#session-compose .editor-exercise-options { margin: 0; }
+#session-compose .editor-exercise-options > summary { position: absolute; right: 5px; top: 6px; display: grid; place-items: center; width: 36px; min-height: 36px; padding: 0; font-size: 20px; color: var(--text); list-style: none; }
+#session-compose .editor-exercise-options > summary::-webkit-details-marker { display: none; }
+#session-compose .editor-exercise-options[open] { padding-top: 10px; }
+#session-compose .editor-exercise-options > label { display: block; margin: 8px 0; }
+#session-compose .editor-exercise-options > label input { font-size: 16px; width: 100%; }
+#session-compose .editor-exercise-options button { min-height: 38px; }
+#session-compose .editor-group { padding-left: 6px; }
+#session-compose .editor-group-heading { gap: 5px; margin: 3px 0 6px; }
+#session-compose .editor-group-heading strong { font-size: 14px; }
+#session-compose .editor-group-heading .row { gap: 4px; }
+#session-compose .editor-group-heading button { min-height: 34px; padding: 5px 8px; font-size: 11px; }
+#session-compose .editor-add button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 8px; margin: 4px 0 10px; border-radius: 15px; background: #1b261e; font-size: 15px; }
+#session-compose #editor-preview { margin-top: 10px; }
+#session-compose .editor-muscles { padding: 9px; margin: 0; border: 1px solid #39463c; border-radius: 17px; background: #151f17; }
+#session-compose .editor-muscles-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+#session-compose .editor-muscles-heading h2 { font-size: 18px; margin: 0; }
+#session-compose .editor-muscle-help { position: relative; margin: 0; }
+#session-compose .editor-muscle-help summary { display: grid; place-items: center; width: 32px; min-height: 32px; padding: 0; cursor: pointer; list-style: none; }
+#session-compose .editor-muscle-help summary::-webkit-details-marker { display: none; }
+#session-compose .editor-muscle-help p { position: absolute; width: min(270px,70vw); right: 0; top: 22px; padding: 12px; border: 1px solid var(--line); border-radius: 13px; background: #263327; z-index: 5; font-size: 12px; }
+#session-compose .editor-muscle-row { display: grid; grid-template-columns: 25px minmax(75px,1fr) minmax(30px,1.15fr) minmax(66px,.9fr); align-items: center; gap: 7px; border-top: 1px solid #344036; min-height: 43px; padding: 5px 0; }
+#session-compose .editor-muscle-row > svg { width: 25px; height: 29px; }
+#session-compose .editor-muscle-row > strong { font-size: 12px; line-height: 1.2; min-width: 0; }
+#session-compose .editor-muscle-bar { display: block; height: 6px; background: #344334; border-radius: 6px; overflow: hidden; }
+#session-compose .editor-muscle-bar i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+#session-compose .editor-muscle-value { min-width: 0; text-align: right; line-height: 1.15; }
+#session-compose .editor-muscle-value b { font-size: 12px; display: block; }
+#session-compose .editor-muscle-value b > span { font-weight: 400; }
+#session-compose .editor-muscle-value small { display: block; font-size: 9px; color: var(--muted); margin-top: 2px; }
+#session-compose .editor-primary-actions { position: fixed; bottom: var(--editor-nav-height,80px); left: 12px; right: 12px; margin: 0 auto; max-width: 876px; padding: 8px 0; background: #0e150f; z-index: 11; }
+#session-compose .editor-primary-actions button { width: 100%; min-height: 46px; padding: 9px; border-radius: 16px; font-size: 16px; }
+#session-compose #creation-error:empty { margin: 0; }
+html:has(#session-compose) { scroll-padding-bottom: calc(var(--editor-footer-height,64px) + var(--editor-nav-height,80px) + 16px); }
+#session-compose input { scroll-margin-block: 16px calc(var(--editor-footer-height,64px) + var(--editor-nav-height,80px) + 16px); }
+.keyboard-open #session-compose .editor-primary-actions { position: fixed; bottom: max(0px,calc(100dvh - var(--visible-height,100dvh) - var(--visible-top,0px))); }
+.keyboard-open .shell:has(#session-compose) { padding-bottom: calc(100dvh - var(--visible-height,100dvh) + var(--editor-footer-height,64px) + 24px); }
+@media(max-width:350px) {
+  .shell:has(#session-compose) { padding-inline: 8px; }
+  #session-compose .editor-name-type { grid-template-columns: minmax(105px,.95fr) minmax(0,1.15fr); gap: 5px; }
+  #session-compose .model-plan-header h3 { font-size: 14px; }
+  #session-compose .editor-metrics { gap: 4px; }
+  #session-compose .editor-metrics > label { padding-inline: 2px; gap: 2px; }
+  #session-compose .editor-metrics .ico { width: 13px; flex-basis: 13px; }
+  #session-compose .editor-metrics small { font-size: 9px; }
+  #session-compose .editor-muscle-row { grid-template-columns: 23px minmax(65px,1fr) minmax(25px,.8fr) minmax(70px,1fr); gap: 5px; }
+}
+
+#session-compose .editor-type select { font-size: 16px; }
+
+#session-compose .editor-identity label { margin: 0; }
+#session-compose .editor-summary { padding-block: 6px; margin-bottom: 12px; }
+#session-compose .editor-summary > div { min-height: 0; }
+#session-compose .editor-summary strong { line-height: 1.1; }
+#session-compose .editor-summary small { line-height: 1.2; }
+.shell:has(#session-compose) > header { margin-bottom: 8px; }
+.shell:has(#session-compose) > .compose-title { margin-bottom: 10px; }
+#session-compose .editor-type select, #session-compose .editor-name input { line-height: 1.2; min-height: 36px; padding-block: 6px; }
+#session-compose .editor-name-type { padding-block: 3px; }
+#session-compose .model-exercise { padding: 6px; }
+#session-compose .model-plan-header { min-height: 34px; }
+#session-compose .model-plan-header > div { position: relative; padding-left: 37px; }
+#session-compose .model-plan-header h3 { display: block; font-size: 15px; }
+#session-compose .model-plan-header .exercise-icon { position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
+#session-compose .editor-primary-muscle { margin: 2px 0 0; }
+#session-compose .editor-metrics { margin-top: 4px; }
+#session-compose .editor-metrics > label { min-height: 32px; }
+#session-compose .editor-metrics input { height: 26px; min-height: 26px; }
