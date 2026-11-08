@@ -19,7 +19,7 @@ export function ownProfileSummary(state,today=dayKey()){
 }
 
 export function challengePresentation(challenge,now=Date.now()){
- const target=Number(challenge.referenceReps)+1,best=Number.isFinite(challenge.bestReps)?challenge.bestReps:null;
+ const target=challenge.targetReps?Number(challenge.targetReps):Number(challenge.referenceReps)+1,best=Number.isFinite(challenge.bestReps)?challenge.bestReps:null;
  const progress=best===null||!Number.isFinite(target)||target<=0?0:Math.max(0,Math.min(100,best/target*100));
  const date=challenge.status==='pending'?challenge.inviteExpiresAt:challenge.deadline;
  const end=Date.parse(date),days=Number.isFinite(end)?Math.max(0,Math.ceil((end-now)/86400000)):null;
