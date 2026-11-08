@@ -2,6 +2,7 @@
 exports.journeyClick=(getPage,run)=>async action=>{
  const page=getPage(),minimise=async()=>{const button=page.locator('#rest-dialog[open] [data-action="rest-dismiss"]');if(await button.count()){await button.click();await page.waitForFunction(()=>document.querySelector('#save')?.textContent==='Enregistré sur cet appareil')}};
  await minimise();
+ if(action==='cancel-session'){await page.evaluate(()=>scrollTo(0,0));try{await page.clock.runFor(80)}catch{}}
  if(action==='editor-dialog-close'){await page.locator('[data-action="editor-dialog-close"]:visible').first().click();await page.waitForFunction(()=>!document.querySelector('.editor-exercise-dialog[open]'));return}
  // Exercise/muscle details now open from the overview's section links.
  if(action==='overview-tab:muscle'&&!await page.locator('[data-action="overview-tab:muscle"]').count()&&await page.locator('[data-action="overview-tab:overview"]').count())await page.locator('[data-action="overview-tab:overview"]').first().click();
@@ -37,3 +38,11 @@ exports.journeyClick=(getPage,run)=>async action=>{
 };
 // Initial proposals remain available in the exercise options; the main card shows comparable history only.
 exports.previousText=async page=>{const menu=page.locator('.live-exercise-options'),wasOpen=await menu.evaluate(e=>e.open);if(!wasOpen)await menu.locator('summary').click();const text=await page.locator('.previous-session').innerText();if(!wasOpen)await menu.locator('summary').click();return text};
+// Move the real sequence controls with their accessible keyboard interaction.
+exports.setGroupOrder=async(page,letters)=>{
+ if((await page.locator('.group-token').count())!==letters.length)throw Error('The requested sequence must keep all configured series.');
+ for(let i=0;i<letters.length;i++){
+  const text=await page.locator('.group-token').allTextContents();let from=text.findIndex((value,j)=>j>=i&&value===letters[i]);if(from<0)throw Error('Missing group letter '+letters[i]);
+  while(from>i){await page.locator('.group-token').nth(from).focus();await page.keyboard.press('ArrowLeft');from--;}
+ }
+};
