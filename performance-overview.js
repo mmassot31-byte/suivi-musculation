@@ -1,4 +1,4 @@
-import {sameExerciseReference} from './exercise-reference.js';
+import {canonicalExerciseId,sameExerciseReference} from './exercise-reference.js';
 import {isAssisted} from './load-conventions.js';
 // Read-only overview. Comparisons reuse recorded work, identity and anatomical helpers.
 import {progressOverviewModel,progressOverviewHtml,savedActivity,escapeHtml,durationLabel} from './design-ui.js';
@@ -55,15 +55,46 @@ function recordHtml(x){
  const r=x.record,reference={...x.exercise,...(x.exercise.sets.find(s=>s.id===r.setId)?.loadIdentity?{loadIdentity:x.exercise.sets.find(s=>s.id===r.setId).loadIdentity}:{})},best=segments({...x.exercise,sets:recordedSets(x.exercise).filter(s=>sameLoadIdentity(reference,x.exercise,null,s))}).reduce((a,b)=>!a||b.w>a.w||b.w===a.w&&b.r>a.r?b:a,null),weight=r.kind==='weight'?r.value:r.kind==='reps'?r.weight:best?.w,reps=r.kind==='weight'?r.reps:r.kind==='reps'?r.value:best?.r,unit=loadIdentity(reference).unit;
  return button(`${exercisePrimaryIcon(x.exercise)}<span class="record-mini-name">${esc(exerciseDisplayName(x.exercise))}</span><strong>${weight===undefined?'—':fmt(weight)+' '+esc(unit)+' × '+reps}</strong><small class="record-gain">+${fmt(r.gain)} ${r.kind==='reps'?'rép.':esc(x.unit)}</small>`,'exercise-open:'+encodeURIComponent(x.exercise.id),'record-mini');
 }
+// Full record history has its own presentation; the dashboard stays unchanged.
+export function distinctRecordHistory(state,{today=dayKey(),days=30,all=false,kind='all'}={}){
+ const sessions=savedActivity(state.sessions,state.active?.id,today),first=sessions.map(s=>dayKey(s.date)).sort()[0]||today;
+ const span=all?Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(first+'T12:00:00Z'))/864e5)+1:days;
+ const seen=new Set();
+ return progressOverviewModel(state,today,span).recordHistory.filter(x=>{
+  if(kind!=='all'&&x.record.kind!==kind)return false;
+  const r=x.record,set=x.exercise.sets.find(s=>s.id===r.setId),identity=loadIdentity(x.exercise,set);
+  const key=JSON.stringify([canonicalExerciseId(x.exercise),identity.unit,identity.convention,identity.lateralMode,set?.loadProtocol,set?.measurement,set?.loadMode,dayKey(x.session.date),r.kind,r.value,r.weight,r.reps]);
+  if(seen.has(key))return false;seen.add(key);return true;
+ }).map(x=>{
+  const r=x.record,set=x.exercise.sets.find(s=>s.id===r.setId),reference={...x.exercise,...(set?.loadIdentity?{loadIdentity:set.loadIdentity}:{})};
+  // Repetitions compare the same load; load gains require the same rep count.
+  let gain=null;
+  if(r.kind==='reps'&&r.previous>0&&r.gain>0)gain={value:r.gain,unit:'rép.'};
+  if(r.kind==='weight'){
+   const prior=sessions.filter(s=>s.id!==x.session.id&&Date.parse(s.date)<Date.parse(x.session.date)).flatMap(s=>s.exercises.filter(e=>sameExerciseReference(e,x.exercise)).flatMap(e=>segments({...e,sets:recordedSets(e).filter(st=>sameLoadIdentity(reference,e,null,st))}))).filter(st=>st.r===r.reps);
+   const best=prior.length?Math.max(...prior.map(st=>st.w)):null;
+   if(best!==null&&r.value>best)gain={value:r.value-best,unit:loadIdentity(reference).unit};
+  }
+  if(r.kind==='tonnage'&&r.previous>0&&r.gain>0)gain={value:r.gain,unit:x.unit};
+  return {...x,gain};
+ });
+}
+function historyRecordHtml(x){
+ const r=x.record,set=x.exercise.sets.find(s=>s.id===r.setId),unit=loadIdentity(x.exercise,set).unit;
+ const value=r.kind==='tonnage'?fmt(r.value)+' '+x.unit:fmt(r.kind==='weight'?r.value:r.weight)+' '+unit+' × '+(r.kind==='reps'?r.value:r.reps);
+ const type=r.kind==='weight'?'Charge':r.kind==='reps'?'Répétitions':'Tonnage de séance',date=new Date(x.session.date).toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+ const action='record-open:'+encodeURIComponent(x.session.id)+':'+x.session.exercises.indexOf(x.exercise);
+ return `<article>${button(`${exercisePrimaryIcon(x.exercise)}<span class="history-record-name"><strong>${esc(exerciseDisplayName(x.exercise))}</strong><small><time datetime="${esc(x.session.date)}">${esc(date)}</time> · ${type}</small></span><span class="history-record-value"><strong>${esc(value)}</strong>${x.gain?`<small class="history-record-gain">+${fmt(x.gain.value)} ${esc(x.gain.unit)}</small>`:''}</span><span class="history-record-chevron" aria-hidden="true">›</span>`,action,'history-record-row')}</article>`;
+}
 export function overviewChart(points,unit){
  const data=timeCoordinates(points,{width:300,height:142,padding:24}),minimum=Math.min(...points.map(p=>p.value)),maximum=Math.max(...points.map(p=>p.value)),padding=minimum===maximum?Math.max(.5,Math.abs(minimum)*.05):0,min=minimum-padding,max=maximum+padding;for(const p of data)p.y=118-(p.value-min)/(max-min)*94;const coords=data.map(p=>`${p.x},${p.y}`).join(' '),label=p=>new Date(p.time).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
  return `<svg class="overview-trend-chart" viewBox="0 0 300 142" role="group" aria-label="Évolution chronologique de la force estimée, ${esc(unit)}"><path d="M24 18V118H280" fill="none" stroke="var(--line)"/><text x="20" y="20" text-anchor="end">${fmt(max)}</text><text x="20" y="117" text-anchor="end">${fmt(min)}</text><polygon points="${data[0].x},118 ${coords} ${data.at(-1).x},118" fill="var(--accent)" opacity=".12"/><polyline points="${coords}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>${data.map(p=>`<circle class="overview-point-target" cx="${p.x}" cy="${p.y}" r="13" tabindex="0" role="button" data-action="detail:${esc(p.id)}" aria-label="${esc(label(p))} : ${fmt(p.value)} ${esc(unit)}"><title>${esc(label(p))} · ${fmt(p.value)} ${esc(unit)}</title></circle><circle cx="${p.x}" cy="${p.y}" r="4" aria-hidden="true" pointer-events="none"/>`).join('')}<text x="24" y="138">${esc(label(data[0]))}</text><text x="276" y="138" text-anchor="end">${esc(label(data.at(-1)))}</text></svg>`;
 }
 const periodSelect=(days,allowAll=false,all=false)=>`<label class="overview-period-label"><span class="sr-only">Période de progression</span><select id="overview-period">${[7,30,90].map(n=>`<option value="${n}" ${n===days&&!all?'selected':''}>${n} derniers jours</option>`).join('')}${allowAll?`<option value="all" ${all?'selected':''}>Tout l’historique</option>`:''}</select></label>`;
-export function performanceDashboardHtml(state,{tab='overview',muscle='',today=dayKey(),days=30,recordsAll=false}={}){
+export function performanceDashboardHtml(state,{tab='overview',muscle='',today=dayKey(),days=30,recordsAll=false,recordKind='all'}={}){
  if(!['overview','records'].includes(tab)){const group=muscle.startsWith('group-')?muscle.slice(6):null,muscleGroup=group?['chest','lats','upper_back','traps','erectors','front_delts','side_delts','rear_delts','biceps','brachialis','triceps','forearms','quads','hamstrings','glutes','calves','adductors','abductors'].filter(id=>broad(id)===group):null;return progressOverviewHtml(state,{tab,muscle,today,days,muscleGroup,muscleGroupLabel:group?overviewMuscles.find(x=>x[0]===group)?.[1]||'':''});}
  const m=performanceDashboardModel(state,{today,days});
- if(tab==='records'){const first=savedActivity(state.sessions,state.active?.id,today).map(s=>dayKey(s.date)).sort()[0]||today,span=Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(first+'T12:00:00Z'))/864e5)+1,records=recordsAll?progressOverviewModel(state,today,span).recordHistory:m.recordHistory;return `<section class="performance-record-list">${button('← Aperçu','overview-tab:overview','small section-back')}<div class="row between section-heading"><h2>Tous tes records</h2>${periodSelect(days,true,recordsAll)}</div><div class="record-history-list">${records.map(x=>`<article>${recordHtml(x)}<time>${new Date(x.session.date).toLocaleDateString('fr-FR')}</time></article>`).join('')||'<p class="empty">Aucun record sur cette période.</p>'}</div></section>`;}
+ if(tab==='records'){const records=distinctRecordHistory(state,{today,days,all:recordsAll,kind:recordKind});return `<section class="performance-record-list">${button('← Retour','overview-tab:overview','small records-back')}<h2>${icon('trophy')}Tous tes records</h2><p class="records-subtitle">Tes meilleures performances par exercice.</p><div class="records-toolbar">${periodSelect(days,true,recordsAll)}<div class="records-kind" role="group" aria-label="Type de record">${[['all','Tous'],['weight','Charge'],['reps','Répétitions']].map(([key,label])=>`<button type="button" data-action="record-kind:${key}" aria-pressed="${recordKind===key}">${label}</button>`).join('')}</div></div><div class="record-history-list">${records.map(historyRecordHtml).join('')||'<p class="empty">Aucun record sur cette période pour ce filtre.</p>'}</div></section>`;}
  const c=m.chart;
  return `<section class="performance-overview performance-dashboard">
  <div class="row between section-heading overview-progress-heading"><h2>Tes progrès</h2>${periodSelect(days)}</div>
