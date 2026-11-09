@@ -22,7 +22,8 @@ jobs:
         run: node scripts/check-public-config.cjs
       - name: Préparer uniquement les fichiers publics
         run: |
-          mkdir -p _site/vendor
+          mkdir -p _site/vendor _site/badges-v2
+          cp badges-v2/*.js badges-v2/style.css _site/badges-v2/
           cp -R assets _site/assets
           cp index.html challenge-forms.css goals.js goals-model.js goals-legacy.js goals.css personal-library-ui.js exercise-picker.js exercise-catalogue.js exercise-library.js exercise-replacement.js load-normalization.js exercise-reference.js exercise-key.js load-conventions.js saved-session.js saved-session.css profile-presentation.js profile-layout.css volume-dashboard.css volume-dashboard.js performance-overview.js performed-exercises.js history-view.js live-workout.js live-workout.css design.css design-ui.js season-ranks.js session-editor.js personal-records.js cardio-timer.js activity.js exercise-labels.js pictograms.js pictogram-source.js icons.js navigation.js presentation.js achievements.js feedback.js identity.js exercise-sheet.js radar.js radar-ui.js app.js tracking.js muscles.js performance.js volume.js volume-list.js groups.js group-editor.js rest.js cloud-config.js cloud-service.js account-store.js social-ui.js social-presenter.js community-ui.js trophy-room.js workout-completion.js friend-feed.js public-rankings.js notifications.js social-catalogue.js catalogue.js programming.js programme-review.js planning.js planner-ui.js data.js style.css sw.js manifest.webmanifest icon.svg .nojekyll _site/
           cp vendor/supabase.js vendor/NOTICE.txt _site/vendor/

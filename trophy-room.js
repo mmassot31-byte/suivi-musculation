@@ -1,3 +1,4 @@
+import {v2Enabled} from './badges-v2/flags.js';
 import {badgeCatalogue as catalogue} from './social-catalogue.js';
 export const trophyGroups=[['sessions','Séances',['sessions_total','sessions_week']],['sets','Séries',['sets_total','sets_week']],['tonnage','Tonnage',['tonnage_total','tonnage_week']],['regularity','Régularité',['streak_weeks','active_weeks']],['records','Records',['records_total','records_exercises']],['challenges','Défis',['personal_challenges','shared_challenges']]];
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -20,6 +21,7 @@ export function trophyProgress(profile,b){
  return {value,shown:b.metric==='tonnage_kg'?value/1000:value,percent:Math.min(100,Math.floor(value/b.threshold*100))};
 }
 export function trophyShowcase(profile,{own=true}={}){
+ if(v2Enabled())return '';
  const {showcase}=trophyModel(profile);
  return `<section class="trophy-profile"><div class="row between"><h2>Plus beaux trophées</h2>${button('Tout voir ('+trophyModel(profile).awards.length+')','collection','text-link')}</div>${showcase.length?`<div class="trophy-showcase" data-count="${showcase.length}" style="--trophy-count:${showcase.length}">${showcase.map(b=>button(`${image(b)}<strong>${esc(b.label)}</strong>${own?'':`<progress max="${family(b).badgeIds.length}" value="${b.tier}" aria-label="${tier(b)}"></progress>`}<small>${tier(b)}</small>`,'badge:'+b.id,'trophy-showpiece')).join('')}</div>`:`<p class="subtitle trophy-first">${own?'Chaque séance construit ta collection. Ton premier trophée t’attend.':'Les premières récompenses apparaîtront ici.'}</p>`}</section>`;
 }

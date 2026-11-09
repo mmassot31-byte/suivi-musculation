@@ -6,15 +6,15 @@ const exercise=(muscles,sets)=>({id:'custom',muscles,sets});
 const session=(id,exercises)=>({id,date:'2026-11-01T10:00:00Z',exercises});
 const doc=(...exercises)=>({sessions:[session('history',exercises)]});
 
-test('150 stable slots, exact category sizes, no placeholder condition/award or XP allocation',async()=>{
+test('150 stable slots, exact category sizes, all conditions and defined XP policy',async()=>{
   const {catalog,categories,thresholds,rarities}=await api;
   assert.equal(catalog.length,150); assert.equal(new Set(catalog.map(b=>b.id)).size,150);
   assert.deepEqual(categories.map(c=>c.slots),[48,48,12,18,12,12]);
   for(const c of categories) assert.equal(catalog.filter(b=>b.category===c.id).length,c.slots);
   assert.deepEqual(thresholds,[25,100,250,500,1000,2500]);
-  for(const b of catalog){assert(b.id.startsWith('v2.'));assert.equal(b.version,2);assert.equal(b.reward.xp,null);assert.equal(b.reward.grantEnabled,false);assert(Object.isFrozen(b));
+  for(const b of catalog){assert(b.id.startsWith('v2.'));assert.equal(b.version,2);assert(Number.isInteger(b.reward.xp));assert.equal(b.reward.grantEnabled,true);assert(Object.isFrozen(b));
     if(b.status==='reserved'){assert.equal(b.condition,null);assert.equal(b.rarity,null);}else assert(rarities.includes(b.rarity));}
-  assert.equal(catalog.filter(b=>b.status==='reserved').length,102);
+  assert.equal(catalog.filter(b=>b.status==='calculable').length,150);
 });
 test('all eight muscles, below/at/above each of six thresholds and next tier',async()=>{
   const {evaluateMuscleVolume:evaluate,muscleGroups,thresholds}=await api;
