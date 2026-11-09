@@ -1,3 +1,5 @@
+> Document historique de l’étape 5. Pour la livraison complète et sa politique XP, voir `badges-v2-delivery.md`.
+
 # Fondations du moteur de badges V2
 
 ## Contrat et isolation

@@ -8,8 +8,8 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
   const user={id:uid,email:names[uid]+'@example.invalid',user_metadata:{username:names[uid]}},expiry=Math.floor(Date.now()/1000)+3600,token=[{alg:'HS256',typ:'JWT'},{sub:uid,role:'authenticated',exp:expiry},'fixture'].map(x=>Buffer.from(typeof x==='string'?x:JSON.stringify(x)).toString('base64url')).join('.');let version=1;
   const context=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
   await context.addInitScript(({user,expiry,token})=>{if(!sessionStorage.getItem('fixture-auth-seeded')){localStorage.setItem('elan-auth-v1',JSON.stringify({access_token:token,refresh_token:'fixture',expires_at:expiry,expires_in:3600,token_type:'bearer',user}));sessionStorage.setItem('fixture-auth-seeded','1');}},{user,expiry,token});
-  await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'text/javascript',body:"export const cloudConfig={url:'https://notifications.invalid',publishableKey:'sb_publishable_fixture'}"}));
-  await context.route('https://notifications.invalid/**',async route=>{
+  await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'text/javascript',body:"export const cloudConfig={url:'http://127.0.0.1:55436',publishableKey:'sb_publishable_fixture'}"}));
+  await context.route('http://127.0.0.1:55436/**',async route=>{
    const req=route.request(),path=new URL(req.url()).pathname,args=req.method()==='POST'?req.postDataJSON():{};let body=[],status=200;
    if(path.endsWith('/user'))body=user;
    else if(path.endsWith('/logout'))body={};

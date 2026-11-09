@@ -2,8 +2,8 @@
 const {chromium}=require('./browser-fixtures.cjs'),assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});try{
  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block',reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'application/javascript',body:"export const cloudConfig={url:'https://elan-visual.invalid',publishableKey:'sb_publishable_visual_fixture'};"}));
- await context.route('https://elan-visual.invalid/**',r=>{const path=new URL(r.request().url()).pathname;let body=[];
+ await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'application/javascript',body:"export const cloudConfig={url:'http://127.0.0.1:55436',publishableKey:'sb_publishable_visual_fixture'};"}));
+ await context.route('http://127.0.0.1:55436/**',r=>{const path=new URL(r.request().url()).pathname;let body=[];
  if(path.endsWith('/competition_capabilities'))body={version:1,challenges:true,completedOnly:true};
  if(path.includes('exercise_variants'))body=[{id:'bench',label:'Développé couché · barre',convention:'Total',equipment:'barbell',description:'Charge totale sur une barre.'}];
  if(path.endsWith('/competition_rankings'))body={records:{charge:{value:120,reps:3,username:'Maxime',ties:2},tonnage:{value:2040,username:'Alex',ties:1}},entries:[{rank:1,username:'Maxime',value:120,reps:3},{rank:1,username:'Camille',value:120,reps:3}],total:2};

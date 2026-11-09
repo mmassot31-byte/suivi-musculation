@@ -1,0 +1,20 @@
+require('../scripts/local-safety.cjs');
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+const {localClient,migrate}=require('../scripts/local-v2-db.cjs'),{refresh}=require('../scripts/local-v2-worker.cjs');
+test('disposable local SQL: actual V1 sync, V2 backfill, correction/deletion, concurrency and retained seasons',async()=>{
+ const admin=await localClient(),name='elan_v2_verify_'+Date.now(),marker=crypto.randomUUID();let db=null,created=false;
+ try{assert(/^elan_v2_verify_[0-9]+$/.test(name));await admin.query('create database '+name);created=true;db=await localClient(name);assert.equal((await db.query('select current_database()db')).rows[0].db,name);
+ await db.query('create table elan_v2_disposable_marker(id uuid primary key)');await db.query('insert into elan_v2_disposable_marker values($1)',[marker]);
+ await db.query("create schema auth;create table auth.users(id uuid primary key,email text,created_at timestamptz default now(),raw_user_meta_data jsonb default '{}');create function auth.uid()returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth to anon,authenticated;create schema elan_local;");
+ for(const file of fs.readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&!f.includes('0002_')).sort())await db.query(fs.readFileSync('supabase/migrations/'+file,'utf8'));
+ await migrate(db);const owner='88000000-0000-0000-0000-000000000001';await db.query('insert into auth.users(id,email,raw_user_meta_data)values($1,$2,$3)',[owner,'v2-disposable@example.test',{username:'DisposableV2'}]);
+ const make=id=>({id,date:'2026-10-15T10:00:00Z',endedAt:'2026-10-15T10:30:00Z',exercises:[{id:'Développé couché',name:'Développé couché',instanceId:'bench',convention:'Total',muscles:{primary:['chest'],secondary:['triceps']},sets:Array.from({length:3},(_,i)=>({id:'s'+i,type:'work',status:'validated',w:100,r:10,loadProtocol:'elan-2',loadMode:'bilateral',measurement:'external_load',loadIdentity:{version:1,unit:'kg',convention:'Total',lateralMode:'total',source:'confirmed'}}))}]});
+ let version=0;async function sync(sessions){await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner]);const r=(await db.query('select sync_snapshot($1,$2)data',[{version:1,sessions,templates:[],active:null},version])).rows[0].data;version=r.version;}
+ const sessions=[make('a'),make('b')];await sync(sessions);const first=await refresh(db,owner);assert.equal(first.seasons['2026-10'],52);
+ const clients=await Promise.all([localClient(name),localClient(name)]);try{const out=await Promise.all(clients.map(c=>refresh(c,owner)));assert(out.every(r=>r.xp===first.xp));}finally{await Promise.all(clients.map(c=>c.end()));}
+ sessions[1].exercises[0].sets.pop();await sync(sessions);const corrected=await refresh(db,owner);assert.equal(corrected.xp,first.xp-22);assert.equal(corrected.seasons['2026-10'],30);assert.equal(corrected.awards.length,first.awards.length);
+ await sync([]);const deleted=await refresh(db,owner);assert.equal(deleted.xp,deleted.awards.reduce((n,b)=>n+b.xp,0));assert.equal(deleted.awards.length,first.awards.length);assert.equal((await db.query('select count(*)::int n from v2_season_history where owner_id=$1 and month=$2',[owner,'2026-10'])).rows[0].n,1);
+ await sync(sessions);const restored=await refresh(db,owner);assert.equal(restored.awards.length,first.awards.length);assert.equal(restored.xp,corrected.xp);assert.equal((await db.query('select count(*)::int n from v2_events where owner_id=$1 and kind=$2',[owner,'activity'])).rows[0].n,2);
+ console.log('PASS disposable SQL: 19 V1 migrations + 3 V2, real sync/backfill/retry/concurrent workers, 52→30→0→30 season points, permanent unique badge grants, archived month retained.');
+ }finally{if(db){const row=(await db.query('select current_database()db,(select id from elan_v2_disposable_marker)marker')).rows[0];assert.equal(row.db,name);assert.equal(row.marker,marker);await db.end();db=null;}if(created)await admin.query('drop database '+name);await admin.end();}
+});

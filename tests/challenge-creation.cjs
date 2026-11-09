@@ -7,8 +7,8 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
   const user={id:uid,email:names[uid]+'@example.invalid',user_metadata:{username:names[uid]}},expiry=Math.floor(Date.now()/1000)+3600,token=[{alg:'HS256',typ:'JWT'},{sub:uid,role:'authenticated',exp:expiry},'fixture'].map(x=>Buffer.from(typeof x==='string'?x:JSON.stringify(x)).toString('base64url')).join('.');
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
   await context.addInitScript(({token,expiry,user})=>localStorage.setItem('elan-auth-v1',JSON.stringify({access_token:token,refresh_token:'fixture',expires_at:expiry,expires_in:3600,token_type:'bearer',user})),{token,expiry,user});
-  await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'text/javascript',body:"export const cloudConfig={url:'https://challenge-test.invalid',publishableKey:'sb_publishable_fixture'}"}));
-  await context.route('https://challenge-test.invalid/**',async r=>{
+  await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'text/javascript',body:"export const cloudConfig={url:'http://127.0.0.1:55436',publishableKey:'sb_publishable_fixture'}"}));
+  await context.route('http://127.0.0.1:55436/**',async r=>{
    const req=r.request(),path=new URL(req.url()).pathname,args=req.method()==='POST'?req.postDataJSON():{};let body=[],status=200;
    if(path.endsWith('/user'))body=user;
    else if(path.endsWith('/profiles'))body={id:uid,username:names[uid]};

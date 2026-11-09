@@ -62,3 +62,41 @@ test('unknown history conventions raw value conserved, no hidden machine convers
  const s=session('s',undefined,[ex('unknown',[{id:'a',type:'work',w:10,r:10}],{loadIdentity:undefined,convention:'À préciser'})]);const r=await evaluate([s]);assert.equal(r.activities[0].tonnageKg,100);assert.equal(r.diagnostics.nonComparableSets,1);
  const no=await evaluate([{...s,endedAt:null},{...s,id:'f',date:'2028-01-01',endedAt:'2028-01-02'}]);assert.equal(no.activities.length,0);
 });
+test('weekly goals use saved period snapshots, four closed weeks, later edits cannot fabricate success',async()=>{
+ const {evaluateV2,snapshotWeek}=await api;const weeks=['2026-10-05','2026-10-12','2026-10-19','2026-10-26'];
+ const targets=['chest','lats','quads'].map(muscle=>({muscle,min:1,max:5,method:'direct',effectiveDate:'2026-10-01'}));
+ const goal={id:'goal-proof',version:4,type:'regularity',recurring:true,period:'week',start:'2026-10-05',target:1,timezone:'Europe/Paris',createdAt:'2026-10-01T00:00:00Z',phases:[]};
+ const state={sessions:[],volumeTargets:targets,sportGoals:[goal]};
+ for(const [i,week]of weeks.entries()){const s=session('w'+i,week+'T10:00:00Z',['chest','lats','quads'].map(m=>ex(m,[set(m)],{muscles:{primary:[m],secondary:[]}})));s.v2Evidence={version:2,weekSnapshot:snapshotWeek(state,week,'Europe/Paris')};state.sessions.push(s);}
+ state.volumeTargets=targets.map(t=>({...t,min:999}));state.sportGoals=[{...goal,target:999}];
+ const p=evaluateV2(state,{asOf:'2026-11-02T10:00:00Z'});assert.equal(p.values.weekly_targets,4);assert.equal(p.values.perfect_weeks,4);
+ const no=evaluateV2({...state,sessions:state.sessions.map(({v2Evidence,...s})=>s)},{asOf:'2026-11-02T10:00:00Z'});assert.equal(no.values.weekly_targets,0);assert.equal(no.values.perfect_weeks,0);
+});
+test('retroactive collection finite pass and threshold dates, permanent prior grants included',async()=>{
+ const {evaluateV2}=await api;const p={primary:['chest','lats','front_delts','biceps','triceps','quads','glutes','calves'],secondary:[]};
+ const ids=['Développé couché','Shoulder press','Tirage vertical','Low row','Pendulum squat','Hip thrust','Curl biceps','Triceps haltère'];
+ const big=session('big',undefined,ids.map((id,i)=>ex(id,Array.from({length:i?1:2500},(_,k)=>set(String(k),500,10000)),{muscles:p})));
+ const result=evaluateV2({sessions:[big]},{asOf:'2027-01-01T00:00:00Z'});assert(eligible(result).includes(await badge('collection',25)));assert(eligible(result).includes(await badge('collection',100)));
+ const ten=Array.from({length:10},(_,i)=>session(String(i),`2026-10-${String(i+1).padStart(2,'0')}T10:00:00Z`));const dated=evaluateV2({sessions:ten},{asOf:'2027-01-01T00:00:00Z'});assert.equal(dated.badges.find(b=>b.id==='v2.consistency.slot_02').earnedAt,ten[9].endedAt);
+});
+test('Phoenix comparable record gap, Centurion across occurrences and duplicate series excluded',async()=>{
+ const old=session('old','2026-01-01T10:00:00Z',[ex(undefined,[set('a',40,8)])]);const later=session('later','2026-08-01T10:00:00Z',[ex(undefined,[set('b',45,8)])]);const r=await evaluate([old,later]);assert(r.values.phoenix>=180);
+ const repeated=session('r',undefined,[ex('Développé couché',[set('a',10,60)],{instanceId:'first'}),ex('Développé couché',[set('b',10,60)],{instanceId:'second'})]);assert.equal((await evaluate([repeated])).values.session_reps,120);
+ const duplicate=session('duplicate',undefined,[ex(undefined,[set('a'),set('a')])]);assert.equal((await evaluate([duplicate])).activities[0].sets,1);
+});
+test('validated cardio counts toward regularity but never fabricates strength series or activity XP',async()=>{
+ const cardio=session('cardio',undefined,[{id:'cardio',instanceId:'bike',tracking:'cardio',sets:[],activityEntries:[{id:'c',counter:'duration',value:20}]}]);
+ const r=await evaluate([cardio]);assert.equal(r.values.sessions,1);assert.equal(r.activities[0].sets,0);assert.equal(r.activities[0].xp,0);assert.equal(r.values.unique_exercises,1);assert(!r.badges.some(b=>b.category==='performance'&&b.eligible));
+});
+test('reward UI zero/one/multiple badges, rank transition, escaping and explicit new Performance names',async()=>{
+ const {rewardHtml,collectionHtml}=await import('../badges-v2/ui.js'),{permanentRank,catalog}=await api;
+ const base={activity:{session:20,sets:3,tonnage:0},beforeXP:490,afterXP:540,beforeRank:permanentRank(490),afterRank:permanentRank(540),total:50,badges:[]};
+ const empty=rewardHtml(base,{celebrate:true});assert(empty.includes('Nouveau rang · Argent'));assert(!empty.includes('v2-reward-badges'));assert(empty.includes('490 → 540'));
+ const one=rewardHtml({...base,badges:[{id:catalog[0].id,xp:10}]},{celebrate:true});assert.equal((one.match(/<svg /g)||[]).length,1);
+ const historical=rewardHtml({...base,badges:catalog.slice(0,3).map(b=>({id:b.id,xp:b.reward.xp}))},{celebrate:false});assert.equal((historical.match(/<svg /g)||[]).length,3);assert(!historical.includes('Nouveau rang'));assert(historical.includes('Badges acquis'));
+ const secret=collectionHtml({awards:[]},{detail:'v2.secrets.slot_01'});assert(secret.includes('???'));assert(!secret.includes('Batman'));assert(!secret.includes('04:59'));
+});
+test('V2 state import preserves acquired grants and explicit favorites without recreating activity XP',async()=>{
+ const {mergeV2State}=await import('../badges-v2/merge.js');const remote={favorites:[],ledger:{awards:[{id:'a',xp:10}],events:[]}},local={favorites:['b'],ledger:{awards:[{id:'b',xp:25}]},seenRewards:['s']};
+ const before=structuredClone([remote,local]),out=mergeV2State(remote,local);assert.deepEqual(out.favorites,[]);assert.deepEqual(new Set(out.ledger.awards.map(a=>a.id)),new Set(['a','b']));assert.deepEqual(out.ledger.events,[]);assert.deepEqual([remote,local],before);
+});
