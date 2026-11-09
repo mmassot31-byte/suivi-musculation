@@ -1,0 +1,70 @@
+/* Shared app geometry. Component-specific information density remains local. */
+:root{
+ --app-page-width:1040px;
+ --app-form-width:640px;
+ --app-gutter:10px;
+ --app-page-top:max(6px,env(safe-area-inset-top));
+ --app-page-bottom:calc(96px + env(safe-area-inset-bottom));
+ --app-header-height:44px;
+ --app-section-gap:16px;
+ --app-field-gap:10px;
+ --app-control-height:44px;
+ --app-control-compact:36px;
+ --app-stepper-height:32px;
+ --app-control-radius:10px;
+ --app-panel-radius:14px;
+}
+/* One outer width and one safe-area contract for every route. */
+.shell.app-shell{
+ box-sizing:border-box;
+ width:100%;max-width:var(--app-page-width);margin-inline:auto;
+ padding:var(--app-page-top) max(var(--app-gutter),env(safe-area-inset-right)) var(--app-page-bottom) max(var(--app-gutter),env(safe-area-inset-left));
+}
+.app-shell>header{
+ display:flex;align-items:center;justify-content:space-between;gap:8px;
+ height:var(--app-header-height);min-height:var(--app-header-height);
+ padding:0;margin:0 0 8px;
+}
+.app-shell>header>.row{display:flex;flex-wrap:nowrap;align-items:center;gap:0}
+.app-shell>header .brand{font-size:25px;line-height:1.1;margin:0;white-space:nowrap}
+.app-shell>header .header-account{display:flex;align-items:center;gap:7px}
+.app-shell>header :is(.profile-avatar,.notification-bell){width:var(--app-header-height);height:var(--app-header-height);min-width:var(--app-header-height);min-height:var(--app-header-height);padding:0;flex:0 0 var(--app-header-height)}
+/* Existing tab screens keep their compact 3 px header separation. */
+.app-shell.tab-shell>header{margin-bottom:3px}
+.app-shell.competition-shell>.community-page{margin-inline:0}
+.app-shell.competition-shell>.community-page>.row:first-child{margin-inline:0}
+.app-shell.objectives-shell>.goals{width:100%}
+/* Session editors share the frame while retaining their keyboard-aware footer. */
+.app-shell:has(#session-compose){max-width:var(--app-page-width);padding-top:var(--app-page-top);padding-left:max(var(--app-gutter),env(safe-area-inset-left));padding-right:max(var(--app-gutter),env(safe-area-inset-right));padding-bottom:calc(var(--editor-footer-height,64px) + var(--editor-nav-height,80px) + 24px + env(safe-area-inset-bottom))}
+.app-shell:has(#session-compose)>header{height:var(--app-header-height);min-height:var(--app-header-height);margin-bottom:8px;padding:0}
+.app-shell.work-shell{padding-bottom:calc(100px + var(--live-safe-bottom,env(safe-area-inset-bottom)))}
+/* Hiding the brand header when entering a live set is part of keyboard ergonomics. */
+.keyboard-open .app-shell.work-shell>header{display:none}
+.app-shell>h1,.app-shell>section:not(.goal-wizard)>h1,.app-shell>.row:not(.compose-title)>h1{font-size:28px;line-height:1.12;letter-spacing:-.8px}
+.app-shell>.compose-title h1{font-size:24px;line-height:1.15}
+/* Standalone forms: a readable width, consistent labels and 44 px fields. */
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form){box-sizing:border-box;width:100%;max-width:var(--app-form-width);margin:var(--app-section-gap) auto;padding:12px;border:1px solid var(--line);border-radius:var(--app-panel-radius);background:var(--panel)}
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form,#body-form)>label{margin:0 0 var(--app-field-gap);font-size:12px;line-height:1.4}
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form,#body-form) :is(input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]),select,textarea){box-sizing:border-box;width:100%;min-width:0;max-width:100%;min-height:var(--app-control-height);padding:9px 10px;font-size:16px;line-height:1.35;border:1px solid var(--line);border-radius:var(--app-control-radius);background:var(--surface-inset);color:var(--text);color-scheme:dark;scroll-margin-block:80px 140px}
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form,#body-form) textarea{min-height:88px;resize:vertical}
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form,#body-form) :is(input[type=checkbox],input[type=radio]){width:18px;height:18px;min-height:18px;flex-shrink:0;accent-color:var(--accent)}
+.app-shell :is(#account-form,#edit-profile-form,#profile-search-form,#variant-binding-form,#machine-form)>button{min-height:var(--app-control-height);border-radius:var(--app-control-radius);font-size:14px}
+.app-shell :is(#account-form,#edit-profile-form)>button.primary{width:100%;margin-top:2px}
+/* Compact row forms use one shared control size; the native date field fits its pill. */
+.app-shell .goal-form select,.app-shell .elan-challenge-editor .challenge-form-row>select,.app-shell .elan-challenge-editor .challenge-form-row>input{min-height:var(--app-control-compact);border-radius:var(--app-control-radius);font-size:16px}
+.app-shell .goal-form,.app-shell .elan-challenge-editor .challenge-editor-fields{border-radius:var(--app-panel-radius)}
+.app-shell :is(.goal-form-row,.challenge-form-row){min-height:48px}
+.app-shell :is(.goal-stepper,.series-stepper) :is(input,button){min-height:var(--app-stepper-height);height:var(--app-stepper-height)}
+/* Dialogs use the same spacing without touching rest/cardio full-screen overlays. */
+:is(#target-dialog,#muscle-dialog,#planning-dialog,#group-dialog,#correction-dialog){box-sizing:border-box;width:min(640px,calc(100% - 24px));padding:16px;border-radius:18px;scroll-padding-bottom:16px}
+:is(#target-dialog,#muscle-dialog,#planning-dialog,#group-dialog,#correction-dialog) :is(label>select,label>input:not([type=checkbox]):not([type=radio]),label>textarea){box-sizing:border-box;min-width:0;max-width:100%;min-height:var(--app-control-height);font-size:16px;border-radius:var(--app-control-radius)}
+:is(#target-dialog,#muscle-dialog,#planning-dialog,#group-dialog,#correction-dialog) .number-box input{min-height:var(--app-control-height);font-size:26px}
+:is(#target-dialog,#muscle-dialog,#planning-dialog,#group-dialog,#correction-dialog)>h2{font-size:20px;line-height:1.25;margin:0 0 12px}
+@media(min-width:700px){:root{--app-gutter:20px}}
+/* Live sessions may supply measured safe areas while the visual viewport moves. */
+.shell.app-shell.work-shell{padding-top:max(6px,var(--live-safe-top,env(safe-area-inset-top)));padding-left:max(var(--app-gutter),var(--live-safe-left,env(safe-area-inset-left)));padding-right:max(var(--app-gutter),var(--live-safe-right,env(safe-area-inset-right)))}
+.keyboard-open .shell.app-shell.work-shell{padding-top:max(6px,env(safe-area-inset-top));padding-bottom:calc(40px + var(--live-safe-bottom,env(safe-area-inset-bottom)))}
+.app-shell.design-shell>.card{padding:12px;border-radius:var(--app-panel-radius)}
+.app-shell.design-shell>.card>h3{font-size:16px;line-height:1.3;margin-top:0}
+.app-shell :is(.personal-library-page,.history-search-fields,.sheet-muscle-settings,.planner-preferences) label>:is(input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]),select,textarea){box-sizing:border-box;min-width:0;max-width:100%;min-height:var(--app-control-height);font-size:16px;border-radius:var(--app-control-radius)}
+.app-shell #body-form{box-sizing:border-box;width:100%;max-width:var(--app-form-width);margin-inline:auto}
