@@ -5,7 +5,7 @@ async function refresh(db,owner){await db.query('begin');try{
  const {rows:[previous]}=await db.query('select result from v2_accounts where owner_id=$1',[owner]);
  const {rows:[preferences]}=await db.query('select *from v2_preferences where owner_id=$1',[owner]);
  const now=new Date().toISOString();const {evaluateV2,reconcileV2}=await import('../badges-v2/engine.js');
- const document=structuredClone(source.payload);const historySignature=JSON.stringify([source.payload.sessions,source.payload.exerciseMuscles,preferences?.timezone||'Europe/Paris']);
+ const document=structuredClone(source.payload);
  for(const s of document.sessions||[])if(s.v2Evidence?.version===2){await db.query('insert into v2_receipts(owner_id,session_id,evidence)values($1,$2,$3)on conflict do nothing',[owner,s.id,s.v2Evidence]);}
  const receipts=(await db.query('select session_id,evidence from v2_receipts where owner_id=$1',[owner])).rows;
  for(const s of document.sessions||[]){const stored=receipts.find(r=>r.session_id===s.id);if(stored)s.v2Evidence=stored.evidence;else delete s.v2Evidence;}
@@ -21,7 +21,7 @@ async function refresh(db,owner){await db.query('begin');try{
  for(const win of challengeWins)await db.query('insert into v2_challenge_receipts(owner_id,challenge_key,kind,awarded_at)values($1,$2,$3,$4)on conflict do nothing',[owner,win.id,win.kind,win.awardedAt]);
  const projection=evaluateV2(document,{asOf:now,timeZone:preferences?.timezone||'Europe/Paris',challengeWins,earnedBadgeIds:(previous?.result?.awards||[]).map(a=>a.id),syncedSessionIds:(document.sessions||[]).map(s=>s.id)});
  const result=reconcileV2(projection,previous?.result||{});
- result.favorites=preferences?.favorites||(source.payload.badgesV2?.favorites||[]).filter(id=>result.awards.some(a=>a.id===id)).slice(0,3);result.historySignature=historySignature;for(const month of Object.keys(result.seasons))await db.query('insert into v2_season_history(owner_id,month,timezone)values($1,$2,$3)on conflict do nothing',[owner,month,projection.timeZone]);
+ result.favorites=preferences?.favorites||(source.payload.badgesV2?.favorites||[]).filter(id=>result.awards.some(a=>a.id===id)).slice(0,3);for(const month of Object.keys(result.seasons))await db.query('insert into v2_season_history(owner_id,month,timezone)values($1,$2,$3)on conflict do nothing',[owner,month,projection.timeZone]);
  for(const award of result.awards)await db.query('insert into v2_awards(owner_id,badge_id,earned_at,session_id,xp)values($1,$2,$3,$4,$5)on conflict do nothing',[owner,award.id,award.earnedAt,award.sessionId,award.xp]);
  // Reconcile event values rather than append credits. Uniqueness + owner lock handles retries.
  const keys=result.events.map(e=>e.key);await db.query('delete from v2_events where owner_id=$1 and not(event_key=any($2::text[]))',[owner,keys]);

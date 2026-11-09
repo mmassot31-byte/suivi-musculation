@@ -9,3 +9,4 @@
 @keyframes v2-reveal{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes v2-glow{from{filter:brightness(1.8)}to{filter:brightness(1)}}@media(prefers-reduced-motion:reduce){.v2-celebrate,.v2-celebrate *{animation:none!important;transition:none!important}.v2-rank progress{transition:none}}
 .v2-journey{height:5px;background:#ffffff12;border-radius:8px;margin:20px 0 6px;overflow:hidden}.v2-journey>span{display:block;height:100%;width:calc(var(--v2-to)*100%);background:var(--v2-green)}.v2-celebrate .v2-journey>span{animation:v2-fill .65s ease-out}@keyframes v2-fill{from{width:calc(var(--v2-from)*100%)}to{width:calc(var(--v2-to)*100%)}}
 .v2-medal .v2-symbol path,.v2-medal .v2-symbol circle{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.v2-tile .v2-next-tag{font-size:.53rem;color:#b3c29f;letter-spacing:.02em}

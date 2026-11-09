@@ -60,7 +60,7 @@ test('only verified wins, duplicate challenge IDs, attribution month, no badge s
 });
 test('unknown history conventions raw value conserved, no hidden machine conversion; invalid/future/active excluded',async()=>{
  const s=session('s',undefined,[ex('unknown',[{id:'a',type:'work',w:10,r:10}],{loadIdentity:undefined,convention:'À préciser'})]);const r=await evaluate([s]);assert.equal(r.activities[0].tonnageKg,100);assert.equal(r.diagnostics.nonComparableSets,1);
- const no=await evaluate([{...s,endedAt:null},{...s,id:'f',date:'2028-01-01',endedAt:'2028-01-02'}]);assert.equal(no.activities.length,0);
+ const no=await evaluate([{...s,endedAt:'invalid'},{...s,id:'f',date:'2028-01-01',endedAt:'2028-01-02'}]);assert.equal(no.activities.length,0);
 });
 test('weekly goals use saved period snapshots, four closed weeks, later edits cannot fabricate success',async()=>{
  const {evaluateV2,snapshotWeek}=await api;const weeks=['2026-10-05','2026-10-12','2026-10-19','2026-10-26'];
@@ -99,4 +99,11 @@ test('reward UI zero/one/multiple badges, rank transition, escaping and explicit
 test('V2 state import preserves acquired grants and explicit favorites without recreating activity XP',async()=>{
  const {mergeV2State}=await import('../badges-v2/merge.js');const remote={favorites:[],ledger:{awards:[{id:'a',xp:10}],events:[]}},local={favorites:['b'],ledger:{awards:[{id:'b',xp:25}]},seenRewards:['s']};
  const before=structuredClone([remote,local]),out=mergeV2State(remote,local);assert.deepEqual(out.favorites,[]);assert.deepEqual(new Set(out.ledger.awards.map(a=>a.id)),new Set(['a','b']));assert.deepEqual(out.ledger.events,[]);assert.deepEqual([remote,local],before);
+});
+test('metric tonnage converts proven pounds without guessing sides; explicit bodyweight/assistance never fabricates tonnage',async()=>{
+ const lb={...identity,unit:'lb',convention:'À préciser',lateralMode:'unknown'};const pounds=await evaluate([session('lb',undefined,[ex(undefined,[{id:'a',type:'work',w:100,r:10,loadIdentity:lb}],{loadIdentity:lb})])]);assert(Math.abs(pounds.activities[0].tonnageKg-453.59237)<.0001);assert.equal(pounds.diagnostics.nonComparableSets,1);
+ const body=await evaluate([session('body',undefined,[ex(undefined,[set('a',80,10,{measurement:'bodyweight'})])])]);assert.equal(body.activities[0].tonnageKg,0);assert(!body.badges.some(b=>b.id.startsWith('v2.performance')&&b.eligible));
+});
+test('legacy saved history without completion time keeps Volume retrocalculation, never invents finish-time Secrets',async()=>{
+ const old=session('legacy','2026-12-31',[ex(undefined,Array.from({length:25},(_,i)=>set(String(i),10,10)))]);delete old.endedAt;const r=await evaluate([old],{timeZone:'America/Los_Angeles'});assert(eligible(r).includes('v2.muscle_volume.chest.25'));assert.equal(r.values.night,0);assert.equal(r.values.dec31,0);assert.equal(r.activities[0].month,'2026-12');assert.equal(r.activities[0].timeSource,'historical_session_date');assert.equal(r.badges.find(b=>b.id==='v2.muscle_volume.chest.25').earnedAt,null);
 });

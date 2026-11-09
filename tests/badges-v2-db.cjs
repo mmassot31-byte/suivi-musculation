@@ -7,7 +7,7 @@ test('local V2 migrations repeatable, backfill/concurrency/idempotence, RLS and 
  const db=await localClient();try{const before=await fingerprint(db);await migrate(db);await migrate(db);const one=await refresh(db,A),beforeEvents=(await db.query('select count(*)::int n from v2_events where owner_id=$1',[A])).rows[0].n;
  const clients=await Promise.all([localClient(),localClient(),localClient()]);try{const results=await Promise.all(clients.map(c=>refresh(c,A)));assert(results.every(r=>r.xp===one.xp));}finally{await Promise.all(clients.map(c=>c.end()));}
  assert.equal((await db.query('select count(*)::int n from v2_events where owner_id=$1',[A])).rows[0].n,beforeEvents);
- assert.equal((await db.query('select count(*)::int n from v2_catalog')).rows[0].n,150);
+ assert.equal((await db.query('select count(*)::int n from v2_catalog')).rows[0].n,150);assert.equal((await db.query("select count(*)::int n from pg_constraint c join pg_class t on t.oid=c.conrelid where t.relname like 'v2_%'and c.contype='f'and c.confrelid='auth.users'::regclass and c.confdeltype<>'c'")).rows[0].n,0);
  await refresh(db,B);
  await db.query('begin');await db.query("select set_config('request.jwt.claim.sub',$1,true)",[A]);await db.query('set local role authenticated');
  assert((await db.query('select v2_own()data')).rows[0].data.xp>0);assert.equal((await db.query('select *from v2_accounts')).rows.length,1);

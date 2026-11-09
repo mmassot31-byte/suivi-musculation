@@ -1,0 +1,671 @@
+[
+  {
+    "command": "node tests/live-workout.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "001.txt"
+  },
+  {
+    "command": "node tests/design-ui.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "002.txt"
+  },
+  {
+    "command": "node tests/notifications.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "003.txt"
+  },
+  {
+    "command": "node tests/social-presenter.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "004.txt"
+  },
+  {
+    "command": "node tests/quiet-loading.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "005.txt"
+  },
+  {
+    "command": "node tests/season-ranks.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "006.txt"
+  },
+  {
+    "command": "node tests/exercise-labels.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "007.txt"
+  },
+  {
+    "command": "node tests/personal-records.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "008.txt"
+  },
+  {
+    "command": "node tests/pictograms.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "009.txt"
+  },
+  {
+    "command": "node tests/navigation-mobility.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "010.txt"
+  },
+  {
+    "command": "node tests/activity.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "011.txt"
+  },
+  {
+    "command": "node tests/cardio-timer.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "012.txt"
+  },
+  {
+    "command": "node tests/timed-circuits.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "013.txt"
+  },
+  {
+    "command": "node tests/trophies-completion.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "014.txt"
+  },
+  {
+    "command": "node tests/identity.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "015.txt"
+  },
+  {
+    "command": "node tests/radar.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "016.txt"
+  },
+  {
+    "command": "node tests/achievements.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "017.txt"
+  },
+  {
+    "command": "node tests/account-data.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "018.txt"
+  },
+  {
+    "command": "node tests/onboarding-data.cjs",
+    "status": 0,
+    "seconds": 0.2,
+    "log": "019.txt"
+  },
+  {
+    "command": "node tests/account-welcome-ui.cjs",
+    "status": 0,
+    "seconds": 2.6,
+    "log": "020.txt"
+  },
+  {
+    "command": "node tests/library-convention-correction.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "021.txt"
+  },
+  {
+    "command": "node tests/profile-library-ui.cjs",
+    "status": 0,
+    "seconds": 8,
+    "log": "022.txt"
+  },
+  {
+    "command": "node tests/feed-refresh-ui.cjs",
+    "status": 0,
+    "seconds": 4.2,
+    "log": "023.txt"
+  },
+  {
+    "command": "node tests/rest.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "024.txt"
+  },
+  {
+    "command": "node tests/programming.cjs",
+    "status": 0,
+    "seconds": 15.6,
+    "log": "025.txt"
+  },
+  {
+    "command": "node tests/programme-quality.cjs",
+    "status": 0,
+    "seconds": 7.3,
+    "log": "026.txt"
+  },
+  {
+    "command": "node tests/volume-references.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "027.txt"
+  },
+  {
+    "command": "node tests/groups.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "028.txt"
+  },
+  {
+    "command": "TZ=Europe/Paris node tests/volume.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "029.txt"
+  },
+  {
+    "command": "TZ=Europe/Paris node tests/performance.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "030.txt"
+  },
+  {
+    "command": "TZ=Europe/Paris node tests/tracking.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "031.txt"
+  },
+  {
+    "command": "TZ=Europe/Paris node tests/muscles.cjs",
+    "status": 0,
+    "seconds": 0.1,
+    "log": "032.txt"
+  },
+  {
+    "command": "node tests/smoke.cjs",
+    "status": 0,
+    "seconds": 24.556,
+    "log": "033.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/superset.cjs",
+    "status": 0,
+    "seconds": 6.2,
+    "log": "034.txt"
+  },
+  {
+    "command": "node tests/body-calendar.cjs",
+    "status": 1,
+    "seconds": 37.727,
+    "log": "035.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/muscle-ui.cjs",
+    "status": 1,
+    "seconds": 21.573,
+    "log": "036.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/session-radar-ui.cjs",
+    "status": 0,
+    "seconds": 11.8,
+    "log": "037.txt"
+  },
+  {
+    "command": "node tests/ergonomics.cjs",
+    "status": 1,
+    "seconds": 47.562,
+    "log": "038.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/volume-ui.cjs",
+    "status": 124,
+    "seconds": 180.191,
+    "log": "039.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/chains-ui.cjs",
+    "status": 124,
+    "seconds": 180.332,
+    "log": "040.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/flow-ui.cjs",
+    "status": 0,
+    "seconds": 22.9,
+    "log": "041.txt"
+  },
+  {
+    "command": "node tests/reliability.cjs",
+    "status": 124,
+    "seconds": 180.42,
+    "log": "042.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/volume-mobile.cjs",
+    "status": 124,
+    "seconds": 180.108,
+    "log": "043.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/week-navigation.cjs",
+    "status": 0,
+    "seconds": 4.1,
+    "log": "044.txt"
+  },
+  {
+    "command": "node tests/manual-session-ui.cjs",
+    "status": 124,
+    "seconds": 180.113,
+    "log": "045.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/delete-model.cjs",
+    "status": 0,
+    "seconds": 10,
+    "log": "046.txt"
+  },
+  {
+    "command": "node tests/rest-home.cjs",
+    "status": 0,
+    "seconds": 11.6,
+    "log": "047.txt"
+  },
+  {
+    "command": "node tests/home-layout.cjs",
+    "status": 0,
+    "seconds": 5.5,
+    "log": "048.txt"
+  },
+  {
+    "command": "node tests/home-muscle-completeness.cjs",
+    "status": 0,
+    "seconds": 5.9,
+    "log": "049.txt"
+  },
+  {
+    "command": "node tests/unequal-groups.cjs",
+    "status": 0,
+    "seconds": 30.7,
+    "log": "050.txt"
+  },
+  {
+    "command": "node tests/feedback-ui.cjs",
+    "status": 124,
+    "seconds": 180.104,
+    "log": "051.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/organization-ui.cjs",
+    "status": 0,
+    "seconds": 12.4,
+    "log": "052.txt"
+  },
+  {
+    "command": "node tests/clear-labels.cjs",
+    "status": 0,
+    "seconds": 6.4,
+    "log": "053.txt"
+  },
+  {
+    "command": "node tests/ranking-empty.cjs",
+    "status": 0,
+    "seconds": 4.3,
+    "log": "054.txt"
+  },
+  {
+    "command": "node tests/social-preview-ui.cjs",
+    "status": 0,
+    "seconds": 4.1,
+    "log": "055.txt"
+  },
+  {
+    "command": "node tests/trophy-room-ui.cjs",
+    "status": 0,
+    "seconds": 21.326,
+    "log": "056.txt"
+  },
+  {
+    "command": "node tests/finish-action-ui.cjs",
+    "status": 0,
+    "seconds": 8.9,
+    "log": "057.txt"
+  },
+  {
+    "command": "node tests/public-community-ui.cjs",
+    "status": 0,
+    "seconds": 22.216,
+    "log": "058.txt"
+  },
+  {
+    "command": "node tests/season-ranks-ui.cjs",
+    "status": 0,
+    "seconds": 12.9,
+    "log": "059.txt"
+  },
+  {
+    "command": "node tests/friend-profiles-ui.cjs",
+    "status": 1,
+    "seconds": 38.881,
+    "log": "060.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/quiet-loading-ui.cjs",
+    "status": 0,
+    "seconds": 15.437,
+    "log": "061.txt"
+  },
+  {
+    "command": "node tests/navigation-scroll-ui.cjs",
+    "status": 0,
+    "seconds": 17.3,
+    "log": "062.txt"
+  },
+  {
+    "command": "node tests/seven-updates-ui.cjs",
+    "status": 1,
+    "seconds": 32.573,
+    "log": "063.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/friends-community-ui.cjs",
+    "status": 1,
+    "seconds": 33.904,
+    "log": "064.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/friend-search.cjs",
+    "status": 0,
+    "seconds": 3.297,
+    "log": "065.txt"
+  },
+  {
+    "command": "node tests/shell-update.cjs",
+    "status": 0,
+    "seconds": 5.946,
+    "log": "066.txt"
+  },
+  {
+    "command": "node tests/exercise-counters.cjs",
+    "status": 0,
+    "seconds": 11.7,
+    "log": "067.txt"
+  },
+  {
+    "command": "node tests/cardio-timer-ui.cjs",
+    "status": 0,
+    "seconds": 11.6,
+    "log": "068.txt"
+  },
+  {
+    "command": "node tests/timed-circuits-ui.cjs",
+    "status": 0,
+    "seconds": 14.5,
+    "log": "069.txt"
+  },
+  {
+    "command": "node tests/record-search-connected.cjs",
+    "status": 0,
+    "seconds": 8.126,
+    "log": "070.txt"
+  },
+  {
+    "command": "node tests/notifications-ui.cjs",
+    "status": 1,
+    "seconds": 20.83,
+    "log": "071.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/activity-social-ui.cjs",
+    "status": 1,
+    "seconds": 4.588,
+    "log": "072.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/challenge-creation.cjs",
+    "status": 0,
+    "seconds": 30.039,
+    "log": "073.txt"
+  },
+  {
+    "command": "node tests/editor-onboarding.cjs",
+    "status": 0,
+    "seconds": 26.881,
+    "log": "074.txt"
+  },
+  {
+    "command": "node tests/account-isolation-ui.cjs",
+    "status": 0,
+    "seconds": 5.913,
+    "log": "075.txt"
+  },
+  {
+    "command": "node tests/editor-offline.cjs",
+    "status": 0,
+    "seconds": 8.727,
+    "log": "076.txt",
+    "previousStatus": 124
+  },
+  {
+    "command": "node tests/mockups-ui.cjs",
+    "status": 1,
+    "seconds": 39.001,
+    "log": "077.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/live-workout-ui.cjs",
+    "status": 0,
+    "seconds": 12.002,
+    "log": "078.txt"
+  },
+  {
+    "command": "node tests/home-compact-ui.cjs",
+    "status": 1,
+    "seconds": 40.106,
+    "log": "079.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/history-view.cjs",
+    "status": 0,
+    "seconds": 0.267,
+    "log": "080.txt"
+  },
+  {
+    "command": "node tests/history-compact-ui.cjs",
+    "status": 0,
+    "seconds": 11.879,
+    "log": "081.txt"
+  },
+  {
+    "command": "node tests/performance-overview.cjs",
+    "status": 0,
+    "seconds": 0.196,
+    "log": "082.txt"
+  },
+  {
+    "command": "node tests/record-history.cjs",
+    "status": 0,
+    "seconds": 0.41,
+    "log": "083.txt"
+  },
+  {
+    "command": "node tests/performance-overview-ui.cjs",
+    "status": 0,
+    "seconds": 13.898,
+    "log": "084.txt"
+  },
+  {
+    "command": "node tests/volume-dashboard.cjs",
+    "status": 1,
+    "seconds": 0.867,
+    "log": "085.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/volume-dashboard-ui.cjs",
+    "status": 0,
+    "seconds": 13.679,
+    "log": "086.txt"
+  },
+  {
+    "command": "node tests/profile-presentation.cjs",
+    "status": 0,
+    "seconds": 0.169,
+    "log": "087.txt"
+  },
+  {
+    "command": "node tests/profile-compact-ui.cjs",
+    "status": 1,
+    "seconds": 11.714,
+    "log": "088.txt",
+    "previousStatus": 1
+  },
+  {
+    "command": "node tests/saved-session.cjs",
+    "status": 0,
+    "seconds": 0.217,
+    "log": "089.txt"
+  },
+  {
+    "command": "node tests/saved-session-ui.cjs",
+    "status": 0,
+    "seconds": 12.468,
+    "log": "090.txt"
+  },
+  {
+    "command": "node tests/exercise-rankings-ui.cjs",
+    "status": 0,
+    "seconds": 18.097,
+    "log": "091.txt"
+  },
+  {
+    "command": "node tests/transaction-actions-ui.cjs",
+    "status": 0,
+    "seconds": 10.264,
+    "log": "092.txt"
+  },
+  {
+    "command": "node tests/profile-actions-ui.cjs",
+    "status": 0,
+    "seconds": 3.923,
+    "log": "093.txt"
+  },
+  {
+    "command": "node tests/input-stability-ui.cjs",
+    "status": 0,
+    "seconds": 20.842,
+    "log": "094.txt"
+  },
+  {
+    "command": "node tests/exercise-library.cjs",
+    "status": 0,
+    "seconds": 0.173,
+    "log": "095.txt"
+  },
+  {
+    "command": "node tests/exercise-library-sync.cjs",
+    "status": 0,
+    "seconds": 0.168,
+    "log": "096.txt"
+  },
+  {
+    "command": "node tests/exercise-library-ui.cjs",
+    "status": 0,
+    "seconds": 11.517,
+    "log": "097.txt"
+  },
+  {
+    "command": "node tests/exercise-library-legacy-ui.cjs",
+    "status": 0,
+    "seconds": 2.94,
+    "log": "098.txt"
+  },
+  {
+    "command": "node tests/exercise-picker.cjs",
+    "status": 0,
+    "seconds": 0.187,
+    "log": "099.txt"
+  },
+  {
+    "command": "node tests/exercise-picker-ui.cjs",
+    "status": 0,
+    "seconds": 13.616,
+    "log": "100.txt"
+  },
+  {
+    "command": "node tests/session-compose.cjs",
+    "status": 0,
+    "seconds": 0.17,
+    "log": "101.txt"
+  },
+  {
+    "command": "node tests/session-compose-ui.cjs",
+    "status": 0,
+    "seconds": 12.751,
+    "log": "102.txt"
+  },
+  {
+    "command": "node tests/editor-context-ui.cjs",
+    "status": 0,
+    "seconds": 15.088,
+    "log": "103.txt"
+  },
+  {
+    "command": "node tests/group-sequence.cjs",
+    "status": 0,
+    "seconds": 0.142,
+    "log": "104.txt"
+  },
+  {
+    "command": "node tests/group-editor-ui.cjs",
+    "status": 0,
+    "seconds": 24.279,
+    "log": "105.txt"
+  },
+  {
+    "command": "node tests/performed-exercises.cjs",
+    "status": 0,
+    "seconds": 0.333,
+    "log": "106.txt"
+  },
+  {
+    "command": "node tests/hammer-curl-ui.cjs",
+    "status": 0,
+    "seconds": 3.533,
+    "log": "107.txt"
+  },
+  {
+    "command": "node tests/performed-exercises-ui.cjs",
+    "status": 1,
+    "seconds": 6.586,
+    "log": "108.txt",
+    "previousStatus": 1
+  }
+]

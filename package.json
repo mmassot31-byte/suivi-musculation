@@ -6,7 +6,7 @@
     "local:v2:migrate": "node scripts/local-v2-db.cjs",
     "local:v2:refresh": "node scripts/local-v2-worker.cjs",
     "local:v2:worker": "node scripts/local-v2-worker.cjs --watch",
-    "test:badges-v2:ui": "node scripts/local-test-runner.cjs \"node tests/badges-v2-ui.cjs && node tests/badges-v2-public-ui.cjs && node tests/badges-v2-pwa.cjs\"",
+    "test:badges-v2:ui": "node scripts/local-test-runner.cjs \"node tests/badges-v2-ui.cjs && node tests/badges-v2-public-ui.cjs && node tests/badges-v2-account-ui.cjs && node tests/badges-v2-pwa.cjs\"",
     "test:v1:regressions": "node scripts/test-regressions.cjs",
     "test:badges-v2": "node scripts/local-test-runner.cjs \"node --test tests/badges-v2-unit.cjs tests/badges-v2-engine.cjs\"",
     "test:badges-v2:local": "node scripts/local-test-runner.cjs \"node --test tests/badges-v2-local.cjs tests/badges-v2-db.cjs tests/badges-v2-disposable-db.cjs\"",
@@ -78,11 +78,11 @@
   },
   "type": "module",
   "dependencies": {
-    "@supabase/supabase-js": "2.119.0"
+    "@supabase/supabase-js": "2.119.0",
+    "pg": "8.16.3"
   },
   "devDependencies": {
     "esbuild": "0.25.12",
-    "pg": "8.16.3",
     "pngjs": "7.0.0"
   }
 }
