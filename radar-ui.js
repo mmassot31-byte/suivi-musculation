@@ -12,10 +12,24 @@ export function radarLayout(axes){
  for(const node of nodes.filter(p=>p.side==='middle')){node.labelX=center.x;node.labelY=center.y+node.y*(radius+32);}
  return {nodes,height,center,radius};
 }
+// Compact labels share the exact axis order and angles of the existing chart.
+const compactNames={abs:'Abdos',quads:'Quads',hamstrings:'Ischios',adductors:'Adduct.',lats:'Dorsaux',upper_back:'Haut du dos',elbow_flexors:'Fléch. coude'};
+const compactLines=axis=>(compactNames[axis.id]||axis.label).match(/.{1,9}(?:\s|$)|.{1,9}/g).map(s=>s.trim());
+export function compactRadarLayout(axes){
+ const {nodes}=radarLayout(axes);
+ const count=Math.max(...['start','end'].map(side=>nodes.filter(n=>n.side===side).length));
+ const height=Math.max(212,count*42+24),center={x:160,y:height/2},radius=70;
+ for(const side of ['start','end']){
+  const lane=nodes.filter(n=>n.side===side).sort((a,b)=>a.y-b.y);
+  lane.forEach((n,i)=>{n.labelX=side==='start'?234:86;n.labelY=center.y+(i-(lane.length-1)/2)*42;});
+ }
+ for(const n of nodes.filter(n=>n.side==='middle')){n.labelX=160;n.labelY=center.y+n.y*(radius+18);}
+ return {nodes,height,center,radius};
+}
 function chart(model,compact=false,externalLabels=false){
  if(model.mode==='empty')return '<p class="empty">Aucune série de travail enregistrée à représenter.</p>';
  if(model.mode==='bars')return `<div class="muscle-radar-bars" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}">${model.axes.map(row=>`<div class="radar-bar-row"><div class="radar-bar-heading"><strong>${esc(row.label)}</strong><span class="radar-axis-value">${fmt(row.current.total)}</span></div><div class="radar-bar-track"><i class="radar-direct-bar" style="width:${row.current.total/model.scale*100}%"></i></div></div>`).join('')}</div>`;
- const layout=radarLayout(model.axes),{nodes,height,center,radius}=layout;
+ const layout=externalLabels?compactRadarLayout(model.axes):radarLayout(model.axes),{nodes,height,center,radius}=layout;
  const labelBounds=nodes.map(node=>{const lines=shortLabels[node.axis.id]||[node.axis.label],first=node.labelY-lines.length*9+6;return{top:first-18,bottom:first+lines.length*18+8}}),cropTop=compact?Math.max(0,Math.floor(Math.min(center.y-radius,...labelBounds.map(b=>b.top))-6)):0,cropBottom=compact?Math.min(height,Math.ceil(Math.max(center.y+radius,...labelBounds.map(b=>b.bottom))+6)):height;
  const point=(node,fraction=1)=>[center.x+node.x*radius*fraction,center.y+node.y*radius*fraction];
  const points=fraction=>nodes.map(node=>point(node,fraction).map(v=>v.toFixed(2)).join(',')).join(' ');
@@ -23,8 +37,12 @@ function chart(model,compact=false,externalLabels=false){
  const spokes=nodes.map(node=>{const [x,y]=point(node);return `<line class="radar-spoke" x1="${center.x}" y1="${center.y}" x2="${x}" y2="${y}"/>`;}).join('');
  const guides=nodes.filter(node=>node.side!=='middle').map(node=>{const [x,y]=point(node);return `<line class="radar-label-guide" x1="${x}" y1="${y}" x2="${node.labelX+(node.side==='start'?-5:5)}" y2="${node.labelY}"/>`;}).join('');
  const labels=nodes.map(({axis,side,labelX,labelY})=>{const lines=shortLabels[axis.id]||[axis.label],firstY=labelY-lines.length*9+6;return `<text class="radar-axis-label" text-anchor="${side}" data-radar-axis="${axis.id}">${lines.map((line,j)=>`<tspan x="${labelX}" y="${firstY+j*18}">${esc(line)}</tspan>`).join('')}<tspan class="radar-axis-value" x="${labelX}" y="${firstY+lines.length*18}">${fmt(axis.current.total)}</tspan></text>`;}).join('');
+ const compactLabels=externalLabels?nodes.map(({axis,side,labelX,labelY})=>{
+  const lines=compactLines(axis),firstY=labelY-(lines.length-1)*9;
+  return `<text class="radar-compact-label" text-anchor="${side}" dominant-baseline="middle" data-radar-axis="${esc(axis.id)}"><title>${esc(axis.label)}</title>${lines.map((line,j)=>`<tspan x="${labelX}" y="${firstY+j*18}">${esc(line)}</tspan>`).join('')}</text>`;
+ }).join(''):'';
  const surface=nodes.map(node=>point(node,node.axis.current.total/model.scale).map(v=>v.toFixed(2)).join(',')).join(' ');
- return `<svg class="muscle-radar" viewBox="${externalLabels?`${center.x-radius-8} ${center.y-radius-8} ${2*(radius+8)} ${2*(radius+8)}`:`0 ${cropTop} 360 ${cropBottom-cropTop}`}" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}" data-axes="${model.axes.map(row=>row.id).join(',')}">${rings}${spokes}${externalLabels?'':guides}<polygon class="radar-direct" points="${surface}"/>${externalLabels?'':labels}</svg>`;
+ return `<svg class="muscle-radar" viewBox="${externalLabels?`0 0 320 ${height}`:`0 ${cropTop} 360 ${cropBottom-cropTop}`}" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}" data-axes="${model.axes.map(row=>row.id).join(',')}">${rings}${spokes}${guides}<polygon class="radar-direct" points="${surface}"/>${externalLabels?compactLabels:labels}</svg>`;
 }
 export function radarHtml(current,comparison=null,{title='Muscles travaillés',comparisonLabel='Séance précédente',compact=false,volumeList=false,model:providedModel=null,unclassifiedControls=''}={}){
  const model=providedModel||radarModel(current,comparison);
