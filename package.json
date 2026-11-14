@@ -61,7 +61,8 @@
     "test:load-conventions": "node tests/load-normalization.cjs && node tests/library-convention-correction.cjs && node tests/profile-library-ui.cjs && node tests/exercise-replacement.cjs && node tests/exercise-replacement-ui.cjs",
     "test:goals": "node tests/goals-form-model.cjs && node tests/goals.cjs && node tests/goals-long-term.cjs && node tests/goals-dashboard.cjs && node tests/goals-ui.cjs && node tests/goals-dashboard-ui.cjs",
     "test:series-targets": "node tests/series-targets-db.cjs && node tests/challenge-creation.cjs && node tests/social-presenter.cjs",
-    "test:app-layout": "node tests/app-layout-ui.cjs && node tests/input-stability-ui.cjs && node tests/live-workout-ui.cjs"
+    "test:app-layout": "node tests/app-layout-ui.cjs && node tests/input-stability-ui.cjs && node tests/live-workout-ui.cjs",
+    "test:free-session": "node tests/free-session.cjs && node tests/free-session-ui.cjs"
   },
   "type": "module",
   "dependencies": {
