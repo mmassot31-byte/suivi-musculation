@@ -1,0 +1,71 @@
+{
+  "supplementaryChecks": 75,
+  "passed": 59,
+  "failures": [
+    {
+      "command": "node tests/muscle-ui.cjs",
+      "output": "locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.sheet-muscle-settings>summary')\u001b[22m\n\u001b[2m    - locator resolved to <summary>Muscles et réglages</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/suivi-musculation/tests/muscle-ui.cjs:5:196 {\n  log: [\n    \"  - waiting for locator('.sheet-muscle-settings>summary')\",\n    '    - locator resolved to <summary>Muscles et réglages</summary>',\n    '  - attempting click action',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '    - waiting 20ms',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '      - waiting 100ms',\n    '    23 × waiting for element to be visible, enabled and stable',\n    '       - element is not visible',\n    '     - retrying click action',\n    '       - waiting 500ms'\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/body-calendar.cjs",
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/ui-actions.cjs:37:324\n    at async /workspace/suivi-musculation/tests/body-calendar.cjs:8:43 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/ergonomics.cjs",
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[data-action=\"performance-detail\"]').first()\u001b[22m\n\n    at /workspace/suivi-musculation/tests/ergonomics.cjs:2:1097\n    at /workspace/suivi-musculation/tests/ui-actions.cjs:37:8\n    at async /workspace/suivi-musculation/tests/ergonomics.cjs:6:107 {\n  log: [\n    `  - waiting for locator('button[data-action=\"performance-detail\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/rest-home.cjs",
+      "output": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 4\n\n    at /workspace/suivi-musculation/tests/rest-home.cjs:2:1698 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 4,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "command": "node tests/organization-ui.cjs",
+      "output": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ []\n- [\n-   'Modifier',\n-   'Dupliquer',\n-   'Supprimer'\n- ]\n\n    at /workspace/suivi-musculation/tests/organization-ui.cjs:4:151 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [],\n  expected: [Array],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "command": "node tests/clear-labels.cjs",
+      "output": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"model:jambes\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"\" type=\"button\" data-action=\"model:jambes\">Modifier</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/clear-labels.cjs:2:547)\n    at /workspace/suivi-musculation/tests/clear-labels.cjs:2:1240 {\n  log: [\n    `  - waiting for locator('[data-action=\"model:jambes\"]').first()`,\n    '    - locator resolved to <button class=\"\" type=\"button\" data-action=\"model:jambes\">Modifier</button>',\n    '  - attempting click action',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '    - waiting 20ms',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '      - waiting 100ms',\n    '    57 × waiting for element to be visible, enabled and stable',\n    '       - element is not visible',\n    '     - retrying click action',\n    '       - waiting 500ms'\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/navigation-scroll-ui.cjs",
+      "output": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action^=\"clone-model:\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"\" type=\"button\" data-action=\"clone-model:3835ed95-1f22-4d17-80df-4cac532d3c81\">Dupliquer</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/suivi-musculation/tests/navigation-scroll-ui.cjs:5:393 {\n  log: [\n    `  - waiting for locator('[data-action^=\"clone-model:\"]').first()`,\n    '    - locator resolved to <button class=\"\" type=\"button\" data-action=\"clone-model:3835ed95-1f22-4d17-80df-4cac532d3c81\">Dupliquer</button>',\n    '  - attempting click action',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '    - waiting 20ms',\n    '    2 × waiting for element to be visible, enabled and stable',\n    '      - element is not visible',\n    '    - retrying click action',\n    '      - waiting 100ms',\n    '    58 × waiting for element to be visible, enabled and stable',\n    '       - element is not visible',\n    '     - retrying click action',\n    '       - waiting 500ms'\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/friend-profiles-ui.cjs",
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"community-friends-back\"]').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/friend-profiles-ui.cjs:21:87)\n    at /workspace/suivi-musculation/tests/friend-profiles-ui.cjs:33:1006 {\n  log: [\n    `  - waiting for locator('[data-action=\"community-friends-back\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/seven-updates-ui.cjs",
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/seven-updates-ui.cjs:4:133 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/friends-community-ui.cjs",
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.own-profile') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/friends-community-ui.cjs:24:359 {\n  log: [ \"  - waiting for locator('.own-profile') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/home-compact-ui.cjs",
+      "output": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ []\n- [\n-   'Modifier',\n-   'Dupliquer',\n-   'Supprimer'\n- ]\n\n    at /workspace/suivi-musculation/tests/home-compact-ui.cjs:11:1234 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [],\n  expected: [Array],\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "command": "node tests/volume-dashboard.cjs",
+      "output": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 4\n\n    at /workspace/suivi-musculation/tests/volume-dashboard.cjs:5:134 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 0,\n  expected: 4,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "command": "node tests/mockups-ui.cjs",
+      "output": "Screen 10-home\nScreen 03a-create\nScreen 03b-picker\nScreen 03c-editor\nScreen 11-overview\nScreen 12-performances\nlocator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/mockups-ui.cjs:9:197)\n    at /workspace/suivi-musculation/tests/mockups-ui.cjs:12:318 {\n  log: [\n    `  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/performed-exercises-ui.cjs",
+      "output": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.locator('.exercise-sheet-chart circle').count()>=3)\n\n    at /workspace/suivi-musculation/tests/performed-exercises-ui.cjs:15:233 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "command": "node tests/editor-context-ui.cjs",
+      "output": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.session-card [data-action^=\"model:\"]').first()\u001b[22m\n\n    at /workspace/suivi-musculation/tests/editor-context-ui.cjs:26:195 {\n  log: [\n    `  - waiting for locator('.session-card [data-action^=\"model:\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "command": "node tests/group-editor-ui.cjs",
+      "output": "locator.evaluate: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"model:375a5b7c-ed1a-4124-a8de-25db2cfd4f60\"]:visible').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/group-editor-ui.cjs:8:92)\n    at /workspace/suivi-musculation/tests/group-editor-ui.cjs:22:1860 {\n  log: [\n    `  - waiting for locator('[data-action=\"model:375a5b7c-ed1a-4124-a8de-25db2cfd4f60\"]:visible').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    }
+  ],
+  "note": "Supplementary run began before production merge. Focused sharing tests rerun successfully after merge; general suite remains failing."
+}

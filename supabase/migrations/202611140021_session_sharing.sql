@@ -2,7 +2,7 @@ begin;
 -- Strict projection: legacy refs contain personal performances and are never copied.
 create function public.session_program_exercise(e jsonb) returns jsonb language plpgsql immutable set search_path=public,pg_temp as $$
 declare out jsonb;begin
- select coalesce(jsonb_object_agg(key,value),'{}') into out from jsonb_each(e) where key=any(array['id','instanceId','name','note','convention','step','rest','auto','plannedSets','prescription','muscles','loadIdentity','simpleLoad','libraryId','definitionId','originExerciseId','equipment','movement','demand','catalogueFamilyId','customName','measurement','loadMode','chargeProtocol','libraryScope','familyId','isometric','loadUnit','tracking','counter','activityRounds','targetSeconds','durationSeconds','laterality','refsAreTargets','superset','supersetStart']);
+ select coalesce(jsonb_object_agg(key,value),'{}') into out from jsonb_each(e) where key=any(array['id','instanceId','name','note','convention','step','rest','auto','plannedSets','prescription','muscles','loadIdentity','simpleLoad','libraryId','definitionId','originExerciseId','equipment','movement','demand','catalogueFamilyId','customName','measurement','loadMode','chargeProtocol','libraryScope','familyId','isometric','loadUnit','tracking','counter','activityRounds','targetSeconds','durationSeconds','cardioDuration','activityDurationSeconds','preparationSets','programmingLocked','laterality','refsAreTargets','superset','supersetStart']);
  -- Identity snapshots are definitions, not a link to the sender's library.
  out:=out||jsonb_build_object('refs','[]'::jsonb,'sets','[]'::jsonb,'plannedSets',coalesce(e->'plannedSets',to_jsonb(jsonb_array_length(coalesce(e->'refs','[]')))));
  if e->>'refsAreTargets'='true' then out:=out||jsonb_build_object('refs',coalesce((select jsonb_agg(jsonb_build_object('w',r->'w','r',r->'r','placeholder',r->'placeholder')) from jsonb_array_elements(coalesce(e->'refs','[]'))r),'[]'::jsonb));end if;
@@ -64,8 +64,9 @@ declare u uuid:=social_uid();s session_shares;d private_documents;t jsonb;tid te
  perform session_share_open(p_id);
  select * into s from session_shares where id=p_id and recipient_id=u for update;
  select * into d from private_documents where owner_id=u for update;
- if d.version<>p_version or d.owner_id is null then raise exception 'SYNC_CONFLICT' using errcode='40001';end if;
+ if d.owner_id is null then raise exception 'SYNC_CONFLICT' using errcode='40001';end if;
  if s.saved_template_id is null then
+ if p_version is null or d.version<>p_version then raise exception 'SYNC_CONFLICT' using errcode='40001';end if;
  tid:=gen_random_uuid()::text;t:=s.snapshot->'program'||jsonb_build_object('id',tid,'exercises',(select jsonb_agg(session_program_personal_copy(e,tid)order by ord)from jsonb_array_elements(s.snapshot->'program'->'exercises')with ordinality a(e,ord)));
  update private_documents set payload=jsonb_set(payload,'{templates}',coalesce(payload->'templates','[]')||jsonb_build_array(t)),version=version+1,updated_at=now()where owner_id=u returning * into d;
  update session_shares set saved_template_id=tid,saved_at=now()where id=s.id;
