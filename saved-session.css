@@ -48,13 +48,13 @@
 .saved-muscle-volumes>.radar-top{padding-right:48px;justify-content:space-between;min-height:27px;gap:4px}
 .saved-muscle-volumes>.radar-top>span{font-size:10px;color:var(--muted);white-space:nowrap}
 .saved-muscle-volumes h2{font-size:17px!important}
-.saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,.9fr) minmax(0,1.7fr);gap:10px}
+.saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:5px}
 .saved-muscle-volumes .saved-volume-bars,.saved-muscle-volumes .saved-volume-empty{display:block}
 .saved-muscle-volumes .saved-volume-bars .muscle-radar-bars{min-height:0;padding:0 4px}
 .saved-muscle-volumes .saved-volume-bars .radar-bar-heading{display:flex;justify-content:space-between}
 .saved-muscle-volumes .saved-volume-bars .radar-axis-value{font-size:13px}
 .saved-muscle-volumes-list{display:grid;gap:7px;padding:7px 0}
-.saved-muscle-volumes-list>div{display:grid;grid-template-columns:minmax(0,1fr) 23px minmax(34px,.6fr);gap:5px;align-items:center;font-size:10px;line-height:1.2}
+.saved-muscle-volumes-list>div{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(28px,.6fr);gap:3px;align-items:center;font-size:10px;line-height:1.2}
 .saved-muscle-volumes-list>div>span{min-width:0;overflow-wrap:anywhere}
 .saved-muscle-volumes-list strong{font-size:11px;color:var(--accent);text-align:right}
 .saved-muscle-volumes-list i{display:block;height:5px;border-radius:5px;overflow:hidden;background:var(--line)}
@@ -79,12 +79,12 @@
  .saved-exercise>summary .saved-exercise-label strong{font-size:11px}
  .saved-exercise>summary>.saved-exercise-count{font-size:9px}
  .saved-exercise>summary>.saved-exercise-best{font-size:10px;padding-left:3px}
- .saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,.8fr) minmax(0,1.8fr);gap:6px}
- .saved-muscle-volumes-list>div{font-size:9px;grid-template-columns:minmax(0,1fr) 21px 34px;gap:4px}
+ .saved-muscle-volumes .saved-volume-radar{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:4px}
+ .saved-muscle-volumes-list>div{font-size:9px;grid-template-columns:minmax(0,1fr) 17px 26px;gap:3px}
  .saved-muscle-volumes-list strong{font-size:10px}
  .saved-muscle-volumes>.radar-top>span{display:none}
 }
-.saved-muscle-volumes .saved-radar-graphic{width:100%;max-width:120px;justify-self:center}
+.saved-muscle-volumes .saved-radar-graphic{width:100%;max-width:220px;justify-self:center}
 .saved-record-values>strong{display:inline-flex;align-items:center;gap:3px}
 .saved-record-values>strong>.ico{width:11px;height:11px}
 .saved-shell .saved-records{position:relative}
@@ -93,3 +93,5 @@
 .saved-other-records>summary{position:absolute;right:10px;top:8px;min-height:28px;padding:3px 0;font-size:10px}
 .saved-other-records[open]{padding-top:4px}
 .saved-muscle-volumes .saved-volume-bars>.saved-radar-graphic,.saved-muscle-volumes .saved-volume-empty>.saved-radar-graphic{max-width:none}
+
+.saved-muscle-volumes .radar-compact-label{font-size:17px;font-weight:500;fill:var(--muted)}

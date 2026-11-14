@@ -4352,3 +4352,5 @@ body.group-dragging { overscroll-behavior: none; user-select: none; -webkit-user
 .challenge-choice-row:hover,.challenge-choice-close:hover{background:#263325}
 .challenge-choice-dialog button:focus-visible{outline:2px solid #c5f279;outline-offset:2px;border-radius:8px}
 html:has(.challenge-choice-dialog[open]){overflow:hidden}
+
+.free-session-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin:16px 0;padding:16px}.free-session-card>span:nth-child(2){flex:1;min-width:0}.free-session-card strong,.free-session-card small{display:block}.free-session-card small{color:var(--muted);font-size:12px;margin-top:4px}.free-session-bolt{color:#b5ef49;font-size:28px}
