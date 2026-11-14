@@ -1,6 +1,6 @@
 import {dayKey,dayOffset,validDay} from './tracking.js';
-import {muscles,anatomicalMuscles,anatomicalProfile,muscleVolume,weeklyMuscleVolume,weekStart,weekSessions} from './muscles.js';
-const known=id=>muscles.some(([key])=>key===id);
+import {knownMuscleId,muscles,anatomicalMuscles,anatomicalProfile,muscleVolume,weeklyMuscleVolume,weekStart,weekSessions} from './muscles.js';
+const known=knownMuscleId;
 export const plannedSets=e=>e.plannedSets??e.refs.length;
 export function setPlannedSets(e,n){if(!Number.isInteger(n)||n<0||n>100)throw Error('Le nombre prévu doit être compris entre 0 et 100.');e.plannedSets=n}
 export function plannedVolume(template){return weeklyMuscleVolume([{...template,exercises:template.exercises.map(e=>({...e,sets:Array.from({length:plannedSets(e)},()=>({type:'work'}))}))}])}
@@ -36,7 +36,7 @@ export function repeatedGap(state,muscle,today=dayKey()){const last=dayOffset(we
 export function mergeByKey(local,incoming,key){const result=[...local],keys=new Set(local.map(key));for(const item of incoming){const k=key(item);if(!keys.has(k)){result.push(structuredClone(item));keys.add(k)}}return result}
 
 // Proposed configuration, not muscle-specific thresholds demonstrated by research.
-export const startingRanges={chest:[12,18],lats:[12,18],upper_back:[10,16],side_delts:[12,18],rear_delts:[8,14],front_delts:[6,12],biceps:[10,16],triceps:[10,16],quads:[10,16],hamstrings:[8,14],glutes:[10,16],calves:[8,14],abs:[6,12],traps:[6,12],forearms:[6,12],adductors:[6,12]};
+export const startingRanges={chest:[12,18],lats:[12,18],mid_lower_traps:[10,16],side_delts:[12,18],rear_delts:[8,14],front_delts:[6,12],biceps:[10,16],triceps:[10,16],quads:[10,16],hamstrings:[8,14],glutes:[10,16],calves:[8,14],abs:[6,12],upper_traps:[6,12],forearms:[6,12],adductors:[6,12]};
 export const targetMethod=t=>t?.method||'direct';
 export const volumeEstimate=v=>v.primary+.5*v.secondary;
 export const targetValue=(v,t)=>targetMethod(t)==='fractional'?volumeEstimate(v):v.primary;

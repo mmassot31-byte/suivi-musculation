@@ -3,13 +3,13 @@ const labels=new Map(anatomicalMuscles);
 export const validRadarSet=set=>!!set&&set.type!=='warmup'&&set.validated!==false&&(set.status===undefined||['validated','completed'].includes(set.status))&&Number.isFinite(set.w)&&set.w>=0&&Number.isInteger(set.r)&&set.r>0;
 const asSessions=value=>Array.isArray(value)?value:value?[value]:[];
 // Display groups only: stored classifications and the weekly volume engine stay intact.
-export const radarGroups=[['chest','Pectoraux'],['lats','Grands dorsaux'],['upper_back','Haut du dos'],['shoulders','Épaules'],['elbow_flexors','Fléchisseurs du coude'],['triceps','Triceps'],['forearms','Avant-bras'],['abs','Abdominaux'],['erectors','Lombaires'],['quads','Quadriceps'],['hamstrings','Ischio-jambiers'],['glutes','Fessiers'],['calves','Mollets'],['adductors','Adducteurs']];
+export const radarGroups=anatomicalMuscles.filter(([id])=>!['brachialis','abductors'].includes(id)).map(([id,label])=>id==='biceps'?['elbow_flexors','Fléchisseurs du coude']:[id,label]);
 function displayProfile(p,exercise){
  // Existing anatomy distinguishes the elbow-flexion contribution of the forearm
  // during curls via the brachial. A wrist-only forearm profile stays separate.
  const known=anatomicalProfile({id:exercise.id,name:exercise.name});
  const elbow=[...known.primary,...known.secondary].includes('brachialis')&&[...p.primary,...p.secondary].includes('brachialis');
- const map=id=>id==='traps'?'upper_back':['front_delts','side_delts','rear_delts'].includes(id)?'shoulders':id==='biceps'||id==='forearms'&&elbow?'elbow_flexors':id;
+ const map=id=>id==='biceps'||id==='forearms'&&elbow?'elbow_flexors':id;
  const folded=weeklyProfile(p),primary=[...new Set(folded.primary.map(map))];
  return {primary,secondary:[...new Set(folded.secondary.map(map))].filter(id=>!primary.includes(id))};
 }

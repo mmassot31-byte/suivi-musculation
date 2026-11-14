@@ -3910,7 +3910,7 @@ nav br {
 #exercise-picker .picker-search > .ico { width: 19px; height: 19px; flex: 0 0 19px; color: var(--muted); }
 #exercise-picker #exercise-search { border: 0; border-radius: 0; padding: 8px 0; min-height: 42px; width: 100%; background: transparent; box-shadow: none; margin: 0; font-size: 16px; }
 #exercise-picker .picker-search:focus-within { outline: 2px solid var(--accent); outline-offset: 1px; }
-#exercise-picker .picker-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; margin: 0; }
+#exercise-picker .picker-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px; margin: 0; }
 #exercise-picker .picker-tabs button { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 38px; padding: 7px 3px; min-width: 0; border-radius: 22px; background: transparent; border: 1px solid #3d493f; font-size: 13px; }
 #exercise-picker .picker-tabs button.selected { background: var(--accent); color: #122008; border-color: var(--accent); font-weight: 700; }
 #exercise-picker .picker-tabs .ico { width: 17px; height: 17px; }
@@ -3979,7 +3979,7 @@ nav br {
 /* While typing, keep Close beside the search instead of spending a whole row on the title. */
 .keyboard-open #exercise-picker.multi-exercise-picker[open] { grid-template-rows: auto minmax(0,1fr) auto; padding-top: 6px; }
 .keyboard-open #exercise-picker .picker-heading { display: contents; }
-.keyboard-open #exercise-picker #exercise-picker-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+.keyboard-open #exercise-picker.multi-exercise-picker #exercise-picker-title { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
 .keyboard-open #exercise-picker .picker-heading button { position: absolute; top: 8px; right: 15px; z-index: 3; width: 58px; min-height: 34px; padding: 6px 5px; font-size: 12px; }
 .keyboard-open #exercise-picker .picker-search { padding-right: 67px; }
 .keyboard-open #exercise-picker .picker-filters label { font-size: 11px; line-height: 1.1; }
@@ -4352,3 +4352,10 @@ body.group-dragging { overscroll-behavior: none; user-select: none; -webkit-user
 .challenge-choice-row:hover,.challenge-choice-close:hover{background:#263325}
 .challenge-choice-dialog button:focus-visible{outline:2px solid #c5f279;outline-offset:2px;border-radius:8px}
 html:has(.challenge-choice-dialog[open]){overflow:hidden}
+
+.free-session-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin:16px 0;padding:16px}.free-session-card>span:nth-child(2){flex:1;min-width:0}.free-session-card strong,.free-session-card small{display:block}.free-session-card small{color:var(--muted);font-size:12px;margin-top:4px}.free-session-bolt{color:#b5ef49;font-size:28px}
+
+/* Quick personal entry uses the existing picker actions and visual viewport. */
+dialog.free-exercise-dialog{box-sizing:border-box;width:min(390px,calc(100% - 24px));max-width:none;max-height:calc(var(--visible-height,100dvh) - 24px);margin:auto;padding:20px;padding-bottom:max(20px,env(safe-area-inset-bottom));border:1px solid #354137;border-radius:24px;background:#181f19;color:var(--text);overflow:auto}
+.free-exercise-dialog::backdrop{background:rgb(0 0 0 / 55%)}
+.free-exercise-dialog h2{font-size:20px;margin:0}.free-exercise-dialog .picker-scroll{overflow:visible;padding:16px 0 0}.free-exercise-dialog label{display:block;margin-bottom:6px}.free-exercise-dialog input{box-sizing:border-box;width:100%;min-height:48px;font-size:16px;margin-bottom:14px}.free-exercise-dialog button{min-height:44px}.free-exercise-dialog .free-library-card{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin-top:18px;padding:14px;text-align:left;border-radius:14px}.free-library-card strong,.free-library-card small{display:block}.free-library-card small{font-size:12px;color:var(--muted);margin-top:4px}.keyboard-open dialog.free-exercise-dialog{position:fixed;top:calc(var(--visible-top,0px) + 12px);bottom:auto;margin:0 auto;max-height:calc(var(--visible-height,100dvh) - 24px)}

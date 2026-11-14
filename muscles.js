@@ -1,7 +1,6 @@
 import {dayKey,dayOffset} from './tracking.js';
-export const muscles=[['chest','Pectoraux'],['lats','Grands dorsaux'],['upper_back','Haut du dos'],['traps','Trapèzes'],['front_delts','Épaules · avant'],['side_delts','Épaules · côté'],['rear_delts','Épaules · arrière'],['biceps','Biceps'],['triceps','Triceps'],['forearms','Avant-bras'],['abs','Abdominaux'],['erectors','Lombaires'],['quads','Quadriceps'],['hamstrings','Ischio-jambiers'],['glutes','Fessiers'],['calves','Mollets'],['adductors','Adducteurs']];
-// The weekly reference remains 17 groups. Anatomy can distinguish elbow flexors
-// without inventing a separate weekly target or rewriting stored profiles.
+export const muscles=[['chest','Pectoraux'],['lats','Grands dorsaux'],['upper_traps','Trapèzes supérieurs'],['mid_lower_traps','Trapèzes moyens / inférieurs'],['front_delts','Épaules · avant'],['side_delts','Épaules · côté'],['rear_delts','Épaules · arrière'],['biceps','Biceps'],['triceps','Triceps'],['forearms','Avant-bras'],['abs','Abdominaux'],['erectors','Lombaires'],['quads','Quadriceps'],['hamstrings','Ischio-jambiers'],['glutes','Fessiers'],['calves','Mollets'],['adductors','Adducteurs']];
+// Stable active IDs; legacy IDs remain accepted in stored profiles.
 export const anatomicalMuscles=[...muscles,['brachialis','Brachial'],['abductors','Abducteurs']];
 const profile=(primary,secondary=[])=>({primary,secondary});
 const defaults=new Map();
@@ -10,21 +9,24 @@ register(['Pendulum squat'],['quads'],['glutes','adductors']);
 register(['Machine à mollets'],['calves']);register(['Hip thrust','Glute bridge'],['glutes'],['hamstrings']);register(['Adducteurs'],['adductors']);
 register(['Shoulder press'],['front_delts'],['side_delts','triceps']);
 register(['Incliné chest press','Décliné chest press','Développé couché','Chest press'],['chest'],['front_delts','triceps']);
-register(['Low row'],['upper_back'],['lats','biceps','rear_delts']);
-register(['Tirage vertical','lat-upper','lat-pull'],['lats'],['biceps','upper_back']);
+register(['Low row'],['mid_lower_traps'],['lats','biceps','rear_delts']);
+register(['Y-raise','Y-raises'],['mid_lower_traps']);
+register(['Tirage vertical','lat-upper','lat-pull'],['lats'],['biceps']);
 register(['Élévations latérales aux haltères','laterales-push'],['side_delts']);
 register(['Curl biceps','Curl pupitre'],['biceps']);register(['Curl marteau'],['biceps'],['forearms']);
 register(['Triceps haltère','Barre au front triceps','Triceps à la corde unilatéral'],['triceps']);
-register(['Tirage menton à la barre'],['side_delts','traps'],['biceps']);
-register(['Rear delt barre','Arrière d’épaule aux haltères'],['rear_delts'],['upper_back']);register(['Butterfly'],['chest']);
-register(['Facepull'],['rear_delts','upper_back'],['traps']);register(['Seated dips'],['triceps'],['chest','front_delts']);
+register(['Tirage menton à la barre'],['side_delts','upper_traps'],['biceps']);
+register(['Rear delt barre','Arrière d’épaule aux haltères'],['rear_delts']);register(['Butterfly'],['chest']);
+register(['Facepull'],['rear_delts','mid_lower_traps']);register(['Seated dips'],['triceps'],['chest','front_delts']);
 // Back extension machines vary by movement and setup: leave them to classify.
-export function defaultProfile(id){return structuredClone(defaults.get(id)||curlDefault(id)||profile([]))}
-export function validProfile(p){const valid=a=>Array.isArray(a)&&a.length<=anatomicalMuscles.length&&a.every(id=>anatomicalMuscles.some(([key])=>key===id))&&new Set(a).size===a.length;return !!p&&valid(p.primary)&&valid(p.secondary)&&!p.primary.some(id=>p.secondary.includes(id))&&(p.primary.length>0||p.secondary.length===0)}
+export function defaultProfile(id){return resolveMuscleProfile({id},structuredClone(defaults.get(id)||curlDefault(id)||profile([])))}
+export const legacyMuscleIds=['traps','upper_back','arms','legs','shoulders'];
+export const knownMuscleId=id=>anatomicalMuscles.some(([key])=>key===id)||legacyMuscleIds.includes(id);
+export function validProfile(p){const valid=a=>Array.isArray(a)&&a.length<=anatomicalMuscles.length+legacyMuscleIds.length&&a.every(knownMuscleId)&&new Set(a).size===a.length;return !!p&&valid(p.primary)&&valid(p.secondary)&&!p.primary.some(id=>p.secondary.includes(id))&&(p.primary.length>0||p.secondary.length===0)}
 export function validProfiles(profiles){return Array.isArray(profiles)&&profiles.every(p=>p&&typeof p.exerciseId==='string'&&p.exerciseId.length>0&&p.exerciseId.length<100000&&validProfile(p))&&new Set(profiles.map(p=>p.exerciseId)).size===profiles.length}
 export function classifyExercise(e,profiles=[]){if(!e.muscles)e.muscles=structuredClone(profiles.find(p=>p.exerciseId===e.id)||defaultProfile(e.id));if(e.alternative)classifyExercise(e.alternative,profiles);return e}
 export function weekStart(day=dayKey()){const d=new Date(day+'T12:00:00');return dayOffset(day,-((d.getDay()+6)%7))}
-export function muscleVolume(sessions){const totals=Object.fromEntries(muscles.map(([id])=>[id,{primary:0,secondary:0,entries:[]}]));let unclassified=0,sets=0;for(const s of sessions)for(const e of s.exercises){const profiles=new Map();for(const st of e.sets||[]){if(st.type==='warmup'||st.validated===false||st.status!==undefined&&!['validated','completed'].includes(st.status))continue;const source=st.exerciseReference||e,p=source.muscles||defaultProfile(source.id),key=JSON.stringify(p);if(!profiles.has(key))profiles.set(key,{p,n:0,source,recorded:[]});profiles.get(key).n++;profiles.get(key).recorded.push(st);}for(const {p,n,source,recorded}of profiles.values()){sets+=n;if(!p.primary.length)unclassified+=n;for(const role of ['primary','secondary'])for(const id of new Set(p[role])){if(!totals[id]||(role==='secondary'&&p.primary.includes(id)))continue;totals[id][role]+=n;totals[id].entries.push({session:s,exercise:{...e,...source,sets:recorded},count:n,role})}}}return {totals,unclassified,sets}}
+export function muscleVolume(sessions){const totals=Object.fromEntries(muscles.map(([id])=>[id,{primary:0,secondary:0,entries:[]}]));let unclassified=0,sets=0;for(const s of sessions)for(const e of s.exercises){const profiles=new Map();for(const st of e.sets||[]){if(st.type==='warmup'||st.validated===false||st.status!==undefined&&!['validated','completed'].includes(st.status))continue;const source=st.exerciseReference||e,p=resolveMuscleProfile(source,source.muscles||defaultProfile(source.id)),key=JSON.stringify(p);if(!profiles.has(key))profiles.set(key,{p,n:0,source,recorded:[]});profiles.get(key).n++;profiles.get(key).recorded.push(st);}for(const {p,n,source,recorded}of profiles.values()){sets+=n;if(!p.primary.length)unclassified+=n;for(const role of ['primary','secondary'])for(const id of new Set(p[role])){if(!totals[id]||(role==='secondary'&&p.primary.includes(id)))continue;totals[id][role]+=n;totals[id].entries.push({session:s,exercise:{...e,...source,sets:recorded},count:n,role})}}}return {totals,unclassified,sets}}
 
 export function weekSessions(sessions,start){const end=dayOffset(start,6);return sessions.filter(s=>dayKey(s.date)>=start&&dayKey(s.date)<=end)}
 
@@ -47,7 +49,7 @@ function curlDefault(id){
 const sameProfile=(a,b)=>['primary','secondary'].every(role=>JSON.stringify([...(a?.[role]||[])].sort())===JSON.stringify([...(b?.[role]||[])].sort()));
 /** Anatomical display only. Explicit personal classifications always win. */
 export function anatomicalProfile(exercise){
- const stored=exercise?.muscles,base=stored||defaultProfile(exercise?.id);
+ const stored=exercise?.muscles,base=resolveMuscleProfile(exercise,stored||defaultProfile(exercise?.id));
  const family=curlFamilies.get(normalized(exercise?.id))||curlFamilies.get(normalized(exercise?.name));
  const fallback=defaultProfile(exercise?.id);
  // A changed classification, including an explicit brachial choice, is authoritative.
@@ -67,3 +69,19 @@ export function cleanAnatomicalProfile(p){
 export function weeklyMuscleVolume(sessions){
  return muscleVolume(sessions.map(s=>({...s,exercises:(s.exercises||[]).map(e=>({...e,muscles:weeklyProfile(anatomicalProfile(e)),sets:(e.sets||[]).map(st=>st.exerciseReference?{...st,exerciseReference:{...st.exerciseReference,muscles:weeklyProfile(anatomicalProfile(st.exerciseReference))}}:st)}))})));
 }
+
+/** Versioned read migration: source JSON is never rewritten. Replay also handles old devices. */
+export const muscleClassificationVersion=2;
+export function resolveMuscleProfile(exercise,p){
+ const text=normalized([exercise?.name||exercise?.id,exercise?.customName?null:exercise?.familyId,exercise?.customName?null:exercise?.alternativeKey].filter(Boolean).join(' '));
+ const shrug=/\bshrugs?\b/.test(text),upright=/upright|tirage menton/.test(text);
+ const row=!upright&&/\brow\b|\browing\b|low row/.test(text)&&!/rameur|ergometer/.test(text)&&exercise?.tracking!=='cardio'&&normalized(exercise?.name)!=='rowing machine';
+ const scapular=/facepull|face pull|y raise|y raises|scapul/.test(text);
+ const map=id=>!legacyMuscleIds.includes(id)?id:id==='traps'&&(shrug||upright||/rack pull|farmer walk|high pull/.test(text))?'upper_traps':['traps','upper_back'].includes(id)&&(row||scapular)?'mid_lower_traps':null;
+ const primary=[...new Set((p?.primary||[]).map(map).filter(Boolean))];
+ return {primary,secondary:[...new Set((p?.secondary||[]).map(map).filter(Boolean))].filter(id=>!primary.includes(id))};
+}
+export function unresolvedMuscleReferences(exercise){
+ return ['primary','secondary'].flatMap(role=>(exercise?.muscles?.[role]||[]).filter(id=>legacyMuscleIds.includes(id)&&!resolveMuscleProfile(exercise,{primary:[id],secondary:[]}).primary.length).map(id=>({id,role,version:muscleClassificationVersion})));
+}
+export const pendingMuscleTargets=targets=>(targets||[]).filter(t=>legacyMuscleIds.includes(t.muscle));

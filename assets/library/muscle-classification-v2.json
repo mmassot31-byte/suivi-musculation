@@ -1,0 +1,261 @@
+{
+  "elan-ex-rack-pull": {
+    "primary": [
+      "erectors",
+      "upper_traps"
+    ],
+    "secondary": [
+      "glutes",
+      "hamstrings"
+    ]
+  },
+  "elan-ex-oiseau-halteres": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "elan-ex-oiseau-banc-incline": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "library:b6ff3baa128a60b402adbc1ed0393b4f": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "elan-ex-oiseau-poulie": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "library:27a05dde8b3ddbf6e5bbed7813fe2549": {
+    "primary": [
+      "rear_delts",
+      "mid_lower_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-face-pull-elastique": {
+    "primary": [
+      "rear_delts",
+      "mid_lower_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-rowing-coudes-ouverts": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": [
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-barre-buste-penche": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-pendlay": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-halteres-banc-incline": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "library:309447bb01c6233b1b50adcffca0a7af": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-t-bar": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-landmine": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-assis-poulie-neutre": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-assis-poulie-large": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "library:b10e6a8f97c36902408a141e9bf39f0f": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-machine-convergente": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-smith": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-inverse": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-rowing-unilateral-poulie": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps",
+      "rear_delts",
+      "mid_lower_traps"
+    ]
+  },
+  "elan-ex-shrug-halteres": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-shrug-barre": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-shrug-smith": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-shrug-machine": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-farmer-walk": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "elan-ex-high-pull-barre": {
+    "primary": [
+      "upper_traps"
+    ],
+    "secondary": []
+  },
+  "library:b6398eea0dce911b4455389ca76cab8f": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps"
+    ]
+  },
+  "library:6f03c364d1884fcb9bd03d1762caee15": {
+    "primary": [
+      "side_delts",
+      "upper_traps"
+    ],
+    "secondary": [
+      "biceps"
+    ]
+  },
+  "library:52204b4e1e2718c6c88b4b9efa047133": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "library:8bcfe39672b78b1d90a73981f5dea97e": {
+    "primary": [
+      "rear_delts"
+    ],
+    "secondary": []
+  },
+  "library:0929f30a3b75488f0cffe675c9336f8c": {
+    "primary": [
+      "lats"
+    ],
+    "secondary": [
+      "biceps"
+    ]
+  }
+}
