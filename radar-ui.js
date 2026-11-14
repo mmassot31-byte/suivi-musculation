@@ -1,7 +1,7 @@
 import {radarModel} from './radar.js';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>Number(n).toLocaleString('fr-FR');
-const shortLabels={lats:['Grands','dorsaux'],upper_back:['Haut du','dos'],elbow_flexors:['Fléchisseurs','du coude'],hamstrings:['Ischio-','jambiers']};
+const shortLabels={lats:['Grands','dorsaux'],upper_traps:['Trapèzes','supérieurs'],mid_lower_traps:['Trapèzes','moy. / inf.'],elbow_flexors:['Fléchisseurs','du coude'],hamstrings:['Ischio-','jambiers']};
 const textual=model=>`Volume musculaire : ${model.axes.map(row=>`${row.label} : ${fmt(row.current.total)}`).join(' ; ')}. Maximum : ${fmt(model.scale)} séries. Détail anatomique disponible sous le graphique.`;
 // Two label lanes retain readable type even with every group, without dropping axes.
 export function radarLayout(axes){

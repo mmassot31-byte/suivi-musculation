@@ -1,0 +1,602 @@
+{
+  "executed": 109,
+  "passed": 100,
+  "failed": 9,
+  "results": [
+    {
+      "cmd": "node tests/notifications.cjs",
+      "pass": true,
+      "output": "PASS notification state: stale account response ignored, deduplicated requests, logout/relogin isolation, offline/error/invalid-response preservation, real zero and 99+ visual/full accessible count.\n"
+    },
+    {
+      "cmd": "node tests/muscle-migration.cjs",
+      "pass": true,
+      "output": "PASS classification v2: immutable snapshots, replay, legacy validation, ambiguous archive, targets, icons, catalogue, weighted volumes without duplication.\n"
+    },
+    {
+      "cmd": "node tests/live-workout.cjs",
+      "pass": true,
+      "output": "PASS live workout presentation: valid work-only counts, actual planned totals, completed/current/future/extra chips, escaped session title, strict comparable history, unknown/future/abandoned exclusion, cardio guard, no state mutation.\n"
+    },
+    {
+      "cmd": "node tests/design-ui.cjs",
+      "pass": true,
+      "output": "PASS design presentation: real recent activity/duration only, comparable gains/steady/records, first reference and unknown identities, material convention separation, future/active/abandoned exclusion, baseline 6→7 without score mutation.\n"
+    },
+    {
+      "cmd": "node tests/social-presenter.cjs",
+      "pass": true,
+      "output": "PASS: server challenge scores unchanged, null/zero and capped display only, deadlines, owner-bound real contacts, existing own-session counters and exact personal record hint reused without mutation.\n"
+    },
+    {
+      "cmd": "node tests/exercise-labels.cjs",
+      "pass": true,
+      "output": "PASS: French display names, English aliases, accents, variant qualifiers and untouched custom exercise names.\n"
+    },
+    {
+      "cmd": "node tests/season-ranks.cjs",
+      "pass": true,
+      "output": "PASS season tiers/boundaries/next rank, sanitized badge/guest display, and delayed response isolated after account switch.\n"
+    },
+    {
+      "cmd": "node tests/quiet-loading.cjs",
+      "pass": true,
+      "output": "PASS profile cache: preserves own data on refresh, discards cache on owner change and ignores a former owner response before it can replace community statistics.\n"
+    },
+    {
+      "cmd": "node tests/pictograms.cjs",
+      "pass": true,
+      "output": "PASS: supplied vector SVG hashes/paths including corrected lumbar and six session icons, transparent/currentColor sources, central internal mappings, six semantic session types, renamed/custom fallback, accessible icons, unchanged planned direct/secondary/asymmetric counts.\n"
+    },
+    {
+      "cmd": "node tests/personal-records.cjs",
+      "pass": true,
+      "output": "PASS personal records: unknown historic machine references selectable, chest aliases, strongest real set, active exclusion, server proof only, exact data preservation, targeted reversible confirmation and future metadata.\n"
+    },
+    {
+      "cmd": "node tests/navigation-mobility.cjs",
+      "pass": true,
+      "output": "PASS supplied nav SVG hashes/transparency/currentColor, masculine default/female choice, safe recommendation URL, legacy minute/second round-trip, explicit custom names and real grouped muscle pictograms.\n"
+    },
+    {
+      "cmd": "node tests/cardio-timer.cjs",
+      "pass": true,
+      "output": "PASS cardio timer: wall-clock expiry, paused duration excluded, reload-safe state, exact actual duration, deterministic one-time entry, clean future plans, bounds and legacy compatibility.\n"
+    },
+    {
+      "cmd": "node tests/activity.cjs",
+      "pass": true,
+      "output": "PASS: catalogue, old backup binding migration, counter bounds/validation, zero strength volume/records, immutable source and planned copy, protected completed counters, lateral identity and proposal compatibility, exact muscle mappings.\n"
+    },
+    {
+      "cmd": "node tests/trophies-completion.cjs",
+      "pass": true,
+      "output": "PASS trophies/completion: highest earned tiers across distinct families, saved favorites ignored and intact, acquired-only wall, separate pending/all 68 reachable, permanent weekly awards, no source mutation; last valid planned set per exercise, warmup/invalid exclusion, corrections, asymmetric/skipped group steps and cardio guard.\n"
+    },
+    {
+      "cmd": "node tests/identity.cjs",
+      "pass": true,
+      "output": "PASS: immutable future defaults, explicit entry snapshots, normalized known-side coverage, reversible targeted confirmations, compatible sheet data, exact dates and zero/one/multiple points.\n"
+    },
+    {
+      "cmd": "node tests/timed-circuits.cjs",
+      "pass": true,
+      "output": "PASS timed circuits: cardio + plank, asymmetric 3/2 rounds, same group chronology, one-time entries, zero fabricated strength sets, completion guard, stable group identities, clean plans/new sessions, preserved removed steps, dissociation and legacy seconds/minutes.\n"
+    },
+    {
+      "cmd": "node tests/achievements.cjs",
+      "pass": true,
+      "output": "PASS: history-based records, no baseline/equality/warmup/variant false positives, drops counted once, correction recomputation, prior-session differences.\n"
+    },
+    {
+      "cmd": "node tests/radar.cjs",
+      "pass": true,
+      "output": "PASS: anatomie brachial dérivée sans mutation, cible hebdomadaire commune dédoublonnée, travail validé uniquement, groupes pondérés dédoublonnés, 14 axes sans omission, comparaison dans le détail, échelle actuelle, cas 0–2 axes et texte accessible.\n"
+    },
+    {
+      "cmd": "node tests/account-data.cjs",
+      "pass": true,
+      "output": "PASS: détection des données locales, anciennes cibles, fusion sans mutation/perte, brouillons conflictuels archivés, liens de planning valides et rejet des clés secrètes.\n"
+    },
+    {
+      "cmd": "node tests/onboarding-data.cjs",
+      "pass": true,
+      "output": "PASS new documents/optional models: zero owned presets or fake performance, complete separate catalogue, old real data detected and untouched, pristine legacy defaults not silently imported.\n"
+    },
+    {
+      "cmd": "node tests/library-convention-correction.cjs",
+      "pass": true,
+      "output": "PASS direct convention correction: exact reference/snapshot, equipment and metric boundaries, saved sessions only, immutable values/notes, exclusion of pounds, journal/undo and conflict protection.\n"
+    },
+    {
+      "cmd": "node tests/rest.cjs",
+      "pass": true,
+      "output": "PASS: repos de groupe 3/2, singleton, absence de repos final, choix par contexte et compatibilité des anciennes données.\n"
+    },
+    {
+      "cmd": "node tests/account-welcome-ui.cjs",
+      "pass": true,
+      "output": "PASS account welcome: signup first, login, optional guest creation, mobile widths.\n"
+    },
+    {
+      "cmd": "node tests/feed-refresh-ui.cjs",
+      "pass": true,
+      "output": "PASS repeated background feed refresh: one heading/filter/list, current activities, selected filter retained.\n"
+    },
+    {
+      "cmd": "node tests/volume-references.cjs",
+      "pass": true,
+      "output": "PASS: D8/S6=V11, méthodes distinctes, cible personnelle/import préservés, activation idempotente datée, lombaires, zéros et secondaires seuls, données manquantes, clôture/abandon et exclusions des écarts répétés.\n"
+    },
+    {
+      "cmd": "node tests/groups.cjs",
+      "pass": true,
+      "output": "PASS: superset/triset, 4+2+2 exact, étapes stables, passage/reprise, correction/suppression, modification sans perte, migration et validation des groupes.\n"
+    },
+    {
+      "cmd": "TZ=Europe/Paris node tests/volume.cjs",
+      "pass": true,
+      "output": "PASS: objectifs de séries sans perte, prévu/réalisé, séance active sans double comptage, historique des cibles, semaines complètes/particulières, alertes consécutives et imports.\n"
+    },
+    {
+      "cmd": "TZ=Europe/Paris node tests/performance.cjs",
+      "pass": true,
+      "output": "PASS: propositions indexées et comparables, références non datées, moyennes calendaires 14 jours sans zéros ni doublons et comparaisons factuelles.\n"
+    },
+    {
+      "cmd": "TZ=Europe/Paris node tests/tracking.cjs",
+      "pass": true,
+      "output": "PASS: tonnage, dégressives, échauffements, limites de dates/année/28 jours, validation et fusion des mensurations.\n"
+    },
+    {
+      "cmd": "TZ=Europe/Paris node tests/muscles.cjs",
+      "pass": true,
+      "output": "PASS: profils musculaires, semaines lundi/dimanche/année, séries principales/secondaires, échauffements, dégressives, supersets et instantanés.\n"
+    },
+    {
+      "cmd": "node tests/profile-library-ui.cjs",
+      "pass": true,
+      "output": "PASS profile library: unified compact list, stable immediate search and muscle filters, menu/modify/add/remove, no implicit history mutation, explicit correction/cancel/undo on secondary screen, preserved values and mobile widths.\n"
+    },
+    {
+      "cmd": "node tests/programme-quality.cjs",
+      "pass": true,
+      "output": "PASS after correction and targeted rerun (see classification validation report)."
+    },
+    {
+      "cmd": "node tests/superset.cjs",
+      "pass": true,
+      "output": "PASS: superset rapide, séries antérieures conservées, saisie simplifiée, correction sans décalage, repos de tour, reprise, dissociation et duplication.\n"
+    },
+    {
+      "cmd": "node tests/programming.cjs",
+      "pass": true,
+      "output": "PASS: programmes 4/5 séances complets, déterminisme, contraintes/temps/verrous, matériel limité, priorité latérale, jours rapprochés/inconnus, chronologie, groupes asymétriques, adaptation sans perte, modèles/occurrences/réel et projection sans doublon.\n"
+    },
+    {
+      "cmd": "node tests/session-radar-ui.cjs",
+      "pass": true,
+      "output": "PASS after correction and targeted rerun (see classification validation report)."
+    },
+    {
+      "cmd": "node tests/muscle-ui.cjs",
+      "pass": true,
+      "output": "PASS after correction and targeted rerun (see classification validation report)."
+    },
+    {
+      "cmd": "node tests/smoke.cjs",
+      "pass": false,
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[data-action=\"performance-detail\"]').first()\u001b[22m\n\n    at /workspace/suivi-musculation/tests/smoke.cjs:2:891\n    at /workspace/suivi-musculation/tests/ui-actions.cjs:37:8\n    at async /workspace/suivi-musculation/tests/smoke.cjs:2:1555 {\n  log: [\n    `  - waiting for locator('button[data-action=\"performance-detail\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/body-calendar.cjs",
+      "pass": false,
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/ui-actions.cjs:37:324\n    at async /workspace/suivi-musculation/tests/body-calendar.cjs:8:43 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/volume-ui.cjs",
+      "pass": true,
+      "output": "PASS: séries prévues +/- et supplémentaires, modèle explicite et variantes, aperçu, séance active/terminée/abandonnée, cibles datées, semaines particulières, statistiques, JSON, mobile et hors connexion.\n"
+    },
+    {
+      "cmd": "node tests/ergonomics.cjs",
+      "pass": false,
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[data-action=\"performance-detail\"]').first()\u001b[22m\n\n    at /workspace/suivi-musculation/tests/ergonomics.cjs:2:1097\n    at /workspace/suivi-musculation/tests/ui-actions.cjs:37:8\n    at async /workspace/suivi-musculation/tests/ergonomics.cjs:6:107 {\n  log: [\n    `  - waiting for locator('button[data-action=\"performance-detail\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/reliability.cjs",
+      "pass": true,
+      "output": "PASS: ancien brouillon complet/échauffement, accueil explicite, verrou indépendant du DOM avec écriture bloquée, un seul avancement, correction de la série précédente, échec réel IndexedDB/retry sans duplication, panneaux, visualViewport réduit sans redimensionner la fenêtre, reprise et hors connexion.\n"
+    },
+    {
+      "cmd": "node tests/flow-ui.cjs",
+      "pass": true,
+      "output": "PASS: ordre numéroté par bloc, exercice → triset → exercice → superset automatique, séries supplémentaires, reprise/brouillon, historique et séance active isolés des modèles, saisie compacte 320/390px avec clavier simulé.\n"
+    },
+    {
+      "cmd": "node tests/week-navigation.cjs",
+      "pass": true,
+      "output": "PASS: no week-type control, return link only away from current week, past/future/keyboard navigation, 320/375/390px, historical annotations unchanged.\n"
+    },
+    {
+      "cmd": "node tests/volume-mobile.cjs",
+      "pass": true,
+      "output": "PASS: liste compacte D/S visibles, secondaire seul, filtrage stable/zéros/épingles, accueil recentré sur les séances, estimation11 et ancienne cible directe8 distinctes, repères datés/reset, semaines particulières, 390/320px et texte agrandi, hors connexion.\n"
+    },
+    {
+      "cmd": "node tests/delete-model.cjs",
+      "pass": true,
+      "output": "PASS: accueil sans sélecteur ni planning, suppression confirmée/annulée, échec et nouvelle tentative, historique/planning/séance active conservés, reprise, suppression de la dernière séance et persistance à 390px.\n"
+    },
+    {
+      "cmd": "node tests/chains-ui.cjs",
+      "pass": true,
+      "output": "PASS: accueil prévu et dépliage, cibles directes, libellés simples, 4/2/2 et triset exacts, repos, étapes stables/passées/corrigées/supprimées, fermeture/reprise, édition et modèle explicite, dissociation, migration, JSON, mobile et hors connexion.\n"
+    },
+    {
+      "cmd": "node tests/manual-session-ui.cjs",
+      "pass": true,
+      "output": "PASS: création mobile 390px, catalogue recherché, séries/répétitions/repos, aperçu D/S et chronologie de groupe, ordre, nom/enregistrement/lancement, duplication indépendante, anciens modèles et planning conservés, export et hors connexion.\n"
+    },
+    {
+      "cmd": "node tests/rest-home.cjs",
+      "pass": true,
+      "output": "PASS: accueil épuré, gestion uniquement dans modèles, choix et chrono central après écriture confirmée, double appui, échec/retry, réduction/arrêt/reprise, expiration et modèles préservés à 390px.\n"
+    },
+    {
+      "cmd": "node tests/home-layout.cjs",
+      "pass": true,
+      "output": "PASS: accueil sur deux colonnes à 390/430px et une à 320px, détails D/S lisibles, noms longs sans débordement, bilan compact en haut et compteurs calendaires sans échauffements/dégressives multiples/futur/actif.\n"
+    },
+    {
+      "cmd": "node tests/home-muscle-completeness.cjs",
+      "pass": true,
+      "output": "PASS complete home pictograms: real create/save/reload with abductors and glutes separated, every anatomical group covered by supplied SVG, direct/secondary values, no elbow-flexor duplicates, all groups visible without clipping at 320/390/430px, weekly calculations and source data unchanged.\n"
+    },
+    {
+      "cmd": "node tests/clear-labels.cjs",
+      "pass": true,
+      "output": "PASS clear labels: no home help, compact counters/rest, title opens sheet and restores draft, collapsible calculation help, fixed variants without configurator, settings and body copy, mobile widths.\n"
+    },
+    {
+      "cmd": "node tests/organization-ui.cjs",
+      "pass": true,
+      "output": "PASS mobile organization: compact create, title menu edit/duplicate/delete with confirmation, unchanged start, English search/French labels, latest history first, collapsible calendar and 320/375/390 widths.\n"
+    },
+    {
+      "cmd": "node tests/ranking-empty.cjs",
+      "pass": true,
+      "output": "PASS: full-width empty ranking at 320/375/390, no placeholder record cards, one genuine record shown independently.\n"
+    },
+    {
+      "cmd": "node tests/social-preview-ui.cjs",
+      "pass": true,
+      "output": "PASS integrated social shell: iPhone tab order, friend acceptance, prefilled challenge, account profile and badge families; synthetic API only.\n"
+    },
+    {
+      "cmd": "node tests/trophy-room-ui.cjs",
+      "pass": true,
+      "output": "PASS trophy room UI: actual app/SDK, automatic highest earned showcase, no favorite controls/writes, obtained-only wall and category filters, separate objectives/future tiers, permanent repeated weekly award, clear close/back, provided SVG and 320/390/430px. HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/finish-action-ui.cjs",
+      "pass": true,
+      "output": "PASS finish action UI: absent before every exercise is complete, appears after last real validation, disappears after deletion, persists after reload/resume, reachable at bottom above navigation at 320/390/430px, invokes existing confirmation/save/summary. No production calls.\n"
+    },
+    {
+      "cmd": "node tests/unequal-groups.cjs",
+      "pass": true,
+      "output": "PASS: groupes fixes 3/2, 2/3, 4/2/2 en UI, tours seuls, pas d’alignement automatique, passage/reprise après fermeture, correction sans avance, suppression/annulation, modification commencée, séries supplémentaires et JSON ancien/nouveau.\n"
+    },
+    {
+      "cmd": "node tests/public-community-ui.cjs",
+      "pass": true,
+      "output": "PASS public community UI: anonymous/signed-in automatic feed, detailed public series, no sharing control/call, complete exercise catalogue including machines/cardio/mobility, personal ambiguous references, explicit model groups, kg/min metrics, public default scope, cheers and 320/390/430 px. HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/season-ranks-ui.cjs",
+      "pass": true,
+      "output": "PASS season UI: actual app/SDK, ranks/next tier/tonnage/real badge SVG/XP breakdown and rules, three phone widths, friends/global/around/paging, ties displayed by server, exercise catalogue preserved, network/offline retry with cached score, rapid scope changes isolated, guest preview. HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/feedback-ui.cjs",
+      "pass": true,
+      "output": "PASS feedback: normal\nPASS feedback: progress\nPASS feedback: weight\nPASS feedback: reps\nPASS feedback: equality\nPASS feedback: baseline\nPASS feedback: retry\nPASS feedback: offline\nPASS feedback: reduced\nPASS feedback: combined\nPASS: confirmed-only ordinary/progression/charge/reps/grouped records, equality and baseline distinctions, correction/reload no replay, retry, offline, optional haptics, reduced motion, exercise completion/advance, recap and visible timer at four widths. Native iPhone remains unverified.\n"
+    },
+    {
+      "cmd": "node tests/quiet-loading-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium quiet loading: initial identity/shortcuts stable, cached full profile/footer stable at 320/390/430px, background announcements offscreen, original data retained on profile/metrics errors, errors visible, edit draft preserved and own/public navigation isolated. No production writes.\n"
+    },
+    {
+      "cmd": "node tests/navigation-scroll-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium: actual SVG pixel colours survive up/down scroll, wheel, viewport resizing and foreground event at 320/390/430px; fixed opaque navigation, active/inactive colours and female icon, no masks or blur. Physical iOS bounce remains unverified.\n"
+    },
+    {
+      "cmd": "node tests/friend-search.cjs",
+      "pass": true,
+      "output": "PASS full connected app search: input/blur/click, authenticated friend_list payload, Gaby result, empty vs technical error, retry, zero friend requests. HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/shell-update.cjs",
+      "pass": true,
+      "output": "PASS: actual worker upgrade bypasses fresh stale HTTP cache, precaches new social UI/modules, serves current assets and reloads offline. No production requests.\n"
+    },
+    {
+      "cmd": "node tests/exercise-counters.cjs",
+      "pass": true,
+      "output": "PASS: manual catalogue selection, unilateral immutable set identity, all four cardio counters, duration-only mobility, invalid entry rejection, correction/deletion, reload/resume/history, backup import, unchanged old templates and strength counts, 320–430px.\n"
+    },
+    {
+      "cmd": "node tests/friend-profiles-ui.cjs",
+      "pass": false,
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"community-friends-back\"]').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/friend-profiles-ui.cjs:21:87)\n    at /workspace/suivi-musculation/tests/friend-profiles-ui.cjs:33:1006 {\n  log: [\n    `  - waiting for locator('[data-action=\"community-friends-back\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/seven-updates-ui.cjs",
+      "pass": false,
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/seven-updates-ui.cjs:4:133 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/cardio-timer-ui.cjs",
+      "pass": true,
+      "output": "PASS timer UI: planned duration, deliberate start, native icon/countdown, pause/resume, one active timer, compact return, expiry exactly once, background/reload, early finish/cancel, finish guard, backup and 320–430px.\n"
+    },
+    {
+      "cmd": "node tests/friends-community-ui.cjs",
+      "pass": false,
+      "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.own-profile') to be visible\u001b[22m\n\n    at /workspace/suivi-musculation/tests/friends-community-ui.cjs:24:359 {\n  log: [ \"  - waiting for locator('.own-profile') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/record-search-connected.cjs",
+      "pass": true,
+      "output": "PASS connected records: zero eligible server references reproduced, historic machine selectable via Pec/French/English, explicit reversible metadata confirmation, authenticated sync/proof and target selection, empty/error/retry, original values intact, no real challenges/friend actions; pending sync causes zero layout shift at phone widths.\n"
+    },
+    {
+      "cmd": "node tests/activity-social-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium: two-account encouragement/receiver bell/read persistence/deep link, exact PR and gain preserved after reaction, stale profile totals replaced by actual legacy+saved local sessions/tonnage, History agreement, 320/390/430. Synthetic HTTP only.\n"
+    },
+    {
+      "cmd": "node tests/notifications-ui.cjs",
+      "pass": true,
+      "output": "PASS notifications UI: authenticated per-account counts, friend accept/refuse and both challenge types, automatic 30-second refresh, hidden/foreground/reconnect/error/retry, unchanged workout DOM/focus/values/layout, Escape/outside click, empty state/logout, 320/390/430 px; HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/account-isolation-ui.cjs",
+      "pass": true,
+      "output": "PASS account isolation: new A/B accounts empty, real A document/history retained, second device loads only A, signed-out guest stays isolated, no production calls.\n"
+    },
+    {
+      "cmd": "node tests/timed-circuits-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium: direct seconds, cardio superset 3/2 alternating automatically, pause/resume/reload, plank 2 passages, storage-failure rollback + retry once, mixed cardio/strength group + rest, background completion, save/history/correction/import, 320/390/430px.\n"
+    },
+    {
+      "cmd": "node tests/editor-offline.cjs",
+      "pass": true,
+      "output": "PASS unseeded PWA offline: actual SW upgrade/cache, empty first home, searchable library, saved manual session/reload, empty initial load and normal validation/summary without network. Real Safari/installed iOS unavailable.\n"
+    },
+    {
+      "cmd": "node tests/editor-onboarding.cjs",
+      "pass": true,
+      "output": "PASS fresh onboarding/editor: empty document, multi-select/muscle/equipment search, custom exercise, direct metrics, atomic ordering, asymmetric supersets/trisets/rotating groups/dissociation, save/reopen/edit, 320/390/430 and small viewport keyboard approximation, real unchanged strength validation/history.\n"
+    },
+    {
+      "cmd": "node tests/challenge-creation.cjs",
+      "pass": true,
+      "output": "PASS challenge creation: actual app/SDK, two authenticated fixtures, optional name/live escaped preview/focused-input single click, 4 sessions/30 days, each/together, acceptance/reload/remake from recipient, unnamed goals, server error/retry, 320/390/430 px. Accepted-only friend selector, no-friends state, pending/success/error/retry feedback, duplicate confirmation and repeated-submit prevention. Compact friends + shared-series forms, preserved recipient/duration and exact server payload. No real invitations.\n"
+    },
+    {
+      "cmd": "node tests/history-view.cjs",
+      "pass": true,
+      "output": "PASS history presentation: existing work-set/duration helpers, warmups and drops, unknown/invalid time, default/empty/selected dates, multi-session days, escaping, no mutation.\n"
+    },
+    {
+      "cmd": "node tests/live-workout-ui.cjs",
+      "pass": true,
+      "output": "PASS live workout chromium: reference layout 320/390/430, sticky down/up without layout jump, direct exercise rows, strict comparable hint, numbered modal correction with draft preserved, automatic rest/reduce/stop and unchanged correction deadline, validation/extra sets, reload/resume, safe simulated iOS keyboard, finish/cancel and source template preservation. Physical iPhone keyboard remains unverified.\n"
+    },
+    {
+      "cmd": "node tests/performance-overview.cjs",
+      "pass": true,
+      "output": "PASS performance overview: estimated strength including rep gains and identity comparisons, negative changes included, no baseline/zero/equal-time false percentages, real records, equal-length muscle windows, deduplicated groups/sessions, primary precedence, period change, empty state and immutable source.\n"
+    },
+    {
+      "cmd": "node tests/record-history.cjs",
+      "pass": true,
+      "output": "PASS distinct record history: duplicate sets/sessions, distinct types, true tonnage, comparable gains, older baseline, no baseline/unit mismatch, filters and immutable source\n"
+    },
+    {
+      "cmd": "node tests/history-compact-ui.cjs",
+      "pass": true,
+      "output": "{\"engine\":\"chromium\",\"width\":320,\"cal\":{\"x\":10,\"y\":215.234375,\"width\":300,\"height\":276},\"day\":{\"x\":10,\"y\":499.234375,\"width\":300,\"height\":154.28125},\"stats\":44.6875,\"recent\":[{\"y\":699.515625,\"bottom\":757.515625},{\"y\":760.515625,\"bottom\":818.515625},{\"y\":821.515625,\"bottom\":879.515625}],\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":390,\"cal\":{\"x\":10,\"y\":215.234375,\"width\":217.1875,\"height\":252},\"day\":{\"x\":235.1875,\"y\":215.234375,\"width\":144.8125,\"height\":252},\"stats\":44.6875,\"recent\":[{\"y\":513.234375,\"bottom\":571.234375},{\"y\":574.234375,\"bottom\":632.234375},{\"y\":635.234375,\"bottom\":693.234375}],\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":430,\"cal\":{\"x\":10,\"y\":215.234375,\"width\":241.1875,\"height\":252},\"day\":{\"x\":259.1875,\"y\":215.234375,\"width\":160.8125,\"height\":252},\"stats\":44.6875,\"recent\":[{\"y\":513.234375,\"bottom\":571.234375},{\"y\":574.234375,\"bottom\":632.234375},{\"y\":635.234375,\"bottom\":693.234375}],\"nav\":767.5}\nPASS compact history chromium: 320/390/430, real period metrics, 60/40 calendar/day, six-week month, multiple/empty days, older sessions, filters, hide calendar, keyboard/detail and unchanged document.\n"
+    },
+    {
+      "cmd": "node tests/volume-dashboard.cjs",
+      "pass": true,
+      "output": "PASS compact volume model: 4 direct + 2 secondary = 5, 42% goal, real kg, period-equal comparison/current elapsed days, leap-year/28/84 days, legacy direct goals, date-effective targets, unknown kg/missing goals, all muscles and no mutation.\n"
+    },
+    {
+      "cmd": "node tests/performance-overview-ui.cjs",
+      "pass": true,
+      "output": "{\"engine\":\"chromium\",\"width\":320,\"statHeight\":70.890625,\"musclesBottom\":705.171875,\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":390,\"statHeight\":70.890625,\"musclesBottom\":713.171875,\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":430,\"statHeight\":70.890625,\"musclesBottom\":713.171875,\"nav\":767.5}\nPASS performance overview chromium: 320/390/430 real screenshots, one consistent main navigation, four true metrics, three real records/all records, chronological estimated-strength graph/detail/back, two compact progression rows and period-specific record/progression counters, exercise/muscle details, periods, preserved Volume/library and immutable document.\n"
+    },
+    {
+      "cmd": "node tests/profile-presentation.cjs",
+      "pass": true,
+      "output": "PASS compact profile presentation: real five statistics, unknown weekly records/badges remain unknown, equal elapsed period comparison, cumulative chronological points, empty/single-session no fake curve, active exclusion and immutable source.\n"
+    },
+    {
+      "cmd": "node tests/profile-compact-ui.cjs",
+      "pass": true,
+      "output": "{\"engine\":\"chromium\",\"width\":320,\"header\":{\"x\":10,\"y\":6,\"w\":300,\"h\":44,\"brandY\":28,\"avatarY\":28,\"bellY\":28},\"identity\":50,\"stats\":67.890625,\"trophies\":108,\"sportY\":669.6875,\"compatBottom\":189.796875,\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":390,\"header\":{\"x\":10,\"y\":6,\"w\":370,\"h\":44,\"brandY\":28,\"avatarY\":28,\"bellY\":28},\"identity\":50,\"stats\":72.390625,\"trophies\":111,\"sportY\":677.984375,\"compatBottom\":189.796875,\"nav\":767.5}\n{\"engine\":\"chromium\",\"width\":430,\"header\":{\"x\":10,\"y\":6,\"w\":410,\"h\":44,\"brandY\":28,\"avatarY\":28,\"bellY\":28},\"identity\":50,\"stats\":72.390625,\"trophies\":111,\"sportY\":677.984375,\"compatBottom\":189.796875,\"nav\":767.5}\nPASS compact profile chromium: 320/390/430, common exact headers on five tabs, five shortcuts, true five metrics/weekly unknowns, cumulative chart/Volume entry, top trophies/detail/back, public results/exercise library/edit, preserved source.\n"
+    },
+    {
+      "cmd": "node tests/saved-session.cjs",
+      "pass": true,
+      "output": "PASS saved session: existing recap/tonnage/radar models, work/plan/extra/missing, warmups, real/unknown duration, known identity comparisons, no fabricated comparison, escaped names, complete consultation and immutable data.\n"
+    },
+    {
+      "cmd": "node tests/saved-session-ui.cjs",
+      "pass": true,
+      "output": "{\"engine\":\"chromium\",\"width\":320,\"pageHeight\":1029.46875,\"head\":{\"y\":6,\"h\":44,\"w\":300},\"stats\":{\"y\":168.078125,\"h\":59,\"w\":300},\"radar\":{\"y\":369.078125,\"h\":168,\"w\":300},\"rows\":[614.46875,664.46875,714.46875],\"nav\":{\"y\":767.5,\"h\":76.5,\"w\":320}}\n{\"engine\":\"chromium\",\"width\":390,\"pageHeight\":1040.75,\"head\":{\"y\":6,\"h\":44,\"w\":370},\"stats\":{\"y\":168.078125,\"h\":59,\"w\":370},\"radar\":{\"y\":369.078125,\"h\":176.875,\"w\":370},\"rows\":[625.75,675.75,725.75],\"nav\":{\"y\":767.5,\"h\":76.5,\"w\":390}}\n{\"engine\":\"chromium\",\"width\":430,\"pageHeight\":1043.0625,\"head\":{\"y\":6,\"h\":44,\"w\":410},\"stats\":{\"y\":168.078125,\"h\":59,\"w\":410},\"radar\":{\"y\":369.078125,\"h\":179.1875,\"w\":410},\"rows\":[628.0625,678.0625,728.0625],\"nav\":{\"y\":767.5,\"h\":76.5,\"w\":430}}\nPASS saved session chromium: 320/390/430 screenshots, compact header/stats/radar/rows, exact totals and plan, warmups/notes/sheet, all skipped exercises, strict comparisons, editor/menu/delete cancellation and original source preserved.\n"
+    },
+    {
+      "cmd": "node tests/mockups-ui.cjs",
+      "pass": false,
+      "output": "Screen 10-home\nScreen 03a-create\nScreen 03b-picker\nScreen 03c-editor\nScreen 11-overview\nScreen 12-performances\nlocator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/mockups-ui.cjs:9:197)\n    at /workspace/suivi-musculation/tests/mockups-ui.cjs:12:318 {\n  log: [\n    `  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/transaction-actions-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium session commit finish: real IndexedDB, coherent retry/persistence, no production calls.\nPASS chromium session commit delete: real IndexedDB, coherent retry/persistence, no production calls.\nPASS chromium session commit rapid: real IndexedDB, coherent retry/persistence, no production calls.\n"
+    },
+    {
+      "cmd": "node tests/home-compact-ui.cjs",
+      "pass": false,
+      "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"explore-models\"]').first()\u001b[22m\n\n    at click (/workspace/suivi-musculation/tests/home-compact-ui.cjs:5:373)\n    at /workspace/suivi-musculation/tests/home-compact-ui.cjs:11:1647 {\n  log: [\n    `  - waiting for locator('[data-action=\"explore-models\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+    },
+    {
+      "cmd": "node tests/exercise-rankings-ui.cjs",
+      "pass": true,
+      "output": "PASS compact exercise rankings: actual navigation heights, icons, grouped avatars, zero/one/two rows, unranked references without medals, info/filter controls and screenshots; public community UI: anonymous/signed-in automatic feed, detailed public series, no sharing control/call, complete exercise catalogue including machines/cardio/mobility, personal ambiguous references, explicit model groups, kg/min metrics, public default scope, cheers and 320/390/430 px. HTTP fixtures only.\n"
+    },
+    {
+      "cmd": "node tests/exercise-library.cjs",
+      "pass": true,
+      "output": "PASS exercise library: all247 supplied variants + retained built-ins, canonical IDs/no duplicate keys, safe legacy matching, ambiguous rename separated, new bilateral/unilateral/drop tonnage with unchanged raw weight, old convention immutability, bodyweight/assistance zero invented tonnage, immutable shared/private fork/re-edit/archive and guest ownership.\n"
+    },
+    {
+      "cmd": "node tests/exercise-library-sync.cjs",
+      "pass": true,
+      "output": "PASS library sync: newest edit survives delayed responses, idempotent outbox drained, failed/offline operations retained, late previous-account response ignored, scoped canonical aliases reset.\n"
+    },
+    {
+      "cmd": "node tests/profile-actions-ui.cjs",
+      "pass": true,
+      "output": "PASS profile actions: authenticated real form/SDK, one write on rapid submit, failed draft retained and enabled, successful retry and reload. Synthetic HTTP only.\n"
+    },
+    {
+      "cmd": "node tests/volume-dashboard-ui.cjs",
+      "pass": true,
+      "output": "PASS after correction and targeted rerun (see classification validation report)."
+    },
+    {
+      "cmd": "node tests/exercise-picker.cjs",
+      "pass": true,
+      "output": "PASS picker model: exact family groups/short labels, separate movements and unknown/private singles, all IDs retained once, source untouched, valid bookmarks, canonical alias resolution, imported preferences and account-scoped inputs.\n"
+    },
+    {
+      "cmd": "node tests/exercise-library-legacy-ui.cjs",
+      "pass": true,
+      "output": "PASS confirmed legacy correction: renamed Shoulder press de-indexed into private lateral raise, no guessed equipment, original military press history/weights/notes unchanged, future prescription/rest/step/auto/instance preserved.\n"
+    },
+    {
+      "cmd": "node tests/session-compose.cjs",
+      "pass": true,
+      "output": "PASS compose model: all worked muscles, unchanged preview engine and duration, common scale, secondary0.5, abductors retained, source data immutable.\n"
+    },
+    {
+      "cmd": "node tests/exercise-library-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium library UI: FR/EN search, fixed equipment filter, multi-add + duplicate instances, no configurator, 320/390/430 screenshots, raw unilateral entry, bilateral entry, tonnage800, session persistence/reload, shared-to-private rename/mode fork, historical snapshots unchanged and personal search.\n"
+    },
+    {
+      "cmd": "node tests/input-stability-ui.cjs",
+      "pass": true,
+      "output": "{\"engine\":\"chromium\",\"openingScrollRequests\":1}\nPASS chromium input stability: simulated viewport feedback settles, no auto-scroll on viewport pan, stable nodes/focus/values across kg/reps, keyboard threshold/close/reopen, three series, rapid modal correction and persistent draft/reload. Physical iPhone still required.\n"
+    },
+    {
+      "cmd": "node tests/group-sequence.cjs",
+      "pass": true,
+      "output": "PASS group sequences:5/3 alternating, personalised counts adjustment/reset,2–8 members, exact execution/rest grouping, immutable recorded steps, stable IDs, restart and validation.\n"
+    },
+    {
+      "cmd": "node tests/session-compose-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium compose: create/edit, independent type/name and icons, real summary/volume, direct metrics and live input without remount, reorder, asymmetric group edit/dissolve, save/reopen and confirmed deletion, immutable exercise IDs/history,320/390/393/430 screenshots, fixed footer and simulated keyboard.\n"
+    },
+    {
+      "cmd": "node tests/performed-exercises.cjs",
+      "pass": true,
+      "output": "PASS performed exercises: recorded-only, true last/all-time records, equal-load/repetition comparisons, neutral load/repetition tradeoffs, isolated identities/assistance/bodyweight/activity, periods/search/four sorts, edits/deletions and no source mutation.\n"
+    },
+    {
+      "cmd": "node tests/exercise-picker-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium picker: exact grouped variants, full-name/alias search, native multi-group keyboard toggles, multi-select across all filters/tabs, independent persistent favorites, remove favorite without losing selection, close/cancel/reload, add once each, recent history, fixed controls/footer,320/390/393/430 screenshots, storage-failure retry and duplicate-click guard, simulated iOS keyboard without input remount; saved data unchanged.\n"
+    },
+    {
+      "cmd": "node tests/hammer-curl-ui.cjs",
+      "pass": true,
+      "output": "PASS hammer curl: one dumbbell reference, cable stays separate, legacy/current history merged, brachial and elbow-flexor search, weighted muscle union, correct icon and stable columns with/without icon at 320/390/430.\n"
+    },
+    {
+      "cmd": "node tests/performed-exercises-ui.cjs",
+      "pass": false,
+      "output": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.locator('.exercise-sheet-chart circle').count()>=3)\n\n    at /workspace/suivi-musculation/tests/performed-exercises-ui.cjs:15:233 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+    },
+    {
+      "cmd": "node tests/editor-context-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium context menus: four actions without card expansion, advanced rename/autosave/Escape, nested muscle settings, direct metrics, reorder, replacement, deletion, create/edit/reload, outside/Escape dismissal,320/390/430.\n"
+    },
+    {
+      "cmd": "node tests/group-editor-ui.cjs",
+      "pass": true,
+      "output": "PASS chromium group sheet: 5/3 automatic/custom/reset, real touch or mouse long press/reorder/cancel without page scroll, four members and relabeling, direct counts,320/390/430, save/reload/edit, exact strength execution, unchanged history.\n"
+    }
+  ],
+  "baseline": {
+    "commit": "1fb38cc",
+    "results": [
+      {
+        "name": "body-calendar",
+        "pass": false,
+        "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /tmp/elan-baseline/tests/ui-actions.cjs:37:324\n    at async /tmp/elan-baseline/tests/.baseline-body-calendar.cjs:8:43 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "smoke",
+        "pass": false,
+        "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[data-action=\"performance-detail\"]').first()\u001b[22m\n\n    at /tmp/elan-baseline/tests/.baseline-smoke.cjs:2:891\n    at /tmp/elan-baseline/tests/ui-actions.cjs:37:8\n    at async /tmp/elan-baseline/tests/.baseline-smoke.cjs:2:1555 {\n  log: [\n    `  - waiting for locator('button[data-action=\"performance-detail\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "ergonomics",
+        "pass": false,
+        "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[data-action=\"performance-detail\"]').first()\u001b[22m\n\n    at /tmp/elan-baseline/tests/.baseline-ergonomics.cjs:2:1097\n    at /tmp/elan-baseline/tests/ui-actions.cjs:37:8\n    at async /tmp/elan-baseline/tests/.baseline-ergonomics.cjs:6:107 {\n  log: [\n    `  - waiting for locator('button[data-action=\"performance-detail\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "friend-profiles-ui",
+        "pass": false,
+        "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"community-friends-back\"]').first()\u001b[22m\n\n    at click (/tmp/elan-baseline/tests/.baseline-friend-profiles-ui.cjs:21:87)\n    at /tmp/elan-baseline/tests/.baseline-friend-profiles-ui.cjs:33:1006 {\n  log: [\n    `  - waiting for locator('[data-action=\"community-friends-back\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "seven-updates-ui",
+        "pass": false,
+        "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#body-metric') to be visible\u001b[22m\n\n    at /tmp/elan-baseline/tests/.baseline-seven-updates-ui.cjs:4:133 {\n  log: [ \"  - waiting for locator('#body-metric') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "friends-community-ui",
+        "pass": false,
+        "output": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.own-profile') to be visible\u001b[22m\n\n    at /tmp/elan-baseline/tests/.baseline-friends-community-ui.cjs:24:359 {\n  log: [ \"  - waiting for locator('.own-profile') to be visible\" ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "performed-exercises-ui",
+        "pass": false,
+        "output": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.locator('.exercise-sheet-chart circle').count()>=3)\n\n    at /tmp/elan-baseline/tests/.baseline-performed-exercises-ui.cjs:15:233 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+      },
+      {
+        "name": "home-compact-ui",
+        "pass": false,
+        "output": "locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"explore-models\"]').first()\u001b[22m\n\n    at click (/tmp/elan-baseline/tests/.baseline-home-compact-ui.cjs:5:373)\n    at /tmp/elan-baseline/tests/.baseline-home-compact-ui.cjs:11:1647 {\n  log: [\n    `  - waiting for locator('[data-action=\"explore-models\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+      },
+      {
+        "name": "mockups-ui",
+        "pass": false,
+        "output": "Screen 10-home\nScreen 03a-create\nScreen 03b-picker\nScreen 03c-editor\nScreen 11-overview\nScreen 12-performances\nlocator.evaluate: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()\u001b[22m\n\n    at click (/tmp/elan-baseline/tests/.baseline-mockups-ui.cjs:9:197)\n    at /tmp/elan-baseline/tests/.baseline-mockups-ui.cjs:12:318 {\n  log: [\n    `  - waiting for locator('[data-action=\"overview-tab:overview\"]').first()`\n  ],\n  name: 'TimeoutError'\n}\n"
+      }
+    ]
+  }
+}

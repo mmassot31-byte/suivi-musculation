@@ -1,0 +1,11 @@
+// Isolated local PostgreSQL only. No hosted database or user credentials.
+const {Client}=require('pg'),fs=require('node:fs'),assert=require('node:assert/strict');
+(async()=>{const config={host:'127.0.0.1',port:55432,user:'postgres',password:'local-test-only'},admin=new Client(config);await admin.connect();const name='elan_muscles_'+Date.now();await admin.query('create database '+name);const db=new Client({...config,database:name});await db.connect();try{
+ await db.query('create table common_exercises(id text primary key,definition jsonb,signature text)');
+ const seed=JSON.parse(fs.readFileSync('assets/library/catalogue.seed.json','utf8'));
+ for(const e of seed)await db.query('insert into common_exercises values($1,$2,$3)',[e.id,e,e.id]);
+ const sql=fs.readFileSync('supabase/migrations/202611140001_muscle_classification_v2.sql','utf8'),before=(await db.query('select * from common_exercises order by id')).rows;
+ await db.query(sql);const first=(await db.query('select * from common_exercises order by id')).rows;await db.query(sql);assert.deepEqual((await db.query('select * from common_exercises order by id')).rows,first);assert.equal(first.length,before.length);
+ const {commonExercises}=await import('../exercise-catalogue.js');for(const row of first){assert.equal(row.signature,row.id);assert.deepEqual({...row.definition,muscles:before.find(x=>x.id===row.id).definition.muscles},before.find(x=>x.id===row.id).definition);assert.deepEqual(row.definition.muscles,commonExercises.find(e=>e.id===row.id).muscles);}
+ const shrug=seed.find(e=>/Shrug/.test(e.name));await db.query('update common_exercises set definition=jsonb_set(definition,\'{muscles}\',$1::jsonb) where id=$2',[JSON.stringify({primary:['forearms'],secondary:[]}),shrug.id]);await db.query(sql);assert.deepEqual((await db.query('select definition from common_exercises where id=$1',[shrug.id])).rows[0].definition.muscles,{primary:['forearms'],secondary:[]});console.log('PASS PostgreSQL muscle v2: complete catalogue, stable identities/signatures/metadata, idempotent replay and customized shared profiles preserved.');
+ }finally{await db.end();await admin.query('drop database '+name);await admin.end()}})().catch(e=>{console.error(e);process.exitCode=1});
