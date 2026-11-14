@@ -11,7 +11,7 @@ import {createNotifications} from './notifications.js';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),fmt=n=>Number(n||0).toLocaleString('fr-FR'),button=(label,action,classes='')=>`<button type="button" class="${classes}" data-action="${esc(action)}">${label}</button>`;
 export const disclosure='Tes données d’entraînement sur cet appareil seront importées automatiquement. Ton profil, tes séances terminées et tes performances seront publics. Tes notes et mensurations restent privées.';
 export function createSocialUI(accounts,cb){
- const notifications=createNotifications(accounts,{async openActivity(id){rankingTab='friends';cb.open('ranking');await community.openActivity(id);cb.render()}});
+ const notifications=createNotifications(accounts,{openSharedSession:cb.openSharedSession,async openActivity(id){rankingTab='friends';cb.open('ranking');await community.openActivity(id);cb.render()}});
  const publicRanks=createPublicRankings(accounts,cb);
  const seasonRanks=createSeasonRanks(accounts,{...cb,render(){if(cb.view()==='ranking'&&rankingTab==='rankings'&&rankMode==='season')cb.render()}});
  let rankMode='season';
