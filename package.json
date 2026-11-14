@@ -63,7 +63,8 @@
     "test:series-targets": "node tests/series-targets-db.cjs && node tests/challenge-creation.cjs && node tests/social-presenter.cjs",
     "test:app-layout": "node tests/app-layout-ui.cjs && node tests/input-stability-ui.cjs && node tests/live-workout-ui.cjs",
     "test:muscle-classification": "node tests/muscle-migration.cjs && node tests/muscle-migration-ui.cjs && node tests/radar.cjs && node tests/volume.cjs && node tests/volume-dashboard.cjs && node tests/muscle-ui.cjs && node tests/session-radar-ui.cjs",
-    "test:muscle-classification:sql": "node tests/muscle-migration-db.cjs"
+    "test:muscle-classification:sql": "node tests/muscle-migration-db.cjs",
+    "test:free-session": "node tests/free-session.cjs && node tests/free-session-ui.cjs"
   },
   "type": "module",
   "dependencies": {
