@@ -1,0 +1,24 @@
+const {chromium,webkit}=require('playwright'),assert=require('node:assert/strict');
+(async()=>{const engine=process.env.ELAN_BROWSER||'chromium',browser=await (engine==='webkit'?webkit:chromium).launch(engine==='webkit'?{}:{executablePath:'/usr/bin/chromium',args:['--no-sandbox']});try{
+ const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'});
+ await context.route('**/cloud-config.js',r=>r.fulfill({contentType:'text/javascript',body:"export const cloudConfig={url:'',publishableKey:''}"}));
+ const p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));let accept=true;p.on('dialog',d=>accept?d.accept():d.dismiss());
+ const click=async a=>{await p.locator(`[data-action="${a}"]`).first().click();await p.waitForTimeout(350)};
+ const data=()=>p.evaluate(async()=>{const q=indexedDB.open('elan-musculation');const db=await new Promise(r=>q.onsuccess=()=>r(q.result));try{return await new Promise(r=>{const q=db.transaction('state').objectStore('state').get('main');q.onsuccess=()=>r(q.result)})}finally{db.close()}});
+ const resume=async()=>{await p.reload();await click('resume')};
+ const add=async name=>{await click('live-add-ex');await p.locator('#picker-custom-name').fill(name);await click('picker-custom-add')};
+ await p.goto('http://127.0.0.1:4173');await click('start-free');await add('Machine libre A');
+ await p.locator('#weight').fill('60');await p.locator('#reps').fill('10');await p.locator('#next-rest').selectOption('60');
+ // Two events from the same button must produce a single saved set.
+ await p.locator('[data-action="validate"]').evaluate(el=>{el.click();el.click()});await p.locator('#free-next-actions').waitFor();
+ assert.equal((await data()).active.exercises[0].sets.length,1);assert.equal(await p.locator('#weight').count(),0);assert.equal(await p.locator('#rest-dialog[open]').count(),0);assert.equal(await p.locator('#free-next-actions button').count(),3);assert.equal(await p.locator('.live-finish,.session-finish-action,.session-options').count(),0);
+ assert((await data()).active.restUntil>Date.now());
+ await resume();await p.locator('#free-next-actions').waitFor();await click('free-more');assert.equal(await p.locator('#weight').inputValue(),'60');assert.equal(await p.locator('#reps').inputValue(),'10');
+ await p.locator('#reps').fill('9');await resume();assert.equal(await p.locator('#reps').inputValue(),'9');assert.equal(await p.locator('.live-finish').count(),1);await click('validate');assert.equal((await data()).active.exercises[0].sets.length,2);
+ await click('live-series:0');await p.locator('#correction-weight').fill('62');await click('correction-save');assert.equal((await data()).active.exercises[0].sets[0].w,62);await p.locator('#free-next-actions').waitFor();
+ accept=false;await click('delete-set:current:1');assert.equal((await data()).active.exercises[0].sets.length,2);accept=true;await click('delete-set:current:1');assert.equal((await data()).active.exercises[0].sets.length,1);await p.getByRole('button',{name:'Annuler',exact:true}).click();await p.waitForTimeout(350);assert.equal((await data()).active.exercises[0].sets.length,2);
+ await add('Machine libre B');await p.locator('#weight').fill('20');await p.locator('#reps').fill('12');await click('validate');await click('select:0');assert.equal(await p.locator('.free-validated-set').count(),2);await click('select:1');
+ for(const width of [320,390,430]){await p.setViewportSize({width,height:844});await p.locator('#free-next-actions').scrollIntoViewIfNeeded();await p.waitForTimeout(150);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert(await p.locator('#free-next-actions').evaluate(el=>el.getBoundingClientRect().bottom<=document.querySelector('nav').getBoundingClientRect().top));}
+ await p.screenshot({path:'/tmp/elan-free-next-actions.png'});accept=false;await click('finish');assert((await data()).active);accept=true;await click('finish');await p.locator('.finish-summary').waitFor();const saved=await data();assert.equal(saved.active,null);assert.deepEqual(saved.sessions.at(-1).exercises.map(e=>e.sets.length),[2,1]);assert.equal(saved.sessions.at(-1).exercises[0].sets[0].w,62);await click('nav:home');await click('start-free');await add('Une seule série');await p.locator('#weight').fill('10');await p.locator('#reps').fill('8');await click('validate');await click('finish');assert.equal((await data()).sessions.at(-1).exercises[0].sets.length,1);assert.deepEqual(errors,[]);
+ console.log('PASS free next actions: double tap, rest, prefill, reload during choices and entry, correction, protected delete/undo, previous exercise, mobile reach, finish confirmation and saved data');
+ }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
