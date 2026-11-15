@@ -243,3 +243,9 @@ Le code, les trois migrations, la séparation public/privé, les règles d’acc
 Voir [l’intégration et son statut réel](docs/COMMUNITY-SETUP.md) pour les migrations 005–007, les tests et les captures.
 
 L’[organisation mobile des écrans](docs/UI-ORGANIZATION.md) décrit les menus de titres, les écrans de badges et les nouveaux parcours de navigation.
+
+## Le poids de ta séance
+
+Le bilan de fin de séance compare le tonnage existant à une référence du catalogue local : carte intégrée, tirage stable, changement instantané, catégories variées et exclusion des références des cinq dernières séances. Aucun accès réseau ni stockage Supabase supplémentaire. Les totaux nuls, partiels ou incertains restent sans comparaison.
+
+Le [dossier de vérification](docs/session-weight/README.md) décrit l’audit des 200 références (189 actives), les règles de sélection, les fichiers et les tests. Lancer `npm run build:session-weight` après toute modification de `session-weight-catalogue.json`, puis `npm run test:session-weight` avec l’application servie sur le port 4173.
