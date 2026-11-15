@@ -1,48 +1,60 @@
 import {radarModel} from './radar.js';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>Number(n).toLocaleString('fr-FR');
-const shortLabels={lats:['Grands','dorsaux'],upper_traps:['Trapèzes','supérieurs'],mid_lower_traps:['Trapèzes','moy. / inf.'],elbow_flexors:['Fléchisseurs','du coude'],hamstrings:['Ischio-','jambiers']};
 const textual=model=>`Volume musculaire : ${model.axes.map(row=>`${row.label} : ${fmt(row.current.total)}`).join(' ; ')}. Maximum : ${fmt(model.scale)} séries. Détail anatomique disponible sous le graphique.`;
-// Two label lanes retain readable type even with every group, without dropping axes.
-export function radarLayout(axes){
- const nodes=axes.map((axis,i)=>{const angle=-Math.PI/2+i*2*Math.PI/axes.length,x=Math.cos(angle),y=Math.sin(angle);return {axis,i,x,y,side:Math.abs(x)<0.01?'middle':x>0?'start':'end'};});
- const left=nodes.filter(p=>p.side==='end').sort((a,b)=>a.y-b.y),right=nodes.filter(p=>p.side==='start').sort((a,b)=>a.y-b.y);
- const height=Math.max(312,Math.max(left.length,right.length)*60+56),center={x:180,y:height/2},radius=80;
- for(const lane of [left,right])lane.forEach((node,i)=>{node.labelX=node.side==='start'?266:94;node.labelY=center.y+(i-(lane.length-1)/2)*60;});
- for(const node of nodes.filter(p=>p.side==='middle')){node.labelX=center.x;node.labelY=center.y+node.y*(radius+32);}
- return {nodes,height,center,radius};
+// Conservative glyph widths at 12px keep full names legible, including unbroken words.
+const textWidth=text=>Array.from(text).reduce((sum,c)=>sum+(/[MWŒ@]/.test(c)?11:/[ilIjt .,'’/]/.test(c)?3.5:/[A-ZÀ-Ý]/.test(c)?8.8:6.5),0);
+function labelLines(label,width=82){
+ const lines=[];let line='';
+ for(const word of String(label).replace(/-/g,'- ').split(/\s+/u)){
+  if(line&&textWidth(line+' '+word)>width){lines.push(line);line='';}
+  for(const char of word){
+   if(textWidth(line+char)>width&&line){lines.push(line);line='';}
+   line+=char;
+  }
+  line+=' ';
+ }
+ if(line.trim())lines.push(line.trim());
+ return lines.map(s=>s.trim());
 }
-// Compact labels share the exact axis order and angles of the existing chart.
-const compactNames={upper_traps:'Trap. sup.',mid_lower_traps:'Trap. moy./inf.',front_delts:'Ép. avant',side_delts:'Ép. côté',rear_delts:'Ép. arr.',abs:'Abdos',quads:'Quads',hamstrings:'Ischios',adductors:'Adduct.',lats:'Dorsaux',upper_back:'Haut du dos',elbow_flexors:'Fléch. coude'};
-const compactLines=axis=>(compactNames[axis.id]||axis.label).match(/.{1,9}(?:\s|$)|.{1,9}/g).map(s=>s.trim());
-export function compactRadarLayout(axes){
- const {nodes}=radarLayout(axes);
- const count=Math.max(...['start','end'].map(side=>nodes.filter(n=>n.side===side).length));
- const height=Math.max(212,count*42+24),center={x:160,y:height/2},radius=70;
+// Equal angular steps are independent of label placement. Side lanes preserve
+// vertical order; actual multiline heights determine spacing and the SVG bounds.
+export function radarLayout(axes){
+ const radius=86,center={x:180,y:0},lineHeight=15,gap=10,padding=12;
+ const nodes=axes.map((axis,i)=>{
+  const angle=-Math.PI/2+i*2*Math.PI/axes.length,x=Math.cos(angle),y=Math.sin(angle);
+  const side=Math.abs(x)<0.01?'middle':x>0?'start':'end';
+  const lines=labelLines(axis.label,side==='middle'?112:82);
+  return {axis,i,x,y,side,lines,labelHeight:lines.length*lineHeight,labelX:side==='middle'?180:side==='start'?272:88};
+ });
  for(const side of ['start','end']){
   const lane=nodes.filter(n=>n.side===side).sort((a,b)=>a.y-b.y);
-  lane.forEach((n,i)=>{n.labelX=side==='start'?234:86;n.labelY=center.y+(i-(lane.length-1)/2)*42;});
+  let bottom=-Infinity;
+  for(const n of lane){n.labelY=Math.max(n.y*(radius+12)-n.labelHeight/2,bottom+gap);bottom=n.labelY+n.labelHeight;}
+  if(lane.length){const shift=(lane[0].labelY+bottom)/2;for(const n of lane)n.labelY-=shift;}
  }
- for(const n of nodes.filter(n=>n.side==='middle')){n.labelX=160;n.labelY=center.y+n.y*(radius+18);}
- return {nodes,height,center,radius};
+ for(const n of nodes.filter(n=>n.side==='middle'))n.labelY=n.y<0?-radius-16-n.labelHeight:radius+16;
+ const top=Math.min(-radius,...nodes.map(n=>n.labelY))-padding;
+ const bottom=Math.max(radius,...nodes.map(n=>n.labelY+n.labelHeight))+padding;
+ center.y=-top;
+ for(const n of nodes)n.labelY-=top;
+ return {nodes,height:bottom-top,center,radius,lineHeight};
 }
+export const compactRadarLayout=radarLayout;
+let chartId=0;
 function chart(model,compact=false,externalLabels=false){
  if(model.mode==='empty')return '<p class="empty">Aucune série de travail enregistrée à représenter.</p>';
  if(model.mode==='bars')return `<div class="muscle-radar-bars" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}">${model.axes.map(row=>`<div class="radar-bar-row"><div class="radar-bar-heading"><strong>${esc(row.label)}</strong><span class="radar-axis-value">${fmt(row.current.total)}</span></div><div class="radar-bar-track"><i class="radar-direct-bar" style="width:${row.current.total/model.scale*100}%"></i></div></div>`).join('')}</div>`;
- const layout=externalLabels?compactRadarLayout(model.axes):radarLayout(model.axes),{nodes,height,center,radius}=layout;
- const labelBounds=nodes.map(node=>{const lines=shortLabels[node.axis.id]||[node.axis.label],first=node.labelY-lines.length*9+6;return{top:first-18,bottom:first+lines.length*18+8}}),cropTop=compact?Math.max(0,Math.floor(Math.min(center.y-radius,...labelBounds.map(b=>b.top))-6)):0,cropBottom=compact?Math.min(height,Math.ceil(Math.max(center.y+radius,...labelBounds.map(b=>b.bottom))+6)):height;
+ const {nodes,height,center,radius,lineHeight}=radarLayout(model.axes),id=`muscle-surface-${++chartId}`;
  const point=(node,fraction=1)=>[center.x+node.x*radius*fraction,center.y+node.y*radius*fraction];
  const points=fraction=>nodes.map(node=>point(node,fraction).map(v=>v.toFixed(2)).join(',')).join(' ');
  const rings=[0.25,0.5,0.75,1].map(r=>`<polygon class="radar-grid" points="${points(r)}"/>`).join('');
  const spokes=nodes.map(node=>{const [x,y]=point(node);return `<line class="radar-spoke" x1="${center.x}" y1="${center.y}" x2="${x}" y2="${y}"/>`;}).join('');
- const guides=nodes.filter(node=>node.side!=='middle').map(node=>{const [x,y]=point(node);return `<line class="radar-label-guide" x1="${x}" y1="${y}" x2="${node.labelX+(node.side==='start'?-5:5)}" y2="${node.labelY}"/>`;}).join('');
- const labels=nodes.map(({axis,side,labelX,labelY})=>{const lines=shortLabels[axis.id]||[axis.label],firstY=labelY-lines.length*9+6;return `<text class="radar-axis-label" text-anchor="${side}" data-radar-axis="${axis.id}">${lines.map((line,j)=>`<tspan x="${labelX}" y="${firstY+j*18}">${esc(line)}</tspan>`).join('')}<tspan class="radar-axis-value" x="${labelX}" y="${firstY+lines.length*18}">${fmt(axis.current.total)}</tspan></text>`;}).join('');
- const compactLabels=externalLabels?nodes.map(({axis,side,labelX,labelY})=>{
-  const lines=compactLines(axis),firstY=labelY-(lines.length-1)*9;
-  return `<text class="radar-compact-label" text-anchor="${side}" dominant-baseline="middle" data-radar-axis="${esc(axis.id)}"><title>${esc(axis.label)}</title>${lines.map((line,j)=>`<tspan x="${labelX}" y="${firstY+j*18}">${esc(line)}</tspan>`).join('')}</text>`;
- }).join(''):'';
+ const guides=nodes.filter(node=>node.side!=='middle').map(node=>{const [x,y]=point(node);return `<path class="radar-label-guide" d="M ${x} ${y} L ${node.labelX+(node.side==='start'?-6:6)} ${node.labelY+node.labelHeight/2}"/>`;}).join('');
+ const labels=nodes.map(({axis,side,labelX,labelY,lines})=>`<text class="${externalLabels?'radar-compact-label':'radar-axis-label'}" text-anchor="${side}" data-radar-axis="${esc(axis.id)}"><title>${esc(axis.label)}</title>${lines.map((line,j)=>`<tspan x="${labelX}" y="${labelY+12+j*lineHeight}">${esc(line)}</tspan>`).join('')}</text>`).join('');
  const surface=nodes.map(node=>point(node,node.axis.current.total/model.scale).map(v=>v.toFixed(2)).join(',')).join(' ');
- return `<svg class="muscle-radar" viewBox="${externalLabels?`0 0 320 ${height}`:`0 ${cropTop} 360 ${cropBottom-cropTop}`}" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}" data-axes="${model.axes.map(row=>row.id).join(',')}">${rings}${spokes}${guides}<polygon class="radar-direct" points="${surface}"/>${externalLabels?compactLabels:labels}</svg>`;
+ const dots=nodes.map(node=>{const [x,y]=point(node,node.axis.current.total/model.scale);return `<circle class="radar-vertex" cx="${x}" cy="${y}" r="2.6"/>`;}).join('');
+ return `<svg class="muscle-radar" viewBox="0 0 360 ${height}" role="img" aria-label="${esc(textual(model))}" data-scale="${model.scale}" data-axes="${model.axes.map(row=>esc(row.id)).join(',')}"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#c4f65b" stop-opacity=".29"/><stop offset="1" stop-color="#668c32" stop-opacity=".06"/></linearGradient></defs>${rings}${spokes}${guides}<polygon class="radar-direct" points="${surface}" style="fill:url(#${id})"/>${dots}${labels}</svg>`;
 }
 export function radarHtml(current,comparison=null,{title='Muscles travaillés',comparisonLabel='Séance précédente',compact=false,volumeList=false,model:providedModel=null,unclassifiedControls=''}={}){
  const model=providedModel||radarModel(current,comparison);

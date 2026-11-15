@@ -3597,7 +3597,7 @@ nav br {
 .radar-help>summary:focus-visible { outline:2px solid var(--accent);outline-offset:-5px; }
 .radar-help>p { margin:10px 0;line-height:1.55; }
 .muscle-radar { display:block;width:100%;max-width:440px;height:auto;margin:0 auto;overflow:visible; }
-.muscle-radar .radar-axis-label { font-size:16px;font-weight:500;fill:var(--muted);letter-spacing:-.1px; }
+.muscle-radar .radar-axis-label { font-size:12px;font-weight:500;fill:var(--muted);letter-spacing:-.1px; }
 .radar-grid { fill:none;stroke:#354039;stroke-width:.7; }
 .radar-spoke { stroke:#303b33;stroke-width:.6; }
 .radar-direct { fill:#c5f2791c;stroke:var(--accent);stroke-width:2;stroke-linejoin:round; }
