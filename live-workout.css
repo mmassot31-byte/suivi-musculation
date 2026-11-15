@@ -38,3 +38,19 @@ body.entry-focused .work-shell .live-exercise-options{display:block}.keyboard-op
 .work-shell{padding-top:max(14px,var(--live-safe-top,env(safe-area-inset-top)));padding-left:max(var(--live-gutter,14px),var(--live-safe-left,env(safe-area-inset-left)));padding-right:max(var(--live-gutter,14px),var(--live-safe-right,env(safe-area-inset-right)))}@media(max-width:360px){.work-shell{--live-gutter:10px}}
 /* Leave room for both the iPhone cutout and a panned, keyboard-sized viewport. */
 .keyboard-open .work-shell .live-strength-card{padding:10px}.keyboard-open .work-shell .live-exercise-heading h2{font-size:18px}.keyboard-open .work-shell .live-exercise-heading .exercise-title-link{min-height:28px}.keyboard-open .work-shell .live-exercise-heading .exercise-icon{width:28px;height:28px;min-width:28px;padding:2px}.keyboard-open .work-shell .live-exercise-heading .muscle-icon{width:24px;height:24px}.keyboard-open .work-shell .live-exercise-heading .exercise-title-link>span:last-child{-webkit-line-clamp:1}.keyboard-open .work-shell .live-strength-card .number-box{padding:5px}.keyboard-open .work-shell .live-strength-card .number-box input{font-size:32px;min-height:36px}.keyboard-open .work-shell .live-strength-card .number-box button{min-height:32px;font-size:23px}.keyboard-open .work-shell .live-strength-card .entry{margin-bottom:7px}.keyboard-open .work-shell .live-series-button{min-height:28px}.keyboard-open .work-shell .live-series>strong{font-size:12px}.keyboard-open .work-shell .live-strength-card .validate-btn{min-height:42px;font-size:16px}.keyboard-open .work-shell .next-rest{min-height:35px;margin-bottom:6px}.keyboard-open .work-shell .next-rest select{height:28px;min-height:28px;font-size:16px}
+
+/* Free sessions: one clear next step, directly below the saved sets. */
+.work-shell .free-validated-sets{display:grid;gap:8px;margin:18px 0}
+.work-shell .free-validated-set{display:flex;align-items:center;gap:6px;padding:12px;background:var(--bg);border:1px solid #344333;border-radius:16px}
+.work-shell .free-validated-set>div{flex:1;min-width:0;overflow-wrap:anywhere}
+.work-shell .free-validated-set small,.work-shell .free-validated-set strong{display:block}
+.work-shell .free-validated-set small{color:var(--muted);font-size:12px}
+.work-shell .free-validated-set strong{font-size:16px;margin-top:5px}
+.work-shell .free-validated-set button{min-width:44px;min-height:44px;padding:8px}
+.work-shell .free-next-actions{display:grid;gap:10px;scroll-margin:calc(var(--live-header-height,140px) + 16px) 0 calc(100px + env(safe-area-inset-bottom));outline:none}
+.work-shell .free-next-actions h3{font-size:16px;margin:6px 0}
+.work-shell .free-next-actions button{min-height:52px;margin:0;border-radius:16px;font-size:16px}
+.work-shell .free-next-actions .free-other{border:1px solid #536247;background:#20281e}
+.work-shell .free-next-actions .free-finish{min-height:48px;background:transparent;border-color:transparent;color:var(--text)}
+@media(prefers-reduced-motion:no-preference){.work-shell .free-completed{animation:free-saved .16s ease-out}@keyframes free-saved{from{opacity:.75;transform:translateY(3px)}to{opacity:1;transform:none}}}
+.work-shell .free-other .ico{width:20px;height:20px;vertical-align:middle;margin-right:6px}

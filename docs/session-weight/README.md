@@ -95,3 +95,7 @@ Captures des écrans à 320 × 568, 375 × 844, 390 × 844 et 430 × 844 dans `c
 - `node scripts/check-public-config.cjs`, vérifications syntaxiques et `git diff --check` : réussis.
 - `npm test` : 34 rapports de réussite avant l’arrêt dans `tests/smoke.cjs`, qui attend le bouton `performance-detail` absent. Même échec reproduit sur une copie du dépôt d’origine, avant ces modifications. La partie suivante de cette suite générale n’a donc pas été exécutée par cette commande.
 - Vérification supplémentaire `tests/premium-offline.cjs` : arrêt sur le sélecteur `select:5` absent, également reproduit sur le dépôt d’origine. Le test dédié `session-weight-offline.cjs` valide le fonctionnement hors connexion de cette fonctionnalité avec le service worker réel.
+
+## Vérification avant publication
+
+La révision de production `cdc7c0c` (nouveau parcours après validation des séries en séance libre) a été intégrée avant publication. Les conflits dans `app.js` et `package.json` ont été résolus en conservant ce parcours et les comparaisons de tonnage. Tests relancés avec succès après fusion : `npm run test:session-weight`, parcours de la carte sous WebKit, `free-session-next-ui.cjs`, `transaction-actions-ui.cjs`, `finish-action-ui.cjs`, `saved-session.cjs` et `identity.cjs`.
