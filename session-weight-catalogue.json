@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "unite": "kg",
   "note": "Masses indicatives non sourcées individuellement. Ordres de grandeur plausibles, sans validation métrologique. Animaux adultes ; véhicules à vide sauf mention contraire. Références insuffisamment définies conservées mais désactivées.",
   "references": [
@@ -12,7 +12,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "éléphant de savane mâle",
-      "nom_pluriel": "éléphants de savane mâles"
+      "nom_pluriel": "éléphants de savane mâles",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-002",
@@ -23,7 +28,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "éléphant d’Asie mâle",
-      "nom_pluriel": "éléphants d’Asie mâles"
+      "nom_pluriel": "éléphants d’Asie mâles",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-003",
@@ -34,7 +44,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "hippopotame",
-      "nom_pluriel": "hippopotames"
+      "nom_pluriel": "hippopotames",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-004",
@@ -45,7 +60,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "rhinocéros blanc",
-      "nom_pluriel": "rhinocéros blancs"
+      "nom_pluriel": "rhinocéros blancs",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-005",
@@ -56,7 +76,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "girafe",
-      "nom_pluriel": "girafes"
+      "nom_pluriel": "girafes",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-006",
@@ -67,7 +92,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "bison",
-      "nom_pluriel": "bisons"
+      "nom_pluriel": "bisons",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 150,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-007",
@@ -78,7 +108,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "buffle africain",
-      "nom_pluriel": "buffles africains"
+      "nom_pluriel": "buffles africains",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 150,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-008",
@@ -89,7 +124,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ours polaire mâle",
-      "nom_pluriel": "ours polaires mâles"
+      "nom_pluriel": "ours polaires mâles",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 150,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-009",
@@ -100,7 +140,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ours brun",
-      "nom_pluriel": "ours bruns"
+      "nom_pluriel": "ours bruns",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 200,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-010",
@@ -111,7 +156,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "lion mâle",
-      "nom_pluriel": "lions mâles"
+      "nom_pluriel": "lions mâles",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-011",
@@ -122,7 +172,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tigre",
-      "nom_pluriel": "tigres"
+      "nom_pluriel": "tigres",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-012",
@@ -133,7 +188,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "gorille mâle",
-      "nom_pluriel": "gorilles mâles"
+      "nom_pluriel": "gorilles mâles",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-013",
@@ -144,7 +204,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "zèbre",
-      "nom_pluriel": "zèbres"
+      "nom_pluriel": "zèbres",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-014",
@@ -155,7 +220,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "cheval",
-      "nom_pluriel": "chevaux"
+      "nom_pluriel": "chevaux",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-015",
@@ -166,7 +236,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "vache laitière",
-      "nom_pluriel": "vaches laitières"
+      "nom_pluriel": "vaches laitières",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-016",
@@ -177,7 +252,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "cochon domestique",
-      "nom_pluriel": "cochons domestiques"
+      "nom_pluriel": "cochons domestiques",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-017",
@@ -188,7 +268,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mouton",
-      "nom_pluriel": "moutons"
+      "nom_pluriel": "moutons",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-018",
@@ -199,7 +284,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "chèvre",
-      "nom_pluriel": "chèvres"
+      "nom_pluriel": "chèvres",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-019",
@@ -210,7 +300,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "chien labrador",
-      "nom_pluriel": "chiens labradors"
+      "nom_pluriel": "chiens labradors",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-020",
@@ -221,7 +316,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "chat domestique",
-      "nom_pluriel": "chats domestiques"
+      "nom_pluriel": "chats domestiques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-021",
@@ -232,7 +332,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "baleine bleue",
-      "nom_pluriel": "baleines bleues"
+      "nom_pluriel": "baleines bleues",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-022",
@@ -243,7 +348,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "rorqual commun",
-      "nom_pluriel": "rorquals communs"
+      "nom_pluriel": "rorquals communs",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-023",
@@ -254,7 +364,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "cachalot mâle",
-      "nom_pluriel": "cachalots mâles"
+      "nom_pluriel": "cachalots mâles",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-024",
@@ -265,7 +380,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "baleine à bosse",
-      "nom_pluriel": "baleines à bosse"
+      "nom_pluriel": "baleines à bosse",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-025",
@@ -276,7 +396,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "orque",
-      "nom_pluriel": "orques"
+      "nom_pluriel": "orques",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-026",
@@ -287,7 +412,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "béluga",
-      "nom_pluriel": "bélugas"
+      "nom_pluriel": "bélugas",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 150,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-027",
@@ -298,7 +428,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "dauphin commun",
-      "nom_pluriel": "dauphins communs"
+      "nom_pluriel": "dauphins communs",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-028",
@@ -309,7 +444,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "grand dauphin",
-      "nom_pluriel": "grands dauphins"
+      "nom_pluriel": "grands dauphins",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-029",
@@ -320,7 +460,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "requin blanc",
-      "nom_pluriel": "requins blancs"
+      "nom_pluriel": "requins blancs",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-030",
@@ -331,7 +476,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "requin-baleine",
-      "nom_pluriel": "requins-baleines"
+      "nom_pluriel": "requins-baleines",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-031",
@@ -342,7 +492,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "morse",
-      "nom_pluriel": "morses"
+      "nom_pluriel": "morses",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 200,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-032",
@@ -353,7 +508,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "éléphant de mer mâle",
-      "nom_pluriel": "éléphants de mer mâles"
+      "nom_pluriel": "éléphants de mer mâles",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 200,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-033",
@@ -364,7 +524,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "phoque gris",
-      "nom_pluriel": "phoques gris"
+      "nom_pluriel": "phoques gris",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-034",
@@ -375,7 +540,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "lion de mer",
-      "nom_pluriel": "lions de mer"
+      "nom_pluriel": "lions de mer",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-035",
@@ -386,7 +556,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "lamantin",
-      "nom_pluriel": "lamantins"
+      "nom_pluriel": "lamantins",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-036",
@@ -397,7 +572,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tortue luth",
-      "nom_pluriel": "tortues luth"
+      "nom_pluriel": "tortues luth",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-037",
@@ -408,7 +588,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "thon rouge",
-      "nom_pluriel": "thons rouges"
+      "nom_pluriel": "thons rouges",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-038",
@@ -419,7 +604,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "espadon",
-      "nom_pluriel": "espadons"
+      "nom_pluriel": "espadons",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-039",
@@ -431,7 +621,12 @@
       "actif": true,
       "nom_singulier": "poulpe géant du Pacifique",
       "nom_pluriel": "poulpes géants du Pacifique",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-040",
@@ -443,7 +638,12 @@
       "actif": false,
       "nom_singulier": "méduse lune",
       "nom_pluriel": "méduses lunes",
-      "motif_exclusion": "Espèce et taille insuffisantes : masse très variable, référence peu parlante."
+      "motif_exclusion": "Espèce et taille insuffisantes : masse très variable, référence peu parlante.",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-041",
@@ -454,7 +654,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "citadine",
-      "nom_pluriel": "citadines"
+      "nom_pluriel": "citadines",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-042",
@@ -465,7 +670,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "berline",
-      "nom_pluriel": "berlines"
+      "nom_pluriel": "berlines",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-043",
@@ -476,7 +686,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "SUV familial",
-      "nom_pluriel": "SUV familiaux"
+      "nom_pluriel": "SUV familiaux",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-044",
@@ -487,7 +702,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "voiture électrique compacte",
-      "nom_pluriel": "voitures électriques compactes"
+      "nom_pluriel": "voitures électriques compactes",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-045",
@@ -498,7 +718,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "moto routière",
-      "nom_pluriel": "motos routières"
+      "nom_pluriel": "motos routières",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 200,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-046",
@@ -509,7 +734,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "scooter",
-      "nom_pluriel": "scooters"
+      "nom_pluriel": "scooters",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 200,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-047",
@@ -520,7 +750,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "vélo de ville",
-      "nom_pluriel": "vélos de ville"
+      "nom_pluriel": "vélos de ville",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-048",
@@ -531,7 +766,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "vélo électrique",
-      "nom_pluriel": "vélos électriques"
+      "nom_pluriel": "vélos électriques",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 800,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-049",
@@ -542,7 +782,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "trottinette électrique",
-      "nom_pluriel": "trottinettes électriques"
+      "nom_pluriel": "trottinettes électriques",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 800,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-050",
@@ -553,7 +798,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "camionnette",
-      "nom_pluriel": "camionnettes"
+      "nom_pluriel": "camionnettes",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-051",
@@ -564,7 +814,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "fourgon utilitaire",
-      "nom_pluriel": "fourgons utilitaires"
+      "nom_pluriel": "fourgons utilitaires",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-052",
@@ -576,7 +831,12 @@
       "actif": true,
       "nom_singulier": "camion porteur lourd",
       "nom_pluriel": "camions porteurs lourds",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-053",
@@ -588,7 +848,12 @@
       "actif": true,
       "nom_singulier": "ensemble semi-remorque chargé à 40 t",
       "nom_pluriel": "ensembles semi-remorques chargés à 40 t",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-054",
@@ -599,7 +864,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "bus urbain",
-      "nom_pluriel": "bus urbains"
+      "nom_pluriel": "bus urbains",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-055",
@@ -610,7 +880,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "autocar",
-      "nom_pluriel": "autocars"
+      "nom_pluriel": "autocars",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-056",
@@ -621,7 +896,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "minibus",
-      "nom_pluriel": "minibus"
+      "nom_pluriel": "minibus",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-057",
@@ -632,7 +912,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tracteur agricole",
-      "nom_pluriel": "tracteurs agricoles"
+      "nom_pluriel": "tracteurs agricoles",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-058",
@@ -643,7 +928,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "camping-car",
-      "nom_pluriel": "camping-cars"
+      "nom_pluriel": "camping-cars",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-059",
@@ -654,7 +944,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "quad",
-      "nom_pluriel": "quads"
+      "nom_pluriel": "quads",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-060",
@@ -665,7 +960,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "kart",
-      "nom_pluriel": "karts"
+      "nom_pluriel": "karts",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-061",
@@ -676,7 +976,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "avion de ligne moyen-courrier à vide",
-      "nom_pluriel": "avions de ligne moyen-courriers à vide"
+      "nom_pluriel": "avions de ligne moyen-courriers à vide",
+      "score_interet": 5,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-062",
@@ -687,7 +992,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "petit avion de tourisme",
-      "nom_pluriel": "petits avions de tourisme"
+      "nom_pluriel": "petits avions de tourisme",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-063",
@@ -698,7 +1008,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "hélicoptère léger",
-      "nom_pluriel": "hélicoptères légers"
+      "nom_pluriel": "hélicoptères légers",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-064",
@@ -709,7 +1024,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "hélicoptère de transport",
-      "nom_pluriel": "hélicoptères de transport"
+      "nom_pluriel": "hélicoptères de transport",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-065",
@@ -720,7 +1040,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "wagon de marchandises à vide",
-      "nom_pluriel": "wagons de marchandises à vide"
+      "nom_pluriel": "wagons de marchandises à vide",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-066",
@@ -731,7 +1056,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "locomotive électrique",
-      "nom_pluriel": "locomotives électriques"
+      "nom_pluriel": "locomotives électriques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-067",
@@ -743,7 +1073,12 @@
       "actif": true,
       "nom_singulier": "rame de tramway",
       "nom_pluriel": "rames de tramway",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-068",
@@ -754,7 +1089,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "rame de métro",
-      "nom_pluriel": "rames de métro"
+      "nom_pluriel": "rames de métro",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-069",
@@ -765,7 +1105,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "bateau de plaisance",
-      "nom_pluriel": "bateaux de plaisance"
+      "nom_pluriel": "bateaux de plaisance",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-070",
@@ -776,7 +1121,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "voilier de croisière",
-      "nom_pluriel": "voiliers de croisière"
+      "nom_pluriel": "voiliers de croisière",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-071",
@@ -787,7 +1137,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "jet-ski",
-      "nom_pluriel": "jets-skis"
+      "nom_pluriel": "jets-skis",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-072",
@@ -798,7 +1153,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "kayak",
-      "nom_pluriel": "kayaks"
+      "nom_pluriel": "kayaks",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-073",
@@ -809,7 +1169,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "canoë",
-      "nom_pluriel": "canoës"
+      "nom_pluriel": "canoës",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-074",
@@ -820,7 +1185,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pédalo",
-      "nom_pluriel": "pédalos"
+      "nom_pluriel": "pédalos",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-075",
@@ -831,7 +1201,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "chariot élévateur",
-      "nom_pluriel": "chariots élévateurs"
+      "nom_pluriel": "chariots élévateurs",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-076",
@@ -842,7 +1217,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mini-pelle",
-      "nom_pluriel": "mini-pelles"
+      "nom_pluriel": "mini-pelles",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-077",
@@ -853,7 +1233,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pelle hydraulique",
-      "nom_pluriel": "pelles hydrauliques"
+      "nom_pluriel": "pelles hydrauliques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-078",
@@ -864,7 +1249,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "bulldozer",
-      "nom_pluriel": "bulldozers"
+      "nom_pluriel": "bulldozers",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-079",
@@ -875,7 +1265,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "grue mobile",
-      "nom_pluriel": "grues mobiles"
+      "nom_pluriel": "grues mobiles",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-080",
@@ -886,7 +1281,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "rouleau compresseur",
-      "nom_pluriel": "rouleaux compresseurs"
+      "nom_pluriel": "rouleaux compresseurs",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-081",
@@ -897,7 +1297,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "canapé trois places",
-      "nom_pluriel": "canapés trois places"
+      "nom_pluriel": "canapés trois places",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-082",
@@ -908,7 +1313,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "fauteuil",
-      "nom_pluriel": "fauteuils"
+      "nom_pluriel": "fauteuils",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-083",
@@ -919,7 +1329,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "lit double avec matelas",
-      "nom_pluriel": "lits doubles avec matelas"
+      "nom_pluriel": "lits doubles avec matelas",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-084",
@@ -930,7 +1345,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "matelas double",
-      "nom_pluriel": "matelas doubles"
+      "nom_pluriel": "matelas doubles",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-085",
@@ -941,7 +1361,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "armoire",
-      "nom_pluriel": "armoires"
+      "nom_pluriel": "armoires",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-086",
@@ -952,7 +1377,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "commode",
-      "nom_pluriel": "commodes"
+      "nom_pluriel": "commodes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-087",
@@ -963,7 +1393,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "table de salle à manger",
-      "nom_pluriel": "tables de salle à manger"
+      "nom_pluriel": "tables de salle à manger",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-088",
@@ -974,7 +1409,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "chaise en bois",
-      "nom_pluriel": "chaises en bois"
+      "nom_pluriel": "chaises en bois",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-089",
@@ -985,7 +1425,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "bureau",
-      "nom_pluriel": "bureaux"
+      "nom_pluriel": "bureaux",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-090",
@@ -997,7 +1442,12 @@
       "actif": false,
       "nom_singulier": "bibliothèque remplie",
       "nom_pluriel": "bibliothèques remplies",
-      "motif_exclusion": "Dimensions du meuble et contenu non définis."
+      "motif_exclusion": "Dimensions du meuble et contenu non définis.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 200,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-091",
@@ -1008,7 +1458,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "réfrigérateur",
-      "nom_pluriel": "réfrigérateurs"
+      "nom_pluriel": "réfrigérateurs",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-092",
@@ -1019,7 +1474,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "congélateur",
-      "nom_pluriel": "congélateurs"
+      "nom_pluriel": "congélateurs",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-093",
@@ -1030,7 +1490,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "machine à laver",
-      "nom_pluriel": "machines à laver"
+      "nom_pluriel": "machines à laver",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-094",
@@ -1041,7 +1506,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "sèche-linge",
-      "nom_pluriel": "sèche-linge"
+      "nom_pluriel": "sèche-linge",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-095",
@@ -1052,7 +1522,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "lave-vaisselle",
-      "nom_pluriel": "lave-vaisselle"
+      "nom_pluriel": "lave-vaisselle",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-096",
@@ -1063,7 +1538,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "four encastrable",
-      "nom_pluriel": "fours encastrables"
+      "nom_pluriel": "fours encastrables",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-097",
@@ -1075,7 +1555,12 @@
       "actif": true,
       "nom_singulier": "téléviseur de 55 pouces",
       "nom_pluriel": "téléviseurs de 55 pouces",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-098",
@@ -1086,7 +1571,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "aspirateur traîneau",
-      "nom_pluriel": "aspirateurs traîneaux"
+      "nom_pluriel": "aspirateurs traîneaux",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-099",
@@ -1097,7 +1587,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "micro-ondes",
-      "nom_pluriel": "micro-ondes"
+      "nom_pluriel": "micro-ondes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-100",
@@ -1108,7 +1603,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "radiateur en fonte",
-      "nom_pluriel": "radiateurs en fonte"
+      "nom_pluriel": "radiateurs en fonte",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-101",
@@ -1119,7 +1619,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "smartphone",
-      "nom_pluriel": "smartphones"
+      "nom_pluriel": "smartphones",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-102",
@@ -1130,7 +1635,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ordinateur portable",
-      "nom_pluriel": "ordinateurs portables"
+      "nom_pluriel": "ordinateurs portables",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-103",
@@ -1141,7 +1651,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tablette",
-      "nom_pluriel": "tablettes"
+      "nom_pluriel": "tablettes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-104",
@@ -1152,7 +1667,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "livre de poche",
-      "nom_pluriel": "livres de poche"
+      "nom_pluriel": "livres de poche",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-105",
@@ -1163,7 +1683,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "gros dictionnaire",
-      "nom_pluriel": "gros dictionnaires"
+      "nom_pluriel": "gros dictionnaires",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-106",
@@ -1175,7 +1700,12 @@
       "actif": true,
       "nom_singulier": "bouteille d’eau de 1 L pleine",
       "nom_pluriel": "bouteilles d’eau de 1 L pleines",
-      "note_revision": "Environ 1 kg d’eau et 30 g d’emballage ; bouteille pleine."
+      "note_revision": "Environ 1 kg d’eau et 30 g d’emballage ; bouteille pleine.",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-107",
@@ -1187,7 +1717,12 @@
       "actif": true,
       "nom_singulier": "pack de six bouteilles de 1,5 L",
       "nom_pluriel": "packs de six bouteilles de 1,5 L",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-108",
@@ -1198,7 +1733,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "sac de courses rempli",
-      "nom_pluriel": "sacs de courses remplis"
+      "nom_pluriel": "sacs de courses remplis",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-109",
@@ -1209,7 +1749,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "valise cabine remplie",
-      "nom_pluriel": "valises cabine remplies"
+      "nom_pluriel": "valises cabine remplies",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-110",
@@ -1220,7 +1765,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "sac à dos scolaire rempli",
-      "nom_pluriel": "sacs à dos scolaires remplis"
+      "nom_pluriel": "sacs à dos scolaires remplis",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-111",
@@ -1231,7 +1781,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "paire de chaussures",
-      "nom_pluriel": "paires de chaussures"
+      "nom_pluriel": "paires de chaussures",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-112",
@@ -1242,7 +1797,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ballon de football",
-      "nom_pluriel": "ballons de football"
+      "nom_pluriel": "ballons de football",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-113",
@@ -1253,7 +1813,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ballon de basket",
-      "nom_pluriel": "ballons de basket"
+      "nom_pluriel": "ballons de basket",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-114",
@@ -1264,7 +1829,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "casque de vélo",
-      "nom_pluriel": "casques de vélo"
+      "nom_pluriel": "casques de vélo",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-115",
@@ -1275,7 +1845,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "parapluie",
-      "nom_pluriel": "parapluies"
+      "nom_pluriel": "parapluies",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-116",
@@ -1286,7 +1861,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "brique de construction",
-      "nom_pluriel": "briques de construction"
+      "nom_pluriel": "briques de construction",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-117",
@@ -1297,7 +1877,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "parpaing",
-      "nom_pluriel": "parpaings"
+      "nom_pluriel": "parpaings",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-118",
@@ -1309,7 +1894,12 @@
       "actif": true,
       "nom_singulier": "sac de ciment de 25 kg",
       "nom_pluriel": "sacs de ciment de 25 kg",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-119",
@@ -1320,7 +1910,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "haltère de 10 kg",
-      "nom_pluriel": "haltères de 10 kg"
+      "nom_pluriel": "haltères de 10 kg",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-120",
@@ -1331,7 +1926,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "disque de musculation de 20 kg",
-      "nom_pluriel": "disques de musculation de 20 kg"
+      "nom_pluriel": "disques de musculation de 20 kg",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-121",
@@ -1342,7 +1942,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pomme",
-      "nom_pluriel": "pommes"
+      "nom_pluriel": "pommes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-122",
@@ -1353,7 +1958,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "banane",
-      "nom_pluriel": "bananes"
+      "nom_pluriel": "bananes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-123",
@@ -1364,7 +1974,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "orange",
-      "nom_pluriel": "oranges"
+      "nom_pluriel": "oranges",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-124",
@@ -1375,7 +1990,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pastèque",
-      "nom_pluriel": "pastèques"
+      "nom_pluriel": "pastèques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-125",
@@ -1386,7 +2006,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ananas",
-      "nom_pluriel": "ananas"
+      "nom_pluriel": "ananas",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-126",
@@ -1397,7 +2022,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "melon",
-      "nom_pluriel": "melons"
+      "nom_pluriel": "melons",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-127",
@@ -1408,7 +2038,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "citrouille",
-      "nom_pluriel": "citrouilles"
+      "nom_pluriel": "citrouilles",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-128",
@@ -1419,7 +2054,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pomme de terre",
-      "nom_pluriel": "pommes de terre"
+      "nom_pluriel": "pommes de terre",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-129",
@@ -1430,7 +2070,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "carotte",
-      "nom_pluriel": "carottes"
+      "nom_pluriel": "carottes",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-130",
@@ -1441,7 +2086,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "oignon",
-      "nom_pluriel": "oignons"
+      "nom_pluriel": "oignons",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-131",
@@ -1452,7 +2102,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "baguette",
-      "nom_pluriel": "baguettes"
+      "nom_pluriel": "baguettes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-132",
@@ -1463,7 +2118,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pain de campagne",
-      "nom_pluriel": "pains de campagne"
+      "nom_pluriel": "pains de campagne",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-133",
@@ -1474,7 +2134,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "pizza familiale",
-      "nom_pluriel": "pizzas familiales"
+      "nom_pluriel": "pizzas familiales",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-134",
@@ -1485,7 +2150,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "burger",
-      "nom_pluriel": "burgers"
+      "nom_pluriel": "burgers",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-135",
@@ -1496,7 +2166,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "œuf de poule",
-      "nom_pluriel": "œufs de poule"
+      "nom_pluriel": "œufs de poule",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-136",
@@ -1507,7 +2182,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "poulet entier",
-      "nom_pluriel": "poulets entiers"
+      "nom_pluriel": "poulets entiers",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-137",
@@ -1518,7 +2198,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "jambon entier",
-      "nom_pluriel": "jambons entiers"
+      "nom_pluriel": "jambons entiers",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-138",
@@ -1529,7 +2214,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "meule de comté",
-      "nom_pluriel": "meules de comté"
+      "nom_pluriel": "meules de comté",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-139",
@@ -1541,7 +2231,12 @@
       "actif": true,
       "nom_singulier": "sac de riz de 5 kg",
       "nom_pluriel": "sacs de riz de 5 kg",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-140",
@@ -1553,7 +2248,12 @@
       "actif": true,
       "nom_singulier": "sac de farine de 1 kg",
       "nom_pluriel": "sacs de farine de 1 kg",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 3000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-141",
@@ -1564,7 +2264,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "barre olympique masculine",
-      "nom_pluriel": "barres olympiques masculines"
+      "nom_pluriel": "barres olympiques masculines",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-142",
@@ -1575,7 +2280,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "kettlebell de 16 kg",
-      "nom_pluriel": "kettlebells de 16 kg"
+      "nom_pluriel": "kettlebells de 16 kg",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-143",
@@ -1586,7 +2296,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "kettlebell de 24 kg",
-      "nom_pluriel": "kettlebells de 24 kg"
+      "nom_pluriel": "kettlebells de 24 kg",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-144",
@@ -1598,7 +2313,12 @@
       "actif": true,
       "nom_singulier": "médecine-ball de 5 kg",
       "nom_pluriel": "médecine-balls de 5 kg",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 2000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-145",
@@ -1609,7 +2329,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tapis de course",
-      "nom_pluriel": "tapis de course"
+      "nom_pluriel": "tapis de course",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-146",
@@ -1620,7 +2345,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "vélo d’appartement",
-      "nom_pluriel": "vélos d’appartement"
+      "nom_pluriel": "vélos d’appartement",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-147",
@@ -1631,7 +2361,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "rameur de fitness",
-      "nom_pluriel": "rameurs de fitness"
+      "nom_pluriel": "rameurs de fitness",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-148",
@@ -1642,7 +2377,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "banc de musculation",
-      "nom_pluriel": "bancs de musculation"
+      "nom_pluriel": "bancs de musculation",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-149",
@@ -1653,7 +2393,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "machine guidée de musculation",
-      "nom_pluriel": "machines guidées de musculation"
+      "nom_pluriel": "machines guidées de musculation",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-150",
@@ -1664,7 +2409,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "table de ping-pong",
-      "nom_pluriel": "tables de ping-pong"
+      "nom_pluriel": "tables de ping-pong",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-151",
@@ -1675,7 +2425,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "baby-foot",
-      "nom_pluriel": "baby-foots"
+      "nom_pluriel": "baby-foots",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 500,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-152",
@@ -1686,7 +2441,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "billard américain",
-      "nom_pluriel": "billards américains"
+      "nom_pluriel": "billards américains",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-153",
@@ -1697,7 +2457,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "piano droit",
-      "nom_pluriel": "pianos droits"
+      "nom_pluriel": "pianos droits",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-154",
@@ -1708,7 +2473,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "piano à queue",
-      "nom_pluriel": "pianos à queue"
+      "nom_pluriel": "pianos à queue",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-155",
@@ -1719,7 +2489,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "guitare électrique",
-      "nom_pluriel": "guitares électriques"
+      "nom_pluriel": "guitares électriques",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-156",
@@ -1730,7 +2505,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "batterie acoustique complète",
-      "nom_pluriel": "batteries acoustiques complètes"
+      "nom_pluriel": "batteries acoustiques complètes",
+      "score_interet": 3,
+      "insolite": true,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-157",
@@ -1741,7 +2521,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "kayak de compétition",
-      "nom_pluriel": "kayaks de compétition"
+      "nom_pluriel": "kayaks de compétition",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-158",
@@ -1752,7 +2537,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "planche de surf",
-      "nom_pluriel": "planches de surf"
+      "nom_pluriel": "planches de surf",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-159",
@@ -1763,7 +2553,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "skateboard",
-      "nom_pluriel": "skateboards"
+      "nom_pluriel": "skateboards",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-160",
@@ -1774,7 +2569,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "tente de camping",
-      "nom_pluriel": "tentes de camping"
+      "nom_pluriel": "tentes de camping",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-161",
@@ -1785,7 +2585,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "litre d’eau",
-      "nom_pluriel": "litres d’eau"
+      "nom_pluriel": "litres d’eau",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 5000,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-162",
@@ -1796,7 +2601,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube d’eau",
-      "nom_pluriel": "mètres cubes d’eau"
+      "nom_pluriel": "mètres cubes d’eau",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-163",
@@ -1807,7 +2617,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de sable sec",
-      "nom_pluriel": "mètres cubes de sable sec"
+      "nom_pluriel": "mètres cubes de sable sec",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-164",
@@ -1818,7 +2633,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de gravier",
-      "nom_pluriel": "mètres cubes de gravier"
+      "nom_pluriel": "mètres cubes de gravier",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-165",
@@ -1829,7 +2649,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de béton",
-      "nom_pluriel": "mètres cubes de béton"
+      "nom_pluriel": "mètres cubes de béton",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-166",
@@ -1840,7 +2665,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de granit",
-      "nom_pluriel": "mètres cubes de granit"
+      "nom_pluriel": "mètres cubes de granit",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-167",
@@ -1851,7 +2681,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de chêne sec",
-      "nom_pluriel": "mètres cubes de chêne sec"
+      "nom_pluriel": "mètres cubes de chêne sec",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-168",
@@ -1862,7 +2697,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube de glace",
-      "nom_pluriel": "mètres cubes de glace"
+      "nom_pluriel": "mètres cubes de glace",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-169",
@@ -1873,7 +2713,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube d’acier",
-      "nom_pluriel": "mètres cubes d’acier"
+      "nom_pluriel": "mètres cubes d’acier",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-170",
@@ -1884,7 +2729,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "mètre cube d’aluminium",
-      "nom_pluriel": "mètres cubes d’aluminium"
+      "nom_pluriel": "mètres cubes d’aluminium",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": true
     },
     {
       "id": "ref-171",
@@ -1896,7 +2746,12 @@
       "actif": false,
       "nom_singulier": "bloc de pierre de taille",
       "nom_pluriel": "blocs de pierre de taille",
-      "motif_exclusion": "Dimensions et type de pierre non définis."
+      "motif_exclusion": "Dimensions et type de pierre non définis.",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-172",
@@ -1908,7 +2763,12 @@
       "actif": false,
       "nom_singulier": "gros rocher",
       "nom_pluriel": "gros rochers",
-      "motif_exclusion": "Aucun volume défini pour ce rocher."
+      "motif_exclusion": "Aucun volume défini pour ce rocher.",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-173",
@@ -1920,7 +2780,12 @@
       "actif": false,
       "nom_singulier": "tronc de chêne",
       "nom_pluriel": "troncs de chêne",
-      "motif_exclusion": "Diamètre, longueur et humidité non définis."
+      "motif_exclusion": "Diamètre, longueur et humidité non définis.",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-174",
@@ -1931,7 +2796,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "botte de foin ronde",
-      "nom_pluriel": "bottes de foin rondes"
+      "nom_pluriel": "bottes de foin rondes",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 500,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-175",
@@ -1942,7 +2812,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "balle de paille rectangulaire",
-      "nom_pluriel": "balles de paille rectangulaires"
+      "nom_pluriel": "balles de paille rectangulaires",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-176",
@@ -1954,7 +2829,12 @@
       "actif": false,
       "nom_singulier": "sac de terreau",
       "nom_pluriel": "sacs de terreau",
-      "motif_exclusion": "Volume et humidité du terreau non définis."
+      "motif_exclusion": "Volume et humidité du terreau non définis.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-177",
@@ -1966,7 +2846,12 @@
       "actif": true,
       "nom_singulier": "sac de sel de 25 kg",
       "nom_pluriel": "sacs de sel de 25 kg",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-178",
@@ -1977,7 +2862,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "palette de briques",
-      "nom_pluriel": "palettes de briques"
+      "nom_pluriel": "palettes de briques",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-179",
@@ -1988,7 +2878,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "palette de ciment",
-      "nom_pluriel": "palettes de ciment"
+      "nom_pluriel": "palettes de ciment",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-180",
@@ -1999,7 +2894,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "palette de bouteilles d’eau",
-      "nom_pluriel": "palettes de bouteilles d’eau"
+      "nom_pluriel": "palettes de bouteilles d’eau",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-181",
@@ -2011,7 +2911,12 @@
       "actif": false,
       "nom_singulier": "statue en bronze grandeur nature",
       "nom_pluriel": "statues en bronze grandeur nature",
-      "motif_exclusion": "Sculpture pleine ou creuse et dimensions non définies."
+      "motif_exclusion": "Sculpture pleine ou creuse et dimensions non définies.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-182",
@@ -2023,7 +2928,12 @@
       "actif": false,
       "nom_singulier": "petite sculpture en marbre",
       "nom_pluriel": "petites sculptures en marbre",
-      "motif_exclusion": "Dimensions non définies."
+      "motif_exclusion": "Dimensions non définies.",
+      "score_interet": 1,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-183",
@@ -2035,7 +2945,12 @@
       "actif": false,
       "nom_singulier": "cloche d’église moyenne",
       "nom_pluriel": "cloches d’église moyennes",
-      "motif_exclusion": "Aucun modèle ni dimensions de cloche."
+      "motif_exclusion": "Aucun modèle ni dimensions de cloche.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-184",
@@ -2047,7 +2962,12 @@
       "actif": false,
       "nom_singulier": "grande cloche d’église",
       "nom_pluriel": "grandes cloches d’église",
-      "motif_exclusion": "Aucun modèle ni dimensions de cloche."
+      "motif_exclusion": "Aucun modèle ni dimensions de cloche.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-185",
@@ -2058,7 +2978,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "coffre-fort domestique",
-      "nom_pluriel": "coffres-forts domestiques"
+      "nom_pluriel": "coffres-forts domestiques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-186",
@@ -2069,7 +2994,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "coffre-fort professionnel",
-      "nom_pluriel": "coffres-forts professionnels"
+      "nom_pluriel": "coffres-forts professionnels",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-187",
@@ -2080,7 +3010,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "distributeur automatique",
-      "nom_pluriel": "distributeurs automatiques"
+      "nom_pluriel": "distributeurs automatiques",
+      "score_interet": 4,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-188",
@@ -2091,7 +3026,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "photocopieur professionnel",
-      "nom_pluriel": "photocopieurs professionnels"
+      "nom_pluriel": "photocopieurs professionnels",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-189",
@@ -2102,7 +3042,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "borne d’arcade",
-      "nom_pluriel": "bornes d’arcade"
+      "nom_pluriel": "bornes d’arcade",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-190",
@@ -2113,7 +3058,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "flipper",
-      "nom_pluriel": "flippers"
+      "nom_pluriel": "flippers",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 300,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-191",
@@ -2124,7 +3074,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "machine à café professionnelle",
-      "nom_pluriel": "machines à café professionnelles"
+      "nom_pluriel": "machines à café professionnelles",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-192",
@@ -2135,7 +3090,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "véritable armure médiévale",
-      "nom_pluriel": "véritables armures médiévales"
+      "nom_pluriel": "véritables armures médiévales",
+      "score_interet": 4,
+      "insolite": true,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-193",
@@ -2146,7 +3106,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "épée médiévale",
-      "nom_pluriel": "épées médiévales"
+      "nom_pluriel": "épées médiévales",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-194",
@@ -2157,7 +3122,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "boulet de canon ancien",
-      "nom_pluriel": "boulets de canon anciens"
+      "nom_pluriel": "boulets de canon anciens",
+      "score_interet": 3,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-195",
@@ -2168,7 +3138,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "ancre de petit bateau",
-      "nom_pluriel": "ancres de petits bateaux"
+      "nom_pluriel": "ancres de petits bateaux",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 1000,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-196",
@@ -2180,7 +3155,12 @@
       "actif": false,
       "nom_singulier": "ancre de navire moyen",
       "nom_pluriel": "ancres de navires moyens",
-      "motif_exclusion": "Navire et modèle d’ancre non définis."
+      "motif_exclusion": "Navire et modèle d’ancre non définis.",
+      "score_interet": 2,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-197",
@@ -2192,7 +3172,12 @@
       "actif": true,
       "nom_singulier": "conteneur maritime de 20 pieds à vide",
       "nom_pluriel": "conteneurs maritimes de 20 pieds à vide",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-198",
@@ -2204,7 +3189,12 @@
       "actif": true,
       "nom_singulier": "conteneur maritime de 40 pieds à vide",
       "nom_pluriel": "conteneurs maritimes de 40 pieds à vide",
-      "note_revision": "Libellé précisé pour définir le type ou la masse nominale."
+      "note_revision": "Libellé précisé pour définir le type ou la masse nominale.",
+      "score_interet": 3,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "un",
+      "fractionnable": false
     },
     {
       "id": "ref-199",
@@ -2215,7 +3205,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "cabine téléphonique ancienne",
-      "nom_pluriel": "cabines téléphoniques anciennes"
+      "nom_pluriel": "cabines téléphoniques anciennes",
+      "score_interet": 3,
+      "insolite": true,
+      "quantite_max": 100,
+      "article_indefini": "une",
+      "fractionnable": false
     },
     {
       "id": "ref-200",
@@ -2226,7 +3221,12 @@
       "source_statut": "a_verifier",
       "actif": true,
       "nom_singulier": "petite voiture de golf",
-      "nom_pluriel": "petites voitures de golf"
+      "nom_pluriel": "petites voitures de golf",
+      "score_interet": 3,
+      "insolite": false,
+      "quantite_max": 300,
+      "article_indefini": "une",
+      "fractionnable": false
     }
   ]
 }

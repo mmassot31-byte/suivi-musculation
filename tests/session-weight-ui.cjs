@@ -18,7 +18,7 @@ const {chromium,webkit,prepare}=require('./browser-fixtures.cjs'),assert=require
   acceptFinish=false;await click('finish');assert.equal(await page.locator('.session-weight-card').count(),0);assert((await read()).active);
   acceptFinish=true;await click('finish');await page.locator('.session-weight-card').waitFor();
   const baseline=await read(),saved=baseline.sessions.at(-1),expected=await page.evaluate(async s=>(await import('./saved-session.js')).savedSessionModel(s,[s]).amount,saved);
-  assert.equal(expected,1255);assert.match(await page.locator('.session-weight-total').innerText(),/1\s255\s*kg\s*soulevés/);
+  assert.equal(expected,1255);assert.match(await page.locator('.session-weight-total').getAttribute('title'),/1\s255 kg soulevés/);assert.match(await page.locator('.session-weight-total').innerText(),/1,3 t/);
   assert.equal(await page.locator('.saved-stats + .session-weight-card').count(),1);
   const first=await reference();
   // A genuine application re-render after leaving/returning to the recap.
@@ -26,23 +26,40 @@ const {chromium,webkit,prepare}=require('./browser-fixtures.cjs'),assert=require
   await page.locator('.saved-comparison>summary').click();await page.locator('.session-comparison>summary').click();
   await page.locator('#compare-session').dispatchEvent('change');assert.equal(await reference(),first);
   await page.locator('.saved-comparison>summary').click();
+  const originalStats=await page.locator('.saved-stats').innerHTML(),originalMuscles=await page.locator('.saved-muscles').innerHTML();
+  const originalHeight=(await page.locator('.session-weight-card').boundingBox()).height;
   const requests=[];page.on('request',request=>requests.push(request.url()));await context.setOffline(true);
-  let last=first;for(let i=0;i<8;i++){await click('session-weight-next');const current=await reference();assert.notEqual(current,last);last=current;assert.match(await page.locator('.session-weight-total').innerText(),/1\s255\s*kg/);}
+  let last=first;for(let i=0;i<8;i++){await click('session-weight-next');const current=await reference();assert.notEqual(current,last);last=current;assert.match(await page.locator('.session-weight-total').innerText(),/1,3 t/);assert.equal((await page.locator('.session-weight-card').boundingBox()).height,originalHeight,'Rerolls do not move the card');}
   assert.deepEqual(requests,[],'Instant rerolls perform no network calls');assert.deepEqual(await read(),baseline,'Rerolls never write workout data');
+  assert.equal(await page.locator('.saved-stats').innerHTML(),originalStats);assert.equal(await page.locator('.saved-muscles').innerHTML(),originalMuscles);
   assert(await page.locator('.session-weight-next').evaluate(e=>e===document.activeElement));
-  assert.equal(await page.locator('.session-weight-card svg,.session-weight-card img').count(),0);
-  assert.match(await page.locator('.session-weight-comparison').innerText(),/^Environ /);assert.equal(await page.locator('.session-weight-note').innerText(),'Équivalence approximative');
-  fs.mkdirSync('docs/session-weight/captures',{recursive:true});
+  assert.equal(await page.locator('.session-weight-card img,.session-weight-comparison svg').count(),0);assert.equal(await page.locator('.session-weight-next svg').count(),1);
+  assert.equal(await page.locator('.session-weight-intro').innerText(),'C’est l’équivalent d’environ');assert(await page.locator('.session-weight-quantity').innerText());assert(await page.locator('.session-weight-reference').innerText());assert.equal(await page.locator('.session-weight-note').innerText(),'Masse indicative');
+  const captureDir=process.env.ELAN_CAPTURE_DIR||'docs/session-weight/captures';fs.mkdirSync(captureDir,{recursive:true});
   for(const width of[320,375,390,430]){
    await page.setViewportSize({width,height:width===320?568:844});await page.locator('.session-weight-card').scrollIntoViewIfNeeded();
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No horizontal overflow at '+width);
    const bounds=await page.locator('.session-weight-card').evaluate(card=>{const c=card.getBoundingClientRect(),button=card.querySelector('button').getBoundingClientRect(),total=card.querySelector('strong').getBoundingClientRect(),nav=document.querySelector('nav').getBoundingClientRect();return{left:c.left,right:c.right,height:c.height,buttonHeight:button.height,buttonBottom:button.bottom,navTop:nav.top,total:total.width,card:c.width};});
-   assert(bounds.left>=0&&bounds.right<=width);assert(bounds.buttonHeight>=44);assert(bounds.buttonBottom<=bounds.navTop);assert(bounds.height<300);
+   assert(bounds.left>=0&&bounds.right<=width);assert(bounds.buttonHeight>=44);assert(bounds.buttonBottom<=bounds.navTop);assert(bounds.height<160);
+   const layout=await page.evaluate(async()=>{
+    const W=await import('./session-weight.js'),live=document.querySelector('.session-weight-card'),host=document.createElement('div');
+    host.style.cssText=`position:absolute;left:0;top:0;width:${live.getBoundingClientRect().width}px;visibility:hidden;pointer-events:none`;
+    live.parentElement.append(host);let min=Infinity,max=0;const failures=[];
+    try{for(const reference of W.weightReferences)for(const q of[1.05,8.7,reference.quantite_max]){
+     const kg=q*reference.masse_kg;host.innerHTML=W.sessionWeightCardHtml({reference,kg,...W.formatWeightComparison(kg,reference),canChange:true});
+     const card=host.firstElementChild,box=card.getBoundingClientRect(),r=selector=>card.querySelector(selector).getBoundingClientRect();min=Math.min(min,box.height);max=Math.max(max,box.height);
+     const heading=r('h2'),total=r('.session-weight-total'),note=r('.session-weight-note'),button=r('button'),label=r('.session-weight-reference');
+     if(heading.right>total.left||Math.abs(heading.y+heading.height/2-total.y-total.height/2)>1||note.right>button.left||Math.abs(note.y+note.height/2-button.y-button.height/2)>1||label.right>box.right||card.scrollWidth>card.clientWidth)failures.push(reference.id+':'+q);
+    }}finally{host.remove();}
+    const quantity=getComputedStyle(live.querySelector('.session-weight-quantity')),name=getComputedStyle(live.querySelector('.session-weight-reference')),total=getComputedStyle(live.querySelector('.session-weight-total'));
+    return{min,max,failures,quantityColor:quantity.color,nameColor:name.color,totalColor:total.color,quantitySize:parseFloat(quantity.fontSize),nameSize:parseFloat(name.fontSize)};
+   });
+   assert.deepEqual(layout.failures,[],'Every active catalogue label fits the header/footer and mobile card');assert(layout.max-layout.min<0.5,'All references retain the same card height');assert(layout.max<160);assert.equal(layout.quantityColor,layout.totalColor);assert.notEqual(layout.quantityColor,layout.nameColor);assert(layout.quantitySize>layout.nameSize);
    if(width>=375)await page.evaluate(()=>scrollTo(0,0));
-   await page.screenshot({path:`docs/session-weight/captures/${engine}-${width}.png`});
+   await page.screenshot({path:`${captureDir}/${engine}-${width}.png`});
   }
   await context.setOffline(false);await page.emulateMedia({reducedMotion:'reduce'});await click('session-weight-next');
-  assert.equal(await page.locator('.session-weight-comparison').evaluate(e=>e.getAnimations().length),0);
+  assert.equal(await page.locator('.session-weight-comparison,.session-weight-refresh').evaluateAll(es=>es.reduce((n,e)=>n+e.getAnimations().length,0)),0);
   await click('saved-home');await click('nav:history');await click('detail:'+saved.id);assert.equal(await page.locator('.session-weight-card').count(),0,'History presentation is unchanged');
   // Actual free workout with a custom exercise, completed entirely offline.
   await click('saved-home');await click('start-free');await click('live-add-ex');await page.locator('#picker-custom-name').fill('Machine personnelle');await click('picker-custom-add');

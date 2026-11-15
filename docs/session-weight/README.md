@@ -8,7 +8,7 @@ SHA-256 du fichier source : `8b07dfdecea141b16bbc45edbdc65fb8db224c25075a5a6f7ad
 
 200 références dans 10 catégories de 20 entrées. Aucun doublon d’identifiant ni de nom (y compris après normalisation de casse et accents). Les variantes proches restent distinctes : espèces, contenances et modèles différents. Toutes les masses sont des nombres finis strictement positifs. Les champs initiaux sont conservés, avec des libellés singuliers et pluriels explicites.
 
-La vérification porte sur les ordres de grandeur et la définition des références. Les valeurs plausibles sont conservées comme **indicatives**, avec `source_statut: a_verifier` ; aucune validation scientifique ni source individuelle n’est inventée. Animaux adultes, véhicules à vide sauf mention contraire. Les comparaisons affichent toujours « Environ » et « Équivalence approximative ».
+La vérification porte sur les ordres de grandeur et la définition des références. Les valeurs plausibles sont conservées comme **indicatives**, avec `source_statut: a_verifier` ; aucune validation scientifique ni source individuelle n’est inventée. Animaux adultes, véhicules à vide sauf mention contraire. La carte introduit toujours la comparaison par « C’est l’équivalent d’environ » et précise « Masse indicative ». Le texte accessible du changement de comparaison conserve également « Environ ».
 
 189 références sont actives. Les 11 entrées suivantes sont conservées dans le JSON mais exclues de la sélection :
 
@@ -56,7 +56,7 @@ La bouteille de 1 L pleine passe de 1 kg à environ 1,03 kg pour inclure l’emb
 - Les références présentées dans les cinq dernières séances sont évitées dès qu’une candidate nouvelle existe. Les changements dans une même séance comptent tous dans cette exclusion. La référence précédente est toujours exclue du nouveau tirage.
 - Si aucune référence ne donne 1 à 100 exemplaires, repli vers les masses les plus proches de 1 exemplaire dans une borne de 0,1 à 200. Au-delà, la carte est masquée. Une unique référence laisse la comparaison visible et le bouton désactivé.
 - Le choix reste stable en mémoire et après restauration du contrôleur. Seules les préférences d’affichage des cinq dernières séances sont stockées dans `localStorage`, sous `elan-session-weight-v1:<accounts.key>`. Aucune propriété n’est ajoutée aux séances, exports ou tables Supabase. Si le stockage est indisponible, le fonctionnement continue en mémoire.
-- Le bouton réutilise le modèle du bilan déjà calculé, sans reconstruire les statistiques ni parcourir les séances précédentes. Il met uniquement à jour le texte dans la carte : tonnage, focus et défilement conservés ; fondu de 160 ms désactivé si la réduction des animations est demandée.
+- Le bouton réutilise le modèle du bilan déjà calculé, sans reconstruire les statistiques ni parcourir les séances précédentes. Il met uniquement à jour le texte dans la carte : tonnage, focus et défilement conservés ; fondu de 150 ms et rotation discrète de l’icône de 180 ms, désactivés si la réduction des animations est demandée.
 - Les deux fichiers de catalogue, le module de logique et les styles sont inclus dans le précache du service worker et dans la copie des fichiers publics de GitHub Pages.
 
 ## Vérifications
@@ -99,3 +99,30 @@ Captures des écrans à 320 × 568, 375 × 844, 390 × 844 et 430 × 844 dans `c
 ## Vérification avant publication
 
 La révision de production `cdc7c0c` (nouveau parcours après validation des séries en séance libre) a été intégrée avant publication. Les conflits dans `app.js` et `package.json` ont été résolus en conservant ce parcours et les comparaisons de tonnage. Tests relancés avec succès après fusion : `npm run test:session-weight`, parcours de la carte sous WebKit, `free-session-next-ui.cjs`, `transaction-actions-ui.cjs`, `finish-action-ui.cjs`, `saved-session.cjs` et `identity.cjs`.
+
+## Carte compacte
+
+La modification visuelle est limitée à `session-weight.js` et `session-weight.css`, avec adaptation des tests et captures de cette carte. Le catalogue, la sélection, les données, le calcul du tonnage et les autres composants restent identiques.
+
+- En-tête sur une ligne : titre discret à gauche et tonnage secondaire à droite (`1,3 t`), avec séparateur utilisant la bordure du thème. Le total exact en kilogrammes reste disponible dans le titre et le libellé accessible.
+- Texte d’introduction gris, nombre principal vert et nom blanc plus petit. La référence reste entièrement lisible, y compris sur deux lignes.
+- Pied sur une ligne : « Masse indicative » et bouton de 44 px minimum avec l’icône existante `reps` utilisée pour le rafraîchissement.
+- Arrondi entier si l’écart relatif avec le quotient réel est inférieur ou égal à 10 %. Sinon, une décimale est conservée. Ainsi, `8,7 pédalos` donne `9 pédalos`, tandis que `1,4 éléphant` conserve sa décimale. Le quotient brut et les masses du catalogue ne changent pas.
+- La zone de comparaison accueille les noms sur deux lignes sans changement de hauteur. Le fondu ne déplace aucun élément. Les animations en cours sont annulées avant un nouveau changement, y compris quand la réduction des animations vient d’être activée.
+
+Mesures sur la même référence et le même tonnage, avant/après, dans Chromium :
+
+| Largeur | Avant | Après | Réduction |
+| --- | --- | --- | --- |
+| 320 px | 222 px | 144 px | 35 % |
+| 375 px | 238 px | 151 px | 36 % |
+| 390 px | 239 px | 151 px | 37 % |
+| 430 px | 242 px | 151 px | 38 % |
+
+Les tests d’interface vérifient les 189 références actives avec trois quantités (1,4 ; 8,7 ; 100), à chacune des quatre largeurs, sous Chromium et WebKit : absence de débordement, alignement de l’en-tête et du pied, hauteur stable pour les 567 variantes par largeur, couleurs et hiérarchie typographique. Les changements réels de comparaison conservent aussi la hauteur de la carte, le focus, les statistiques, les muscles et les données de séance.
+
+Vérifications de cette modification : `npm run test:session-weight`, parcours de la carte sous WebKit, `saved-session.cjs`, `identity.cjs`, `saved-session-ui.cjs` et `free-session-next-ui.cjs`.
+
+## Sélection pondérée et diversité
+
+Le [rapport de sélection](selection.md) décrit l’amélioration de la pertinence, les scores des 200 références, les limites par référence, la mémoire chronologique et les résultats de 34 000 tirages de validation. Cette évolution conserve le design de la carte compacte et les masses du catalogue ; elle remplace les règles de sélection initiales décrites plus haut.

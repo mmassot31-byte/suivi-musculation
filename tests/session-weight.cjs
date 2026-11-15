@@ -12,26 +12,32 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
  assert(!W.validWeightReference({...elephant,actif:false}));
  for(const kg of[0,-1,null,undefined,NaN,Infinity,'1000']){assert.equal(W.eligibleWeightReferences(kg).length,0);assert.equal(W.selectWeightReference(kg),null);assert.equal(W.formatWeightComparison(kg,elephant),null);}
  assert.equal(W.formatWeightComparison(25000,elephant).text,'Environ 5 éléphants de savane mâles');
- assert.equal(W.formatWeightComparison(5000,elephant).text,'Environ 1 éléphant de savane mâle');
+ assert.equal(W.formatWeightComparison(5000,elephant).text,'Environ un éléphant de savane mâle');
  assert.equal(W.formatWeightComparison(7500,elephant).text,'Environ 1,5 éléphant de savane mâle');
  assert.equal(W.formatWeightComparison(25000,ref('ref-041')).text,'Environ 21 citadines');
- assert.equal(W.formatWeightComparison(25000,ref('ref-054')).text,'Environ 2,1 bus urbains');
+ assert.equal(W.formatWeightComparison(25000,ref('ref-054')).text,'Environ 2 bus urbains');
  assert.equal(W.formatWeightComparison(2500,ref('ref-014')).text,'Environ 5 chevaux');
  assert.equal(W.formatWeightComparison(1000,ref('ref-185')).text,'Environ 13 coffres-forts domestiques');
  assert.equal(W.formatWeightComparison(100,ref('ref-126')).text,'Environ 83 melons');
+ assert.equal(W.formatWeightComparison(1305,ref('ref-074')).text,'Environ 9 pédalos');
+ assert.equal(W.formatWeightComparison(7000,elephant).text,'Environ 1,4 éléphant de savane mâle');
+ assert.equal(W.formatWeightComparison(9500,elephant).text,'Environ 2 éléphants de savane mâles');
+ assert.equal(W.formatWeightComparison(12500,elephant).text,'Environ 2,5 éléphants de savane mâles');
+ const natural=W.formatWeightComparison(1305,ref('ref-074'));assert.equal(natural.quantity,8.7);assert.equal(natural.rounded,9);assert.equal(natural.quantityLabel,'9');assert.equal(natural.name,'pédalos');assert(natural.approximate);assert.equal(ref('ref-074').masse_kg,150);
+ assert.equal(W.formatSessionWeightTotal(1305),'1,3 t');assert.equal(W.formatSessionWeightTotal(25000),'25 t');assert.equal(W.formatSessionWeightTotal(999.99),'999,99 kg');assert.equal(W.formatSessionWeightTotal(0.006),'0,006 kg');assert.equal(W.formatSessionWeightTotal(0),'');
  assert.equal(W.formatWeightComparison(1000,{...elephant,masse_kg:0}),null);
- for(const kg of[0.01,0.06,1,20,300,1000,25000,1000000,16000000]){
+ for(const kg of[0.06,0.1,1,20,300,1000,25000,1000000,16000000]){
   const eligible=W.eligibleWeightReferences(kg);assert(eligible.length,'eligible '+kg);
-  for(const r of eligible){const q=kg/r.masse_kg;assert(q>=0.1&&q<=200);assert(W.formatWeightComparison(kg,r)?.rounded>0);}
+  for(const r of eligible){const q=kg/r.masse_kg;assert(q>=0.1&&q<=r.quantite_max);assert(q>=1||r.fractionnable||Math.abs(1-q)/q<=0.1+Number.EPSILON);assert(W.formatWeightComparison(kg,r)?.rounded>0);}
  }
  assert.equal(W.selectWeightReference(1e20),null);assert.equal(W.selectWeightReference(1e-12),null);
  assert.equal(W.selectWeightReference(1,{references:[]}),null);
- assert.equal(W.selectWeightReference(5000,{references:[elephant],previousId:elephant.id}),null);
- assert.equal(W.selectWeightReference(2500,{references:[elephant],random:()=>0}).id,elephant.id);
+ assert.equal(W.selectWeightReference(5000,{references:[elephant],previousId:elephant.id}).id,elephant.id);
+ assert.equal(W.selectWeightReference(2500,{references:[elephant],random:()=>0}),null);assert.equal(W.selectWeightReference(0.01),null);
  const eligible=W.eligibleWeightReferences(25000),history=eligible.slice(0,5).map((r,i)=>({sessionId:'recent'+i,referenceId:r.id,referenceIds:[r.id],category:r.categorie}));
- let seed=42;const random=()=>((seed=(1664525*seed+1013904223)>>>0)/2**32),seen=new Set(),categories=new Set();
- for(let i=0;i<500;i++){const r=W.selectWeightReference(25000,{history,previousId:eligible[5].id,random});assert(!history.some(h=>h.referenceIds.includes(r.id)));assert.notEqual(r.id,eligible[5].id);assert.notEqual(r.categorie,history.at(-1).category);seen.add(r.id);categories.add(r.categorie);}
- assert(seen.size>10);assert(categories.size>=4);
+ let seed=42;const random=()=>((seed=(1664525*seed+1013904223)>>>0)/2**32),seen=new Set(),categories=new Set();let repeatedCategory=0;
+ for(let i=0;i<500;i++){const r=W.selectWeightReference(25000,{history,previousId:eligible[5].id,random});assert(!history.some(h=>h.referenceIds.includes(r.id)));assert.notEqual(r.id,eligible[5].id);repeatedCategory+=r.categorie===history.at(-1).category;seen.add(r.id);categories.add(r.categorie);}
+ assert(seen.size>10);assert(categories.size>=4);assert(repeatedCategory<100,'The preceding category is discouraged');
  const fullHistory=[{referenceIds:eligible.map(r=>r.id),category:eligible[0].categorie}];
  assert(W.selectWeightReference(25000,{history:fullHistory,previousId:eligible[0].id,random}));
  // Category sampling is independent of the number of entries per category.
@@ -73,8 +79,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
  const single=W.createSessionWeightComparisons({getStorage:()=>null,references:[elephant],random}),singleModel={...model,amount:5000};assert.equal(single.get(singleModel).canChange,false);assert.equal(single.next(singleModel).reference.id,elephant.id);
  assert.equal(controller.get({...model,amount:0}),null);
  assert.equal(W.sessionWeightCardHtml(null),'');const card=W.sessionWeightCardHtml(next);
- assert.match(card,/250 <span>kg/);assert.match(card,/Équivalence approximative/);assert.match(card,/aria-live="polite"/);assert.doesNotMatch(card,/<svg|<img/);
- const tiny=W.createSessionWeightComparisons({getStorage:()=>null,random}).get({...model,amount:0.006});assert(tiny);assert.match(W.sessionWeightCardHtml(tiny),/0,006/);
+ assert.match(card,/>250 kg<\/p>/);assert.match(card,/C’est l’équivalent d’environ/);assert.match(card,/Masse indicative/);assert.match(card,/session-weight-quantity/);assert.match(card,/session-weight-reference/);assert.match(card,/aria-live="polite"/);assert.equal((card.match(/<svg/g)||[]).length,1);assert.doesNotMatch(card,/<img/);
+ const tiny=W.createSessionWeightComparisons({getStorage:()=>null,random}).get({...model,amount:0.06});assert(tiny);assert.match(W.sessionWeightCardHtml(tiny),/0,06/);
  const html=savedSessionHtml(model,[session],{sessionWeight:card});assert(html.indexOf('saved-stats')<html.indexOf('session-weight-card'));assert(html.indexOf('session-weight-card')<html.indexOf('saved-plan'));
  assert.doesNotMatch(savedSessionHtml(model,[session]),/session-weight-card/,'History rendering stays unchanged');assert.deepEqual(session,before);
  console.log('PASS session weight: catalogue audit, bounds/fallback, division/rounding, French grammar, category sampling, five-session history, no immediate repeat, stable renders/reload, account isolation/storage failure, existing normalized totals (free/custom/template/lb/drop/unilateral), invalid/partial/empty totals, immutable sessions and recap placement.');

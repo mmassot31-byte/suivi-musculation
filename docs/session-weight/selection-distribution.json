@@ -1,0 +1,315 @@
+{
+  "drawsPerMode": 2000,
+  "controlledScores": [
+    660,
+    1329,
+    2016,
+    2632,
+    3363
+  ],
+  "tonnages": [
+    {
+      "kg": 500,
+      "eligible": 135,
+      "offbeatEligible": 31,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 13.45,
+          "meanScore": 3.293,
+          "uniformMeanScore": 3.096,
+          "categories": 10,
+          "distinctReferences": 135,
+          "topReferencePercent": 2.75,
+          "topFivePercent": 11.75,
+          "repeatedCategoryPercent": 2.4,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "2": 142,
+            "3": 1217,
+            "4": 553,
+            "5": 88
+          },
+          "p95SelectionMs": 0.358
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 13.8,
+          "meanScore": 3.312,
+          "uniformMeanScore": 3.096,
+          "categories": 10,
+          "distinctReferences": 135,
+          "topReferencePercent": 2.95,
+          "topFivePercent": 12.45,
+          "repeatedCategoryPercent": 2.6,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "2": 156,
+            "3": 1176,
+            "4": 556,
+            "5": 112
+          },
+          "p95SelectionMs": 0.307
+        }
+      ]
+    },
+    {
+      "kg": 1300,
+      "eligible": 136,
+      "offbeatEligible": 31,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 14.15,
+          "meanScore": 3.401,
+          "uniformMeanScore": 3.162,
+          "categories": 10,
+          "distinctReferences": 136,
+          "topReferencePercent": 2.7,
+          "topFivePercent": 11.25,
+          "repeatedCategoryPercent": 2.8,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 4,
+            "2": 144,
+            "3": 1053,
+            "4": 643,
+            "5": 156
+          },
+          "p95SelectionMs": 0.316
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 16.1,
+          "meanScore": 3.372,
+          "uniformMeanScore": 3.162,
+          "categories": 10,
+          "distinctReferences": 136,
+          "topReferencePercent": 3.45,
+          "topFivePercent": 12.5,
+          "repeatedCategoryPercent": 2.75,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 1,
+            "2": 177,
+            "3": 1034,
+            "4": 653,
+            "5": 135
+          },
+          "p95SelectionMs": 0.354
+        }
+      ]
+    },
+    {
+      "kg": 5000,
+      "eligible": 139,
+      "offbeatEligible": 32,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 14.2,
+          "meanScore": 3.507,
+          "uniformMeanScore": 3.309,
+          "categories": 10,
+          "distinctReferences": 139,
+          "topReferencePercent": 3.05,
+          "topFivePercent": 12.35,
+          "repeatedCategoryPercent": 1.75,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 2,
+            "2": 144,
+            "3": 903,
+            "4": 740,
+            "5": 211
+          },
+          "p95SelectionMs": 0.316
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 12.7,
+          "meanScore": 3.562,
+          "uniformMeanScore": 3.309,
+          "categories": 10,
+          "distinctReferences": 138,
+          "topReferencePercent": 2.75,
+          "topFivePercent": 11.35,
+          "repeatedCategoryPercent": 2.85,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 1,
+            "2": 117,
+            "3": 890,
+            "4": 742,
+            "5": 250
+          },
+          "p95SelectionMs": 0.304
+        }
+      ]
+    },
+    {
+      "kg": 15000,
+      "eligible": 125,
+      "offbeatEligible": 26,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 14.1,
+          "meanScore": 3.608,
+          "uniformMeanScore": 3.416,
+          "categories": 10,
+          "distinctReferences": 124,
+          "topReferencePercent": 3.95,
+          "topFivePercent": 13.15,
+          "repeatedCategoryPercent": 3.3,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "2": 116,
+            "3": 795,
+            "4": 845,
+            "5": 244
+          },
+          "p95SelectionMs": 0.558
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 15.6,
+          "meanScore": 3.604,
+          "uniformMeanScore": 3.416,
+          "categories": 10,
+          "distinctReferences": 124,
+          "topReferencePercent": 4.4,
+          "topFivePercent": 14.9,
+          "repeatedCategoryPercent": 2.55,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 2,
+            "2": 124,
+            "3": 802,
+            "4": 808,
+            "5": 264
+          },
+          "p95SelectionMs": 0.91
+        }
+      ]
+    },
+    {
+      "kg": 25000,
+      "eligible": 106,
+      "offbeatEligible": 22,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 14.2,
+          "meanScore": 3.698,
+          "uniformMeanScore": 3.5,
+          "categories": 10,
+          "distinctReferences": 106,
+          "topReferencePercent": 4.8,
+          "topFivePercent": 17.3,
+          "repeatedCategoryPercent": 3.25,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 1,
+            "2": 111,
+            "3": 681,
+            "4": 905,
+            "5": 302
+          },
+          "p95SelectionMs": 0.848
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 13.65,
+          "meanScore": 3.687,
+          "uniformMeanScore": 3.5,
+          "categories": 10,
+          "distinctReferences": 106,
+          "topReferencePercent": 4.6,
+          "topFivePercent": 18.65,
+          "repeatedCategoryPercent": 3.25,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 4,
+            "2": 85,
+            "3": 700,
+            "4": 955,
+            "5": 256
+          },
+          "p95SelectionMs": 0.482
+        }
+      ]
+    },
+    {
+      "kg": 50000,
+      "eligible": 92,
+      "offbeatEligible": 16,
+      "modes": [
+        {
+          "mode": "successive",
+          "draws": 2000,
+          "offbeatPercent": 14.55,
+          "meanScore": 3.69,
+          "uniformMeanScore": 3.576,
+          "categories": 9,
+          "distinctReferences": 92,
+          "topReferencePercent": 4.6,
+          "topFivePercent": 19,
+          "repeatedCategoryPercent": 3.05,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 6,
+            "2": 128,
+            "3": 675,
+            "4": 862,
+            "5": 329
+          },
+          "p95SelectionMs": 0.27
+        },
+        {
+          "mode": "sessions",
+          "draws": 2000,
+          "offbeatPercent": 16.1,
+          "meanScore": 3.676,
+          "uniformMeanScore": 3.576,
+          "categories": 9,
+          "distinctReferences": 92,
+          "topReferencePercent": 4.35,
+          "topFivePercent": 19.95,
+          "repeatedCategoryPercent": 3.35,
+          "immediateRepeats": 0,
+          "lastFiveRepeats": 0,
+          "scores": {
+            "1": 1,
+            "2": 134,
+            "3": 677,
+            "4": 887,
+            "5": 301
+          },
+          "p95SelectionMs": 0.177
+        }
+      ]
+    }
+  ]
+}
